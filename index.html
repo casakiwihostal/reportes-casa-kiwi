@@ -233,12 +233,45 @@ html,body{overflow-x:hidden}
   .kpi{padding:12px}
   #ask-btn{bottom:14px;right:14px}
 }
+/* inicio limpio */
+.welcome{padding:34px 0 18px}
+.welcome h1{font-family:var(--display);font-weight:900;font-size:clamp(28px,4vw,44px);margin:0 0 6px}
+.welcome p{color:var(--muted);margin:0;font-size:16px}
+.choices{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:18px 0 40px}
+.choice{display:flex;flex-direction:column;gap:6px;background:#fff;border:1px solid var(--line);border-radius:18px;padding:22px 22px 18px;text-decoration:none;color:var(--ink);transition:transform .12s,box-shadow .12s,border-color .12s;min-height:190px}
+.choice:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(20,18,16,.08);border-color:var(--orange)}
+.choice .ce{font-family:var(--mono);font-size:11.5px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+.choice .cb{font-family:var(--display);font-weight:900;font-size:34px;line-height:1.05;color:var(--orange)}
+.choice .cb small{font-family:var(--body);font-weight:600;font-size:14px;color:var(--muted)}
+.choice .ct{font-family:var(--display);font-weight:800;font-size:19px;margin-top:4px}
+.choice .cd{color:var(--muted);font-size:14px;line-height:1.4;flex:1}
+.choice .cg{font-weight:700;font-size:14px;color:var(--orange);margin-top:6px}
+.choice.main{background:var(--ink);color:#fff;border-color:var(--ink);grid-column:span 2}
+.choice.main .ce,.choice.main .cd,.choice.main .cb small{color:#CFC8BE}
+.choice.main .cb{font-size:46px}
+#app>.back{display:inline-block;margin:18px 0 4px;font-weight:700;text-decoration:none;color:var(--muted);font-size:14px}
+#app>.back:hover{color:var(--ink)}
+.phead{margin:4px 0 20px}
+.phead h1{font-family:var(--display);font-weight:900;font-size:clamp(26px,3.4vw,36px);margin:0 0 6px}
+.phead p{color:var(--muted);margin:0}
+.tab .sm{display:none}
+@media (max-width:900px){ .choices{grid-template-columns:1fr 1fr} }
+@media (max-width:700px){ .choice.main{grid-column:auto} .choices{grid-template-columns:1fr;gap:12px} .choice{min-height:0;padding:18px} .welcome{padding:22px 0 8px} }
+@media (max-width:560px){ nav.tabs{grid-template-columns:repeat(4,1fr)} .tab .lg{display:none} .tab .sm{display:inline} }
+.rvhead h3{font-family:var(--display);font-weight:800;font-size:22px;margin:0 0 4px}.rvhead p{color:var(--muted);margin:0 0 18px}
+.rtabs .cnt{display:inline-block;min-width:18px;padding:1px 6px;border-radius:9px;background:var(--orange);color:#fff;font-size:11px;font-family:var(--mono);margin-left:4px}
+.tl{list-style:none;margin:0;padding:0;border-left:2px solid var(--line);margin-left:8px}
+.tl li{position:relative;padding:0 0 18px 20px}
+.tl li:before{content:'';position:absolute;left:-7px;top:4px;width:12px;height:12px;border-radius:50%;background:#fff;border:2px solid var(--orange)}
+.tl-f{font-family:var(--mono);font-size:12px;color:var(--muted);margin-right:8px}
+.tl-t{display:inline-block;font-size:11.5px;font-weight:700;padding:2px 8px;border-radius:10px;background:color-mix(in srgb,var(--c) 16%,#fff);color:var(--ink)}
+.tl p{margin:6px 0 0;line-height:1.45}
 </style>
 </head>
 <body>
 <header class="top"><div class="top-in">
   <div class="brand"><b>CASA</b> <i>KIWI</i> <small>Reportes financieros</small></div>
-  <nav class="tabs"><a class="tab home" href="#inicio">Panel general</a><a class="tab proy" href="#proyecciones">Proyecciones</a><a class="tab mkt" href="#marketing">Marketing</a></nav>
+  <nav class="tabs"><a class="tab home" href="#inicio">Inicio</a><a class="tab rep" href="#reportes">Reportes</a><a class="tab proy" href="#proyecciones"><span class="lg">Proyecciones</span><span class="sm">Futuro</span></a><a class="tab mkt" href="#marketing">Marketing</a></nav>
 </div></header>
 
 <main id="app"></main>
@@ -3807,6 +3840,10 @@ window.CASA_KIWI = {
         total: 215000,
         n: 2,
         lista: [["2026-10-12",140000,"Clara Recepcion","Upsale"],["2026-10-13",75000,"Clara Recepcion","Upsale"]]
+      },
+      revenue: {
+        titular: "Arranca el proyecto de tarifas: se arma la base de eventos de la ciudad.",
+        cambios: [["2026-10-12","sistema","Se crea la base de eventos de Medellín (investigación inicial) para usarla en las decisiones de tarifa."],["2026-10-13","tarifa","Primera bajada: Dorm Iris del 13 al 23 oct (de $92.664 a $79.800 por cama en promedio). Resultado: en línea con el resto del hostal."]]
       }
     },
     {
@@ -3895,6 +3932,19 @@ window.CASA_KIWI = {
         atencion: ["Las privadas cayeron a 27 % de ocupación; los dormitorios sostuvieron la semana (45 %).","ADR de $74.769: el jueves 22 bajó a $66.269.","Expocar no generó la demanda esperada: el fin de semana quedó en 50 %."],
         riesgo: ["El bar vendió solo $1,03 M, la venta más baja de los reportes; 49 cortesías contra 88 productos vendidos.","El recaudo de la semana fue de $8,30 M, el más bajo del periodo."],
         acciones: ["Promoción de privadas de domingo a jueves para semanas sin evento.","Separar en el calendario las ferias comerciales de los eventos que sí llenan (festivales, puentes).","Activar el bar entre semana: de lunes a jueves vendió menos de $160.000 por día."]
+      },
+      revenue: {
+        titular: "Primeras decisiones aplicadas en Lobby: 65 propuestas el 23 oct.",
+        cambios: [["2026-10-21","correccion","Se corrigen tarifas mal escritas en Lobby: Doble baño comp. ($148 y $17.176) y Doble baño priv. ($27.193)."],["2026-10-21","tarifa","Bajadas de última hora: Dorms 6 del 21 al 27 oct (≈$79.400 → $73.300 por cama) y Doble baño priv. del 22 al 25 oct (≈$188.000 → $163.800). Las dos funcionaron: +17 y +6 reservas nuevas."],["2026-10-23","tarifa","65 propuestas aplicadas en Lobby; entre ellas, subidas en Doble 13 y Doble baño priv. y bajadas en Dorms 6."],["2026-10-23","correccion","Un cambio colateral en la temporada Rituales movió el 1 nov; se restauró."]],
+        resultado: {
+          semana: "19–25 oct",
+          ocupacion: 36,
+          ocupacion_ly: 16,
+          adr: 75927,
+          adr_var: -40,
+          ingreso: 9642716,
+          ingreso_var: 36
+        }
       }
     },
     {
@@ -3980,6 +4030,16 @@ window.CASA_KIWI = {
         total: 0,
         n: 0,
         lista: []
+      },
+      revenue: {
+        titular: "Semana grande: temporada de fin de año cargada, 39 propuestas más y primer reporte de revenue.",
+        cambios: [["2026-10-26","sistema","El conector de Lobby pasa a un servidor con IP fija (Lightsail)."],["2026-10-26","tarifa","39 propuestas aplicadas: 83 noches entre el 26 oct y el 25 nov."],["2026-10-26","temporada","Temporada Navidad y fin de año: 189 tarifas cargadas (18 dic–4 ene) y estadía mínima de 3 noches del 30 dic al 1 ene. Dormitorios +5 % a +35 %, privadas +10 % a +25 %."],["2026-10-26","reporte","Primer reporte semanal de revenue y se crea la base de aprendizajes."],["2026-10-29","tarifa","Un comité de 20 expertos revisa las propuestas: acepta varias subidas (por ejemplo Doble baño priv. 14 nov a $241.000) y rechaza las de Dorms 6 sin evento."],["2026-10-30","tarifa","Paquete votado por 20 especialistas y aprobado por Santiago: cambios limitados a ±10 % por noche (bajadas en Dorms 6 2–12 nov, subidas en Doble baño priv. 28–29 nov) y mínimo de 2 noches en dobles el 14–15 nov."]],
+        evaluacion: {
+          fecha: "26 oct",
+          evaluadas: 77,
+          funcionaron: 12,
+          revisar: 15
+        }
       }
     },
     {
@@ -4068,6 +4128,25 @@ window.CASA_KIWI = {
         atencion: ["La ocupación fue pareja (22–30 unidades), sin un pico de fin de semana.","El lunes festivo salieron 22 reservas: fue el día más pesado de la semana para housekeeping."],
         riesgo: ["Una reserva de Hostelworld (Huésped, Privado 34, 31 oct–4 nov) está cargada en Lobby por $5.174.780 por 4 noches. Por eso el 31 de octubre aparece con ADR de $254.386 y el ingreso de octubre en Lobby sube.","70 cortesías en el bar, 59 de ellas cerveza."],
         acciones: ["Corregir en Lobby la tarifa de la reserva del Privado 34.","Aprovechar la anticipación de Booking para subir tarifa en las fechas que se están llenando (diciembre y enero)."]
+      },
+      revenue: {
+        titular: "El consejo de 34 agentes queda autorizado para aplicar tarifas por su cuenta.",
+        cambios: [["2026-11-02","tarifa","Votación de 20 especialistas: bajadas puntuales en Dorms 6 (6–7 nov), Doble baño comp. (5 nov), Doble baño priv. (7 nov), Dorm 11 y Dorm Iris."],["2026-11-04","sistema","Se reconstruyen las reglas y límites del modelo de tarifas."],["2026-11-05","sistema","Santiago autoriza al consejo de 34 agentes a aplicar tarifas sin aprobación, dentro de sus reglas: máximo 15 % por noche (8 % a más de 60 días), nunca por debajo de la normal −15 % ni del mínimo de la categoría."],["2026-11-05","tarifa","Sesiones del consejo el 5, 6 y 7 nov: subidas en privadas para noviembre–enero y ordenamiento por jerarquía (baño privado por encima de baño compartido)."],["2026-11-06","sistema","La tarea diaria de revenue se recrea en el computador nuevo."]],
+        resultado: {
+          semana: "2–8 nov",
+          ocupacion: 51,
+          ocupacion_ly: 35,
+          adr: 85131,
+          adr_var: -18,
+          ingreso: 15153253,
+          ingreso_var: 19
+        },
+        evaluacion: {
+          fecha: "9 nov",
+          evaluadas: 408,
+          funcionaron: 85,
+          revisar: 71
+        }
       }
     },
     {
@@ -4156,6 +4235,16 @@ window.CASA_KIWI = {
         atencion: ["Recepción fue el canal con más noches (70), por encima de Hostelworld (63).","De lunes a miércoles la ocupación se quedó en 22–24 unidades."],
         riesgo: ["81 cortesías en el bar contra 163 productos vendidos.","El 39 % de la venta del bar se cobró fuera de la barra."],
         acciones: ["Repetir la estrategia de precio de este puente en los próximos fines de semana con evento.","Mantener la oferta de extensión directa: dejó más que cualquier otra semana."]
+      },
+      revenue: {
+        titular: "Ajustes por aprendizajes: subir con confianza la Doble baño comp. y dejar de subir la de 2 dobles.",
+        cambios: [["2026-11-09","aprendizaje","Doble baño comp. pasa a “subir con confianza” (las subidas venden); 2 dobles baño comp. pasa a “evitar subir”; Dorm Iris pierde el veto."],["2026-11-09","tarifa","Sesiones del consejo el 9, 10 y 14 nov: ajustes en Doble baño comp. y Doble sin balcón para fin de noviembre y diciembre, y bajadas en Dorms 6 en noches entre semana de noviembre."],["2026-11-14","sistema","Se pide sumar al consejo un experto en crisis globales que siga las noticias."]],
+        resultado: {
+          semana: "9–15 nov",
+          ocupacion: 57,
+          ocupacion_ly: 22,
+          adr_var: -21
+        }
       }
     },
     {
@@ -4245,7 +4334,12 @@ window.CASA_KIWI = {
         riesgo: ["Los conciertos no llenaron: el fin de semana quedó en 24–25 unidades.","El bar vendió $889.000 (cifras hasta el domingo en la mañana)."],
         acciones: ["Bajar la cama de dormitorio entre semana: ya no hay evento que la sostenga.","Noviembre va en 53 % del 1 al 22 (560 noches): para cerrar en el escenario conservador (55,2 %) hay que empujar la última semana.","Revisar en Lobby el cierre de ventas del 28 de noviembre."]
       },
-      nota_corte: "Datos hasta el domingo 22 nov en la mañana: el bar y las salidas de ese día están incompletos."
+      nota_corte: "Datos hasta el domingo 22 nov en la mañana: el bar y las salidas de ese día están incompletos.",
+      revenue: {
+        titular: "Recuperar tarifa: 97 noches aplicadas el 18 nov, 69 el 22 y 38 cambios de la tarea diaria.",
+        cambios: [["2026-11-17","aprendizaje","Reporte de la semana 9–15 nov: Doble sin balcón y Triple baño comp. pasan a “evitar subir”. Nueva regla: con el volumen ya logrado, recuperar tarifa en noches de demanda alta."],["2026-11-18","tarifa","Sesión del consejo aprobada por Santiago: 97 noches aplicadas y verificadas, sin errores (29 decisiones)."],["2026-11-21","tarifa","Sesión del consejo: bajadas en Doble baño comp. para 22 nov–17 dic y en Dorms 6 para el 21 y del 23 al 27 nov."],["2026-11-22","tarifa","Sesión del consejo en chat: 69 noches por categoría aplicadas y verificadas, sin cambios colaterales (33 decisiones)."],["2026-11-22","tarifa","Tarea diaria: 30 propuestas → 38 cambios aplicados y verificados. Ejemplos: Dorm 11 25 nov $61.000 → $59.000; Doble baño comp. 26 nov $192.000 → $187.000; Dorms 6 6 dic $85.000 → $92.000; Triple comp. 4 dic $352.000 → $367.000."],["2026-11-22","veto","Frenadas por aprendizajes: subir Twin baño priv. y 2 dobles baño comp.; filtradas antes de Lobby: subir Twin sin vista 27 nov y bajar Iris 29 nov."]],
+        pendientes: ["Revisar 38 noches cuyo precio en Lobby difiere más de $2.000 de lo decidido (Doble comp. 8–17 dic, Dorms 6 3–7 dic, Triple comp. 1–7 dic, Dorm 11 22–25 nov).","1 dic: si no entran camas en Dorms 6 de diciembre, proponer revertir la subida.","1 y 10 dic: revisar el ritmo de Navidad y fin de año (hoy 12–14 vendidas por noche contra 40–48 al cierre del año pasado)."]
+      }
     }
   ],
   sinReporte: [],
@@ -5103,6 +5197,23 @@ window.CASA_KIWI = {
         total: 459750,
         n: 7,
         lista: [["2026-10-01",25000,"Clara Recepcion","Upsale"],["2026-10-06",29750,"Victorcortes","Upsale"],["2026-10-08",40000,"Camilo Giraldo","Upsale"],["2026-10-08",75000,"Victorcortes","Upsale"],["2026-10-12",140000,"Clara Recepcion","Upsale"],["2026-10-13",75000,"Clara Recepcion","Upsale"],["2026-10-23",75000,"Victorcortes","Upsale"]]
+      },
+      revenue: {
+        titular: "12 cambios de revenue registrados en el mes.",
+        cambios: [["2026-10-12","sistema","Se crea la base de eventos de Medellín (investigación inicial) para usarla en las decisiones de tarifa."],["2026-10-13","tarifa","Primera bajada: Dorm Iris del 13 al 23 oct (de $92.664 a $79.800 por cama en promedio). Resultado: en línea con el resto del hostal."],["2026-10-21","correccion","Se corrigen tarifas mal escritas en Lobby: Doble baño comp. ($148 y $17.176) y Doble baño priv. ($27.193)."],["2026-10-21","tarifa","Bajadas de última hora: Dorms 6 del 21 al 27 oct (≈$79.400 → $73.300 por cama) y Doble baño priv. del 22 al 25 oct (≈$188.000 → $163.800). Las dos funcionaron: +17 y +6 reservas nuevas."],["2026-10-23","tarifa","65 propuestas aplicadas en Lobby; entre ellas, subidas en Doble 13 y Doble baño priv. y bajadas en Dorms 6."],["2026-10-23","correccion","Un cambio colateral en la temporada Rituales movió el 1 nov; se restauró."],["2026-10-26","sistema","El conector de Lobby pasa a un servidor con IP fija (Lightsail)."],["2026-10-26","tarifa","39 propuestas aplicadas: 83 noches entre el 26 oct y el 25 nov."],["2026-10-26","temporada","Temporada Navidad y fin de año: 189 tarifas cargadas (18 dic–4 ene) y estadía mínima de 3 noches del 30 dic al 1 ene. Dormitorios +5 % a +35 %, privadas +10 % a +25 %."],["2026-10-26","reporte","Primer reporte semanal de revenue y se crea la base de aprendizajes."],["2026-10-29","tarifa","Un comité de 20 expertos revisa las propuestas: acepta varias subidas (por ejemplo Doble baño priv. 14 nov a $241.000) y rechaza las de Dorms 6 sin evento."],["2026-10-30","tarifa","Paquete votado por 20 especialistas y aprobado por Santiago: cambios limitados a ±10 % por noche (bajadas en Dorms 6 2–12 nov, subidas en Doble baño priv. 28–29 nov) y mínimo de 2 noches en dobles el 14–15 nov."]],
+        semanas: [
+          {
+            id: "2026-10-19",
+            semana: "19–25 oct",
+            ocupacion: 36,
+            ocupacion_ly: 16,
+            adr: 75927,
+            adr_var: -40,
+            ingreso: 9642716,
+            ingreso_var: 36
+          }
+        ],
+        pendientes: []
       }
     },
     {
@@ -5190,6 +5301,30 @@ window.CASA_KIWI = {
         atencion: ["Sin alertas fuertes en ocupación ni en canales."],
         riesgo: ["200 cortesías en el bar contra 412 productos cobrados."],
         acciones: ["Tope de cortesías por turno y motivo registrado en Lobby."]
+      },
+      revenue: {
+        titular: "14 cambios de revenue registrados en el mes.",
+        cambios: [["2026-11-02","tarifa","Votación de 20 especialistas: bajadas puntuales en Dorms 6 (6–7 nov), Doble baño comp. (5 nov), Doble baño priv. (7 nov), Dorm 11 y Dorm Iris."],["2026-11-04","sistema","Se reconstruyen las reglas y límites del modelo de tarifas."],["2026-11-05","sistema","Santiago autoriza al consejo de 34 agentes a aplicar tarifas sin aprobación, dentro de sus reglas: máximo 15 % por noche (8 % a más de 60 días), nunca por debajo de la normal −15 % ni del mínimo de la categoría."],["2026-11-05","tarifa","Sesiones del consejo el 5, 6 y 7 nov: subidas en privadas para noviembre–enero y ordenamiento por jerarquía (baño privado por encima de baño compartido)."],["2026-11-06","sistema","La tarea diaria de revenue se recrea en el computador nuevo."],["2026-11-09","aprendizaje","Doble baño comp. pasa a “subir con confianza” (las subidas venden); 2 dobles baño comp. pasa a “evitar subir”; Dorm Iris pierde el veto."],["2026-11-09","tarifa","Sesiones del consejo el 9, 10 y 14 nov: ajustes en Doble baño comp. y Doble sin balcón para fin de noviembre y diciembre, y bajadas en Dorms 6 en noches entre semana de noviembre."],["2026-11-14","sistema","Se pide sumar al consejo un experto en crisis globales que siga las noticias."],["2026-11-17","aprendizaje","Reporte de la semana 9–15 nov: Doble sin balcón y Triple baño comp. pasan a “evitar subir”. Nueva regla: con el volumen ya logrado, recuperar tarifa en noches de demanda alta."],["2026-11-18","tarifa","Sesión del consejo aprobada por Santiago: 97 noches aplicadas y verificadas, sin errores (29 decisiones)."],["2026-11-21","tarifa","Sesión del consejo: bajadas en Doble baño comp. para 22 nov–17 dic y en Dorms 6 para el 21 y del 23 al 27 nov."],["2026-11-22","tarifa","Sesión del consejo en chat: 69 noches por categoría aplicadas y verificadas, sin cambios colaterales (33 decisiones)."],["2026-11-22","tarifa","Tarea diaria: 30 propuestas → 38 cambios aplicados y verificados. Ejemplos: Dorm 11 25 nov $61.000 → $59.000; Doble baño comp. 26 nov $192.000 → $187.000; Dorms 6 6 dic $85.000 → $92.000; Triple comp. 4 dic $352.000 → $367.000."],["2026-11-22","veto","Frenadas por aprendizajes: subir Twin baño priv. y 2 dobles baño comp.; filtradas antes de Lobby: subir Twin sin vista 27 nov y bajar Iris 29 nov."]],
+        semanas: [
+          {
+            id: "2026-11-02",
+            semana: "2–8 nov",
+            ocupacion: 51,
+            ocupacion_ly: 35,
+            adr: 85131,
+            adr_var: -18,
+            ingreso: 15153253,
+            ingreso_var: 19
+          },
+          {
+            id: "2026-11-09",
+            semana: "9–15 nov",
+            ocupacion: 57,
+            ocupacion_ly: 22,
+            adr_var: -21
+          }
+        ],
+        pendientes: ["Revisar 38 noches cuyo precio en Lobby difiere más de $2.000 de lo decidido (Doble comp. 8–17 dic, Dorms 6 3–7 dic, Triple comp. 1–7 dic, Dorm 11 22–25 nov).","1 dic: si no entran camas en Dorms 6 de diciembre, proponer revertir la subida.","1 y 10 dic: revisar el ritmo de Navidad y fin de año (hoy 12–14 vendidas por noche contra 40–48 al cierre del año pasado)."]
       }
     }
   ],
@@ -5793,7 +5928,6 @@ window.CASA_KIWI = {
         vistas_promedio_dia: 3403
       },
       paises: [["Colombia",41.4],["Venezuela",14.6],["Estados Unidos",5],["Brasil",5],["Chile",3.8],["Argentina",3.7],["México",3.5],["Panamá",3.3],["Perú",2.3],["España",2.1],["Uruguay",1.3],["Guatemala",0.8],["Ecuador",0.7],["Francia",0.7],["Reino Unido",0.6]],
-      huespedes_paises: [["Francia",15.4],["Alemania",12.2],["Reino Unido",10.1],["Colombia",9.8],["Estados Unidos",8.9],["Australia",3.9],["España",3.8],["México",3.5]],
       publicaciones: [
         {
           fecha: "2026-10-24",
@@ -6082,7 +6216,8 @@ window.CASA_KIWI = {
           link: "https://www.instagram.com/p/DgA2vpVD2t5/"
         }
       ],
-      por_tipo: [["Foto",4,248,460,16.2],["Reel",15,390,594,19.7],["Carrusel",7,247,579,18.1]]
+      por_tipo: [["Foto",4,248,460,16.2],["Reel",15,390,594,19.7],["Carrusel",7,247,579,18.1]],
+      huespedes_paises: [["Francia",16.1],["Alemania",12.5],["Reino Unido",10.7],["Colombia",9.4],["Estados Unidos",9.2],["Australia",4],["México",3.6],["Países Bajos",3.5]]
     },
     web: {
       periodo: "23 oct – 21 nov 2026",
@@ -6100,10 +6235,14 @@ window.CASA_KIWI = {
     },
     hallazgos: {
       bien: ["Las reservas por la web pasaron de 2 a 11 frente a los 30 días anteriores ($0,81 M → $4,41 M), en paralelo con las publicaciones de “reserva directo con 10 % de descuento”.","Instagram sumó 249 seguidores nuevos en 30 días (llega a 3.867) y el 8 y 9 de noviembre tuvo un pico de 26.570 vistas y 1.671 interacciones.","Los reels de planes con fecha y hora (salsa 8 PM, karaoke) son los que más alcance tienen: 987 y 895 cuentas."],
-      atencion: ["El alcance diario de Instagram cayó de ~1.900 a ~300 desde el 11 de noviembre; las publicaciones de esos días llegaron a menos personas.","El 41 % de los seguidores está en Colombia y el 15 % en Venezuela, mientras que en 2026 los huéspedes vienen sobre todo de Francia (15 %), Alemania (12 %) y Reino Unido (10 %); Colombia es solo el 10 %.","En Google, el perfil se ve sobre todo en Maps (66 % de las impresiones) y casi siempre desde el celular (84 %)."],
+      atencion: ["El alcance diario de Instagram cayó de ~1.900 a ~300 desde el 11 de noviembre; las publicaciones de esos días llegaron a menos personas.","El 41 % de los seguidores está en Colombia y el 15 % en Venezuela, mientras que en 2026 los huéspedes vienen sobre todo de Francia (16 %), Alemania (13 %) y Reino Unido (11 %); Colombia es solo el 9 %.","En Google, el perfil se ve sobre todo en Maps (66 % de las impresiones) y casi siempre desde el celular (84 %)."],
       riesgo: ["Calificación de 4,1 en Google con 472 reseñas: por debajo de lo que buscan muchos viajeros (4,5 o más). En 30 días solo entraron 2 reseñas.","Solo 46 clics a la web desde Google en 28 días contra 410 solicitudes de “cómo llegar”: la gente busca llegar, no reservar desde Google."],
       acciones: ["Pedir reseña en Google a cada huésped al hacer check-out (QR en recepción); la meta es subir de 4,1 a 4,3 en tres meses.","Publicar más reels de planes con día y hora, y contenido en inglés y francés pensado para el viajero europeo.","Activar la reserva directa en el perfil de Google (botón Reservar) para convertir parte de las 5.700 impresiones del mes."]
     }
+  },
+  revenueInfo: {
+    fuente: "Proyecto TARIFAS CASA KIWI: documento de traspaso del 22 nov 2026 y página Revenue Casa Kiwi (reportes semanales de revenue y decisiones registradas).",
+    nota: "Las cifras de ocupación y ADR de esta sección vienen del reporte semanal de revenue (lecturas diarias de Lobby, base 50 unidades) y pueden diferir un poco de las del reporte financiero."
   }
 };
 </script>
@@ -6360,7 +6499,7 @@ function prevReport(r){
   if(r.tipo==='semana') return prevOf(semanas.find(w=>w.id===r.id));
   const i=meses.findIndex(m=>m.id===r.id); return i>0?meses[i-1]:null;
 }
-const TABS = [['resumen','Resumen'],['alojamiento','Alojamiento'],['bar','Bar'],['lavanderia','Lavandería'],['upsale','Upsale'],['otros','Otros']];
+const TABS = [['resumen','Resumen'],['alojamiento','Alojamiento'],['bar','Bar'],['lavanderia','Lavandería'],['upsale','Upsale'],['otros','Otros'],['revenue','Revenue']];
 
 /* =====================================================================
    Vista: Panel general
@@ -6397,7 +6536,7 @@ function pickerGrid(){
     <p class="wlabel">Semanas de ${MES_L[m-1].toLowerCase()}</p>
     <div class="rgrid">${sems.map(reportCard).join('')}</div>`;
 }
-function vPanel(){
+function vAnio(){
   const ws=semanas, last=ws[ws.length-1], prev=prevOf(last), lb=ws.map(w=>rango(w.inicio,w.fin));
   const AN=meses[meses.length-1].id.slice(0,4), ms=meses.filter(m=>m.id.startsWith(AN)), msp=ms.map(split);
   const ulM=ms[ms.length-1], corteTxt=(()=>{ const [yy,mm,dd]=(D.actualizado||'').split('-').map(Number); return dd?`${dd} ${MES_L[mm-1].slice(0,3).toLowerCase()}`:''; })();
@@ -6405,11 +6544,8 @@ function vPanel(){
   const alojA=sum(msp.map(x=>x.A)), barA=sum(msp.map(x=>x.B)), recA=sum(ms.map(m=>m.recaudo));
   const best=ws.reduce((a,b)=>b.ocupacion>a.ocupacion?b:a), bestM=ms.reduce((a,b)=>b.ocupacion>a.ocupacion?b:a);
   const sp=ws.map(split), ev=Math.ceil(ws.length/12);
-  let h = `<section class="hero"><div class="eyebrow">Panel general · año ${AN} · ${ws.length} reportes semanales · ${ms.length} cierres mensuales</div>
-    <h1>Reportes financieros de Casa Kiwi</h1>
-    <p>Cómo va el año y cada semana. Elige abajo el reporte que quieres abrir: adentro verás el detalle de alojamiento, bar, lavandería, upsale y otros ingresos.</p>
-    <div class="meta"><span>Último reporte: <b style="color:#fff">${esc(rangoLargo(last.inicio,last.fin))}</b></span><span>Datos al ${esc(D.actualizado)}</span></div></section>`;
-  h += `<h2 class="sec" style="margin-top:0">Año ${AN} · 1 ene – ${corteTxt}</h2><div class="kpis">
+  let h = `<a class="back" href="#inicio">← Inicio</a><div class="phead"><h1>Cómo va el año ${AN}</h1><p>Del 1 de enero al ${corteTxt}. Cifras de todo el año, mes a mes y semana a semana.</p></div>`;
+  h += `<div class="kpis">
     ${kpi('Ocupación del año', pct(vendA/dispA*100), `${num(vendA)} de ${num(dispA)} noches`, '', true)}
     ${kpi('Alojamiento', copM(alojA), 'ingreso estimado de Lobby')}
     ${kpi('ADR del año', copK(alojA/vendA), 'tarifa promedio por noche')}
@@ -6423,27 +6559,6 @@ function vPanel(){
       series:FUENTES.map(([k,,n,c])=>({name:n,data:msp.map(x=>x[k]),color:C[c],fmt:cop})), yFmt:copK,
       line:{name:'Ocupación',data:ms.map(m=>m.ocupacion),color:C.green,fmt:v=>pct(v),axFmt:v=>Math.round(v)+' %',min:0,max:100}}),
     (AN==='2026'?'Octubre usa el ingreso de alojamiento del reporte del 2 nov ($74,64 M). ':'')+(/\(1–\d+\)/.test(ulM.nombre)?`${ulM.nombre.replace(/ \d{4}/,'')} va hasta el ${corteTxt}.`:'')) + `</div>`;
-
-  { const ms=PR.meses.slice(0,7);
-    h += `<div class="grid" style="margin-top:16px">` + card('w12','Lo que viene: vendido hoy para los próximos meses',`Ocupación ya vendida al ${esc(PR.corte)} frente a cómo terminó ese mes el año pasado. Toca un mes para ver su proyección.`,
-      `<div class="mpick">${ms.map(x=>`<a class="mchip" href="#p-${x.id}"><b>${esc(pLab(x))}</b><span>${pct(x.ocupacion,0)}</span></a>`).join('')}<a class="mchip" href="#proyecciones"><b>Ver todo →</b><span>${PR.meses.length} meses</span></a></div>` +
-      legend([{n:'Vendido hoy',c:C.orange},{n:'Cierre año pasado',c:C.ink,line:1}]) +
-      barChart({W:1150, h:220, labels:ms.map(x=>pLab(x,true)), series:[{name:'Vendido hoy',data:ms.map(x=>x.ocupacion),color:C.orange,fmt:v=>pct(v),short:v=>pct(v,0)}], max:100, yFmt:v=>v+' %',
-        line:{name:'Cierre año pasado',data:ms.map(x=>x.ly.final_ocup),color:C.ink,fmt:v=>pct(v),axFmt:v=>Math.round(v)+' %',min:0,max:100}})) + `</div>`; }
-
-  if(MK){ const it=MK.instagram.totales;
-    h += `<div class="grid" style="margin-top:16px">` + card('w12','Marketing · últimos 30 días',`Google, Instagram y la página web del ${esc(MK.periodo)}.`,
-      `<div class="mpick"><a class="mchip" href="#marketing"><b>${num(it.alcance)}</b><span>alcance Instagram</span></a><a class="mchip" href="#marketing"><b>+${num(it.seguidores_nuevos)}</b><span>seguidores</span></a><a class="mchip" href="#marketing"><b>${num(MK.google.totales.impresiones)}</b><span>vistas en Google</span></a><a class="mchip" href="#marketing"><b>${MK.web.reservas_motor_web}</b><span>reservas web</span></a><a class="mchip" href="#marketing"><b>Abrir →</b><span>reporte de marketing</span></a></div>`) + `</div>`; }
-  h += `<div class="kpis" style="margin-top:22px">
-    ${kpi('Ocupación · última semana', pct(last.ocupacion), `vs ${rango(prev.inicio,prev.fin)}`, delta(last.ocupacion, prev?.ocupacion,'pp'), true)}
-    ${kpi('ADR · última semana', copK(last.adr), '', delta(last.adr, prev?.adr))}
-    ${kpi('Alojamiento · última semana', copM(sp[sp.length-1].A), '', delta(sp[sp.length-1].A, sp[sp.length-2]?.A))}
-    ${kpi('Bar · última semana', copM(sp[sp.length-1].B), '', delta(sp[sp.length-1].B, sp[sp.length-2]?.B))}
-    ${kpi('Mejor semana del año', pct(best.ocupacion), esc(rango(best.inicio,best.fin)))}
-  </div>`;
-
-  h += `<div class="pick-head"><h2 class="sec" style="margin:0">Elige un reporte</h2><span class="hint">Escoge el mes y luego el cierre mensual o la semana que quieres abrir.</span></div>
-    <div id="rgrid">${pickerGrid()}</div>`;
 
   h += `<h2 class="sec">Semana a semana</h2><div class="grid">`;
   h += card('w12','Ocupación por semana','Naranja: 70 % o más · amarillo: 45–70 % · gris: menos de 45 %. La línea punteada es el equilibrio estimado (~43 %).',
@@ -6469,7 +6584,7 @@ function vReporte(id, tab){
   const i = reportes.indexOf(r), newer = reportes[i-1], older = reportes[i+1];
   const s = split(r);
   let h = `<div class="rnav">
-    <a class="back" href="#inicio">← Panel general</a>
+    <a class="back" href="#reportes">← Reportes</a>
     <select id="rsel" aria-label="Cambiar de reporte">${reportes.map(x=>`<option value="${x.id}" ${x.id===r.id?'selected':''}>${x.tipo==='mes'?'Mes · ':'Semana · '}${esc(x.nombre)}</option>`).join('')}</select>
     <span class="arrows">${older?`<a href="#r-${older.id}--${tab}" title="${esc(older.nombre)}">‹ Anterior</a>`:''}${newer?`<a href="#r-${newer.id}--${tab}" title="${esc(newer.nombre)}">Siguiente ›</a>`:''}</span>
   </div>`;
@@ -6489,10 +6604,10 @@ function vReporte(id, tab){
   </div>`;
   if(r.ingresos?.base) h += `<p class="basis">Base de las cifras: ${esc(r.ingresos.base)}.</p>`;
 
-  h += `<nav class="rtabs">${TABS.map(([k,n])=>`<a href="#r-${r.id}--${k}" class="${tab===k?'on':''}">${n}</a>`).join('')}</nav>`;
+  h += `<nav class="rtabs">${TABS.map(([k,n])=>`<a href="#r-${r.id}--${k}" class="${tab===k?'on':''}${k==='revenue'&&r.revenue?' rv':''}">${n}${k==='revenue'&&r.revenue?` <span class="cnt">${r.revenue.cambios.length}</span>`:''}</a>`).join('')}</nav>`;
   if(r.correccion) h += `<div class="note"><b>Corrección:</b> ${esc(r.correccion)}</div>`;
   if(r.nota_corte) h += `<div class="note"><b>Corte:</b> ${esc(r.nota_corte)}</div>`;
-  h += tab==='alojamiento'? tAloj(r) : tab==='bar'? tBar(r) : tab==='lavanderia'? tLav(r) : tab==='upsale'? tUps(r) : tab==='otros'? tOtros(r) : tResumen(r);
+  h += tab==='alojamiento'? tAloj(r) : tab==='bar'? tBar(r) : tab==='lavanderia'? tLav(r) : tab==='upsale'? tUps(r) : tab==='otros'? tOtros(r) : tab==='revenue'? tRev(r) : tResumen(r);
   return h;
 }
 
@@ -6653,6 +6768,22 @@ function tUps(r){
 }
 
 /* ---------- Otros ---------- */
+const RV_TIPO={tarifa:['Tarifas',C.orange],temporada:['Temporada',C.yellow],aprendizaje:['Aprendizaje',C.green],correccion:['Corrección',C.red],sistema:['Sistema',C.ink],reporte:['Reporte',C.lav],veto:['Freno',C.muted]};
+function tRev(r){
+  const v=r.revenue;
+  if(!v) return `<div class="empty" style="padding:40px 10px">No hay cambios de revenue registrados para este periodo.<br><span style="font-size:13px">El proyecto de tarifas empezó el 12 de octubre de 2026.</span></div>`;
+  const fch=f=>{ const [y,m,d]=f.split('-').map(Number); return d+' '+MES_L[m-1].slice(0,3).toLowerCase(); };
+  let h=`<div class="rvhead"><h3>${esc(v.titular)}</h3><p>Lo que se hizo en tarifas durante el periodo, del proyecto de revenue de Casa Kiwi.</p></div>`;
+  const res=v.resultado?[{...v.resultado}]:(v.semanas||[]);
+  if(res.length) h+=`<div class="kpis">${res.map(x=>kpi(`Revenue · semana ${esc(x.semana||'')}`, x.ocupacion!=null?pct(x.ocupacion,0):'—', x.ocupacion_ly!=null?`año pasado ${pct(x.ocupacion_ly,0)}`:'', '', true)+(x.adr_var!=null?kpi('ADR frente al año pasado',(x.adr_var>0?'+':'')+x.adr_var+' %',x.adr?'ADR '+copK(x.adr):''):'')+(x.ingreso?kpi('Ingreso de la semana',copM(x.ingreso),x.ingreso_var!=null?((x.ingreso_var>0?'+':'')+x.ingreso_var+' % vs año pasado'):''):'')).join('')}</div>`;
+  if(v.evaluacion){ const e=v.evaluacion; h+=`<div class="grid">`+card('w12',`Cómo les fue a las decisiones (reporte del ${esc(e.fecha)})`,`${num(e.evaluadas)} decisiones de tarifa evaluadas hasta esa fecha.`,
+    hbars([['Funcionaron',e.funcionaron,C.green],['A revisar',e.revisar,C.red],['Neutras o en curso',e.evaluadas-e.funcionaron-e.revisar,C.grey]],{W:1150,fmt:num,L:170,rh:38}))+`</div>`; }
+  h+=`<h2 class="sec">Cambios del periodo</h2><ol class="tl">${v.cambios.map(([f,t,x])=>{ const [n,c]=RV_TIPO[t]||['Cambio',C.grey];
+    return `<li><span class="tl-f">${esc(fch(f))}</span><span class="tl-t" style="--c:${c}">${esc(n)}</span><p>${esc(x)}</p></li>`; }).join('')}</ol>`;
+  if(v.pendientes&&v.pendientes.length) h+=`<div class="note" style="margin-top:18px"><b>Pendientes de revenue:</b><ul style="margin:6px 0 0 18px;padding:0">${v.pendientes.map(p=>`<li>${esc(p)}</li>`).join('')}</ul></div>`;
+  if(D.revenueInfo) h+=`<p class="basis" style="margin-top:16px">Fuente: ${esc(D.revenueInfo.fuente)} ${esc(D.revenueInfo.nota)}</p>`;
+  return h;
+}
 function tOtros(r){
   const s=split(r), o=r.otros, eg=r.egresos;
   const otrosPartes = (r.ingresos?.partes||[]).filter(([k])=>![RX_A,RX_B,RX_L,RX_U].some(rx=>rx.test(k)));
@@ -6681,6 +6812,35 @@ function tOtros(r){
   }
   h += `</div>`;
   return h;
+}
+
+
+/* =====================================================================
+   Vista: Inicio (elige qué ver)
+   ===================================================================== */
+function vInicio(){
+  const ws=semanas, last=ws[ws.length-1], prev=prevOf(last), x=split(last), xp=prev?split(prev):null;
+  const ultM=meses[meses.length-1];
+  const prox=PR.meses.find(m=>!m.id.endsWith('-r'))||PR.meses[0];
+  const it=MK?MK.instagram.totales:null;
+  const card=(href,cls,eyebrow,big,title,desc)=>`<a class="choice ${cls}" href="${href}"><span class="ce">${eyebrow}</span><span class="cb">${big}</span><span class="ct">${title}</span><span class="cd">${desc}</span><span class="cg">Abrir →</span></a>`;
+  let h=`<div class="welcome"><h1>¿Qué quieres ver hoy?</h1><p>Toca una opción. Adentro encuentras el detalle.</p></div>`;
+  h+=`<div class="choices">`;
+  h+=card('#r-'+last.id,'main','Última semana · '+esc(rango(last.inicio,last.fin)), pct(last.ocupacion,1)+' <small>ocupación</small>',
+    'El reporte de la semana', `${copM(x.T)} de ingresos${xp?` · ${x.T>=xp.T?'más':'menos'} que la semana anterior`:''}.`);
+  h+=card('#reportes','','Semanas y meses', `${ws.length+meses.length} <small>reportes</small>`,'Buscar un reporte','Elige un mes y abre su cierre o cualquiera de sus semanas.');
+  h+=card('#anio','','Año '+meses[meses.length-1].id.slice(0,4), pct(sum(meses.filter(m=>m.id.startsWith(ultM.id.slice(0,4))).map(m=>m.vendidas))/sum(meses.filter(m=>m.id.startsWith(ultM.id.slice(0,4))).map(m=>m.disponibles))*100,1)+' <small>ocupación</small>','Cómo va el año','Totales del año y la evolución mes a mes y semana a semana.');
+  h+=card('#proyecciones','','Lo que viene', pct(prox.ocupacion,0)+' <small>'+esc(prox.nombre.split(' ')[0].toLowerCase())+'</small>','Proyecciones','Cuánto está vendido hoy para los próximos meses frente al año pasado.');
+  if(MK) h+=card('#marketing','','Últimos 30 días', num(it.alcance)+' <small>alcance</small>','Marketing','Google, Instagram y las reservas que llegan por la página web.');
+  h+=`</div>`;
+  return h;
+}
+
+/* =====================================================================
+   Vista: Reportes (elegir mes y semana)
+   ===================================================================== */
+function vReportes(){
+  return `<a class="back" href="#inicio">← Inicio</a><div class="phead"><h1>Reportes</h1><p>1. Elige el mes. 2. Abre el cierre del mes o una de sus semanas.</p></div><div id="rgrid">${pickerGrid()}</div>`;
 }
 
 /* =====================================================================
@@ -6734,8 +6894,10 @@ function vProy(id){
    Vista: Marketing (Google, Instagram y web · últimos 30 días)
    ===================================================================== */
 const MK = D.marketing || null;
-function vMkt(){
+function vMkt(tab){
+  tab = ['google','instagram','web'].includes(tab)?tab:'resumen';
   if(!MK) return `<div class="empty">Aún no hay datos de marketing.</div>`;
+  const TABS=[['resumen','Resumen'],['google','Google'],['instagram','Instagram'],['web','Página web']];
   const g=MK.google, ig=MK.instagram, w=MK.web, gt=g.totales, it=ig.totales;
   const dlab=fs=>fs.map(f=>{const [y,m,d]=f.split('-').map(Number);return d+' '+['ene','feb','mar','abr','may','jun','jul','ago','sep','oct','nov','dic'][m-1];});
   const er = it.interacciones/it.alcance*100;
@@ -6752,8 +6914,10 @@ function vMkt(){
     ${kpi('Reservas motor web', num(w.reservas_motor_web), `${copM(w.valor_motor_web)} · antes ${w.reservas_motor_web_anterior}`)}
   </div>`;
 
-  // Google
-  h += `<h2 class="sec">Google</h2><div class="grid">`;
+  h += `<nav class="rtabs">${TABS.map(([k,n])=>`<a class="${k===tab?'on':''}" href="#marketing${k==='resumen'?'':'--'+k}">${n}</a>`).join('')}</nav>`;
+  if(tab==='resumen'){ h += hallazgos(MK.hallazgos); return h; }
+  if(tab==='google'){
+  h += `<div class="grid">`;
   h += card('w12','Cuántas veces apareció el perfil de Casa Kiwi','Impresiones diarias del perfil en Google Maps y en la búsqueda de Google (celular y computador juntos).',
     legend([{n:'Maps',c:C.orange},{n:'Búsqueda',c:C.ink}]) +
     barChart({W:1150,h:260,labels:dlab(g.fechas),stacked:true,every:2,values:false,
@@ -6768,10 +6932,9 @@ function vMkt(){
     hbars(g.busquedas.slice(0,12).map(([k,v])=>[k,v,/kiwi/i.test(k)?C.orange:C.ink]),{fmt:num,L:230,rh:28}));
   h += card('w6','Competidores en las mismas búsquedas','Hoteles y hostales que la gente buscó y con los que Google mostró a Casa Kiwi.',
     hbars(g.busquedas_competencia.map(([k,v])=>[k,v,C.grey]),{fmt:num,L:200,rh:32}));
-  h += `</div>`;
-
-  // Instagram
-  h += `<h2 class="sec">Instagram</h2><div class="grid">`;
+  h += `</div>`; }
+  if(tab==='instagram'){
+  h += `<div class="grid">`;
   h += card('w12','Alcance y vistas por día','Barras: cuentas alcanzadas cada día. Línea: vistas de todo el contenido.',
     legend([{n:'Alcance',c:C.orange},{n:'Vistas',c:C.ink,line:1}]) +
     barChart({W:1150,h:280,labels:dlab(ig.fechas),every:2,values:false,series:[{name:'Alcance',data:ig.alcance,color:C.orange,fmt:num}],yFmt:num,
@@ -6790,10 +6953,9 @@ function vMkt(){
   const tops=[...ig.publicaciones].sort((a,b)=>b.alcance-a.alcance);
   h += card('w12','Publicaciones del periodo',`${ig.publicaciones.length} publicaciones, ordenadas por alcance. Toca una para abrirla en Instagram.`,
     `<div class="scroll"><table class="tbl"><thead><tr><th>Fecha</th><th style="text-align:left">Formato</th><th style="text-align:left">Publicación</th><th>Alcance</th><th>Vistas</th><th>Interacción</th><th>Guardados</th><th>Compartidos</th></tr></thead><tbody>${tops.map(p=>`<tr><td>${esc(p.fecha.slice(5).split('-').reverse().join('/'))}</td><td style="font-family:var(--body);text-align:left">${esc(p.tipo)}</td><td style="font-family:var(--body);white-space:normal;text-align:left;min-width:260px"><a href="${esc(p.link)}" target="_blank" rel="noopener">${esc(p.texto)}</a></td><td>${num(p.alcance)}</td><td>${num(p.vistas)}</td><td>${p.interaccion}</td><td>${p.guardados}</td><td>${p.compartidos}</td></tr>`).join('')}</tbody></table></div>`);
-  h += `</div>`;
-
-  // Web
-  h += `<h2 class="sec">Página web y reservas directas</h2><div class="grid">`;
+  h += `</div>`; }
+  if(tab==='web'){
+  h += `<div class="grid">`;
   h += card('w6','Reservas por el motor web','Reservas creadas en el motor de reserva de Lobby (la página web).',
     hbars([['30 días anteriores',w.reservas_motor_web_anterior,C.grey,copM(w.valor_motor_web_anterior)],['Últimos 30 días',w.reservas_motor_web,C.orange,copM(w.valor_motor_web)]],{fmt:v=>num(v)+' reservas',L:160,R:170,rh:44}));
   h += card('w6','Cómo llega la gente a la web','Clics hacia la web desde las dos redes.',
@@ -6802,8 +6964,7 @@ function vMkt(){
   h += card('w12','Reservas directas frente a OTAs','Reservas creadas en los últimos 30 días: directas (recepción, Santiago y web) frente al total.',
     hbars([['Directas',w.valor_directas,C.orange,num(w.reservas_directas)+' reservas'],['Todas',w.valor_total,C.ink,num(w.reservas_total)+' reservas']],{W:1150,fmt:copM,L:120,R:220,rh:44}),
     `Las directas son el ${pct(w.valor_directas/w.valor_total*100,0)} del valor reservado y no pagan comisión.`);
-  h += `</div>`;
-  h += hallazgos(MK.hallazgos);
+  h += `</div>`; }
   return h;
 }
 
@@ -6815,7 +6976,9 @@ function hashParts(){
   if(h.startsWith('/')){ const q=h.replace(/^\/+/, '').split('/'); return q[0]==='semana'||q[0]==='mes'?['r',q[1]]:q; }
   if(h.startsWith('r-')){ const [id,tab]=h.slice(2).split('--'); return ['r',id,tab]; }
   if(h==='proyecciones') return ['p'];
-  if(h==='marketing') return ['m'];
+  if(h==='marketing'||h.startsWith('marketing--')) return ['m', h.split('--')[1]];
+  if(h==='reportes') return ['rep'];
+  if(h==='anio') return ['anio'];
   if(h.startsWith('p-')) return ['p',h.slice(2)];
   return [''];
 }
@@ -6824,11 +6987,12 @@ function render(){
   const app=document.getElementById('app');
   if(parts[0]==='r') app.innerHTML = vReporte(parts[1], parts[2]);
   else if(parts[0]==='p') app.innerHTML = vProy(parts[1]);
-  else if(parts[0]==='m') app.innerHTML = vMkt();
-  else app.innerHTML = vPanel();
-  document.querySelector('.home').classList.toggle('on', parts[0]!=='r'&&parts[0]!=='p'&&parts[0]!=='m');
-  document.querySelector('.mkt').classList.toggle('on', parts[0]==='m');
-  document.querySelector('.proy').classList.toggle('on', parts[0]==='p');
+  else if(parts[0]==='m') app.innerHTML = vMkt(parts[1]);
+  else if(parts[0]==='rep') app.innerHTML = vReportes();
+  else if(parts[0]==='anio') app.innerHTML = vAnio();
+  else app.innerHTML = vInicio();
+  const on={'':'home',rep:'rep',r:'rep',anio:'home',p:'proy',m:'mkt'}[parts[0]]||'home';
+  for(const c of ['home','rep','proy','mkt']) document.querySelector('.tab.'+c).classList.toggle('on', c===on);
 }
 let lastKey='';
 function route(){ const hp=hashParts(); const k=hp[0]+'|'+(hp[1]||''); render(); if(k!==lastKey){ window.scrollTo({top:0}); } else { const t=document.querySelector('.rtabs'); if(t) window.scrollTo({top:t.getBoundingClientRect().top+window.scrollY-70}); } lastKey=k; }
