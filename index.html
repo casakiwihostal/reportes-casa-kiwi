@@ -44,7 +44,7 @@ main{max-width:1240px;margin:0 auto;padding:26px 20px 70px}
 
 /* ---------- héroe ---------- */
 .hero{background:var(--ink);color:#fff;border-radius:18px;padding:28px 30px;margin:6px 0 22px;position:relative;overflow:hidden}
-.hero:after{content:"";position:absolute;right:-60px;top:-60px;width:220px;height:220px;border-radius:50%;background:var(--orange);opacity:.18}
+.hero{border-top:6px solid var(--orange)}
 .eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--yellow)}
 .hero h1{font-family:var(--display);font-weight:900;font-size:clamp(24px,3.2vw,36px);line-height:1.12;margin:8px 0 10px;max-width:900px}
 .hero p{margin:0;color:#CFC9C1;max-width:820px}
@@ -57,7 +57,7 @@ main{max-width:1240px;margin:0 auto;padding:26px 20px 70px}
 .kpi{border:1px solid var(--line);border-radius:14px;padding:14px 16px;background:#fff}
 .kpi .l{font-size:12.5px;color:var(--muted);font-weight:600}
 .kpi .v{font-family:var(--display);font-weight:800;font-size:26px;line-height:1.1;margin:6px 0 4px}
-.kpi .s{font-size:12px;color:var(--muted)}
+.kpi .s{font-size:12.5px;color:var(--muted)}
 .delta{font-family:var(--mono);font-size:12px;font-weight:700}
 .up{color:var(--green)} .down{color:var(--red)} .flat{color:var(--muted)}
 .kpi.hl{background:var(--sand);border-color:var(--sand)}
@@ -73,8 +73,8 @@ main{max-width:1240px;margin:0 auto;padding:26px 20px 70px}
 .legend span:before{content:"";display:inline-block;width:10px;height:10px;border-radius:3px;background:var(--c);margin-right:5px;vertical-align:-1px}
 .legend span.ln:before{height:3px;border-radius:2px;vertical-align:3px}
 svg{display:block;width:100%;height:auto;overflow:visible}
-svg text{font-family:var(--body);fill:var(--muted);font-size:11px}
-svg .val{font-family:var(--mono);font-weight:700;fill:var(--ink);font-size:10.5px}
+svg text{font-family:var(--body);fill:var(--muted);font-size:12px}
+svg .val{font-family:var(--mono);font-weight:700;fill:var(--ink);font-size:11.5px}
 svg .hit:hover{opacity:.82}
 .empty{padding:28px;text-align:center;color:var(--muted);background:var(--sand);border-radius:12px;font-size:13px}
 
@@ -254,10 +254,9 @@ html,body{overflow-x:hidden}
 .phead{margin:4px 0 20px}
 .phead h1{font-family:var(--display);font-weight:900;font-size:clamp(26px,3.4vw,36px);margin:0 0 6px}
 .phead p{color:var(--muted);margin:0}
-.tab .sm{display:none}
 @media (max-width:900px){ .choices{grid-template-columns:1fr 1fr} }
 @media (max-width:700px){ .choice.main{grid-column:auto} .choices{grid-template-columns:1fr;gap:12px} .choice{min-height:0;padding:18px} .welcome{padding:22px 0 8px} }
-@media (max-width:560px){ nav.tabs{grid-template-columns:repeat(4,1fr)} .tab .lg{display:none} .tab .sm{display:inline} }
+@media (max-width:560px){ nav.tabs{grid-template-columns:repeat(4,1fr)} }
 .rvhead h3{font-family:var(--display);font-weight:800;font-size:22px;margin:0 0 4px}.rvhead p{color:var(--muted);margin:0 0 18px}
 .rtabs .cnt{display:inline-block;min-width:18px;padding:1px 6px;border-radius:9px;background:var(--orange);color:#fff;font-size:11px;font-family:var(--mono);margin-left:4px}
 .tl{list-style:none;margin:0;padding:0;border-left:2px solid var(--line);margin-left:8px}
@@ -266,15 +265,56 @@ html,body{overflow-x:hidden}
 .tl-f{font-family:var(--mono);font-size:12px;color:var(--muted);margin-right:8px}
 .tl-t{display:inline-block;font-size:11.5px;font-weight:700;padding:2px 8px;border-radius:10px;background:color-mix(in srgb,var(--c) 16%,#fff);color:var(--ink)}
 .tl p{margin:6px 0 0;line-height:1.45}
+/* ayuda (i) y glosario */
+.ih{display:inline-flex;align-items:center;justify-content:center;width:17px;height:17px;border-radius:50%;border:1.5px solid currentColor;background:none;color:var(--muted);font:700 11px/1 var(--body);font-style:italic;padding:0;margin-left:5px;vertical-align:1px;opacity:.8}
+.ih:hover,.ih:focus{opacity:1;color:var(--orange);outline:none}
+.hero .ih{color:#CFC9C1}
+#pop{position:absolute;z-index:60;max-width:300px;background:var(--ink);color:#fff;border-radius:12px;padding:12px 14px;font-size:13.5px;line-height:1.45;box-shadow:0 12px 30px rgba(20,18,16,.3);display:none}
+#pop b{display:block;color:var(--yellow);margin-bottom:3px;font-family:var(--display)}
+#pop.on{display:block}
+.glos{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px}
+.glos div{border:1px solid var(--line);border-radius:14px;padding:14px 16px}
+.glos b{font-family:var(--display);font-size:16px;display:block;margin-bottom:4px}
+.glos p{margin:0;color:var(--muted);font-size:14px}
+/* veredicto contra el año pasado */
+.verdict{display:flex;align-items:center;gap:14px;flex-wrap:wrap;border-radius:16px;padding:16px 20px;margin:0 0 6px;background:var(--sand);border-left:8px solid var(--c)}
+.verdict .vd{font-family:var(--display);font-weight:900;font-size:22px;line-height:1.15}
+.verdict .vx{font-size:14.5px;color:var(--ink)}
+.verdict .vx span{white-space:nowrap}
+.verdict .vs{width:100%;font-size:12.5px;color:var(--muted)}
+.dot{display:inline-block;width:14px;height:14px;border-radius:50%;background:var(--c);flex:0 0 auto}
+.kpi .s2{font-size:12px;color:var(--muted);margin-top:3px}
+.choice .cdl{font-size:14px;font-weight:600}
+.choice.main .cdl{color:#fff}
+.shortcuts{display:flex;flex-wrap:wrap;gap:8px;margin:-24px 0 36px}
+.shortcuts a{border:1px solid var(--line);border-radius:999px;padding:8px 14px;font-weight:600;font-size:14px;text-decoration:none;background:#fff}
+.shortcuts a:hover{border-color:var(--orange);color:var(--orange)}
+.shortcuts span{font-size:13px;color:var(--muted);align-self:center;margin-right:4px}
+.solo{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;padding:10px 0}
+.solo b{font-family:var(--display);font-weight:900;font-size:28px}
+.solo span{color:var(--muted)}
+/* indicador de que la fila se desliza */
+.sw{position:relative}
+.sw:after{content:"›";position:absolute;right:0;top:0;bottom:14px;width:46px;display:none;align-items:center;justify-content:flex-end;padding-right:2px;background:linear-gradient(90deg,rgba(255,255,255,0),#fff 65%);font:900 24px/1 var(--display);color:var(--orange);pointer-events:none}
+.sw.more:after{display:flex}
+@media (max-width:700px){
+  .rtabs{position:static;flex-wrap:wrap;overflow:visible;gap:6px;border-bottom:0;padding-top:0}
+  .rtabs a{border:1px solid var(--line);border-radius:999px;padding:8px 13px;margin:0;font-size:14px}
+  .rtabs a.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+  nav.tabs .tab{font-size:12px;padding:8px 2px}
+  .verdict .vd{font-size:19px}
+  .shortcuts{margin-top:-4px}
+}
 </style>
 </head>
 <body>
 <header class="top"><div class="top-in">
   <div class="brand"><b>CASA</b> <i>KIWI</i> <small>Reportes financieros</small></div>
-  <nav class="tabs"><a class="tab home" href="#inicio">Inicio</a><a class="tab rep" href="#reportes">Reportes</a><a class="tab proy" href="#proyecciones"><span class="lg">Proyecciones</span><span class="sm">Futuro</span></a><a class="tab mkt" href="#marketing">Marketing</a></nav>
+  <nav class="tabs"><a class="tab home" href="#inicio">Inicio</a><a class="tab rep" href="#reportes">Reportes</a><a class="tab proy" href="#proyecciones">Proyecciones</a><a class="tab mkt" href="#marketing">Marketing</a></nav>
 </div></header>
 
 <main id="app"></main>
+<div id="pop" role="tooltip"></div>
 <footer id="foot"></footer>
 <button id="ask-btn" type="button" aria-label="Pregúntale a Claude">✦ Pregúntale a Claude</button>
 <section id="ask" aria-label="Asistente de reportes">
@@ -383,6 +423,14 @@ window.CASA_KIWI = {
         atencion: ["Hostelworld puso el 57 % de las noches: el canal con la comisión más alta.","La mitad de las reservas nuevas se hizo con 1 día o menos de anticipación.","Las OTAs se llevaron $6,17 M en comisiones (22 % de lo que pagaron los huéspedes)."],
         riesgo: ["Sin riesgos marcados en los datos disponibles."],
         acciones: ["Con el hostal casi lleno, pasar a tarifa máxima cuando falten 3 días y la ocupación supere 85 %.","Ofrecer la extensión directa a todo huésped de Hostelworld antes de su salida."]
+      },
+      ly: {
+        desde: "2024-12-30",
+        hasta: "2025-01-05",
+        ocupacion: 71.1,
+        vendidas: 249,
+        alojamiento_var: 1.6,
+        adr_var: 2.4
       }
     },
     {
@@ -467,6 +515,14 @@ window.CASA_KIWI = {
         atencion: ["La ocupación bajó 36,6 puntos frente a la semana anterior.","Los dormitorios quedaron en 29,5 % de ocupación.","La mitad de las reservas nuevas se hizo con 0 días o menos de anticipación.","Las OTAs se llevaron $2,23 M en comisiones (20 % de lo que pagaron los huéspedes)."],
         riesgo: ["Ocupación de 34,0 %, por debajo del equilibrio estimado (~43 %).","El 53 % de la venta del bar se cobró en recepción, no en la barra."],
         acciones: ["Tarifas de último minuto y campaña directa (WhatsApp, redes) para los días con menos de 15 unidades.","Cerrar las cuentas del bar antes del check-out."]
+      },
+      ly: {
+        desde: "2025-01-06",
+        hasta: "2025-01-12",
+        ocupacion: 56.9,
+        vendidas: 199,
+        alojamiento_var: -34.4,
+        adr_var: 12.5
       }
     },
     {
@@ -551,6 +607,14 @@ window.CASA_KIWI = {
         atencion: ["De lunes a jueves promedió 22 % y de viernes a domingo 41 %.","Hostelworld puso el 52 % de las noches: el canal con la comisión más alta.","Los dormitorios quedaron en 23,3 % de ocupación.","Las OTAs se llevaron $2,45 M en comisiones (22 % de lo que pagaron los huéspedes)."],
         riesgo: ["El martes cayó a 9 unidades (18 %).","Ocupación de 30,0 %, por debajo del equilibrio estimado (~43 %)."],
         acciones: ["Promoción de domingo a jueves (estadía mínima de 2 noches o 3×2) para llenar los días valle.","Tarifas de último minuto y campaña directa (WhatsApp, redes) para los días con menos de 15 unidades.","Ofrecer la extensión directa a todo huésped de Hostelworld antes de su salida."]
+      },
+      ly: {
+        desde: "2025-01-13",
+        hasta: "2025-01-19",
+        ocupacion: 68.3,
+        vendidas: 239,
+        alojamiento_var: -44.9,
+        adr_var: 25.3
       }
     },
     {
@@ -635,10 +699,18 @@ window.CASA_KIWI = {
         bar: [43000,72000,40000,49000,251000,229000,592000]
       },
       hallazgos: {
-        bien: ["El mejor día fue el jueves con 48 unidades vendidas (96 %).","La ocupación subió 41,7 puntos frente a la semana anterior.","Ocupación de 71,7 %: de las mejores del año."],
+        bien: ["El mejor día fue el jueves con 48 unidades vendidas (96 %).","Ocupación de 71,7 %: de las mejores del año.","La ocupación subió 41,7 puntos frente a la semana anterior."],
         atencion: ["De lunes a jueves promedió 58 % y de viernes a domingo 90 %.","Las OTAs se llevaron $6,06 M en comisiones (21 % de lo que pagaron los huéspedes)."],
         riesgo: ["El lunes cayó a 11 unidades (22 %).","La tarifa promedio cayó 12 % (ADR de $126.539)."],
         acciones: ["Promoción de domingo a jueves (estadía mínima de 2 noches o 3×2) para llenar los días valle.","La ocupación aguantaba más tarifa: subir un escalón cuando el día pase de 70 % a 3 días de la llegada.","Con el hostal casi lleno, pasar a tarifa máxima cuando falten 3 días y la ocupación supere 85 %."]
+      },
+      ly: {
+        desde: "2025-01-20",
+        hasta: "2025-01-26",
+        ocupacion: 69.4,
+        vendidas: 243,
+        alojamiento_var: 21.6,
+        adr_var: 17.8
       }
     },
     {
@@ -723,6 +795,14 @@ window.CASA_KIWI = {
         atencion: ["La ocupación bajó 18,3 puntos frente a la semana anterior.","Hostelworld puso el 45 % de las noches: el canal con la comisión más alta.","La mitad de las reservas nuevas se hizo con 0 días o menos de anticipación.","Las OTAs se llevaron $4,48 M en comisiones (20 % de lo que pagaron los huéspedes)."],
         riesgo: ["Sin riesgos marcados en los datos disponibles."],
         acciones: ["Ofrecer la extensión directa a todo huésped de Hostelworld antes de su salida."]
+      },
+      ly: {
+        desde: "2025-01-27",
+        hasta: "2025-02-02",
+        ocupacion: 45.4,
+        vendidas: 159,
+        alojamiento_var: 23,
+        adr_var: 6.9
       }
     },
     {
@@ -808,9 +888,17 @@ window.CASA_KIWI = {
       },
       hallazgos: {
         bien: ["El mejor día fue el sábado con 40 unidades vendidas (80 %)."],
-        atencion: ["De lunes a jueves promedió 34 % y de viernes a domingo 65 %.","La ocupación bajó 5,7 puntos frente a la semana anterior.","La mitad de las reservas nuevas se hizo con 0 días o menos de anticipación.","Las OTAs se llevaron $3,62 M en comisiones (20 % de lo que pagaron los huéspedes)."],
+        atencion: ["La ocupación bajó 5,7 puntos frente a la semana anterior.","De lunes a jueves promedió 34 % y de viernes a domingo 65 %.","La mitad de las reservas nuevas se hizo con 0 días o menos de anticipación.","Las OTAs se llevaron $3,62 M en comisiones (20 % de lo que pagaron los huéspedes)."],
         riesgo: ["Sin riesgos marcados en los datos disponibles."],
         acciones: ["Promoción de domingo a jueves (estadía mínima de 2 noches o 3×2) para llenar los días valle."]
+      },
+      ly: {
+        desde: "2025-02-03",
+        hasta: "2025-02-09",
+        ocupacion: 64.3,
+        vendidas: 225,
+        alojamiento_var: -20.1,
+        adr_var: 8.9
       }
     },
     {
@@ -895,6 +983,14 @@ window.CASA_KIWI = {
         atencion: ["Hostelworld puso el 51 % de las noches: el canal con la comisión más alta.","La mitad de las reservas nuevas se hizo con 1 día o menos de anticipación.","Las OTAs se llevaron $3,95 M en comisiones (20 % de lo que pagaron los huéspedes)."],
         riesgo: ["El 53 % de la venta del bar se cobró en recepción, no en la barra."],
         acciones: ["Ofrecer la extensión directa a todo huésped de Hostelworld antes de su salida.","Cerrar las cuentas del bar antes del check-out."]
+      },
+      ly: {
+        desde: "2025-02-10",
+        hasta: "2025-02-16",
+        ocupacion: 78.3,
+        vendidas: 274,
+        alojamiento_var: -33.3,
+        adr_var: 24.4
       }
     },
     {
@@ -979,6 +1075,14 @@ window.CASA_KIWI = {
         atencion: ["De lunes a jueves promedió 40 % y de viernes a domingo 91 %.","Hostelworld puso el 58 % de las noches: el canal con la comisión más alta.","La mitad de las reservas nuevas se hizo con 1 día o menos de anticipación.","Las OTAs se llevaron $5,14 M en comisiones (22 % de lo que pagaron los huéspedes)."],
         riesgo: ["Sin riesgos marcados en los datos disponibles."],
         acciones: ["Promoción de domingo a jueves (estadía mínima de 2 noches o 3×2) para llenar los días valle.","Ofrecer la extensión directa a todo huésped de Hostelworld antes de su salida."]
+      },
+      ly: {
+        desde: "2025-02-17",
+        hasta: "2025-02-23",
+        ocupacion: 59.4,
+        vendidas: 208,
+        alojamiento_var: 1.2,
+        adr_var: -0.7
       }
     },
     {
@@ -1063,6 +1167,14 @@ window.CASA_KIWI = {
         atencion: ["La ocupación bajó 12,3 puntos frente a la semana anterior.","La mitad de las reservas nuevas se hizo con 0 días o menos de anticipación.","Las OTAs se llevaron $3,58 M en comisiones (19 % de lo que pagaron los huéspedes)."],
         riesgo: ["Sin riesgos marcados en los datos disponibles."],
         acciones: ["Mantener la estrategia de tarifas y extensiones directas."]
+      },
+      ly: {
+        desde: "2025-02-24",
+        hasta: "2025-03-02",
+        ocupacion: 26.3,
+        vendidas: 92,
+        alojamiento_var: 60.8,
+        adr_var: -13.5
       }
     },
     {
@@ -1151,6 +1263,14 @@ window.CASA_KIWI = {
         atencion: ["De lunes a jueves promedió 30 % y de viernes a domingo 85 %.","La mitad de las reservas nuevas se hizo con 0 días o menos de anticipación.","Las OTAs se llevaron $4,01 M en comisiones (20 % de lo que pagaron los huéspedes)."],
         riesgo: ["El lunes cayó a 9 unidades (18 %)."],
         acciones: ["Promoción de domingo a jueves (estadía mínima de 2 noches o 3×2) para llenar los días valle."]
+      },
+      ly: {
+        desde: "2025-03-03",
+        hasta: "2025-03-09",
+        ocupacion: 24.9,
+        vendidas: 87,
+        alojamiento_var: 84.4,
+        adr_var: -14.7
       }
     },
     {
@@ -1235,6 +1355,14 @@ window.CASA_KIWI = {
         atencion: ["De lunes a jueves promedió 42 % y de viernes a domingo 85 %.","Hostelworld puso el 56 % de las noches: el canal con la comisión más alta.","La mitad de las reservas nuevas se hizo con 1 día o menos de anticipación.","Las OTAs se llevaron $4,91 M en comisiones (22 % de lo que pagaron los huéspedes)."],
         riesgo: ["Sin riesgos marcados en los datos disponibles."],
         acciones: ["Promoción de domingo a jueves (estadía mínima de 2 noches o 3×2) para llenar los días valle.","Ofrecer la extensión directa a todo huésped de Hostelworld antes de su salida."]
+      },
+      ly: {
+        desde: "2025-03-10",
+        hasta: "2025-03-16",
+        ocupacion: 35.7,
+        vendidas: 125,
+        alojamiento_var: 45,
+        adr_var: -14.9
       }
     },
     {
@@ -1315,10 +1443,18 @@ window.CASA_KIWI = {
         bar: [175000,496000,448000,429000,1293000,726000,327000]
       },
       hallazgos: {
-        bien: ["El mejor día fue el sábado con 44 unidades vendidas (88 %).","La ocupación subió 10,0 puntos frente a la semana anterior.","Ocupación de 70,9 %: de las mejores del año."],
+        bien: ["El mejor día fue el sábado con 44 unidades vendidas (88 %).","Ocupación de 70,9 %: de las mejores del año.","La ocupación subió 10,0 puntos frente a la semana anterior."],
         atencion: ["Hostelworld puso el 66 % de las noches: el canal con la comisión más alta.","La mitad de las reservas nuevas se hizo con 1 día o menos de anticipación.","Las OTAs se llevaron $6,03 M en comisiones (23 % de lo que pagaron los huéspedes)."],
         riesgo: ["Sin riesgos marcados en los datos disponibles."],
         acciones: ["Con el hostal casi lleno, pasar a tarifa máxima cuando falten 3 días y la ocupación supere 85 %.","Ofrecer la extensión directa a todo huésped de Hostelworld antes de su salida."]
+      },
+      ly: {
+        desde: "2025-03-17",
+        hasta: "2025-03-23",
+        ocupacion: 36,
+        vendidas: 126,
+        alojamiento_var: 57.2,
+        adr_var: -20.1
       }
     },
     {
@@ -1403,6 +1539,14 @@ window.CASA_KIWI = {
         atencion: ["La ocupación bajó 12,6 puntos frente a la semana anterior.","Hostelworld puso el 67 % de las noches: el canal con la comisión más alta.","La mitad de las reservas nuevas se hizo con 1 día o menos de anticipación.","Las OTAs se llevaron $4,89 M en comisiones (23 % de lo que pagaron los huéspedes)."],
         riesgo: ["93 cortesías en el bar contra 202 productos cobrados."],
         acciones: ["Ofrecer la extensión directa a todo huésped de Hostelworld antes de su salida.","Tope de cortesías por turno y motivo registrado en Lobby."]
+      },
+      ly: {
+        desde: "2025-03-24",
+        hasta: "2025-03-30",
+        ocupacion: 22.9,
+        vendidas: 80,
+        alojamiento_var: 121.6,
+        adr_var: -13.1
       }
     },
     {
@@ -1487,6 +1631,14 @@ window.CASA_KIWI = {
         atencion: ["La ocupación bajó 6,0 puntos frente a la semana anterior.","Hostelworld puso el 64 % de las noches: el canal con la comisión más alta.","La mitad de las reservas nuevas se hizo con 1 día o menos de anticipación.","Las OTAs se llevaron $5,31 M en comisiones (23 % de lo que pagaron los huéspedes)."],
         riesgo: ["80 cortesías en el bar contra 200 productos cobrados."],
         acciones: ["Ofrecer la extensión directa a todo huésped de Hostelworld antes de su salida.","Tope de cortesías por turno y motivo registrado en Lobby."]
+      },
+      ly: {
+        desde: "2025-03-31",
+        hasta: "2025-04-06",
+        ocupacion: 25.4,
+        vendidas: 89,
+        alojamiento_var: 187.8,
+        adr_var: 40
       }
     },
     {
@@ -1571,6 +1723,14 @@ window.CASA_KIWI = {
         atencion: ["La ocupación bajó 18,6 puntos frente a la semana anterior.","Hostelworld puso el 55 % de las noches: el canal con la comisión más alta.","Las privadas quedaron en 29,3 % de ocupación (ADR $133.372).","La mitad de las reservas nuevas se hizo con 0 días o menos de anticipación."],
         riesgo: ["El jueves cayó a 11 unidades (22 %).","La tarifa promedio cayó 16 % (ADR de $113.283).","Ocupación de 33,7 %, por debajo del equilibrio estimado (~43 %)."],
         acciones: ["Tarifas de último minuto y campaña directa (WhatsApp, redes) para los días con menos de 15 unidades.","Ofrecer la extensión directa a todo huésped de Hostelworld antes de su salida.","Revisar la tarifa de privadas entre semana o empaquetarlas con un upgrade."]
+      },
+      ly: {
+        desde: "2025-04-07",
+        hasta: "2025-04-13",
+        ocupacion: 51.1,
+        vendidas: 179,
+        alojamiento_var: -30.1,
+        adr_var: 6.9
       }
     },
     {
@@ -1655,6 +1815,14 @@ window.CASA_KIWI = {
         atencion: ["De lunes a jueves promedió 28 % y de viernes a domingo 43 %.","Hostelworld puso el 56 % de las noches: el canal con la comisión más alta.","Los dormitorios quedaron en 21,9 % de ocupación.","La mitad de las reservas nuevas se hizo con 1 día o menos de anticipación."],
         riesgo: ["El miércoles cayó a 12 unidades (24 %).","Ocupación de 34,6 %, por debajo del equilibrio estimado (~43 %)."],
         acciones: ["Promoción de domingo a jueves (estadía mínima de 2 noches o 3×2) para llenar los días valle.","Tarifas de último minuto y campaña directa (WhatsApp, redes) para los días con menos de 15 unidades.","Ofrecer la extensión directa a todo huésped de Hostelworld antes de su salida."]
+      },
+      ly: {
+        desde: "2025-04-14",
+        hasta: "2025-04-20",
+        ocupacion: 50.9,
+        vendidas: 178,
+        alojamiento_var: -21,
+        adr_var: 17.2
       }
     },
     {
@@ -1739,6 +1907,14 @@ window.CASA_KIWI = {
         atencion: ["Hostelworld puso el 57 % de las noches: el canal con la comisión más alta.","Los dormitorios quedaron en 19,5 % de ocupación.","Las OTAs se llevaron $2,82 M en comisiones (22 % de lo que pagaron los huéspedes)."],
         riesgo: ["El miércoles cayó a 11 unidades (22 %).","Ocupación de 30,0 %, por debajo del equilibrio estimado (~43 %).","96 cortesías en el bar contra 123 productos cobrados."],
         acciones: ["Tarifas de último minuto y campaña directa (WhatsApp, redes) para los días con menos de 15 unidades.","Ofrecer la extensión directa a todo huésped de Hostelworld antes de su salida.","Tope de cortesías por turno y motivo registrado en Lobby."]
+      },
+      ly: {
+        desde: "2025-04-21",
+        hasta: "2025-04-27",
+        ocupacion: 44.9,
+        vendidas: 157,
+        alojamiento_var: -21.2,
+        adr_var: 17.8
       }
     },
     {
@@ -1823,6 +1999,14 @@ window.CASA_KIWI = {
         atencion: ["De lunes a jueves promedió 26 % y de viernes a domingo 51 %.","Hostelworld puso el 63 % de las noches: el canal con la comisión más alta.","La mitad de las reservas nuevas se hizo con 0 días o menos de anticipación.","Las OTAs se llevaron $2,55 M en comisiones (22 % de lo que pagaron los huéspedes)."],
         riesgo: ["El miércoles cayó a 9 unidades (18 %).","La tarifa promedio cayó 12 % (ADR de $122.399).","96 cortesías en el bar contra 164 productos cobrados."],
         acciones: ["Promoción de domingo a jueves (estadía mínima de 2 noches o 3×2) para llenar los días valle.","Ofrecer la extensión directa a todo huésped de Hostelworld antes de su salida.","Tope de cortesías por turno y motivo registrado en Lobby."]
+      },
+      ly: {
+        desde: "2025-04-28",
+        hasta: "2025-05-04",
+        ocupacion: 35.1,
+        vendidas: 123,
+        alojamiento_var: -8.9,
+        adr_var: -12.4
       }
     },
     {
@@ -1907,6 +2091,14 @@ window.CASA_KIWI = {
         atencion: ["Hostelworld puso el 68 % de las noches: el canal con la comisión más alta.","Las privadas quedaron en 33,6 % de ocupación (ADR $84.585).","La mitad de las reservas nuevas se hizo con 1 día o menos de anticipación.","Las OTAs se llevaron $1,39 M en comisiones (21 % de lo que pagaron los huéspedes)."],
         riesgo: ["El domingo cayó a 12 unidades (24 %).","La tarifa promedio cayó 12 % (ADR de $108.180)."],
         acciones: ["Ofrecer la extensión directa a todo huésped de Hostelworld antes de su salida.","Revisar la tarifa de privadas entre semana o empaquetarlas con un upgrade."]
+      },
+      ly: {
+        desde: "2025-05-05",
+        hasta: "2025-05-11",
+        ocupacion: 15.4,
+        vendidas: 54,
+        alojamiento_var: 74.4,
+        adr_var: -30.8
       }
     },
     {
@@ -1988,9 +2180,17 @@ window.CASA_KIWI = {
       },
       hallazgos: {
         bien: ["El mejor día fue el sábado con 19 unidades vendidas (38 %).","La tarifa promedio subió 43 % (ADR de $155.082)."],
-        atencion: ["De lunes a jueves promedió 16 % y de viernes a domingo 33 %.","La ocupación bajó 16,0 puntos frente a la semana anterior.","Hostelworld puso el 74 % de las noches: el canal con la comisión más alta.","Los dormitorios quedaron en 14,3 % de ocupación."],
+        atencion: ["La ocupación bajó 16,0 puntos frente a la semana anterior.","De lunes a jueves promedió 16 % y de viernes a domingo 33 %.","Hostelworld puso el 74 % de las noches: el canal con la comisión más alta.","Los dormitorios quedaron en 14,3 % de ocupación."],
         riesgo: ["El miércoles cayó a 4 unidades (8 %).","Ocupación de 22,9 %, por debajo del equilibrio estimado (~43 %).","El 62 % de la venta del bar se cobró en recepción, no en la barra."],
         acciones: ["Promoción de domingo a jueves (estadía mínima de 2 noches o 3×2) para llenar los días valle.","Tarifas de último minuto y campaña directa (WhatsApp, redes) para los días con menos de 15 unidades.","Ofrecer la extensión directa a todo huésped de Hostelworld antes de su salida."]
+      },
+      ly: {
+        desde: "2025-05-12",
+        hasta: "2025-05-18",
+        ocupacion: 25.7,
+        vendidas: 90,
+        alojamiento_var: -13.4,
+        adr_var: -2.5
       }
     },
     {
@@ -2075,6 +2275,14 @@ window.CASA_KIWI = {
         atencion: ["De lunes a jueves promedió 19 % y de viernes a domingo 34 %.","Hostelworld puso el 69 % de las noches: el canal con la comisión más alta.","Los dormitorios quedaron en 18,1 % de ocupación.","La mitad de las reservas nuevas se hizo con 0 días o menos de anticipación."],
         riesgo: ["El martes cayó a 8 unidades (16 %).","Ocupación de 25,4 %, por debajo del equilibrio estimado (~43 %).","114 cortesías en el bar contra 283 productos cobrados."],
         acciones: ["Promoción de domingo a jueves (estadía mínima de 2 noches o 3×2) para llenar los días valle.","Tarifas de último minuto y campaña directa (WhatsApp, redes) para los días con menos de 15 unidades.","Ofrecer la extensión directa a todo huésped de Hostelworld antes de su salida."]
+      },
+      ly: {
+        desde: "2025-05-19",
+        hasta: "2025-05-25",
+        ocupacion: 38.6,
+        vendidas: 135,
+        alojamiento_var: -26.1,
+        adr_var: 12.1
       }
     },
     {
@@ -2159,6 +2367,14 @@ window.CASA_KIWI = {
         atencion: ["La ocupación bajó 7,7 puntos frente a la semana anterior.","Hostelworld puso el 86 % de las noches: el canal con la comisión más alta.","Las privadas quedaron en 21,4 % de ocupación (ADR $73.217).","Los dormitorios quedaron en 15,2 % de ocupación."],
         riesgo: ["El miércoles cayó a 6 unidades (12 %).","Ocupación de 17,7 %, por debajo del equilibrio estimado (~43 %).","El 63 % de la venta del bar se cobró en recepción, no en la barra."],
         acciones: ["Tarifas de último minuto y campaña directa (WhatsApp, redes) para los días con menos de 15 unidades.","Ofrecer la extensión directa a todo huésped de Hostelworld antes de su salida.","Revisar la tarifa de privadas entre semana o empaquetarlas con un upgrade."]
+      },
+      ly: {
+        desde: "2025-05-26",
+        hasta: "2025-06-01",
+        ocupacion: 28.6,
+        vendidas: 100,
+        alojamiento_var: -52.3,
+        adr_var: -23.1
       }
     },
     {
@@ -2243,6 +2459,14 @@ window.CASA_KIWI = {
         atencion: ["De lunes a jueves promedió 20 % y de viernes a domingo 64 %.","Hostelworld puso el 76 % de las noches: el canal con la comisión más alta.","La mitad de las reservas nuevas se hizo con 0 días o menos de anticipación.","Las OTAs se llevaron $2,12 M en comisiones (22 % de lo que pagaron los huéspedes)."],
         riesgo: ["El martes cayó a 9 unidades (18 %).","La tarifa promedio cayó 17 % (ADR de $112.477).","146 cortesías en el bar contra 250 productos cobrados."],
         acciones: ["Promoción de domingo a jueves (estadía mínima de 2 noches o 3×2) para llenar los días valle.","Ofrecer la extensión directa a todo huésped de Hostelworld antes de su salida.","Tope de cortesías por turno y motivo registrado en Lobby."]
+      },
+      ly: {
+        desde: "2025-06-02",
+        hasta: "2025-06-08",
+        ocupacion: 38.6,
+        vendidas: 135,
+        alojamiento_var: -14.9,
+        adr_var: -15.5
       }
     },
     {
@@ -2327,6 +2551,14 @@ window.CASA_KIWI = {
         atencion: ["Hostelworld puso el 88 % de las noches: el canal con la comisión más alta.","Las privadas quedaron en 20,0 % de ocupación (ADR $93.492).","La mitad de las reservas nuevas se hizo con 0 días o menos de anticipación.","Las OTAs se llevaron $2,17 M en comisiones (25 % de lo que pagaron los huéspedes)."],
         riesgo: ["La tarifa promedio cayó 32 % (ADR de $76.057).","El 65 % de la venta del bar se cobró en recepción, no en la barra."],
         acciones: ["La ocupación aguantaba más tarifa: subir un escalón cuando el día pase de 70 % a 3 días de la llegada.","Ofrecer la extensión directa a todo huésped de Hostelworld antes de su salida.","Revisar la tarifa de privadas entre semana o empaquetarlas con un upgrade."]
+      },
+      ly: {
+        desde: "2025-06-09",
+        hasta: "2025-06-15",
+        ocupacion: 36,
+        vendidas: 126,
+        alojamiento_var: 26.8,
+        adr_var: -3.8
       }
     },
     {
@@ -2411,6 +2643,14 @@ window.CASA_KIWI = {
         atencion: ["La ocupación bajó 14,5 puntos frente a la semana anterior.","Hostelworld puso el 88 % de las noches: el canal con la comisión más alta.","Las privadas quedaron en 15,0 % de ocupación (ADR $126.163).","La mitad de las reservas nuevas se hizo con 1 día o menos de anticipación."],
         riesgo: ["El lunes cayó a 11 unidades (22 %).","Ocupación de 32,9 %, por debajo del equilibrio estimado (~43 %).","109 cortesías en el bar contra 196 productos cobrados."],
         acciones: ["Tarifas de último minuto y campaña directa (WhatsApp, redes) para los días con menos de 15 unidades.","Ofrecer la extensión directa a todo huésped de Hostelworld antes de su salida.","Revisar la tarifa de privadas entre semana o empaquetarlas con un upgrade."]
+      },
+      ly: {
+        desde: "2025-06-16",
+        hasta: "2025-06-22",
+        ocupacion: 29.1,
+        vendidas: 102,
+        alojamiento_var: -3.9,
+        adr_var: -12.4
       }
     },
     {
@@ -2499,6 +2739,14 @@ window.CASA_KIWI = {
         atencion: ["De lunes a jueves promedió 42 % y de viernes a domingo 67 %.","Hostelworld puso el 87 % de las noches: el canal con la comisión más alta.","Las privadas quedaron en 30,0 % de ocupación (ADR $125.780).","La mitad de las reservas nuevas se hizo con 0 días o menos de anticipación."],
         riesgo: ["107 cortesías en el bar contra 219 productos cobrados."],
         acciones: ["Promoción de domingo a jueves (estadía mínima de 2 noches o 3×2) para llenar los días valle.","Ofrecer la extensión directa a todo huésped de Hostelworld antes de su salida.","Revisar la tarifa de privadas entre semana o empaquetarlas con un upgrade."]
+      },
+      ly: {
+        desde: "2025-06-23",
+        hasta: "2025-06-29",
+        ocupacion: 33.7,
+        vendidas: 118,
+        alojamiento_var: 8.1,
+        adr_var: -27.5
       }
     },
     {
@@ -2583,6 +2831,14 @@ window.CASA_KIWI = {
         atencion: ["La ocupación bajó 15,7 puntos frente a la semana anterior.","Hostelworld puso el 65 % de las noches: el canal con la comisión más alta.","Los dormitorios quedaron en 28,1 % de ocupación.","Las OTAs se llevaron $2,68 M en comisiones (23 % de lo que pagaron los huéspedes)."],
         riesgo: ["El jueves cayó a 12 unidades (24 %)."],
         acciones: ["Ofrecer la extensión directa a todo huésped de Hostelworld antes de su salida."]
+      },
+      ly: {
+        desde: "2025-06-30",
+        hasta: "2025-07-06",
+        ocupacion: 25.1,
+        vendidas: 88,
+        alojamiento_var: 11.7,
+        adr_var: -20.8
       }
     },
     {
@@ -2663,10 +2919,18 @@ window.CASA_KIWI = {
         bar: [50000,931000,736000,322000,180000,995000,583000]
       },
       hallazgos: {
-        bien: ["El mejor día fue el viernes con 23 unidades vendidas (46 %).","La ocupación subió 5,1 puntos frente a la semana anterior.","La tarifa promedio subió 16 % (ADR de $119.883)."],
+        bien: ["El mejor día fue el viernes con 23 unidades vendidas (46 %).","La tarifa promedio subió 16 % (ADR de $119.883).","La ocupación subió 5,1 puntos frente a la semana anterior."],
         atencion: ["Hostelworld puso el 56 % de las noches: el canal con la comisión más alta.","Los dormitorios quedaron en 20,5 % de ocupación.","Las OTAs se llevaron $3,81 M en comisiones (22 % de lo que pagaron los huéspedes)."],
         riesgo: ["El 53 % de la venta del bar se cobró en recepción, no en la barra."],
         acciones: ["Ofrecer la extensión directa a todo huésped de Hostelworld antes de su salida.","Cerrar las cuentas del bar antes del check-out."]
+      },
+      ly: {
+        desde: "2025-07-07",
+        hasta: "2025-07-13",
+        ocupacion: 26.6,
+        vendidas: 93,
+        alojamiento_var: 91,
+        adr_var: 21.6
       }
     },
     {
@@ -2751,6 +3015,14 @@ window.CASA_KIWI = {
         atencion: ["Hostelworld puso el 61 % de las noches: el canal con la comisión más alta.","Los dormitorios quedaron en 28,6 % de ocupación.","La mitad de las reservas nuevas se hizo con 0 días o menos de anticipación.","Las OTAs se llevaron $2,49 M en comisiones (21 % de lo que pagaron los huéspedes)."],
         riesgo: ["La tarifa promedio cayó 11 % (ADR de $106.303).","48 cortesías en el bar contra 119 productos cobrados."],
         acciones: ["Ofrecer la extensión directa a todo huésped de Hostelworld antes de su salida.","Tope de cortesías por turno y motivo registrado en Lobby."]
+      },
+      ly: {
+        desde: "2025-07-14",
+        hasta: "2025-07-20",
+        ocupacion: 25.4,
+        vendidas: 89,
+        alojamiento_var: 26.7,
+        adr_var: -12.6
       }
     },
     {
@@ -2835,6 +3107,14 @@ window.CASA_KIWI = {
         atencion: ["La ocupación bajó 8,0 puntos frente a la semana anterior.","Los dormitorios quedaron en 9,0 % de ocupación.","Las OTAs se llevaron $1,9 M en comisiones (20 % de lo que pagaron los huéspedes)."],
         riesgo: ["El jueves cayó a 11 unidades (22 %).","Ocupación de 28,9 %, por debajo del equilibrio estimado (~43 %)."],
         acciones: ["Tarifas de último minuto y campaña directa (WhatsApp, redes) para los días con menos de 15 unidades."]
+      },
+      ly: {
+        desde: "2025-07-21",
+        hasta: "2025-07-27",
+        ocupacion: 26,
+        vendidas: 91,
+        alojamiento_var: 26.4,
+        adr_var: 13.9
       }
     },
     {
@@ -2919,6 +3199,14 @@ window.CASA_KIWI = {
         atencion: ["De lunes a jueves promedió 41 % y de viernes a domingo 84 %.","La mitad de las reservas nuevas se hizo con 1 día o menos de anticipación.","Las OTAs se llevaron $2,81 M en comisiones (19 % de lo que pagaron los huéspedes)."],
         riesgo: ["La tarifa promedio cayó 19 % (ADR de $118.323).","El 46 % de la venta del bar se cobró en recepción, no en la barra."],
         acciones: ["Promoción de domingo a jueves (estadía mínima de 2 noches o 3×2) para llenar los días valle.","La ocupación aguantaba más tarifa: subir un escalón cuando el día pase de 70 % a 3 días de la llegada.","Cerrar las cuentas del bar antes del check-out."]
+      },
+      ly: {
+        desde: "2025-07-28",
+        hasta: "2025-08-03",
+        ocupacion: 51.7,
+        vendidas: 181,
+        alojamiento_var: 6.5,
+        adr_var: -7.3
       }
     },
     {
@@ -2999,10 +3287,18 @@ window.CASA_KIWI = {
         bar: [52000,844000,380000,807000,648000,488000,350000]
       },
       hallazgos: {
-        bien: ["El mejor día fue el viernes con 48 unidades vendidas (96 %).","La ocupación subió 23,2 puntos frente a la semana anterior.","Ocupación de 82,6 %: de las mejores del año."],
+        bien: ["El mejor día fue el viernes con 48 unidades vendidas (96 %).","Ocupación de 82,6 %: de las mejores del año.","La ocupación subió 23,2 puntos frente a la semana anterior."],
         atencion: ["Las OTAs se llevaron $5,44 M en comisiones (19 % de lo que pagaron los huéspedes)."],
         riesgo: ["El 48 % de la venta del bar se cobró en recepción, no en la barra."],
         acciones: ["Con el hostal casi lleno, pasar a tarifa máxima cuando falten 3 días y la ocupación supere 85 %.","Cerrar las cuentas del bar antes del check-out."]
+      },
+      ly: {
+        desde: "2025-08-04",
+        hasta: "2025-08-10",
+        ocupacion: 71.4,
+        vendidas: 250,
+        alojamiento_var: 7,
+        adr_var: -7.5
       }
     },
     {
@@ -3087,6 +3383,14 @@ window.CASA_KIWI = {
         atencion: ["La ocupación bajó 30,0 puntos frente a la semana anterior.","La mitad de las reservas nuevas se hizo con 0 días o menos de anticipación.","Las OTAs se llevaron $3,81 M en comisiones (22 % de lo que pagaron los huéspedes)."],
         riesgo: ["El 60 % de la venta del bar se cobró en recepción, no en la barra."],
         acciones: ["Cerrar las cuentas del bar antes del check-out."]
+      },
+      ly: {
+        desde: "2025-08-11",
+        hasta: "2025-08-17",
+        ocupacion: 40.6,
+        vendidas: 142,
+        alojamiento_var: 6.3,
+        adr_var: -17.9
       }
     },
     {
@@ -3171,6 +3475,14 @@ window.CASA_KIWI = {
         atencion: ["La ocupación bajó 13,7 puntos frente a la semana anterior.","Los dormitorios quedaron en 23,8 % de ocupación.","La mitad de las reservas nuevas se hizo con 1 día o menos de anticipación.","Las OTAs se llevaron $3,09 M en comisiones (21 % de lo que pagaron los huéspedes)."],
         riesgo: ["El 79 % de la venta del bar se cobró en recepción, no en la barra."],
         acciones: ["Cerrar las cuentas del bar antes del check-out."]
+      },
+      ly: {
+        desde: "2025-08-18",
+        hasta: "2025-08-24",
+        ocupacion: 27.7,
+        vendidas: 97,
+        alojamiento_var: 56.4,
+        adr_var: 12.4
       }
     },
     {
@@ -3255,6 +3567,14 @@ window.CASA_KIWI = {
         atencion: ["La ocupación bajó 11,8 puntos frente a la semana anterior.","Los dormitorios quedaron en 20,5 % de ocupación.","La mitad de las reservas nuevas se hizo con 0 días o menos de anticipación.","Las OTAs se llevaron $1,72 M en comisiones (20 % de lo que pagaron los huéspedes)."],
         riesgo: ["Ocupación de 27,1 %, por debajo del equilibrio estimado (~43 %).","El 88 % de la venta del bar se cobró en recepción, no en la barra."],
         acciones: ["Tarifas de último minuto y campaña directa (WhatsApp, redes) para los días con menos de 15 unidades.","Cerrar las cuentas del bar antes del check-out."]
+      },
+      ly: {
+        desde: "2025-08-25",
+        hasta: "2025-08-31",
+        ocupacion: 33.1,
+        vendidas: 116,
+        alojamiento_var: 4.9,
+        adr_var: 28.1
       }
     },
     {
@@ -3339,6 +3659,14 @@ window.CASA_KIWI = {
         atencion: ["De lunes a jueves promedió 18 % y de viernes a domingo 61 %.","Hostelworld puso el 51 % de las noches: el canal con la comisión más alta.","La mitad de las reservas nuevas se hizo con 0 días o menos de anticipación.","Las OTAs se llevaron $2,86 M en comisiones (22 % de lo que pagaron los huéspedes)."],
         riesgo: ["El miércoles cayó a 7 unidades (14 %).","69 cortesías en el bar contra 148 productos cobrados.","El 62 % de la venta del bar se cobró en recepción, no en la barra."],
         acciones: ["Promoción de domingo a jueves (estadía mínima de 2 noches o 3×2) para llenar los días valle.","Ofrecer la extensión directa a todo huésped de Hostelworld antes de su salida.","Tope de cortesías por turno y motivo registrado en Lobby."]
+      },
+      ly: {
+        desde: "2025-09-01",
+        hasta: "2025-09-07",
+        ocupacion: 38.3,
+        vendidas: 134,
+        alojamiento_var: -10,
+        adr_var: -5.7
       }
     },
     {
@@ -3415,6 +3743,14 @@ window.CASA_KIWI = {
         total: 0,
         n: 0,
         lista: []
+      },
+      ly: {
+        desde: "2025-09-08",
+        hasta: "2025-09-14",
+        ocupacion: 23.1,
+        vendidas: 81,
+        alojamiento_var: 32.8,
+        adr_var: -20.9
       }
     },
     {
@@ -3442,7 +3778,7 @@ window.CASA_KIWI = {
       checkouts: 54,
       reservasCreadas: 52,
       valorCreadas: 9772035,
-      canalesCreadas: [["Hostelworld",26,4617839],["Booking.com",12,2929190],["Recepción",10,1720450],["Santiago Posada",4,504556]],
+      canalesCreadas: [["Hostelworld",26,4617839],["Booking.com",12,2929190],["Recepción",10,1720450],["Directo (equipo)",4,504556]],
       nochesCanal: null,
       comision: {
         valor: 1727892,
@@ -3478,7 +3814,7 @@ window.CASA_KIWI = {
         lista: [["Alemania",13.2],["Suiza",9.4],["Estados Unidos",9.4],["Australia",7.5],["Reino Unido",7.5],["México",7.5],["Francia",5.7],["Colombia",5.7]]
       },
       hallazgos: {
-        bien: ["El bar vendió $2,71 M: el 39,4 % de todo su mes en una sola semana.","Recepción y Santiago Posada duplicaron sus reservas (de 7 a 14), el 26,9 % del total.","El piloto de upselling dejó $658.950 en dos días."],
+        bien: ["El bar vendió $2,71 M: el 39,4 % de todo su mes en una sola semana.","Recepción y Directo (equipo) duplicaron sus reservas (de 7 a 14), el 26,9 % del total.","El piloto de upselling dejó $658.950 en dos días."],
         atencion: ["Dormitorios vendieron solo $2,89 M (18,7 % de la semana).","El 71,3 % del dinero entró por tarjeta de crédito, con su costo bancario."],
         riesgo: ["82,7 % de las reservas se hizo con 3 días o menos de anticipación.","Del 22 al 30 de septiembre solo había 6,7 % vendido al cierre."],
         acciones: ["Probar una vitrina de snacks y tabaco en recepción ($464.524 de inventario inicial).","Campañas en inglés y alemán para Alemania, Suiza y Reino Unido.","Revisar precios de dormitorios para subir el ticket."]
@@ -3492,6 +3828,14 @@ window.CASA_KIWI = {
         total: 0,
         n: 0,
         lista: []
+      },
+      ly: {
+        desde: "2025-09-15",
+        hasta: "2025-09-21",
+        ocupacion: 24.6,
+        vendidas: 86,
+        alojamiento_var: 40.2,
+        adr_var: -6.6
       }
     },
     {
@@ -3519,7 +3863,7 @@ window.CASA_KIWI = {
       checkouts: 80,
       reservasCreadas: 91,
       valorCreadas: 15869395,
-      canalesCreadas: [["Hostelworld",31,4320398],["Booking.com",13,6667392],["Recepción",23,2708180],["Santiago Posada",23,1925252],["Motor web",1,325000]],
+      canalesCreadas: [["Hostelworld",31,4320398],["Booking.com",13,6667392],["Recepción",23,2708180],["Directo (equipo)",23,1925252],["Motor web",1,325000]],
       nochesCanal: null,
       comision: {
         valor: 2323434,
@@ -3556,7 +3900,7 @@ window.CASA_KIWI = {
         base: "% de titulares",
         lista: [["Colombia",30.6],["Alemania",13.9],["Reino Unido",9.7],["Francia",8.3],["España",8.3],["Estados Unidos",6.9],["Australia",4.2]]
       },
-      correccion: "El grupo de deportistas se facturó en una sola reserva. La tarifa real del canal Santiago Posada es ≈ $66.558 por habitación/noche (corrección enviada por correo el 29 sep).",
+      correccion: "El grupo de deportistas se facturó en una sola reserva. La tarifa real del canal Directo (equipo) es ≈ $66.558 por habitación/noche (corrección enviada por correo el 29 sep).",
       hallazgos: {
         bien: ["50 % de ocupación: +13,1 puntos frente a la semana anterior y +30 frente a la misma semana de 2025.","La venta directa fue el 51,6 % de las reservas creadas y el 44,6 % del valor de llegadas.","Los upgrades confirmados duplicaron el piloto: 4 por $279.298."],
         atencion: ["Las OTAs retienen el 68,8 % del valor de lo reservado.","El 70 % de las reservas se hizo con 0 o 1 día de anticipación.","Lunes y miércoles en 36 % contra un viernes al 84 %."],
@@ -3572,6 +3916,14 @@ window.CASA_KIWI = {
         total: 150000,
         n: 2,
         lista: [["2026-09-24",75000,"Camilo Giraldo","Upsale"],["2026-09-25",75000,"Dulce","Upsale"]]
+      },
+      ly: {
+        desde: "2025-09-22",
+        hasta: "2025-09-28",
+        ocupacion: 18.6,
+        vendidas: 65,
+        alojamiento_var: 34.9,
+        adr_var: -49.9
       }
     },
     {
@@ -3601,8 +3953,8 @@ window.CASA_KIWI = {
       checkouts: 83,
       reservasCreadas: 110,
       valorCreadas: 17283631,
-      canalesCreadas: [["Hostelworld",58,8346501],["Recepción",33,3480959],["Booking.com",15,4164762],["Expedia",2,739900],["Santiago Posada",2,551509]],
-      nochesCanal: [["Hostelworld",92,54705],["Recepción",43,71087],["Booking.com",21,86190],["Santiago Posada",9,42247]],
+      canalesCreadas: [["Hostelworld",58,8346501],["Recepción",33,3480959],["Booking.com",15,4164762],["Expedia",2,739900],["Directo (equipo)",2,551509]],
+      nochesCanal: [["Hostelworld",92,54705],["Recepción",43,71087],["Booking.com",21,86190],["Directo (equipo)",9,42247]],
       comision: {
         valor: 2165618,
         nota: "Calculada con las reglas de los reportes: Hostelworld 26 % hasta el 9 oct 2026 y 24 % desde el 10 oct (el valor de Lobby ya es neto), Booking y Airbnb 18 %, Expedia 26 %, directos 0 %. Sobre las noches del periodo."
@@ -3657,9 +4009,17 @@ window.CASA_KIWI = {
       },
       hallazgos: {
         bien: ["165 noches vendidas: el fin de semana subió a 30–31 unidades por noche (60 % de viernes a domingo).","18 extensiones de huéspedes de OTA a reserva directa: 25 noches y $1,43 M sin comisión.","110 reservas creadas en la semana, 73 de ellas para octubre."],
-        atencion: ["ADR de $77.706, el más bajo de todos los reportes; la cama de dormitorio dejó $38.847 por noche.","La mitad de las reservas se hizo el mismo día de llegada y el 75 % con 3 días o menos.","Hostelworld puso el 56 % de las noches de la semana."],
+        atencion: ["ADR de $77.706, de los más bajos del año; la cama de dormitorio dejó $38.847 por noche.","La mitad de las reservas se hizo el mismo día de llegada y el 75 % con 3 días o menos.","Hostelworld puso el 56 % de las noches de la semana."],
         riesgo: ["104 cortesías en el bar contra 211 productos vendidos: 1 de cada 3 salió gratis. 19 fueron Ron Kiwi.","El 54 % de la venta del bar se cobró en recepción o al check-out, no en la barra."],
         acciones: ["Revisar la tarifa de dormitorio entre semana: está por debajo de $40.000 por noche.","Poner tope de cortesías por turno, con atención al Ron Kiwi.","Cerrar las cuentas del bar antes del check-out."]
+      },
+      ly: {
+        desde: "2025-09-29",
+        hasta: "2025-10-05",
+        ocupacion: 14.9,
+        vendidas: 52,
+        alojamiento_var: 46.2,
+        adr_var: -53.9
       }
     },
     {
@@ -3687,8 +4047,8 @@ window.CASA_KIWI = {
       checkouts: 93,
       reservasCreadas: 125,
       valorCreadas: null,
-      canalesCreadas: [["Hostelworld",58,6880000],["Booking.com",38,9990000],["Recepción",20,null],["Santiago Posada",7,null],["Expedia",1,null],["Airbnb",1,null]],
-      nochesCanal: [["Hostelworld",149,60941],["Booking.com",80,99778],["Recepción",38,53720],["Santiago Posada",11,62953],["Expedia",3,107761]],
+      canalesCreadas: [["Hostelworld",58,6880000],["Booking.com",38,9990000],["Recepción",20,null],["Directo (equipo)",7,null],["Expedia",1,null],["Airbnb",1,null]],
+      nochesCanal: [["Hostelworld",149,60941],["Booking.com",80,99778],["Recepción",38,53720],["Directo (equipo)",11,62953],["Expedia",3,107761]],
       comision: null,
       bar: 3855000,
       cortesias: 111,
@@ -3748,6 +4108,14 @@ window.CASA_KIWI = {
         total: 144750,
         n: 3,
         lista: [["2026-10-06",29750,"Victorcortes","Upsale"],["2026-10-08",40000,"Camilo Giraldo","Upsale"],["2026-10-08",75000,"Victorcortes","Upsale"]]
+      },
+      ly: {
+        desde: "2025-10-06",
+        hasta: "2025-10-12",
+        ocupacion: 15.7,
+        vendidas: 55,
+        alojamiento_var: 329.4,
+        adr_var: -16
       }
     },
     {
@@ -3775,8 +4143,8 @@ window.CASA_KIWI = {
       checkouts: 91,
       reservasCreadas: 104,
       valorCreadas: null,
-      canalesCreadas: [["Hostelworld",35,7410000],["Booking.com",49,16530000],["Recepción",17,null],["Expedia",2,null],["Airbnb",1,null],["Motor web",0,null],["Santiago Posada",0,null]],
-      nochesCanal: [["Hostelworld",74,64152],["Booking.com",41,79007],["Recepción",30,69992],["Expedia",9,124492],["Santiago Posada",8,47734],["Airbnb",2,114691]],
+      canalesCreadas: [["Hostelworld",35,7410000],["Booking.com",49,16530000],["Recepción",17,null],["Expedia",2,null],["Airbnb",1,null],["Motor web",0,null],["Directo (equipo)",0,null]],
+      nochesCanal: [["Hostelworld",74,64152],["Booking.com",41,79007],["Recepción",30,69992],["Expedia",9,124492],["Directo (equipo)",8,47734],["Airbnb",2,114691]],
       comision: {
         valor: 2654022,
         nota: "18,3 % de lo que pagaron los huéspedes de las noches de la semana (comisiones reales de Hostelworld y Booking)."
@@ -3844,6 +4212,14 @@ window.CASA_KIWI = {
       revenue: {
         titular: "Arranca el proyecto de tarifas: se arma la base de eventos de la ciudad.",
         cambios: [["2026-10-12","sistema","Se crea la base de eventos de Medellín (investigación inicial) para usarla en las decisiones de tarifa."],["2026-10-13","tarifa","Primera bajada: Dorm Iris del 13 al 23 oct (de $92.664 a $79.800 por cama en promedio). Resultado: en línea con el resto del hostal."]]
+      },
+      ly: {
+        desde: "2025-10-13",
+        hasta: "2025-10-19",
+        ocupacion: 16.3,
+        vendidas: 57,
+        alojamiento_var: 112.8,
+        adr_var: -29.5
       }
     },
     {
@@ -3873,8 +4249,8 @@ window.CASA_KIWI = {
       checkouts: 49,
       reservasCreadas: 96,
       valorCreadas: 19585947,
-      canalesCreadas: [["Booking.com",28,10246801],["Hostelworld",28,4404413],["Recepción",21,2317072],["Santiago Posada",15,1561258],["Motor web",2,562240],["Expedia",1,49687],["Airbnb",1,444476]],
-      nochesCanal: [["Hostelworld",51,47236],["Recepción",37,55934],["Booking.com",25,71895],["Santiago Posada",7,40948],["Motor web",4,100432],["Airbnb",2,190548],["Expedia",1,36768]],
+      canalesCreadas: [["Booking.com",28,10246801],["Hostelworld",28,4404413],["Recepción",21,2317072],["Directo (equipo)",15,1561258],["Motor web",2,562240],["Airbnb",1,444476],["Expedia",1,49687]],
+      nochesCanal: [["Hostelworld",51,47236],["Recepción",37,55934],["Booking.com",25,71895],["Directo (equipo)",7,40948],["Motor web",4,100432],["Airbnb",2,190548],["Expedia",1,36768]],
       comision: {
         valor: 1257178,
         nota: "Calculada con las reglas de los reportes: Hostelworld 26 % hasta el 9 oct 2026 y 24 % desde el 10 oct (el valor de Lobby ya es neto), Booking y Airbnb 18 %, Expedia 26 %, directos 0 %. Sobre las noches del periodo."
@@ -3929,7 +4305,7 @@ window.CASA_KIWI = {
       },
       hallazgos: {
         bien: ["El fin de semana se recuperó: de 13 y 8 unidades el lunes y martes a 28 el domingo.","Booking creó 28 reservas por $10,25 M, la mayoría para noviembre en adelante.","10 extensiones directas: 15 noches y $765.402 sin comisión."],
-        atencion: ["Las privadas cayeron a 27 % de ocupación; los dormitorios sostuvieron la semana (45 %).","ADR de $74.769: el jueves 22 bajó a $66.269.","Expocar no generó la demanda esperada: el fin de semana quedó en 50 %."],
+        atencion: ["La ocupación bajó 12,8 puntos frente a la semana anterior.","Las privadas cayeron a 27 % de ocupación; los dormitorios sostuvieron la semana (45 %).","ADR de $74.769: el jueves 22 bajó a $66.269.","Expocar no generó la demanda esperada: el fin de semana quedó en 50 %."],
         riesgo: ["El bar vendió solo $1,03 M, la venta más baja de los reportes; 49 cortesías contra 88 productos vendidos.","El recaudo de la semana fue de $8,30 M, el más bajo del periodo."],
         acciones: ["Promoción de privadas de domingo a jueves para semanas sin evento.","Separar en el calendario las ferias comerciales de los eventos que sí llenan (festivales, puentes).","Activar el bar entre semana: de lunes a jueves vendió menos de $160.000 por día."]
       },
@@ -3945,6 +4321,14 @@ window.CASA_KIWI = {
           ingreso: 9642716,
           ingreso_var: 36
         }
+      },
+      ly: {
+        desde: "2025-10-20",
+        hasta: "2025-10-26",
+        ocupacion: 15.7,
+        vendidas: 55,
+        alojamiento_var: 37.9,
+        adr_var: -40.3
       }
     },
     {
@@ -3972,7 +4356,7 @@ window.CASA_KIWI = {
       checkouts: 76,
       reservasCreadas: 101,
       valorCreadas: 27907104,
-      canalesCreadas: [["Hostelworld",42,5620845],["Booking.com",33,15136186],["Recepción",19,3564694],["Directo / sin canal",3,126118],["Motor web",2,1310861],["Santiago Posada",1,2056000],["Expedia",1,92400]],
+      canalesCreadas: [["Hostelworld",42,5620845],["Booking.com",33,15136186],["Recepción",19,3564694],["Directo / sin canal",3,126118],["Motor web",2,1310861],["Directo (equipo)",1,2056000],["Expedia",1,92400]],
       nochesCanal: null,
       comision: {
         valor: 4523541,
@@ -4040,6 +4424,14 @@ window.CASA_KIWI = {
           funcionaron: 12,
           revisar: 15
         }
+      },
+      ly: {
+        desde: "2025-10-27",
+        hasta: "2025-11-02",
+        ocupacion: 34,
+        vendidas: 119,
+        alojamiento_var: 9.1,
+        adr_var: -37.3
       }
     },
     {
@@ -4069,8 +4461,8 @@ window.CASA_KIWI = {
       checkouts: 84,
       reservasCreadas: 128,
       valorCreadas: 30873733,
-      canalesCreadas: [["Hostelworld",37,5707461],["Booking.com",35,13363615],["Santiago Posada",29,6592797],["Recepción",21,1939130],["Motor web",3,1448135],["Expedia",1,768390],["Airbnb",1,944405]],
-      nochesCanal: [["Hostelworld",80,57777],["Recepción",45,57265],["Booking.com",33,107911],["Santiago Posada",9,59668],["Expedia",4,35538],["Motor web",3,72301],["Airbnb",1,121490]],
+      canalesCreadas: [["Hostelworld",37,5707461],["Booking.com",35,13363615],["Directo (equipo)",29,6592797],["Recepción",21,1939130],["Motor web",3,1448135],["Airbnb",1,944405],["Expedia",1,768390]],
+      nochesCanal: [["Hostelworld",80,57777],["Recepción",45,57265],["Booking.com",33,107911],["Directo (equipo)",9,59668],["Expedia",4,35538],["Motor web",3,72301],["Airbnb",1,121490]],
       comision: {
         valor: 2337975,
         nota: "Calculada con las reglas de los reportes: Hostelworld 26 % hasta el 9 oct 2026 y 24 % desde el 10 oct (el valor de Lobby ya es neto), Booking y Airbnb 18 %, Expedia 26 %, directos 0 %. Sobre las noches del periodo."
@@ -4124,8 +4516,8 @@ window.CASA_KIWI = {
         bar: [243000,366000,417000,265000,351000,282000,221000]
       },
       hallazgos: {
-        bien: ["128 reservas creadas por $30,87 M, la mayor captación de todos los reportes; 92 son para noviembre.","Se reserva con más anticipación: la mediana subió a 8,5 días (antes era 0–1 día).","Santiago Posada creó 29 reservas por $6,59 M.","12 extensiones directas: 22 noches y $1,07 M."],
-        atencion: ["La ocupación fue pareja (22–30 unidades), sin un pico de fin de semana.","El lunes festivo salieron 22 reservas: fue el día más pesado de la semana para housekeeping."],
+        bien: ["128 reservas creadas por $30,87 M, la mayor captación de todos los reportes; 92 son para noviembre.","Se reserva con más anticipación: la mediana subió a 8,5 días (antes era 0–1 día).","Directo (equipo) creó 29 reservas por $6,59 M.","12 extensiones directas: 22 noches y $1,07 M."],
+        atencion: ["La ocupación bajó 8,6 puntos frente a la semana anterior.","La ocupación fue pareja (22–30 unidades), sin un pico de fin de semana.","El lunes festivo salieron 22 reservas: fue el día más pesado de la semana para housekeeping."],
         riesgo: ["Una reserva de Hostelworld (Huésped, Privado 34, 31 oct–4 nov) está cargada en Lobby por $5.174.780 por 4 noches. Por eso el 31 de octubre aparece con ADR de $254.386 y el ingreso de octubre en Lobby sube.","70 cortesías en el bar, 59 de ellas cerveza."],
         acciones: ["Corregir en Lobby la tarifa de la reserva del Privado 34.","Aprovechar la anticipación de Booking para subir tarifa en las fechas que se están llenando (diciembre y enero)."]
       },
@@ -4147,6 +4539,14 @@ window.CASA_KIWI = {
           funcionaron: 85,
           revisar: 71
         }
+      },
+      ly: {
+        desde: "2025-11-03",
+        hasta: "2025-11-09",
+        ocupacion: 34.9,
+        vendidas: 122,
+        alojamiento_var: 7.7,
+        adr_var: -26.2
       }
     },
     {
@@ -4157,7 +4557,7 @@ window.CASA_KIWI = {
       construido: "2026-11-22",
       auto: true,
       link: null,
-      titular: "La mejor semana de noviembre: 59,5 % de ocupación y un ADR que pasó los $100.000 por primera vez.",
+      titular: "La mejor semana de noviembre: 59,5 % de ocupación y un ADR que pasó los $100.000 por primera vez desde agosto.",
       evento: "INMERXIA (9–11 nov), concierto de Juanes y Jeff Mills (14 nov) y puente festivo del 16 nov",
       unidades: 48,
       disponibles: 336,
@@ -4176,8 +4576,8 @@ window.CASA_KIWI = {
       checkouts: 63,
       reservasCreadas: 98,
       valorCreadas: 22416590,
-      canalesCreadas: [["Hostelworld",38,7100335],["Booking.com",26,8299743],["Recepción",23,4825856],["Santiago Posada",6,336000],["Expedia",2,849856],["Motor web",2,851200]],
-      nochesCanal: [["Recepción",70,66591],["Hostelworld",63,64805],["Booking.com",39,108669],["Santiago Posada",9,67374],["Expedia",7,35538],["Motor web",4,116739]],
+      canalesCreadas: [["Hostelworld",38,7100335],["Booking.com",26,8299743],["Recepción",23,4825856],["Directo (equipo)",6,336000],["Expedia",2,849856],["Motor web",2,851200]],
+      nochesCanal: [["Recepción",70,66591],["Hostelworld",63,64805],["Booking.com",39,108669],["Directo (equipo)",9,67374],["Expedia",7,35538],["Motor web",4,116739]],
       comision: {
         valor: 2320506,
         nota: "Calculada con las reglas de los reportes: Hostelworld 26 % hasta el 9 oct 2026 y 24 % desde el 10 oct (el valor de Lobby ya es neto), Booking y Airbnb 18 %, Expedia 26 %, directos 0 %. Sobre las noches del periodo."
@@ -4231,7 +4631,7 @@ window.CASA_KIWI = {
         bar: [162000,572000,647000,212000,276000,216000,375000]
       },
       hallazgos: {
-        bien: ["200 noches vendidas y $20,01 M de alojamiento, el mejor ingreso de las semanas nuevas.","ADR de $100.055; de jueves a domingo superó los $97.000 cada noche.","Las privadas llegaron al 69,9 % de ocupación.","9 extensiones directas: 44 noches y $2,36 M sin comisión."],
+        bien: ["200 noches vendidas y $20,01 M de alojamiento, el mejor ingreso de las semanas nuevas.","ADR de $100.055; de jueves a domingo superó los $97.000 cada noche.","Las privadas llegaron al 69,9 % de ocupación.","9 extensiones directas: 44 noches y $2,36 M sin comisión.","La ocupación subió 6,5 puntos frente a la semana anterior."],
         atencion: ["Recepción fue el canal con más noches (70), por encima de Hostelworld (63).","De lunes a miércoles la ocupación se quedó en 22–24 unidades."],
         riesgo: ["81 cortesías en el bar contra 163 productos vendidos.","El 39 % de la venta del bar se cobró fuera de la barra."],
         acciones: ["Repetir la estrategia de precio de este puente en los próximos fines de semana con evento.","Mantener la oferta de extensión directa: dejó más que cualquier otra semana."]
@@ -4245,6 +4645,14 @@ window.CASA_KIWI = {
           ocupacion_ly: 22,
           adr_var: -21
         }
+      },
+      ly: {
+        desde: "2025-11-10",
+        hasta: "2025-11-16",
+        ocupacion: 21.7,
+        vendidas: 76,
+        alojamiento_var: 76.3,
+        adr_var: -31.6
       }
     },
     {
@@ -4255,7 +4663,7 @@ window.CASA_KIWI = {
       construido: "2026-11-22",
       auto: true,
       link: null,
-      titular: "Semana al 43,8 % pero con la tarifa promedio más alta del año: $110.865 por noche.",
+      titular: "Semana al 43,8 % pero con la tarifa promedio más alta desde agosto: $110.865 por noche.",
       evento: "Festivo del 16 nov, DanzaMed (17–22 nov) y conciertos de Chayanne, Kris R, Rubén Blades y Anuel AA (19–22 nov)",
       unidades: 48,
       disponibles: 336,
@@ -4275,7 +4683,7 @@ window.CASA_KIWI = {
       reservasCreadas: 54,
       valorCreadas: 13414573,
       canalesCreadas: [["Booking.com",19,6118963],["Hostelworld",17,2276953],["Recepción",10,2912957],["Expedia",3,877100],["Motor web",3,795200]],
-      nochesCanal: [["Hostelworld",42,67055],["Recepción",34,78819],["Booking.com",29,109794],["Motor web",18,128858],["Santiago Posada",12,73154],["Expedia",8,42986]],
+      nochesCanal: [["Hostelworld",42,67055],["Recepción",34,78819],["Booking.com",29,109794],["Motor web",18,128858],["Directo (equipo)",12,73154],["Expedia",8,42986]],
       comision: {
         valor: 1724350,
         nota: "Calculada con las reglas de los reportes: Hostelworld 26 % hasta el 9 oct 2026 y 24 % desde el 10 oct (el valor de Lobby ya es neto), Booking y Airbnb 18 %, Expedia 26 %, directos 0 %. Sobre las noches del periodo."
@@ -4329,8 +4737,8 @@ window.CASA_KIWI = {
         bar: [64000,76000,88000,109000,186000,298000,68000]
       },
       hallazgos: {
-        bien: ["ADR de $110.865, el más alto de todos los reportes; del jueves al sábado pasó los $115.000.","Las privadas se sostuvieron en 63 %.","El motor web puso 18 noches con $128.858 por noche, sin comisión: su mejor semana."],
-        atencion: ["Los dormitorios cayeron a 31 % de ocupación.","Martes y miércoles se quedaron en 16–17 unidades.","Las reservas se hacen con más anticipación (mediana de 10 días)."],
+        bien: ["ADR de $110.865, el más alto desde agosto; del jueves al sábado pasó los $115.000.","Las privadas se sostuvieron en 63 %.","El motor web puso 18 noches con $128.858 por noche, sin comisión: su mejor semana."],
+        atencion: ["La ocupación bajó 15,7 puntos frente a la semana anterior.","Los dormitorios cayeron a 31 % de ocupación.","Martes y miércoles se quedaron en 16–17 unidades.","Las reservas se hacen con más anticipación (mediana de 10 días)."],
         riesgo: ["Los conciertos no llenaron: el fin de semana quedó en 24–25 unidades.","El bar vendió $889.000 (cifras hasta el domingo en la mañana)."],
         acciones: ["Bajar la cama de dormitorio entre semana: ya no hay evento que la sostenga.","Noviembre va en 53 % del 1 al 22 (560 noches): para cerrar en el escenario conservador (55,2 %) hay que empujar la última semana.","Revisar en Lobby el cierre de ventas del 28 de noviembre."]
       },
@@ -4339,6 +4747,14 @@ window.CASA_KIWI = {
         titular: "Recuperar tarifa: 97 noches aplicadas el 18 nov, 69 el 22 y 38 cambios de la tarea diaria.",
         cambios: [["2026-11-17","aprendizaje","Reporte de la semana 9–15 nov: Doble sin balcón y Triple baño comp. pasan a “evitar subir”. Nueva regla: con el volumen ya logrado, recuperar tarifa en noches de demanda alta."],["2026-11-18","tarifa","Sesión del consejo aprobada por Santiago: 97 noches aplicadas y verificadas, sin errores (29 decisiones)."],["2026-11-21","tarifa","Sesión del consejo: bajadas en Doble baño comp. para 22 nov–17 dic y en Dorms 6 para el 21 y del 23 al 27 nov."],["2026-11-22","tarifa","Sesión del consejo en chat: 69 noches por categoría aplicadas y verificadas, sin cambios colaterales (33 decisiones)."],["2026-11-22","tarifa","Tarea diaria: 30 propuestas → 38 cambios aplicados y verificados. Ejemplos: Dorm 11 25 nov $61.000 → $59.000; Doble baño comp. 26 nov $192.000 → $187.000; Dorms 6 6 dic $85.000 → $92.000; Triple comp. 4 dic $352.000 → $367.000."],["2026-11-22","veto","Frenadas por aprendizajes: subir Twin baño priv. y 2 dobles baño comp.; filtradas antes de Lobby: subir Twin sin vista 27 nov y bajar Iris 29 nov."]],
         pendientes: ["Revisar 38 noches cuyo precio en Lobby difiere más de $2.000 de lo decidido (Doble comp. 8–17 dic, Dorms 6 3–7 dic, Triple comp. 1–7 dic, Dorm 11 22–25 nov).","1 dic: si no entran camas en Dorms 6 de diciembre, proponer revertir la subida.","1 y 10 dic: revisar el ritmo de Navidad y fin de año (hoy 12–14 vendidas por noche contra 40–48 al cierre del año pasado)."]
+      },
+      ly: {
+        desde: "2025-11-17",
+        hasta: "2025-11-23",
+        ocupacion: 29.1,
+        vendidas: 102,
+        alojamiento_var: 18.6,
+        adr_var: -17.7
       }
     }
   ],
@@ -4428,6 +4844,14 @@ window.CASA_KIWI = {
         atencion: ["Hostelworld puso el 47 % de las noches: el canal con la comisión más alta.","La mitad de las reservas nuevas se hizo con 1 día o menos de anticipación.","Las OTAs se llevaron $17,9 M en comisiones (21 % de lo que pagaron los huéspedes)."],
         riesgo: ["Sin riesgos marcados en los datos disponibles."],
         acciones: ["Ofrecer la extensión directa a todo huésped de Hostelworld antes de su salida."]
+      },
+      ly: {
+        desde: "2025-01-01",
+        hasta: "2025-01-31",
+        ocupacion: 61,
+        vendidas: 946,
+        alojamiento_var: -8.5,
+        adr_var: 13.5
       }
     },
     {
@@ -4514,6 +4938,14 @@ window.CASA_KIWI = {
         atencion: ["Hostelworld puso el 46 % de las noches: el canal con la comisión más alta.","La mitad de las reservas nuevas se hizo con 0 días o menos de anticipación.","Las OTAs se llevaron $16,49 M en comisiones (20 % de lo que pagaron los huéspedes)."],
         riesgo: ["Sin riesgos marcados en los datos disponibles."],
         acciones: ["Ofrecer la extensión directa a todo huésped de Hostelworld antes de su salida."]
+      },
+      ly: {
+        desde: "2025-02-01",
+        hasta: "2025-02-28",
+        ocupacion: 59.6,
+        vendidas: 834,
+        alojamiento_var: -8.4,
+        adr_var: 8.7
       }
     },
     {
@@ -4600,6 +5032,14 @@ window.CASA_KIWI = {
         atencion: ["Hostelworld puso el 59 % de las noches: el canal con la comisión más alta.","La mitad de las reservas nuevas se hizo con 1 día o menos de anticipación.","Las OTAs se llevaron $21,44 M en comisiones (22 % de lo que pagaron los huéspedes)."],
         riesgo: ["Sin riesgos marcados en los datos disponibles."],
         acciones: ["Ofrecer la extensión directa a todo huésped de Hostelworld antes de su salida."]
+      },
+      ly: {
+        desde: "2025-03-01",
+        hasta: "2025-03-31",
+        ocupacion: 29.2,
+        vendidas: 453,
+        alojamiento_var: 70.2,
+        adr_var: -15.6
       }
     },
     {
@@ -4682,6 +5122,14 @@ window.CASA_KIWI = {
         atencion: ["La ocupación bajó 23,6 puntos frente al mes anterior.","Hostelworld puso el 58 % de las noches: el canal con la comisión más alta.","Los dormitorios quedaron en 27,9 % de ocupación.","La mitad de las reservas nuevas se hizo con 1 día o menos de anticipación."],
         riesgo: ["331 cortesías en el bar contra 598 productos cobrados."],
         acciones: ["Ofrecer la extensión directa a todo huésped de Hostelworld antes de su salida.","Tope de cortesías por turno y motivo registrado en Lobby."]
+      },
+      ly: {
+        desde: "2025-04-01",
+        hasta: "2025-04-30",
+        ocupacion: 41.9,
+        vendidas: 628,
+        alojamiento_var: -0.8,
+        adr_var: 17.7
       }
     },
     {
@@ -4764,6 +5212,14 @@ window.CASA_KIWI = {
         atencion: ["La ocupación bajó 6,8 puntos frente al mes anterior.","Hostelworld puso el 71 % de las noches: el canal con la comisión más alta.","Las privadas quedaron en 33,5 % de ocupación (ADR $99.370).","Los dormitorios quedaron en 25,3 % de ocupación."],
         riesgo: ["Ocupación de 28,6 %, por debajo del equilibrio estimado (~43 %).","El 65 % de la venta del bar se cobró en recepción, no en la barra."],
         acciones: ["Tarifas de último minuto y campaña directa (WhatsApp, redes) para los días con menos de 15 unidades.","Ofrecer la extensión directa a todo huésped de Hostelworld antes de su salida.","Revisar la tarifa de privadas entre semana o empaquetarlas con un upgrade."]
+      },
+      ly: {
+        desde: "2025-05-01",
+        hasta: "2025-05-31",
+        ocupacion: 28.5,
+        vendidas: 441,
+        alojamiento_var: -10.8,
+        adr_var: -11.2
       }
     },
     {
@@ -4850,6 +5306,14 @@ window.CASA_KIWI = {
         atencion: ["Hostelworld puso el 85 % de las noches: el canal con la comisión más alta.","Las privadas quedaron en 26,2 % de ocupación (ADR $112.112).","La mitad de las reservas nuevas se hizo con 0 días o menos de anticipación.","Las OTAs se llevaron $10,05 M en comisiones (24 % de lo que pagaron los huéspedes)."],
         riesgo: ["La tarifa promedio cayó 34 % (ADR de $85.162).","517 cortesías en el bar contra 1095 productos cobrados.","El 55 % de la venta del bar se cobró en recepción, no en la barra."],
         acciones: ["Ofrecer la extensión directa a todo huésped de Hostelworld antes de su salida.","Revisar la tarifa de privadas entre semana o empaquetarlas con un upgrade.","Tope de cortesías por turno y motivo registrado en Lobby."]
+      },
+      ly: {
+        desde: "2025-06-01",
+        hasta: "2025-06-30",
+        ocupacion: 34.7,
+        vendidas: 521,
+        alojamiento_var: 1.8,
+        adr_var: -16.4
       }
     },
     {
@@ -4932,6 +5396,14 @@ window.CASA_KIWI = {
         atencion: ["La ocupación bajó 5,8 puntos frente al mes anterior.","Hostelworld puso el 46 % de las noches: el canal con la comisión más alta.","Los dormitorios quedaron en 21,8 % de ocupación.","Las OTAs se llevaron $11,59 M en comisiones (21 % de lo que pagaron los huéspedes)."],
         riesgo: ["Sin riesgos marcados en los datos disponibles."],
         acciones: ["Ofrecer la extensión directa a todo huésped de Hostelworld antes de su salida."]
+      },
+      ly: {
+        desde: "2025-07-01",
+        hasta: "2025-07-31",
+        ocupacion: 25.5,
+        vendidas: 396,
+        alojamiento_var: 41.5,
+        adr_var: -2.7
       }
     },
     {
@@ -5014,6 +5486,14 @@ window.CASA_KIWI = {
         atencion: ["La mitad de las reservas nuevas se hizo con 1 día o menos de anticipación.","Las OTAs se llevaron $15,44 M en comisiones (20 % de lo que pagaron los huéspedes)."],
         riesgo: ["El 66 % de la venta del bar se cobró en recepción, no en la barra."],
         acciones: ["Cerrar las cuentas del bar antes del check-out."]
+      },
+      ly: {
+        desde: "2025-08-01",
+        hasta: "2025-08-31",
+        ocupacion: 47.1,
+        vendidas: 730,
+        alojamiento_var: 7.8,
+        adr_var: -1.7
       }
     },
     {
@@ -5077,8 +5557,8 @@ window.CASA_KIWI = {
       checkouts: 276,
       reservasCreadas: 293,
       valorCreadas: 56105736,
-      canalesCreadas: [["Hostelworld",134,21597826],["Booking.com",69,22597074],["Recepción",41,5587070],["Santiago Posada",26,1454700],["Motor web",4,1111000],["Expedia",3,655830]],
-      nochesCanal: [["Hostelworld",295,62551],["Booking.com",162,94878],["Recepción",72,76387],["Santiago Posada",30,34328],["Motor web",10,111100],["Expedia",7,120176],["Airbnb",4,205000]],
+      canalesCreadas: [["Hostelworld",134,21597826],["Booking.com",69,22597074],["Recepción",41,5587070],["Directo (equipo)",26,1454700],["Motor web",4,1111000],["Expedia",3,655830]],
+      nochesCanal: [["Hostelworld",295,62551],["Booking.com",162,94878],["Recepción",72,76387],["Directo (equipo)",30,34328],["Motor web",10,111100],["Expedia",7,120176],["Airbnb",4,205000]],
       comision: {
         valor: 10332866,
         nota: "Calculada con las reglas de los reportes: Hostelworld 26 % hasta el 9 oct 2026 y 24 % desde el 10 oct (el valor de Lobby ya es neto), Booking y Airbnb 18 %, Expedia 26 %, directos 0 %. Sobre las noches del periodo."
@@ -5107,6 +5587,14 @@ window.CASA_KIWI = {
         total: 150000,
         n: 2,
         lista: [["2026-09-24",75000,"Camilo Giraldo","Upsale"],["2026-09-25",75000,"Dulce","Upsale"]]
+      },
+      ly: {
+        desde: "2025-09-01",
+        hasta: "2025-09-30",
+        ocupacion: 25.7,
+        vendidas: 385,
+        alojamiento_var: 17.7,
+        adr_var: -26.1
       }
     },
     {
@@ -5170,8 +5658,8 @@ window.CASA_KIWI = {
       checkouts: 351,
       reservasCreadas: 455,
       valorCreadas: 92713746,
-      canalesCreadas: [["Hostelworld",185,26738355],["Booking.com",138,44505178],["Recepción",95,11854990],["Santiago Posada",24,4748307],["Expedia",5,1506793],["Airbnb",4,1566560],["Motor web",4,1793563]],
-      nochesCanal: [["Hostelworld",428,58080],["Booking.com",192,91166],["Recepción",174,61444],["Santiago Posada",41,49892],["Expedia",13,113883],["Motor web",9,108985],["Airbnb",5,146393]],
+      canalesCreadas: [["Hostelworld",185,26738355],["Booking.com",138,44505178],["Recepción",95,11854990],["Directo (equipo)",24,4748307],["Expedia",5,1506793],["Airbnb",4,1566560],["Motor web",4,1793563]],
+      nochesCanal: [["Hostelworld",428,58080],["Booking.com",192,91166],["Recepción",174,61444],["Directo (equipo)",41,49892],["Expedia",13,113883],["Motor web",9,108985],["Airbnb",5,146393]],
       comision: {
         valor: 12885089,
         nota: "Calculada con las reglas de los reportes: Hostelworld 26 % hasta el 9 oct 2026 y 24 % desde el 10 oct (el valor de Lobby ya es neto), Booking y Airbnb 18 %, Expedia 26 %, directos 0 %. Sobre las noches del periodo."
@@ -5214,6 +5702,14 @@ window.CASA_KIWI = {
           }
         ],
         pendientes: []
+      },
+      ly: {
+        desde: "2025-10-01",
+        hasta: "2025-10-31",
+        ocupacion: 17.1,
+        vendidas: 265,
+        alojamiento_var: 113.2,
+        adr_var: -34.5
       }
     },
     {
@@ -5223,7 +5719,7 @@ window.CASA_KIWI = {
       construido: "2026-11-22",
       auto: true,
       link: null,
-      titular: "Noviembre 2026 (1–22): 53,0 % de ocupación (−2,7 pts frente al mes anterior), ADR de $97.394 y $54,54 M de alojamiento.",
+      titular: "Noviembre 2026 (1–22): 53,0 % de ocupación (−5,0 pts frente al mes anterior), ADR de $97.394 y $54,54 M de alojamiento.",
       unidades: 48,
       disponibles: 1056,
       vendidas: 560,
@@ -5241,8 +5737,8 @@ window.CASA_KIWI = {
       checkouts: 207,
       reservasCreadas: 293,
       valorCreadas: 71450823,
-      canalesCreadas: [["Hostelworld",99,15880268],["Booking.com",84,31163729],["Recepción",56,10246943],["Santiago Posada",35,6928797],["Motor web",8,3094535],["Expedia",6,2495346],["Airbnb",1,944405]],
-      nochesCanal: [["Hostelworld",204,61817],["Recepción",156,66833],["Booking.com",107,107739],["Santiago Posada",32,65180],["Motor web",25,120132],["Expedia",19,38674],["Airbnb",2,121490]],
+      canalesCreadas: [["Hostelworld",99,15880268],["Booking.com",84,31163729],["Recepción",56,10246943],["Directo (equipo)",35,6928797],["Motor web",8,3094535],["Expedia",6,2495346],["Airbnb",1,944405]],
+      nochesCanal: [["Hostelworld",204,61817],["Recepción",156,66833],["Booking.com",107,107739],["Directo (equipo)",32,65180],["Motor web",25,120132],["Expedia",19,38674],["Airbnb",2,121490]],
       comision: {
         valor: 6883343,
         nota: "Calculada con las reglas de los reportes: Hostelworld 26 % hasta el 9 oct 2026 y 24 % desde el 10 oct (el valor de Lobby ya es neto), Booking y Airbnb 18 %, Expedia 26 %, directos 0 %. Sobre las noches del periodo."
@@ -5298,7 +5794,7 @@ window.CASA_KIWI = {
       nota_corte: "Mes en curso: datos del 1 al 22 de noviembre.",
       hallazgos: {
         bien: ["27 extensiones de OTA a directo: 86 noches y $4,56 M sin comisión.","El canal directo puso el 39 % de las noches, sin comisión."],
-        atencion: ["Sin alertas fuertes en ocupación ni en canales."],
+        atencion: ["La ocupación bajó 5,0 puntos frente al mes anterior."],
         riesgo: ["200 cortesías en el bar contra 412 productos cobrados."],
         acciones: ["Tope de cortesías por turno y motivo registrado en Lobby."]
       },
@@ -5325,6 +5821,14 @@ window.CASA_KIWI = {
           }
         ],
         pendientes: ["Revisar 38 noches cuyo precio en Lobby difiere más de $2.000 de lo decidido (Doble comp. 8–17 dic, Dorms 6 3–7 dic, Triple comp. 1–7 dic, Dorm 11 22–25 nov).","1 dic: si no entran camas en Dorms 6 de diciembre, proponer revertir la subida.","1 y 10 dic: revisar el ritmo de Navidad y fin de año (hoy 12–14 vendidas por noche contra 40–48 al cierre del año pasado)."]
+      },
+      ly: {
+        desde: "2025-11-01",
+        hasta: "2025-11-22",
+        ocupacion: 31.2,
+        vendidas: 343,
+        alojamiento_var: 18.1,
+        adr_var: -27.2
       }
     }
   ],
@@ -5368,9 +5872,9 @@ window.CASA_KIWI = {
         pickup7: 23,
         pickup30: 120,
         segmentos: [["Dormitorios",101,43.5],["Privadas",71,46.7]],
-        canales: [["Santiago Posada",102],["Booking.com",29],["Hostelworld",23],["Expedia",8],["Recepción",7],["Airbnb",2],["Motor web",1]],
+        canales: [["Directo (equipo)",102],["Booking.com",29],["Hostelworld",23],["Expedia",8],["Recepción",7],["Airbnb",2],["Motor web",1]],
         reservas: 73,
-        grandes: [["Huésped 1", "Santiago Posada", 78, 26, "2026-11-26", "2026-11-29"], ["Huésped 2", "Santiago Posada", 24, 12, "2026-11-28", "2026-11-30"], ["Huésped 3", "Booking.com", 6, 2, "2026-11-27", "2026-11-30"], ["Huésped 4", "Hostelworld", 5, 1, "2026-11-25", "2026-11-30"], ["Huésped 5", "Recepción", 5, 1, "2026-11-26", "2026-12-02"]]
+        grandes: [["Huésped 1", "Directo (equipo)", 78, 26, "2026-11-26", "2026-11-29"], ["Huésped 2", "Directo (equipo)", 24, 12, "2026-11-28", "2026-11-30"], ["Huésped 3", "Booking.com", 6, 2, "2026-11-27", "2026-11-30"], ["Huésped 4", "Hostelworld", 5, 1, "2026-11-25", "2026-11-30"], ["Huésped 5", "Recepción", 5, 1, "2026-11-26", "2026-12-02"]]
       },
       {
         id: "2026-12",
@@ -5409,7 +5913,7 @@ window.CASA_KIWI = {
         pickup7: 27,
         pickup30: 162,
         segmentos: [["Dormitorios",82,9.1],["Privadas",161,27.3]],
-        canales: [["Booking.com",140],["Hostelworld",89],["Motor web",4],["Recepción",4],["Expedia",3],["Santiago Posada",3]],
+        canales: [["Booking.com",140],["Hostelworld",89],["Motor web",4],["Recepción",4],["Directo (equipo)",3],["Expedia",3]],
         reservas: 76,
         grandes: [["Huésped 1", "Booking.com", 16, 4, "2026-12-19", "2026-12-23"], ["Huésped 2", "Hostelworld", 10, 2, "2026-12-20", "2026-12-25"], ["Huésped 3", "Hostelworld", 7, 1, "2026-12-01", "2026-12-08"], ["Huésped 4", "Booking.com", 6, 2, "2026-12-12", "2026-12-15"], ["Huésped 5", "Hostelworld", 6, 1, "2026-12-20", "2026-12-26"]]
       },
@@ -5491,9 +5995,9 @@ window.CASA_KIWI = {
         pickup7: 9,
         pickup30: 67,
         segmentos: [["Dormitorios",24,3],["Privadas",86,16.2]],
-        canales: [["Booking.com",89],["Hostelworld",14],["Santiago Posada",7]],
+        canales: [["Booking.com",89],["Hostelworld",14],["Directo (equipo)",7]],
         reservas: 30,
-        grandes: [["Huésped 1", "Booking.com", 8, 2, "2027-02-14", "2027-02-18"], ["Huésped 2", "Booking.com", 8, 1, "2027-02-10", "2027-02-18"], ["Huésped 3", "Booking.com", 7, 1, "2027-02-15", "2027-02-22"], ["Huésped 4", "Santiago Posada", 7, 1, "2027-02-04", "2027-02-11"], ["Huésped 5", "Booking.com", 6, 1, "2027-02-13", "2027-02-19"]]
+        grandes: [["Huésped 1", "Booking.com", 8, 2, "2027-02-14", "2027-02-18"], ["Huésped 2", "Booking.com", 8, 1, "2027-02-10", "2027-02-18"], ["Huésped 3", "Booking.com", 7, 1, "2027-02-15", "2027-02-22"], ["Huésped 4", "Directo (equipo)", 7, 1, "2027-02-04", "2027-02-11"], ["Huésped 5", "Booking.com", 6, 1, "2027-02-13", "2027-02-19"]]
       },
       {
         id: "2027-03",
@@ -5868,7 +6372,7 @@ window.CASA_KIWI = {
   },
   marketing: {
     periodo: "23 oct – 21 nov 2026",
-    corte: "",
+    corte: "2026-11-22",
     google: {
       periodo: "23 oct – 19 nov 2026",
       fechas: ["2026-10-23","2026-10-24","2026-10-25","2026-10-26","2026-10-27","2026-10-28","2026-10-29","2026-10-30","2026-10-31","2026-11-01","2026-11-02","2026-11-03","2026-11-04","2026-11-05","2026-11-06","2026-11-07","2026-11-08","2026-11-09","2026-11-10","2026-11-11","2026-11-12","2026-11-13","2026-11-14","2026-11-15","2026-11-16","2026-11-17","2026-11-18","2026-11-19"],
@@ -6243,6 +6747,28 @@ window.CASA_KIWI = {
   revenueInfo: {
     fuente: "Proyecto TARIFAS CASA KIWI: documento de traspaso del 22 nov 2026 y página Revenue Casa Kiwi (reportes semanales de revenue y decisiones registradas).",
     nota: "Las cifras de ocupación y ADR de esta sección vienen del reporte semanal de revenue (lecturas diarias de Lobby, base 50 unidades) y pueden diferir un poco de las del reporte financiero."
+  },
+  lyAnio: {
+    desde: "2025-01-01",
+    hasta: "2025-11-22",
+    ocupacion: 36.5,
+    vendidas: 5942,
+    alojamiento_var: 15.2,
+    adr_var: -7.4
+  },
+  lyMeses: {
+    "2025-01": 61,
+    "2025-02": 59.6,
+    "2025-03": 29.2,
+    "2025-04": 41.9,
+    "2025-05": 28.5,
+    "2025-06": 34.7,
+    "2025-07": 25.5,
+    "2025-08": 47.1,
+    "2025-09": 25.7,
+    "2025-10": 17.1,
+    "2025-11": 32.8,
+    "2025-12": 26.8
   }
 };
 </script>
@@ -6253,7 +6779,7 @@ window.CASA_KIWI = {
 const D = window.CASA_KIWI;
 const C = {ink:'#141210', orange:'#EC5A1C', yellow:'#F6BE1F', muted:'#5F5850', grey:'#CFC8BE', sand:'#E8E3DC', green:'#2F8F5B', red:'#C8372D', lav:'#3E7C8C', ups:'#E79A6F'};
 const PAL = [C.orange, C.ink, C.yellow, '#8C8479', '#E79A6F', '#B9B1A6', '#F9DC85', '#4A443E'];
-const CANAL_COLOR = {'Hostelworld':C.orange,'Booking.com':C.ink,'Recepción':C.yellow,'Santiago Posada':'#E79A6F','Motor web':'#2F8F5B','Expedia':'#8C8479','Airbnb':'#B9B1A6','Directo / sin canal':'#F9DC85'};
+const CANAL_COLOR = {'Hostelworld':C.orange,'Booking.com':C.ink,'Recepción':C.yellow,'Directo (equipo)':'#E79A6F','Motor web':'#2F8F5B','Expedia':'#8C8479','Airbnb':'#B9B1A6','Directo / sin canal':'#F9DC85'};
 const DIAS = ['Lun','Mar','Mié','Jue','Vie','Sáb','Dom'];
 const MES = ['ene','feb','mar','abr','may','jun','jul','ago','sep','oct','nov','dic'];
 
@@ -6268,7 +6794,7 @@ const copM = v => {
   if (a >= 1e3) return s + Math.round(a/1e3) + ' mil';
   return s + nf.format(a);
 };
-const copK = v => !isNum(v) ? '—' : (Math.abs(v) >= 1e6 ? copM(v) : (v<0?'−$':'$') + Math.round(Math.abs(v)/1e3) + 'k');
+const copK = v => !isNum(v) ? '—' : v===0 ? '$0' : (Math.abs(v) >= 1e6 ? copM(v) : (v<0?'−$':'$') + Math.round(Math.abs(v)/1e3) + ' mil');
 const pct = (v, d=1) => isNum(v) ? v.toLocaleString('es-CO',{minimumFractionDigits:d,maximumFractionDigits:d}) + ' %' : '—';
 const num = v => isNum(v) ? nf.format(v) : '—';
 const sum = a => (a||[]).reduce((x,y)=>x+(isNum(y)?y:0),0);
@@ -6303,28 +6829,62 @@ function delta(cur, prev, kind){
 }
 
 /* =====================================================================
+   Glosario: cada término con su (i)
+   ===================================================================== */
+const GLOS = {
+  ocupacion:['Ocupación','Noches vendidas ÷ noches disponibles. Si hay 48 unidades y se venden 24 una noche, esa noche va al 50 %. La diferencia entre dos ocupaciones se da en puntos (pts): de 40 % a 45 % son +5 pts.'],
+  pts:['Puntos (pts)','Diferencia entre dos porcentajes. Pasar de 40 % a 45 % es +5 pts (no +5 %). Se usa para la ocupación.'],
+  adr:['ADR (tarifa promedio)','Lo que deja en promedio cada noche vendida: ingreso de alojamiento ÷ noches vendidas.'],
+  revpar:['RevPAR','Lo que deja cada noche disponible, vendida o no: ingreso de alojamiento ÷ noches disponibles. Junta ocupación y tarifa en una sola cifra.'],
+  recaudo:['Recaudo','Dinero que entró en el periodo según el reporte de pagos de Lobby, sin importar cuándo se hospeda el huésped.'],
+  ingresos:['Ingresos del periodo','Alojamiento de las noches del periodo + bar + lavandería + upsale + otros cargos cobrados en esas fechas.'],
+  upsale:['Upsale','Upgrades que se cobran como cargo extra: por ejemplo pasar de dormitorio a privada o a una habitación mejor.'],
+  libros:['En libros / vendido hoy','Lo que ya está reservado hoy para fechas futuras. Puede subir con reservas nuevas o bajar con cancelaciones.'],
+  escenario:['Escenario de cierre','Lo vendido hoy + las noches que el año pasado entraron desde esta fecha hasta el final de ese mes. Es una referencia, no una promesa.'],
+  pickup:['Lo que entró (pickup)','Noches nuevas reservadas en los últimos 7 o 30 días para ese mes.'],
+  ota:['OTA','Agencia de viajes en línea que cobra comisión: Hostelworld, Booking, Expedia, Airbnb.'],
+  directo:['Directo','Reservas sin comisión: recepción, el equipo de reservas por WhatsApp y el motor de la página web.'],
+  comision:['Comisión','Lo que cobra cada canal: Hostelworld 24 % (26 % hasta el 9 oct 2026), Booking y Airbnb 18 %, Expedia 26 %, directos 0 %.'],
+  equilibrio:['Equilibrio','Ocupación que cubre los gastos fijos del hostal, estimada en ~43 %.'],
+  vs2025:['Frente a 2025','Mismas fechas del año pasado (la semana se compara con la misma semana, lunes a domingo). La ocupación de 2025 sale del exporte de reservas sobre las 50 unidades de entonces; el alojamiento y el ADR se comparan exporte contra exporte.'],
+  freno:['Freno','Una propuesta de tarifa que el sistema detuvo antes de aplicarla en Lobby, por ejemplo porque bajaba demasiado.'],
+  consejo:['Sesión del consejo','Revisión semanal de tarifas: se proponen cambios, se votan y Santiago aprueba los que se aplican en Lobby.'],
+  unidades:['Unidades en venta','Camas de dormitorio y habitaciones privadas que se pueden vender cada noche: 50 hasta septiembre de 2026 y 48 desde octubre.'],
+};
+const help = k => GLOS[k] ? `<button type="button" class="ih" data-help="${k}" aria-label="Qué es ${esc(GLOS[k][0])}">i</button>` : '';
+/* ventana de ayuda */
+document.addEventListener('click', e=>{ const b=e.target.closest('[data-help]'), pop=document.getElementById('pop');
+  if(!b){ if(!e.target.closest('#pop')) pop.classList.remove('on'); return; }
+  e.preventDefault(); e.stopPropagation(); const [t,d]=GLOS[b.dataset.help];
+  if(pop.classList.contains('on') && pop.dataset.k===b.dataset.help){ pop.classList.remove('on'); return; }
+  pop.innerHTML=`<b>${esc(t)}</b>${esc(d)} <a href="#glosario" style="color:var(--yellow)">Ver todo</a>`; pop.dataset.k=b.dataset.help; pop.classList.add('on');
+  const r=b.getBoundingClientRect(), w=Math.min(300, window.innerWidth-24);
+  pop.style.left=Math.max(12, Math.min(r.left+window.scrollX-20, window.scrollX+window.innerWidth-w-12))+'px'; pop.style.top=(r.bottom+window.scrollY+8)+'px'; }, true);
+
+/* =====================================================================
    Gráficas en SVG (sin librerías)
    ===================================================================== */
 const MOB = () => window.innerWidth < 700;
-function cw(W){ if(!MOB()) return W; return Math.min(W, Math.max(290, window.innerWidth-52)); }
-function autoEvery(labels, band, every){ const mx=Math.max(...labels.map(l=>String(l).length)); const need=Math.ceil((mx*6.2+10)/band); return Math.max(every||1, need); }
+function cw(W){ const ancho=Math.min(window.innerWidth,1240)-(MOB()?52:76); return Math.min(W, Math.max(290, ancho)); }
+function autoEvery(labels, band, every){ const mx=Math.max(...labels.map(l=>String(l).length)); const need=Math.ceil((mx*6.3+6)/band); return Math.max(every||1, need); }
 function clip(t,max){ t=String(t); return t.length>max ? t.slice(0,max-1)+'…' : t; }
 function niceMax(v){ if(v<=0) return 1; const p=Math.pow(10,Math.floor(Math.log10(v))); const n=v/p; return (n<=1?1:n<=2?2:n<=2.5?2.5:n<=5?5:10)*p; }
 function legend(items){ return `<div class="legend">${items.map(i=>`<span class="${i.line?'ln':''}" style="--c:${i.c}">${esc(i.n)}</span>`).join('')}</div>`; }
 
 /* Barras verticales (agrupadas o apiladas) + línea opcional en eje derecho */
 function barChart(o){
-  const W=cw(o.W||640), H=MOB()?Math.min(o.h||250,230):(o.h||250), L=o.yLabels===false?8:46, R=o.line?54:10, T=16, B=o.rotate?54:30;
+  const W=cw(o.W||640), H=MOB()?Math.min(o.h||250,230):(o.h||250), L=o.yLabels===false?8:62, R=o.line?62:10, T=o.totals?24:16, B=o.rotate?54:30;
   const labels=o.labels, n=labels.length, series=o.series;
   const stacked=!!o.stacked;
   let maxV = o.max ?? (stacked ? Math.max(...labels.map((_,i)=>sum(series.map(s=>s.data[i])))) : Math.max(...series.flatMap(s=>s.data.filter(isNum))));
   if(o.cap) maxV=Math.max(maxV,o.cap);
-  const yMax = o.max ?? niceMax(maxV*1.08);
+  const yMax = o.max ?? (o.cap ? Math.ceil(maxV*1.12/4)*4 : niceMax(maxV*1.08));
   const pw=W-L-R, ph=H-T-B, band=pw/n, gw=band*(o.gw||0.68);
-  if(MOB()){ o={...o}; if(!o.rotate) o.every=autoEvery(labels,band,o.every); if(o.every===1) delete o.every; if(band<28) o.values=false; if(gw<40) o.stackVals=false; }
+  o={...o}; if(!o.rotate) o.every=autoEvery(labels,band,o.every); if(o.every===1) delete o.every;
+  if(MOB()){ if(band<28) o.values=false; if(gw<40) o.stackVals=false; if(band<40) o.totals=false; }
   const y = v => T+ph - (v/yMax)*ph;
   let g='';
-  for(let k=0;k<=4;k++){ const v=yMax*k/4, yy=y(v); g+=`<line x1="${L}" x2="${W-R}" y1="${yy}" y2="${yy}" stroke="#EEE9E2"/>`; if(o.yLabels!==false) g+=`<text x="${L-6}" y="${yy+4}" text-anchor="end">${esc((o.yFmt||num)(v))}</text>`; }
+  for(let k=0;k<=4;k++){ const v=yMax*k/4, yy=y(v); g+=`<line x1="${L}" x2="${W-R}" y1="${yy}" y2="${yy}" stroke="#EEE9E2"/>`; if(o.yLabels!==false) g+=`<text x="${L-6}" y="${yy+4}" text-anchor="end">${esc((o.yFmt||(x=>num(Math.round(x))))(v))}</text>`; }
   labels.forEach((lb,i)=>{
     const cx=L+band*i+band/2;
     if(o.every && !((i%o.every===0 && labels.length-1-i>o.every/2) || i===labels.length-1)) {} else if(o.rotate) g+=`<text transform="translate(${cx},${H-B+12}) rotate(-35)" text-anchor="end">${esc(lb)}</text>`;
@@ -6341,6 +6901,7 @@ function barChart(o){
       if(o.values!==false && !stacked && hgt>=0) g+=`<text class="val" x="${x+w/2}" y="${y1-4}" text-anchor="middle">${esc((s.short||o.vShort||s.fmt||o.vFmt||num)(v))}</text>`;
       if(stacked && o.stackVals && hgt>14) g+=`<text class="val" x="${cx}" y="${y1+hgt/2+4}" text-anchor="middle" style="fill:${col===C.ink?'#fff':C.ink}">${esc((o.vShort||num)(v))}</text>`;
     });
+    if(stacked && o.totals && acc>0) g+=`<text class="val" x="${cx}" y="${y(acc)-6}" text-anchor="middle">${esc((o.vShort||num)(acc))}</text>`;
   });
   if(o.cap){ const yy=y(o.cap); g+=`<line x1="${L}" x2="${W-R}" y1="${yy}" y2="${yy}" stroke="${C.ink}" stroke-dasharray="5 4"/><text x="${W-R}" y="${yy-5}" text-anchor="end" style="font-weight:700;fill:${C.ink}">${esc(o.capLabel||'Capacidad')}</text>`; }
   if(o.ref){ o.ref.forEach(r=>{ const yy=y(r.v); g+=`<line x1="${L}" x2="${W-R}" y1="${yy}" y2="${yy}" stroke="${r.c||C.muted}" stroke-dasharray="3 3"/><text x="${W-R-2}" y="${yy-5}" text-anchor="end" style="font-weight:700;fill:${r.c||C.muted}">${esc(r.label)}</text>`; }); }
@@ -6361,8 +6922,8 @@ function barChart(o){
 
 /* Líneas de tendencia (varias series) */
 function lineChart(o){
-  const W=cw(o.W||640),H=MOB()?Math.min(o.h||240,220):(o.h||240),L=50,R=14,T=16,B=30, labels=o.labels, n=labels.length;
-  if(MOB()){ o={...o}; const st=(W-L-R)/Math.max(1,n-1); o.every=autoEvery(labels,st,o.every); if(o.every===1) delete o.every; if(st<34) o.values=false; }
+  const W=cw(o.W||640),H=MOB()?Math.min(o.h||240,220):(o.h||240),L=62,R=18,T=16,B=30, labels=o.labels, n=labels.length;
+  { o={...o}; const st=(W-L-R)/Math.max(1,n-1); o.every=autoEvery(labels,st,o.every); if(o.every===1) delete o.every; if(MOB()&&st<34) o.values=false; }
   const all=o.series.flatMap(s=>s.data.filter(isNum));
   const yMax=o.max??niceMax(Math.max(...all)*1.08), yMin=o.min??0;
   const pw=W-L-R, ph=H-T-B, step=n>1?pw/(n-1):0;
@@ -6375,7 +6936,8 @@ function lineChart(o){
     s.data.forEach((v,i)=>{ if(!isNum(v)){seg=false;return;} d+=(seg?'L':'M')+x(i)+','+y(v); seg=true; });
     g+=`<path d="${d}" fill="none" stroke="${s.color}" stroke-width="3" ${s.dash?'stroke-dasharray="6 5"':''}/>`;
     s.data.forEach((v,i)=>{ if(!isNum(v)) return; g+=`<circle cx="${x(i)}" cy="${y(v)}" r="${n>20?3:5}" fill="#fff" stroke="${s.color}" stroke-width="${n>20?2:3}"><title>${esc(labels[i])} · ${esc(s.name)}: ${esc((s.fmt||o.vFmt||num)(v))}</title></circle>`;
-      if(o.values!==false) g+=`<text class="val" x="${x(i)}" y="${y(v)-10}" text-anchor="middle">${esc((s.short||s.fmt||o.vFmt||num)(v))}</text>`; });
+      const abajo=o.series.some(t=>t!==s&&isNum(t.data[i])&&t.data[i]>v&&t.data[i]-v<(yMax-yMin)*.12);
+      if(o.values!==false && !s.noVals) g+=`<text class="val" x="${x(i)}" y="${abajo?y(v)+20:y(v)-10}" text-anchor="middle">${esc((s.short||s.fmt||o.vFmt||num)(v))}</text>`; });
   });
   return `<svg viewBox="0 0 ${W} ${H}" role="img">${g}</svg>`;
 }
@@ -6383,6 +6945,7 @@ function lineChart(o){
 /* Barras horizontales */
 function hbars(rows, o={}){
   const vals=rows.map(r=>r[1]).filter(isNum); if(!vals.length) return `<div class="empty">Sin datos en este reporte</div>`;
+  if(rows.length===1 && !o.keep){ const [lb,v,,ex]=rows[0]; return `<div class="solo"><b>${esc((o.fmt||num)(v))}</b><span>${esc(lb)}${ex?' · '+esc(ex):''}</span></div>`; }
   const W=cw(o.W||640), rh=o.rh||30, L=MOB()?Math.min(o.L||150,Math.round(W*0.36)):(o.L||150), R=MOB()?Math.min(o.R||90,72):(o.R||90), H=rows.length*rh+6, max=o.max||Math.max(...vals);
   let g='';
   rows.forEach((r,i)=>{
@@ -6453,8 +7016,27 @@ function mixChart(weeks){
 /* =====================================================================
    Piezas comunes
    ===================================================================== */
-function kpi(l, v, s='', d='', hl=false){ return `<div class="kpi${hl?' hl':''}"><div class="l">${esc(l)}</div><div class="v">${v}</div><div class="s">${d} ${s}</div></div>`; }
-function card(cls, title, sub, body, foot=''){ return `<section class="card ${cls}"><h3>${esc(title)}</h3>${sub?`<p class="sub">${sub}</p>`:''}${body}${foot?`<p class="foot">${foot}</p>`:''}</section>`; }
+const KH={'Ocupación':'ocupacion','Ocupación del año':'ocupacion','ADR':'adr','ADR del año':'adr','RevPAR':'revpar','Recaudo':'recaudo','Recaudo (dinero que entró)':'recaudo','Recaudo total':'recaudo',
+  'Ingresos del periodo':'ingresos','Upsale cobrado':'upsale','Valor en libros':'libros','ADR en libros':'adr','Vendido hoy':'libros','Escenario de cierre':'escenario','Entró en los últimos 7 días':'pickup',
+  'Comisiones de canales':'comision','Tarifa promedio y RevPAR':'revpar','Ocupación por semana':'equilibrio','Reservas directas frente a OTAs':'directo','Por canal':'directo','Reservas creadas por canal':'directo'};
+function kpi(l, v, s='', d='', hl=false, x=''){ return `<div class="kpi${hl?' hl':''}"><div class="l">${esc(l)}${help(KH[l])}</div><div class="v">${v}</div><div class="s">${d} ${s}</div>${x}</div>`; }
+/* comparación con el mismo periodo de 2025 */
+const dv = v => isNum(v) ? `<span class="delta ${Math.abs(v)<0.5?'flat':v>0?'up':'down'}">${v>0?'▲ +':v<0?'▼ −':'• '}${Math.abs(v).toLocaleString('es-CO',{maximumFractionDigits:0})} %</span>` : '';
+function vsLY(r, k){
+  const ly=r?.ly; if(!ly) return '';
+  const t={ocup:()=>`2025: ${pct(ly.ocupacion)} · ${delta(r.ocupacion,ly.ocupacion,'pp')}`, noches:()=>`2025: ${num(ly.vendidas)} · ${delta(r.vendidas,ly.vendidas)}`,
+    aloj:()=>isNum(ly.alojamiento_var)?`frente a 2025: ${dv(ly.alojamiento_var)}`:'', adr:()=>isNum(ly.adr_var)?`frente a 2025: ${dv(ly.adr_var)}`:''}[k]();
+  return t?`<div class="s2">${t}</div>`:'';
+}
+function veredicto(ocup, ly, titulo, href){
+  if(!ly||!isNum(ocup)) return '';
+  const dp=ocup-ly.ocupacion, da=ly.alojamiento_var, buenos=[dp>=1, isNum(da)&&da>=1].filter(Boolean).length, malos=[dp<=-1, isNum(da)&&da<=-1].filter(Boolean).length;
+  const [c,txt]= buenos===2?[C.green,'Vamos mejor que el año pasado']: malos===2?[C.red,'Vamos peor que el año pasado']: buenos>malos?[C.green,'Vamos un poco mejor que el año pasado']: malos>buenos?[C.yellow,'Vamos un poco peor que el año pasado']:[C.yellow,'Vamos parecido al año pasado'];
+  return `<${href?`a href="${href}"`:'div'} class="verdict" style="--c:${c};text-decoration:none;color:inherit"><span class="vd"><span class="dot" style="vertical-align:1px;margin-right:8px"></span>${txt}</span>
+    <span class="vx">${esc(titulo)}: <span>ocupación ${pct(ocup)} (2025: ${pct(ly.ocupacion)}) ${delta(ocup,ly.ocupacion,'pp')}</span> · <span>alojamiento ${dv(da)}</span>${isNum(ly.adr_var)?` · <span>tarifa promedio ${dv(ly.adr_var)}</span>`:''}</span>
+    <span class="vs">Comparado con las mismas fechas de 2025 ${help('vs2025')}</span></${href?'a':'div'}>`;
+}
+function card(cls, title, sub, body, foot=''){ return `<section class="card ${cls}"><h3>${esc(title)}${help(KH[title])}</h3>${sub?`<p class="sub">${sub}</p>`:''}${body}${foot?`<p class="foot">${foot}</p>`:''}</section>`; }
 function hallazgos(h){
   if(!h) return '';
   const box=(t,c,arr)=>arr&&arr.length?`<div class="fbox" style="--c:${c}"><h4>${t}</h4><ul>${arr.map(x=>`<li>${esc(x)}</li>`).join('')}</ul></div>`:'';
@@ -6499,7 +7081,9 @@ function prevReport(r){
   if(r.tipo==='semana') return prevOf(semanas.find(w=>w.id===r.id));
   const i=meses.findIndex(m=>m.id===r.id); return i>0?meses[i-1]:null;
 }
-const TABS = [['resumen','Resumen'],['alojamiento','Alojamiento'],['bar','Bar'],['lavanderia','Lavandería'],['upsale','Upsale'],['otros','Otros'],['revenue','Revenue']];
+const TABS = [['resumen','Resumen'],['alojamiento','Alojamiento'],['bar','Bar'],['lavanderia','Lavandería'],['upsale','Upsale'],['otros','Otros'],['revenue','Tarifas']];
+const parcial = r => r.tipo==='mes' && /\(1–\d+\)/.test(r.nombre||'');
+const tagTxt = r => r.tipo==='mes' ? (parcial(r)?'Mes en curso':'Cierre mensual') : 'Semanal';
 
 /* =====================================================================
    Vista: Panel general
@@ -6509,7 +7093,7 @@ function reportCard(r){
   const s=split(r), tot=s.T||1;
   const seg=(v,c)=>isNum(v)&&v>0?`<i style="width:${v/tot*100}%;background:${c}"></i>`:'';
   return `<a class="rcard" href="#r-${r.id}">
-    <div class="rc-top"><span class="tag ${r.tipo}">${r.tipo==='mes'?'Cierre mensual':'Semanal'}${r.link?' · enviado':''}</span><span class="rc-occ" style="--o:${Math.min(100,r.ocupacion)}%">${pct(r.ocupacion,1)}</span></div>
+    <div class="rc-top"><span class="tag ${r.tipo}">${tagTxt(r)}${r.link?' · enviado':''}</span><span class="rc-occ" style="--o:${Math.min(100,r.ocupacion)}%">${pct(r.ocupacion,1)}</span></div>
     <div class="rc-name">${esc(r.tipo==='mes'?r.nombre:r.nombre)}</div>
     <p class="rc-t">${esc(r.titular)}</p>
     <div class="rc-bar">${FUENTES.map(([k,,,c])=>seg(s[k],C[c])).join('')}</div>
@@ -6529,11 +7113,11 @@ function pickerGrid(){
   const items=reportes.filter(r=>mesDe(r)===mesSel);
   const cierre=items.find(r=>r.tipo==='mes'), sems=items.filter(r=>r.tipo==='semana').sort((a,b)=>a.inicio.localeCompare(b.inicio));
   const [y,m]=mesSel.split('-').map(Number);
-  return `<div class="mpick">${ks.map(k=>{const [yy,mm]=k.split('-').map(Number); const c=reportes.find(r=>r.tipo==='mes'&&r.id===k);
-      return `<button class="mchip${k===mesSel?' on':''}" data-mes="${k}"><b>${MES_L[mm-1].slice(0,3)}</b><span>${c?pct(c.ocupacion,0):''}</span></button>`;}).join('')}</div>
-    <div class="msel-head"><h3 class="mtitle">${MES_L[m-1]} ${y}<span>${sems.length} semana${sems.length===1?'':'s'}${cierre?' · cierre mensual':''}</span></h3></div>
+  return `<div class="sw"><div class="mpick">${ks.map(k=>{const [yy,mm]=k.split('-').map(Number); const c=reportes.find(r=>r.tipo==='mes'&&r.id===k);
+      return `<button class="mchip${k===mesSel?' on':''}" data-mes="${k}"><b>${MES_L[mm-1].slice(0,3)}</b><span>${c?pct(c.ocupacion,0):''}</span></button>`;}).join('')}</div></div>
+    <div class="msel-head"><h3 class="mtitle">${MES_L[m-1]} ${y}<span>${sems.length} semana${sems.length===1?'':'s'}${cierre?(parcial(cierre)?' · mes en curso':' · cierre mensual'):''}</span></h3></div>
     ${cierre?`<div class="rgrid cierre">${reportCard(cierre)}</div>`:''}
-    <p class="wlabel">Semanas de ${MES_L[m-1].toLowerCase()}</p>
+    <p class="wlabel">Semanas de ${MES_L[m-1].toLowerCase()}</p>${cierre?`<p class="hint" style="margin:-4px 0 10px">${esc(conciliacion(cierre))}</p>`:''}
     <div class="rgrid">${sems.map(reportCard).join('')}</div>`;
 }
 function vAnio(){
@@ -6544,31 +7128,41 @@ function vAnio(){
   const alojA=sum(msp.map(x=>x.A)), barA=sum(msp.map(x=>x.B)), recA=sum(ms.map(m=>m.recaudo));
   const best=ws.reduce((a,b)=>b.ocupacion>a.ocupacion?b:a), bestM=ms.reduce((a,b)=>b.ocupacion>a.ocupacion?b:a);
   const sp=ws.map(split), ev=Math.ceil(ws.length/12);
+  const LA=D.lyAnio, ocA=vendA/dispA*100;
   let h = `<a class="back" href="#inicio">← Inicio</a><div class="phead"><h1>Cómo va el año ${AN}</h1><p>Del 1 de enero al ${corteTxt}. Cifras de todo el año, mes a mes y semana a semana.</p></div>`;
-  h += `<div class="kpis">
-    ${kpi('Ocupación del año', pct(vendA/dispA*100), `${num(vendA)} de ${num(dispA)} noches`, '', true)}
-    ${kpi('Alojamiento', copM(alojA), 'ingreso estimado de Lobby')}
-    ${kpi('ADR del año', copK(alojA/vendA), 'tarifa promedio por noche')}
+  h += veredicto(ocA, LA, `${AN} hasta el ${corteTxt}`);
+  h += `<div class="kpis" style="margin-top:16px">
+    ${kpi('Ocupación del año', pct(ocA), `${num(vendA)} de ${num(dispA)} noches`, '', true, LA?`<div class="s2">2025: ${pct(LA.ocupacion)} · ${delta(ocA,LA.ocupacion,'pp')}</div>`:'')}
+    ${kpi('Alojamiento', copM(alojA), 'ingreso de alojamiento', '', false, LA?`<div class="s2">frente a 2025: ${dv(LA.alojamiento_var)}</div>`:'')}
+    ${kpi('ADR del año', cop(alojA/vendA), 'tarifa promedio por noche', '', false, LA?`<div class="s2">frente a 2025: ${dv(LA.adr_var)}</div>`:'')}
     ${kpi('Bar', copM(barA), 'venta cobrada en el año')}
     ${kpi('Recaudo', copM(recA), 'dinero que entró en el año')}
     ${kpi('Mejor mes', pct(bestM.ocupacion), esc(bestM.nombre))}
-  </div>`;
-  h += `<div class="grid">` + card('w12',AN+' mes a mes','Barras: ingresos de cada mes separados en alojamiento, bar, lavandería, upsale y otros. Línea: ocupación del mes.',
-    legend([...FUENTES.map(([,,n,c])=>({n,c:C[c]})),{n:'Ocupación',c:C.green,line:1}]) +
-    barChart({W:1150, h:300, labels:ms.map(m=>m.nombre.replace(' 2026','')), stacked:true, stackVals:true, vShort:copM,
-      series:FUENTES.map(([k,,n,c])=>({name:n,data:msp.map(x=>x[k]),color:C[c],fmt:cop})), yFmt:copK,
-      line:{name:'Ocupación',data:ms.map(m=>m.ocupacion),color:C.green,fmt:v=>pct(v),axFmt:v=>Math.round(v)+' %',min:0,max:100}}),
-    (AN==='2026'?'Octubre usa el ingreso de alojamiento del reporte del 2 nov ($74,64 M). ':'')+(/\(1–\d+\)/.test(ulM.nombre)?`${ulM.nombre.replace(/ \d{4}/,'')} va hasta el ${corteTxt}.`:'')) + `</div>`;
+  </div>
+  <p class="basis">Noches disponibles: ${help('unidades')} 50 unidades por noche hasta septiembre y 48 desde octubre (${num(dispA)} en total).</p>`;
+  h += `<div class="grid">` + card('w12',AN+' mes a mes · ingresos','Cada barra es un mes, separada en alojamiento, bar, lavandería, upsale y otros. Encima, el total del mes.',
+    legend(FUENTES.map(([,,n,c])=>({n,c:C[c]}))) +
+    barChart({W:1150, h:300, labels:ms.map(m=>m.nombre.replace(' '+AN,'').replace(/\s*\(1–\d+\)/,' *')), stacked:true, totals:true, vShort:copM,
+      series:FUENTES.map(([k,,n,c])=>({name:n,data:msp.map(x=>x[k]),color:C[c],fmt:cop})), yFmt:copK}),
+    (AN==='2026'?'Octubre usa el ingreso de alojamiento del reporte del 2 nov ($74,64 M). ':'')+(/\(1–\d+\)/.test(ulM.nombre)?`* ${ulM.nombre.replace(/ \d{4}/,'')} va hasta el ${corteTxt}.`:''));
+  const lyM=D.lyMeses||{}, ant=String(+AN-1);
+  h += card('w12','Ocupación mes a mes: '+AN+' frente a '+ant,'Naranja: '+AN+'. Gris punteado: el mismo mes de '+ant+' (exporte de reservas, 50 unidades).',
+    legend([{n:AN,c:C.orange,line:1},{n:ant,c:'#8C8479',line:1}]) +
+    lineChart({W:1150, h:250, labels:MES_L.map(x=>x.slice(0,3)), max:100, yFmt:v=>v+' %',
+      series:[{name:AN,data:MES_L.map((_,i)=>{const m=ms.find(x=>+x.id.slice(5,7)===i+1); return m?m.ocupacion:null;}),color:C.orange,fmt:v=>pct(v),short:v=>pct(v,0)},
+              {name:ant,data:MES_L.map((_,i)=>lyM[`${ant}-${String(i+1).padStart(2,'0')}`]??null),color:'#8C8479',dash:1,noVals:1,fmt:v=>pct(v),short:v=>pct(v,0)}]}),
+    'La ocupación del mes en curso es la del 1 al '+corteTxt+'.') + `</div>`;
 
   h += `<h2 class="sec">Semana a semana</h2><div class="grid">`;
-  h += card('w12','Ocupación por semana','Naranja: 70 % o más · amarillo: 45–70 % · gris: menos de 45 %. La línea punteada es el equilibrio estimado (~43 %).',
+  h += card('w12','Ocupación por semana','Cada barra es una semana (lunes a domingo). Naranja: 70 % o más · amarillo: 45–70 % · gris: menos de 45 %. La línea punteada es el equilibrio estimado (~43 %).',
     barChart({W:1150, h:260, labels:lb, series:[{name:'Ocupación', data:ws.map(w=>w.ocupacion), color:v=>occColor(v), fmt:v=>pct(v)}], values:false, every:ev, yFmt:v=>v+' %', max:100, gw:.8, ref:[{v:43,label:'43 %',c:C.muted}]}));
-  h += card('w12','Ingresos por semana','La base de las cifras cambió en algunos reportes enviados (P&L, ventas PMS, recaudo); las semanas generadas usan el estimado de Lobby y el reporte de pagos.',
+  h += card('w12','Ingresos por semana','Cada barra es una semana, separada por fuente de ingreso.',
     legend(FUENTES.map(([,,n,c])=>({n,c:C[c]}))) +
-    barChart({W:1150, h:280, labels:lb, stacked:true, every:ev, gw:.8, series:FUENTES.map(([k,,n,c])=>({name:n,data:sp.map(x=>x[k]),color:C[c],fmt:cop})), yFmt:copK}));
+    barChart({W:1150, h:280, labels:lb, stacked:true, every:ev, gw:.8, series:FUENTES.map(([k,,n,c])=>({name:n,data:sp.map(x=>x[k]),color:C[c],fmt:cop})), yFmt:copK}),
+    'Seis semanas de septiembre y octubre vienen de los reportes enviados por correo, que usaban otra base (ventas del PMS o recaudo); el resto usa el ingreso de alojamiento de Lobby y el reporte de pagos.');
   h += card('w7','Tarifa promedio y RevPAR','ADR: lo que deja cada noche vendida. RevPAR: lo que deja cada noche disponible.',
     legend([{n:'ADR',c:C.ink,line:1},{n:'RevPAR',c:C.orange,line:1}]) +
-    lineChart({labels:lb.map(x=>x.split(' ')[0]+' '+x.split(' ').slice(-1)[0]), every:ev, values:false, series:[{name:'ADR',data:ws.map(w=>w.adr),color:C.ink,fmt:cop},{name:'RevPAR',data:ws.map(w=>w.revpar),color:C.orange,fmt:cop}], yFmt:copK}));
+    lineChart({labels:ws.map(w=>{const f=fecha(w.inicio); return f.d+' '+MES[f.m-1];}), values:false, series:[{name:'ADR',data:ws.map(w=>w.adr),color:C.ink,fmt:cop},{name:'RevPAR',data:ws.map(w=>w.revpar),color:C.orange,fmt:cop}], yFmt:copK}));
   h += card('w5','De dónde vienen las reservas nuevas','Canal de las reservas creadas en las últimas 12 semanas.', mixChart(ws.slice(-12)));
   h += `</div>`;
 
@@ -6578,20 +7172,30 @@ function vAnio(){
 /* =====================================================================
    Vista: Reporte (con pestañas)
    ===================================================================== */
+/* por qué las semanas no suman exactamente el mes */
+function conciliacion(m){
+  const ws=semanas.filter(w=>mesDe(w)===m.id); if(!ws.length) return '';
+  const fd=f=>{ const x=fecha(f); return x.d+' '+MES[x.m-1]; };
+  const ini=ws[0].inicio, fin=ws[ws.length-1].fin, mi=m.id+'-01', nd=Math.round(m.disponibles/m.unidades), mf=`${m.id}-${String(nd).padStart(2,'0')}`;
+  const p=[]; if(ini<mi) p.push(`la semana del ${rango(ws[0].inicio,ws[0].fin)} empieza en el mes anterior`); if(ini>mi){ const u=fd(ini).replace(/^\d+/,d=>d-1); p.push(u===fd(mi)?`el ${u} está en la semana del mes anterior`:`del ${fd(mi)} al ${u} están en la semana del mes anterior`); }
+  if(fin>mf) p.push(`la semana del ${rango(ws[ws.length-1].inicio,ws[ws.length-1].fin)} termina en el mes siguiente`); if(fin<mf) p.push(`del ${fd(fin).replace(/^\d+/,d=>+d+1)} al ${fd(mf)} todavía no tienen semana completa`);
+  return p.length ? `Las semanas no suman exactamente el ${parcial(m)?'mes en curso':'mes'}: ${p.join(' y ')}. El ${parcial(m)?'mes':'cierre'} cuenta solo los días del ${fd(mi)} al ${fd(mf)}.` : 'Las semanas cubren exactamente los días del mes.';
+}
 function vReporte(id, tab){
-  const r = byId(id) || reportes[0];
+  const r = byId(id);
+  if(!r) return vNoEncontrado('reporte '+id);
   tab = TABS.some(t=>t[0]===tab) ? tab : 'resumen';
-  const i = reportes.indexOf(r), newer = reportes[i-1], older = reportes[i+1];
+  const mismos = reportes.filter(x=>x.tipo===r.tipo), i = mismos.indexOf(r), newer = mismos[i-1], older = mismos[i+1];
   const s = split(r);
   let h = `<div class="rnav">
     <a class="back" href="#reportes">← Reportes</a>
     <select id="rsel" aria-label="Cambiar de reporte">${reportes.map(x=>`<option value="${x.id}" ${x.id===r.id?'selected':''}>${x.tipo==='mes'?'Mes · ':'Semana · '}${esc(x.nombre)}</option>`).join('')}</select>
-    <span class="arrows">${older?`<a href="#r-${older.id}--${tab}" title="${esc(older.nombre)}">‹ Anterior</a>`:''}${newer?`<a href="#r-${newer.id}--${tab}" title="${esc(newer.nombre)}">Siguiente ›</a>`:''}</span>
+    <span class="arrows">${older?`<a href="#r-${older.id}--${tab}" title="${esc(older.nombre)}">‹ ${r.tipo==='mes'?'Mes':'Semana'} anterior</a>`:''}${newer?`<a href="#r-${newer.id}--${tab}" title="${esc(newer.nombre)}">${r.tipo==='mes'?'Mes':'Semana'} siguiente ›</a>`:''}</span>
   </div>`;
-  h += `<section class="hero"><div class="eyebrow">${r.tipo==='mes'?'Cierre mensual':'Reporte semanal'} · ${esc(r.nombre)}</div>
+  h += `<section class="hero"><div class="eyebrow">${r.tipo==='mes'?tagTxt(r):'Reporte semanal'} · ${esc(r.nombre)}</div>
     <h1>${esc(r.titular)}</h1>
     ${r.evento?`<p><span class="pill">Contexto</span>&nbsp; ${esc(r.evento)}</p>`:''}
-    <div class="meta">${r.enviado?`<span>Enviado el ${esc(r.enviado)}</span>`:`<span class="pill" style="background:#fff">Construido el ${esc(r.construido)} con los exportes de Lobby · no se envió por correo</span>`}<span>${num(r.unidades)} unidades en venta</span>${r.link?`<a href="${esc(r.link)}" target="_blank" rel="noopener">Ver el reporte original ↗</a>`:''}</div></section>`;
+    <div class="meta">${r.enviado?`<span>Enviado el ${esc(r.enviado)}</span>`:`<span class="pill" style="background:#fff">Construido el ${esc(r.construido)} con los exportes de Lobby · no se envió por correo</span>`}<span>${num(r.unidades)} unidades en venta${help('unidades')}</span><span>Cifras en pesos colombianos (COP)</span>${r.link?`<a href="${esc(r.link)}" target="_blank" rel="noopener">Ver el reporte original ↗</a>`:''}</div></section>`;
 
   /* las tres fuentes, siempre visibles */
   const tile=(k,n,v,c,sub)=>`<a class="src ${tab===k?'on':''}" href="#r-${r.id}--${k}" style="--c:${c}"><span class="n">${n}</span><span class="v">${copM(v)}</span><span class="p">${isNum(v)&&s.T?pct(v/s.T*100,0)+' del total':'sin datos en este reporte'}${sub?' · '+sub:''}</span><span class="m"><i style="width:${isNum(v)&&s.T?v/s.T*100:0}%"></i></span></a>`;
@@ -6604,7 +7208,8 @@ function vReporte(id, tab){
   </div>`;
   if(r.ingresos?.base) h += `<p class="basis">Base de las cifras: ${esc(r.ingresos.base)}.</p>`;
 
-  h += `<nav class="rtabs">${TABS.map(([k,n])=>`<a href="#r-${r.id}--${k}" class="${tab===k?'on':''}${k==='revenue'&&r.revenue?' rv':''}">${n}${k==='revenue'&&r.revenue?` <span class="cnt">${r.revenue.cambios.length}</span>`:''}</a>`).join('')}</nav>`;
+  h += `<nav class="rtabs" aria-label="Secciones del reporte">${TABS.map(([k,n])=>`<a href="#r-${r.id}--${k}" class="${tab===k?'on':''}"${tab===k?' aria-current="page"':''}>${n}${k==='revenue'&&r.revenue?` <span class="cnt" title="${r.revenue.cambios.length} cambios de tarifa en el periodo">${r.revenue.cambios.length} cambios</span>`:''}</a>`).join('')}</nav>`;
+  if(r.tipo==='mes' && tab==='resumen'){ const c=conciliacion(r); if(c && !/exactamente los días/.test(c)) h+=`<p class="basis">${esc(c)}</p>`; }
   if(r.correccion) h += `<div class="note"><b>Corrección:</b> ${esc(r.correccion)}</div>`;
   if(r.nota_corte) h += `<div class="note"><b>Corte:</b> ${esc(r.nota_corte)}</div>`;
   h += tab==='alojamiento'? tAloj(r) : tab==='bar'? tBar(r) : tab==='lavanderia'? tLav(r) : tab==='upsale'? tUps(r) : tab==='otros'? tOtros(r) : tab==='revenue'? tRev(r) : tResumen(r);
@@ -6613,18 +7218,20 @@ function vReporte(id, tab){
 
 /* ---------- Resumen ---------- */
 function tResumen(r){
-  const p=prevReport(r), cmp=p?'vs '+(r.tipo==='mes'?p.nombre:rango(p.inicio,p.fin)):'', s=split(r);
+  const p0=prevReport(r), cmp=p0?'vs '+(r.tipo==='mes'?p0.nombre.replace(/ \d{4}/,'').toLowerCase():rango(p0.inicio,p0.fin)):'', s=split(r);
+  /* en el mes en curso los totales no se comparan con un mes completo */
+  const pt = parcial(r) ? null : p0, p = p0, cmpT = parcial(r) ? 'mes en curso: sin comparar totales con un mes completo' : cmp;
   let h=`<div class="kpis">
-    ${kpi('Ocupación', pct(r.ocupacion), cmp, delta(r.ocupacion,p?.ocupacion,'pp'), true)}
-    ${kpi('Noches vendidas', `${num(r.vendidas)}<span class="of"> / ${num(r.disponibles)}</span>`, cmp, delta(r.vendidas,p?.vendidas))}
-    ${kpi('ADR', copK(r.adr), cmp, delta(r.adr,p?.adr))}
-    ${kpi('Ingresos del periodo', copM(s.T), 'alojamiento + bar + lavandería + upsale + otros')}
-    ${kpi('Recaudo (dinero que entró)', copM(r.recaudo), cmp, delta(r.recaudo,p?.recaudo))}
+    ${kpi('Ocupación', pct(r.ocupacion), cmp, delta(r.ocupacion,p?.ocupacion,'pp'), true, vsLY(r,'ocup'))}
+    ${kpi('Noches vendidas', `${num(r.vendidas)}<span class="of"> / ${num(r.disponibles)}</span>`, cmpT, delta(r.vendidas,pt?.vendidas), false, vsLY(r,'noches'))}
+    ${kpi('ADR', cop(r.adr), cmp, delta(r.adr,p?.adr), false, vsLY(r,'adr'))}
+    ${kpi('Ingresos del periodo', copM(s.T), pt?cmp:'', pt?delta(s.T,split(pt).T):'', false, vsLY(r,'aloj').replace('frente a 2025','alojamiento frente a 2025'))}
+    ${kpi('Recaudo (dinero que entró)', copM(r.recaudo), pt?cmp:'', delta(r.recaudo,pt?.recaudo))}
     ${r.resultado?.valor!=null?kpi('Resultado estimado', `<span class="${r.resultado.valor>=0?'ok':'no'}">${copM(r.resultado.valor)}</span>`, 'después de gastos fijos'):''}
     ${(r.kpis||[]).filter(k=>/Resultado/.test(k[0])).map(([l,v,t])=>kpi(l,`<span class="${v>=0?'ok':'no'}">${fmtBy(v,t)}</span>`)).join('')}
   </div><div class="grid">`;
   h += card('w5','De dónde salió el dinero', esc(r.ingresos?.base||''), donut(FUENTES.map(([k,,n,c])=>[n,s[k],C[c]])));
-  if(r.diario?.vendidas) h += card('w7','La semana día a día', `Unidades vendidas cada noche frente a la capacidad (${r.unidades}).`,
+  if(r.diario?.vendidas) h += card('w7','La semana día a día', `Unidades vendidas cada noche (barras) frente a las ${r.unidades} unidades en venta (línea punteada).`,
     barChart({labels:diaLabels(r), series:[{name:'Unidades vendidas',data:r.diario.vendidas,color:v=>v/r.unidades>=0.7?C.orange:v/r.unidades>=0.45?C.yellow:C.grey}], cap:r.unidades, capLabel:`Capacidad ${r.unidades}`}));
   else if(r.semanas) h += card('w7','Ocupación por semana del mes','Semanas del calendario; la primera y la última pueden ser parciales.',
     barChart({labels:r.semanas.map(x=>x[0]), series:[{name:'Ocupación',data:r.semanas.map(x=>x[1]),color:v=>occColor(v),fmt:v=>pct(v),short:v=>pct(v,0)}], max:100, yFmt:v=>v+' %'}));
@@ -6640,10 +7247,10 @@ function tResumen(r){
 function tAloj(r){
   const p=prevReport(r), cmp=p?'vs anterior':'', dd=r.diario||{};
   let h=`<div class="kpis">
-    ${kpi('Ocupación', pct(r.ocupacion), cmp, delta(r.ocupacion,p?.ocupacion,'pp'), true)}
-    ${kpi('Noches vendidas', `${num(r.vendidas)}<span class="of"> / ${num(r.disponibles)}</span>`, cmp, delta(r.vendidas,p?.vendidas))}
-    ${kpi('ADR', copK(r.adr), 'ingreso ÷ noches vendidas', delta(r.adr,p?.adr))}
-    ${kpi('RevPAR', copK(r.revpar), 'ingreso ÷ noches disponibles', delta(r.revpar,p?.revpar))}
+    ${kpi('Ocupación', pct(r.ocupacion), cmp, delta(r.ocupacion,p?.ocupacion,'pp'), true, vsLY(r,'ocup'))}
+    ${kpi('Noches vendidas', `${num(r.vendidas)}<span class="of"> / ${num(r.disponibles)}</span>`, cmp, delta(r.vendidas,p?.vendidas), false, vsLY(r,'noches'))}
+    ${kpi('ADR', cop(r.adr), 'ingreso ÷ noches vendidas', delta(r.adr,p?.adr))}
+    ${kpi('RevPAR', cop(r.revpar), 'ingreso ÷ noches disponibles', delta(r.revpar,p?.revpar))}
     ${r.checkins!=null?kpi('Check-ins / check-outs', `${num(r.checkins)} / ${num(r.checkouts)}`, r.huespedesIn?`${r.huespedesIn} huéspedes llegaron`:''):''}
     ${r.reservasCreadas!=null?kpi('Reservas creadas', num(r.reservasCreadas), r.valorCreadas?copM(r.valorCreadas)+' en valor':'', r.valorCreadas?'':delta(r.reservasCreadas,p?.reservasCreadas)):''}
     ${r.extensiones?kpi('Extensiones directas', copM(r.extensiones.valor), `${r.extensiones.n} extensi${r.extensiones.n===1?'ón':'ones'} · ${r.extensiones.noches} noches`):''}
@@ -6653,29 +7260,29 @@ function tAloj(r){
   </div>`;
   if(r.adrNota) h+=`<p class="basis">${esc(r.adrNota)}</p>`;
   h+=`<div class="grid">`;
-  if(dd.vendidas) h += card('w8','Ocupación día a día', `Unidades vendidas cada noche frente a la capacidad (${r.unidades}).${dd.adr?' La línea es la tarifa promedio del día.':''}`,
+  if(dd.vendidas) h += card('w8','Ocupación día a día', `Barras: unidades vendidas cada noche (eje izquierdo; ${r.unidades} en venta).${dd.adr?' Línea: tarifa promedio del día (eje derecho).':''}`,
     (dd.adr?legend([{n:'Unidades vendidas',c:C.orange},{n:'ADR del día',c:C.ink,line:1}]):'') +
     barChart({labels:diaLabels(r), series:[{name:'Unidades vendidas',data:dd.vendidas,color:v=>v/r.unidades>=0.7?C.orange:v/r.unidades>=0.45?C.yellow:C.grey}], cap:r.unidades, capLabel:`Capacidad ${r.unidades}`,
       line: dd.adr?{name:'ADR',data:dd.adr,color:C.ink,fmt:cop,axFmt:copK}:null}));
   if(r.semanas) h += card('w7','Ocupación por semana del mes','Semanas del calendario.',
     barChart({labels:r.semanas.map(x=>x[0]), series:[{name:'Ocupación',data:r.semanas.map(x=>x[1]),color:v=>occColor(v),fmt:v=>pct(v),short:v=>pct(v,0)}], max:100, yFmt:v=>v+' %'}));
   if(r.segmentos) h += card(r.semanas?'w5':'w4','Por tipo de habitación','Ocupación de cada segmento. Al lado, su tarifa promedio.',
-    hbars(r.segmentos.map(([n,o,adr],i)=>[n,o,[C.yellow,C.orange,C.ink][i%3],'ADR '+copK(adr)]), r.semanas?{fmt:v=>pct(v,0), max:100, L:170, rh:40}:{fmt:v=>pct(v,0), max:100, W:360, L:92, R:96, rh:46}));
+    hbars(r.segmentos.map(([n,o,adr],i)=>[n,o,[C.yellow,C.orange,C.ink][i%3],'ADR '+copK(adr)]), r.semanas?{fmt:v=>pct(v,0), max:100, L:170, R:150, rh:40, keep:1}:{fmt:v=>pct(v,0), max:100, W:380, L:96, R:150, rh:46, keep:1}));
   if(r.historia) h += card('w5', r.historia.titulo, 'Mismo mes en años anteriores.',
     barChart({labels:r.historia.datos.map(x=>x[0]), series:[{name:'Ocupación',data:r.historia.datos.map(x=>x[1]),color:(v,i)=>i===r.historia.datos.length-1?C.orange:C.grey,fmt:v=>pct(v),short:v=>pct(v,1)}], yFmt:v=>v+' %', max:niceMax(Math.max(...r.historia.datos.map(x=>x[1]))*1.1)}), esc(r.historia.nota||''));
   if(r.eventos) h += card('w5','Ocupación en fechas de evento','Promedio de las noches de cada evento.', hbars(r.eventos.map(([n,v])=>[n,v,v>=70?C.orange:C.yellow]), {fmt:v=>pct(v), max:100, L:150, rh:46}));
   if(r.meta) h += card('w7','Real frente a la meta','Barra gris: meta del plan. Barra de color: resultado real.',
     r.meta.map(([n,meta,real,t])=>{ const ok=real>=meta; return `<div style="margin:0 0 12px"><div style="display:flex;justify-content:space-between;font-size:13px;font-weight:600"><span>${esc(n)}</span><span class="${ok?'ok':'no'}" style="font-family:var(--mono)">${Math.round(real/meta*100)} %</span></div>${hbars([['Meta',meta,C.grey],['Real',real,ok?C.orange:C.ink]],{fmt:v=>fmtBy(v,t),L:60,rh:26,max:Math.max(meta,real)})}</div>`; }).join(''));
-  if(dd.checkins) h += card(dd.vendidas?'w4':'w6','Llegadas y salidas', 'Reservas que entraron y salieron cada día.',
-    legend([{n:'Check-ins',c:C.orange},{n:'Check-outs',c:C.ink}]) +
-    barChart({labels:diaLabels(r).map(x=>x.split(' ')[0]), series:[{name:'Check-ins',data:dd.checkins,color:C.orange},{name:'Check-outs',data:dd.checkouts||Array(7).fill(null),color:C.ink}], gw:.78, h:340, W:dd.vendidas?380:640, yLabels:false}),
+  if(dd.checkins) h += card(dd.vendidas?'w4':'w6','Llegadas y salidas', 'Reservas que llegaron (check-in) y se fueron (check-out) cada día.',
+    legend([{n:'Llegadas',c:C.orange},{n:'Salidas',c:C.ink}]) +
+    barChart({labels:diaLabels(r).map(x=>x.split(' ')[0]), series:[{name:'Llegadas',data:dd.checkins,color:C.orange},{name:'Salidas',data:dd.checkouts||Array(7).fill(null),color:C.ink}], gw:.78, h:250, W:dd.vendidas?380:640}),
     dd.checkouts?'':'Este reporte no traía las salidas por día.');
   if(r.canalesCreadas) h += card(r.segmentos&&dd.checkins?'w8':'w6','Reservas creadas por canal','Reservas que entraron al sistema en la semana; al lado, su valor cuando el reporte lo traía.',
     hbars(r.canalesCreadas.map(([n,v,val])=>[n,v,CANAL_COLOR[n],isNum(val)?copM(val):'']), {fmt:v=>v+' res.', L:130}),
-    r.comision?`Comisión: ${copM(r.comision.valor)}. ${esc(r.comision.nota)}`:'');
+    (r.comision?`Comisión: ${copM(r.comision.valor)}. ${esc(r.comision.nota)} `:'')+(r.canalesCreadas.some(x=>x[0]==='Airbnb')?'':'Airbnb no tuvo reservas nuevas en este periodo.'));
   if(r.nochesCanal) h += card('w6','Noches por canal y lo que deja cada una','Barras: noches de la semana. Línea: neto por noche después de comisiones.',
     legend([{n:'Noches',c:C.orange},{n:'Neto por noche',c:C.ink,line:1}]) +
-    barChart({labels:r.nochesCanal.map(x=>x[0].replace('Santiago Posada','S. Posada')), series:[{name:'Noches',data:r.nochesCanal.map(x=>x[1]),color:r.nochesCanal.map(x=>CANAL_COLOR[x[0]]||C.grey)}],
+    barChart({labels:r.nochesCanal.map(x=>x[0]), series:[{name:'Noches',data:r.nochesCanal.map(x=>x[1]),color:r.nochesCanal.map(x=>CANAL_COLOR[x[0]]||C.grey)}],
       line:{name:'Neto por noche',data:r.nochesCanal.map(x=>x[2]),color:C.ink,fmt:cop,axFmt:copK,min:0}}));
   if(r.paises) h += card('w6','Quién llegó', `Principales países · ${esc(r.paises.base)}.`,
     hbars(r.paises.lista.map(([n,v],i)=>[n,v,i===0?C.orange:i<3?C.yellow:C.ink]), {fmt:v=>/%/.test(r.paises.base)?pct(v):num(v), L:120}));
@@ -6710,8 +7317,8 @@ function tBar(r){
 }
 function barContexto(r){
   const ws=semanas, lb=ws.map(w=>rango(w.inicio,w.fin));
-  return `<div class="grid" style="margin-top:16px">` + card('w12','El bar en todas las semanas','Venta del bar de cada semana con reporte. La barra naranja es la que estás viendo; la línea son las cortesías.',
-    barChart({labels:lb, series:[{name:'Venta bar',data:ws.map(w=>w.bar),color:(v,i)=>ws[i].id===r.id?C.orange:C.ink,fmt:cop,short:copM}], yFmt:copK, showNull:true, h:300, W:1150,
+  return `<div class="grid" style="margin-top:16px">` + card('w12','El bar en todas las semanas','Venta del bar de cada semana con reporte (eje izquierdo). La barra naranja es la que estás viendo; la línea amarilla son las cortesías (eje derecho).',
+    legend([{n:'Venta del bar',c:C.ink},{n:'Semana que estás viendo',c:C.orange},{n:'Cortesías',c:C.yellow,line:1}]) + barChart({labels:lb, series:[{name:'Venta bar',data:ws.map(w=>w.bar),color:(v,i)=>ws[i].id===r.id?C.orange:C.ink,fmt:cop,short:copM}], yFmt:copK, showNull:true, h:300, W:1150,
       line:{name:'Cortesías',data:ws.map(w=>w.cortesias),color:C.yellow,fmt:v=>v+' cortesías',axFmt:v=>Math.round(v),min:0}})) + `</div>`;
 }
 
@@ -6741,7 +7348,7 @@ function tLav(r){
     h += card('w7','Lavandería por semana del mes','Semanas con lunes a domingo; la que cruza de mes queda en el mes donde tiene más días.',
       barChart({labels:ws.map(w=>rango(w.inicio,w.fin)), series:[{name:'Lavandería',data:ws.map(w=>split(w).L),color:C.lav,fmt:cop,short:copM}], yFmt:copK})); }
   if(isNum(s.L)&&r.checkouts) h += card('w5','Lavandería frente a las salidas','Cuánto deja la lavandería por cada reserva que salió.',
-    hbars([['Por check-out',s.L/r.checkouts,C.lav],['Por huésped que llegó',r.huespedesIn?s.L/r.huespedesIn:null,C.orange]],{fmt:cop,W:380,L:130,R:80,rh:48}));
+    hbars([['Por salida',s.L/r.checkouts,C.lav],['Por huésped',r.huespedesIn?s.L/r.huespedesIn:null,C.orange]],{fmt:cop,W:380,L:100,R:90,rh:48}), 'Por salida: lavandería ÷ reservas que salieron. Por huésped: lavandería ÷ huéspedes que llegaron.');
   h += `</div>` + contexto(r,'Lavandería en todas las semanas','La barra naranja es el periodo que estás viendo.',w=>split(w).L,C.lav);
   return h;
 }
@@ -6771,9 +7378,10 @@ function tUps(r){
 const RV_TIPO={tarifa:['Tarifas',C.orange],temporada:['Temporada',C.yellow],aprendizaje:['Aprendizaje',C.green],correccion:['Corrección',C.red],sistema:['Sistema',C.ink],reporte:['Reporte',C.lav],veto:['Freno',C.muted]};
 function tRev(r){
   const v=r.revenue;
-  if(!v) return `<div class="empty" style="padding:40px 10px">No hay cambios de revenue registrados para este periodo.<br><span style="font-size:13px">El proyecto de tarifas empezó el 12 de octubre de 2026.</span></div>`;
+  if(!v){ const pr=reportes.filter(x=>x.tipo===r.tipo&&x.revenue).pop();
+    return `<div class="empty" style="padding:40px 10px">No hay cambios de tarifa registrados para este periodo.<br><span style="font-size:13px">El proyecto de tarifas empezó el 12 de octubre de 2026.</span>${pr?`<br><br><a href="#r-${pr.id}--revenue" style="font-weight:700;color:var(--orange)">Ver ${r.tipo==='mes'?'el mes':'la semana'} más reciente con cambios →</a>`:''}</div>`; }
   const fch=f=>{ const [y,m,d]=f.split('-').map(Number); return d+' '+MES_L[m-1].slice(0,3).toLowerCase(); };
-  let h=`<div class="rvhead"><h3>${esc(v.titular)}</h3><p>Lo que se hizo en tarifas durante el periodo, del proyecto de revenue de Casa Kiwi.</p></div>`;
+  let h=`<div class="rvhead"><h3>${esc(v.titular)}</h3><p>Cambios de tarifa del periodo (proyecto de revenue de Casa Kiwi). Términos: ${help('consejo')} sesión del consejo · ${help('freno')} freno.</p></div>`;
   const res=v.resultado?[{...v.resultado}]:(v.semanas||[]);
   if(res.length) h+=`<div class="kpis">${res.map(x=>kpi(`Revenue · semana ${esc(x.semana||'')}`, x.ocupacion!=null?pct(x.ocupacion,0):'—', x.ocupacion_ly!=null?`año pasado ${pct(x.ocupacion_ly,0)}`:'', '', true)+(x.adr_var!=null?kpi('ADR frente al año pasado',(x.adr_var>0?'+':'')+x.adr_var+' %',x.adr?'ADR '+copK(x.adr):''):'')+(x.ingreso?kpi('Ingreso de la semana',copM(x.ingreso),x.ingreso_var!=null?((x.ingreso_var>0?'+':'')+x.ingreso_var+' % vs año pasado'):''):'')).join('')}</div>`;
   if(v.evaluacion){ const e=v.evaluacion; h+=`<div class="grid">`+card('w12',`Cómo les fue a las decisiones (reporte del ${esc(e.fecha)})`,`${num(e.evaluadas)} decisiones de tarifa evaluadas hasta esa fecha.`,
@@ -6820,20 +7428,39 @@ function tOtros(r){
    ===================================================================== */
 function vInicio(){
   const ws=semanas, last=ws[ws.length-1], prev=prevOf(last), x=split(last), xp=prev?split(prev):null;
-  const ultM=meses[meses.length-1];
+  const ultM=meses[meses.length-1], AN=ultM.id.slice(0,4);
+  const cierre=[...meses].reverse().find(m=>!/\(1–\d+\)/.test(m.nombre)) || ultM, pc=prevReport(cierre);
   const prox=PR.meses.find(m=>!m.id.endsWith('-r'))||PR.meses[0];
   const it=MK?MK.instagram.totales:null;
-  const card=(href,cls,eyebrow,big,title,desc)=>`<a class="choice ${cls}" href="${href}"><span class="ce">${eyebrow}</span><span class="cb">${big}</span><span class="ct">${title}</span><span class="cd">${desc}</span><span class="cg">Abrir →</span></a>`;
+  const msA=meses.filter(m=>m.id.startsWith(AN)), ocA=sum(msA.map(m=>m.vendidas))/sum(msA.map(m=>m.disponibles))*100;
+  const card=(href,cls,eyebrow,big,title,desc,dl='')=>`<a class="choice ${cls}" href="${href}"><span class="ce">${eyebrow}</span><span class="cb">${big}</span>${dl?`<span class="cdl">${dl}</span>`:''}<span class="ct">${title}</span><span class="cd">${desc}</span><span class="cg">Abrir →</span></a>`;
   let h=`<div class="welcome"><h1>¿Qué quieres ver hoy?</h1><p>Toca una opción. Adentro encuentras el detalle.</p></div>`;
-  h+=`<div class="choices">`;
+  h+=veredicto(ultM.ocupacion, ultM.ly, ultM.nombre, '#r-'+ultM.id);
+  h+=`<div class="choices" style="margin-top:16px">`;
   h+=card('#r-'+last.id,'main','Última semana · '+esc(rango(last.inicio,last.fin)), pct(last.ocupacion,1)+' <small>ocupación</small>',
-    'El reporte de la semana', `${copM(x.T)} de ingresos${xp?` · ${x.T>=xp.T?'más':'menos'} que la semana anterior`:''}.`);
-  h+=card('#reportes','','Semanas y meses', `${ws.length+meses.length} <small>reportes</small>`,'Buscar un reporte','Elige un mes y abre su cierre o cualquiera de sus semanas.');
-  h+=card('#anio','','Año '+meses[meses.length-1].id.slice(0,4), pct(sum(meses.filter(m=>m.id.startsWith(ultM.id.slice(0,4))).map(m=>m.vendidas))/sum(meses.filter(m=>m.id.startsWith(ultM.id.slice(0,4))).map(m=>m.disponibles))*100,1)+' <small>ocupación</small>','Cómo va el año','Totales del año y la evolución mes a mes y semana a semana.');
-  h+=card('#proyecciones','','Lo que viene', pct(prox.ocupacion,0)+' <small>'+esc(prox.nombre.split(' ')[0].toLowerCase())+'</small>','Proyecciones','Cuánto está vendido hoy para los próximos meses frente al año pasado.');
-  if(MK) h+=card('#marketing','','Últimos 30 días', num(it.alcance)+' <small>alcance</small>','Marketing','Google, Instagram y las reservas que llegan por la página web.');
+    'El reporte de la semana', `${copM(x.T)} de ingresos${xp?` (${copM(xp.T)} la semana anterior)`:''}. ADR ${cop(last.adr)}.`,
+    [prev?`${delta(last.ocupacion,prev.ocupacion,'pp')} vs semana anterior`:'', last.ly?`${delta(last.ocupacion,last.ly.ocupacion,'pp')} vs misma semana de 2025`:''].filter(Boolean).join(' · '));
+  h+=card('#r-'+cierre.id,'','Último cierre de mes', pct(cierre.ocupacion,1)+' <small>'+esc(cierre.nombre.split(' ')[0].toLowerCase())+'</small>','Cierre de '+esc(cierre.nombre),
+    `${copM(split(cierre).T)} de ingresos · ADR ${cop(cierre.adr)}.`, [pc?`${delta(cierre.ocupacion,pc.ocupacion,'pp')} vs ${esc(pc.nombre.split(' ')[0].toLowerCase())}`:'', cierre.ly?`${delta(cierre.ocupacion,cierre.ly.ocupacion,'pp')} vs 2025`:''].filter(Boolean).join(' · '));
+  h+=card('#anio','','Año '+AN+' hasta hoy', pct(ocA,1)+' <small>ocupación</small>','Cómo va el año','Totales del año, mes a mes y semana a semana.', D.lyAnio?`${delta(ocA,D.lyAnio.ocupacion,'pp')} vs 2025 · alojamiento ${dv(D.lyAnio.alojamiento_var)}`:'');
+  h+=card('#proyecciones','','Lo que viene', pct(prox.ocupacion,0)+' <small>'+esc(prox.nombre.split(' ')[0].toLowerCase())+' vendido</small>','Proyecciones','Cuánto está vendido hoy para los próximos meses.', prox.ly?.otb_ocup!=null?`${delta(prox.ocupacion,prox.ly.otb_ocup,'pp')} vs lo vendido a esta fecha en 2025`:'');
+  if(MK) h+=card('#marketing','','Últimos 30 días', num(MK.web.reservas_motor_web)+' <small>reservas web</small>','Marketing',`Google, Instagram y la página web. ${num(MK.web.reservas_motor_web_anterior)} reservas web en los 30 días anteriores.`);
   h+=`</div>`;
+  const sc=[['alojamiento','Alojamiento'],['bar','Bar'],['lavanderia','Lavandería'],['upsale','Upsale'],['revenue','Tarifas']];
+  h+=`<div class="shortcuts"><span>Ir directo a la última semana:</span>${sc.map(([k,n])=>`<a href="#r-${last.id}--${k}">${n}</a>`).join('')}<a href="#reportes" style="border-color:var(--ink)">Todos los reportes (${ws.length+meses.length}) →</a></div>`;
   return h;
+}
+
+/* =====================================================================
+   Vista: Glosario
+   ===================================================================== */
+function vGlosario(){
+  return `<a class="back" href="#inicio">← Inicio</a><div class="phead"><h1>Qué significa cada término</h1><p>Las palabras y siglas que aparecen en los reportes. Toca el ícono (i) junto a cualquier cifra para ver su explicación ahí mismo.</p></div>
+    <div class="glos">${Object.values(GLOS).map(([t,d])=>`<div><b>${esc(t)}</b><p>${esc(d)}</p></div>`).join('')}</div>
+    <p class="basis" style="margin-top:18px">Todas las cifras de dinero están en pesos colombianos (COP). "M" son millones y "mil" son miles: $17,59 M = $17.590.000.</p>`;
+}
+function vNoEncontrado(q){
+  return `<div class="empty big" style="margin-top:30px"><b>No encontramos “${esc(q)}”.</b><br>Puede que el enlace esté mal escrito o que ese reporte ya no exista.<br><br><a href="#reportes" style="font-weight:700;color:var(--orange)">Ver todos los reportes</a> · <a href="#inicio" style="font-weight:700">Ir al inicio</a></div>`;
 }
 
 /* =====================================================================
@@ -6847,13 +7474,15 @@ function vReportes(){
    Vista: Proyecciones (lo vendido hoy para meses futuros)
    ===================================================================== */
 const PR = D.proyecciones || {meses:[]};
+const fCorta = f => { if(!/^\d{4}-\d{2}-\d{2}$/.test(f||'')) return f; const x=fecha(f); return x.d+' '+MES[x.m-1]; };
 function pLab(x, largo){ if(x.id.endsWith('-r')){ const r=(x.nombre.match(/\(([\d–]+)\)/)||[])[1]||''; return MES_L[+x.id.slice(5,7)-1].slice(0,3)+' '+r; }
   return largo ? x.nombre : x.nombre.slice(0,3)+' '+x.nombre.slice(-2); }
 function vProy(id){
-  const ms=PR.meses; const p=ms.find(x=>x.id===id)||ms.find(x=>x.id.length===7)||ms[0];
+  const ms=PR.meses; if(id && !ms.some(x=>x.id===id)) return vNoEncontrado('proyección '+id);
+  const p=ms.find(x=>x.id===id)||ms.find(x=>x.id.length===7)||ms[0];
   const ly=p.ly, e=p.estimado;
   const veces = ly.otb ? p.vendidas/ly.otb : null;
-  let h=`<div class="mpick">${ms.map(x=>`<a class="mchip${x.id===p.id?' on':''}" href="#p-${x.id}"><b>${esc(pLab(x))}</b><span>${pct(x.ocupacion,0)}</span></a>`).join('')}</div>`;
+  let h=`<a class="back" href="#inicio">← Inicio</a><div class="phead"><h1>Proyecciones: lo que ya está vendido</h1><p>Elige un mes para ver cuánto está reservado hoy y cómo va frente al año pasado a esta misma fecha.</p></div><div class="sw"><div class="mpick">${ms.map(x=>`<a class="mchip${x.id===p.id?' on':''}" href="#p-${x.id}"><b>${esc(pLab(x))}</b><span>${pct(x.ocupacion,0)}</span></a>`).join('')}</div></div>`;
   h += `<section class="hero"><div class="eyebrow">Proyección · ${esc(p.nombre)} · vendido al ${esc(PR.corte)}</div>
     <h1>${esc(p.nombre)}: ${pct(p.ocupacion)} vendido hoy (${num(p.vendidas)} de ${num(p.disponibles)} noches)</h1>
     <p>${ly.otb?`A esta misma fecha del año pasado había ${num(ly.otb)} noches vendidas para el mismo mes: hoy hay ${veces>=1.05?(veces.toLocaleString('es-CO',{maximumFractionDigits:1})+' veces más'):veces<=0.95?'menos':'lo mismo'}.`:'A esta misma fecha del año pasado no había nada vendido para ese mes.'} El año pasado ese mes terminó en ${pct(ly.final_ocup)}.</p>
@@ -6862,28 +7491,28 @@ function vProy(id){
     ${kpi('Vendido hoy', pct(p.ocupacion), `${num(p.vendidas)} de ${num(p.disponibles)} noches`, '', true)}
     ${kpi('Valor en libros', copM(p.valor), 'reservas repartidas por noche')}
     ${kpi('ADR en libros', copK(p.adr), 'tarifa promedio de lo vendido')}
-    ${kpi('Año pasado a esta fecha', `${num(ly.otb)} noches`, `${pct(ly.otb_ocup)} del mes`)}
+    ${kpi('Año pasado a esta fecha', `${num(ly.otb)} noches`, `${pct(ly.otb_ocup)} del mes (sobre 50 unidades)`)}
     ${kpi('Cierre del año pasado', pct(ly.final_ocup), `${num(ly.final)} noches${ly.adr?' · ADR '+copK(ly.adr):''}`)}
     ${kpi('Entró en los últimos 7 días', `+${num(p.pickup7)} noches`, `+${num(p.pickup30)} en 30 días`)}
     ${e?kpi('Escenario de cierre', pct(e.ocupacion), `${num(e.noches)} noches${e.valor?' · '+copM(e.valor):''}`):''}
   </div>
-  <p class="basis">Escenario de cierre = lo vendido hoy + las noches que el año pasado entraron desde esta fecha hasta el final del mes (${num(e?.falta_ly)}). ${e?.adr_ref?`El valor de esas noches usa un ADR de ${cop(e.adr_ref)}${ly.adr?' (el del mismo mes del año pasado)':' (el de lo vendido hoy)'}.`:''} El exporte no trae reservas canceladas: lo vendido hoy puede bajar si alguien cancela.</p>`;
+  <p class="basis">Escenario de cierre = lo vendido hoy + las noches que el año pasado entraron desde esta fecha hasta el final del mes (${num(e?.falta_ly)}). ${e?.adr_ref?`El valor de esas noches usa un ADR de ${cop(e.adr_ref)}${ly.adr?' (el del mismo mes del año pasado)':' (el de lo vendido hoy)'}.`:''} El exporte no trae reservas canceladas: lo vendido hoy puede bajar si alguien cancela. Los porcentajes del año pasado usan las 50 unidades que había entonces; los de hoy, las ${num(p.unidades)} actuales.</p>`;
   h += `<div class="grid">`;
   const dl=p.diario.fechas.map(f=>{const [y,m,d]=f.split('-').map(Number);const t=new Date(y,m-1,d);return ['D','L','M','M','J','V','S'][t.getDay()]+' '+d;});
-  h += card('w12','Lo vendido para cada noche', `Barras: unidades vendidas hoy para cada noche (capacidad ${p.unidades}). Línea: cómo terminó la misma fecha del año pasado.`,
+  h += card('w12','Lo vendido para cada noche', `Barras: unidades vendidas hoy para cada noche (${p.unidades} en venta). Línea: cómo terminó esa misma noche el año pasado (había 50 unidades).`,
     legend([{n:'Vendido hoy',c:C.orange},{n:'Cierre año pasado',c:C.ink,line:1}]) +
-    barChart({W:1150, h:300, labels:dl, every:p.dias>20?2:1, values:p.dias<=20, gw:.75, series:[{name:'Vendido hoy',data:p.diario.vendidas,color:C.orange}], max:50, cap:p.unidades, capLabel:'Capacidad '+p.unidades,
-      line:{name:'Cierre año pasado',data:p.diario.ly,color:C.ink,fmt:v=>v+' unidades',axFmt:v=>Math.round(v),min:0,max:50}}));
-  h += card('w6','Cómo vamos','Noches del mes: lo vendido hoy frente al año pasado.',
-    hbars([['Vendido hoy',p.vendidas,C.orange],['Año pasado a esta fecha',ly.otb,C.grey],['Cierre año pasado',ly.final,C.ink],['Escenario de cierre',e?e.noches:null,C.yellow],['Capacidad',p.disponibles,'#E8E3DC']],{fmt:v=>num(v)+' noches',L:180,rh:40}));
+    barChart({W:1150, h:300, labels:dl, every:p.dias>20?2:1, values:p.dias<=20, gw:.75, series:[{name:'Vendido hoy',data:p.diario.vendidas,color:C.orange}], max:52, cap:p.unidades, capLabel:p.unidades+' en venta hoy',
+      line:{name:'Cierre año pasado',data:p.diario.ly,color:C.ink,fmt:v=>v+' unidades',axFmt:v=>Math.round(v),min:0,max:52}}));
+  h += card('w6','Cómo vamos','Noches del mes: lo vendido hoy frente al año pasado (2025).',
+    hbars([['Vendido hoy',p.vendidas,C.orange],['2025 a esta fecha',ly.otb,C.grey],['Cierre de 2025',ly.final,C.ink],['Escenario cierre',e?e.noches:null,C.yellow],['Capacidad',p.disponibles,'#E8E3DC']],{fmt:num,L:180,rh:40}));
   h += card('w6','Por tipo de habitación','Noches vendidas y ocupación en libros de cada segmento.',
     hbars(p.segmentos.map(([n,v,o],i)=>[n,o,[C.yellow,C.orange][i],num(v)+' noches']),{fmt:v=>pct(v),max:100,L:130,rh:44}));
   if(p.canales.length) h += card('w6','Por canal','Noches del mes ya vendidas por cada canal.',
     hbars(p.canales.map(([n,v])=>[n,v,CANAL_COLOR[n]||C.grey]),{fmt:v=>num(v)+' noches',L:140}));
   if(p.grandes.length) h += card('w6','Las reservas que más pesan','Huéspedes o grupos con más noches en el mes. Si una se cae, el mes lo siente.',
-    `<div class="scroll"><table class="tbl"><thead><tr><th>Titular</th><th>Canal</th><th>Noches</th><th>Unidades</th><th>Del</th><th>Al</th></tr></thead><tbody>${p.grandes.map(([t,c,k,u,i,f])=>`<tr><td>${esc(t)}</td><td style="font-family:var(--body)">${esc(c)}</td><td>${k}</td><td>${u}</td><td>${esc(i)}</td><td>${esc(f)}</td></tr>`).join('')}</tbody></table></div>`);
+    `<div class="scroll"><table class="tbl"><thead><tr><th>Titular</th><th>Canal</th><th>Noches</th><th>Unidades</th><th>Del</th><th>Al</th></tr></thead><tbody>${p.grandes.map(([t,c,k,u,i,f])=>`<tr><td>${esc(t)}</td><td style="font-family:var(--body)">${esc(c)}</td><td>${k}</td><td>${u}</td><td>${esc(fCorta(i))}</td><td>${esc(fCorta(f))}</td></tr>`).join('')}</tbody></table></div>`);
   h += `</div>`;
-  h += `<h2 class="sec">Todos los meses que vienen</h2><div class="grid">` + card('w12','Vendido hoy frente al cierre del año pasado','Barras: ocupación vendida hoy para cada mes. Línea negra: cómo terminó ese mes el año pasado. Línea amarilla: escenario de cierre.',
+  h += `<h2 class="sec">Todos los meses que vienen</h2><div class="grid">` + card('w12','Vendido hoy frente al cierre del año pasado','Línea naranja: ocupación vendida hoy para cada mes. Línea negra: cómo terminó ese mes el año pasado. Línea amarilla punteada: escenario de cierre.',
     legend([{n:'Vendido hoy',c:C.orange},{n:'Cierre año pasado',c:C.ink,line:1},{n:'Escenario de cierre',c:C.yellow,line:1}]) +
     lineChart({W:1150, labels:ms.map(x=>pLab(x)), h:260, values:false,
       series:[{name:'Vendido hoy',data:ms.map(x=>x.ocupacion),color:C.orange,fmt:v=>pct(v)},{name:'Cierre año pasado',data:ms.map(x=>x.ly.final_ocup),color:C.ink,fmt:v=>pct(v)},{name:'Escenario de cierre',data:ms.map(x=>x.estimado?.ocupacion),color:C.yellow,dash:1,fmt:v=>pct(v)}], max:100, yFmt:v=>v+' %'})) + `</div>`;
@@ -6895,7 +7524,8 @@ function vProy(id){
    ===================================================================== */
 const MK = D.marketing || null;
 function vMkt(tab){
-  tab = ['google','instagram','web'].includes(tab)?tab:'resumen';
+  if(tab && !['google','instagram','web'].includes(tab)) return vNoEncontrado('marketing · '+tab);
+  tab = tab || 'resumen';
   if(!MK) return `<div class="empty">Aún no hay datos de marketing.</div>`;
   const TABS=[['resumen','Resumen'],['google','Google'],['instagram','Instagram'],['web','Página web']];
   const g=MK.google, ig=MK.instagram, w=MK.web, gt=g.totales, it=ig.totales;
@@ -6906,15 +7536,15 @@ function vMkt(tab){
     <p>En 30 días el perfil de Instagram llegó a ${num(it.alcance)} cuentas (suma diaria) y ganó ${num(it.seguidores_nuevos)} seguidores. El perfil de Google se mostró ${num(gt.impresiones)} veces y generó ${num(gt.como_llegar)} solicitudes de “cómo llegar”. El motor web de Lobby recibió ${num(w.reservas_motor_web)} reservas por ${copM(w.valor_motor_web)}, frente a ${num(w.reservas_motor_web_anterior)} en los 30 días anteriores.</p>
     <div class="meta"><span>Fuentes: Google Business Profile e Instagram (vía Windsor.ai) · reservas de Lobby</span><span>Google llega hasta el 19 nov (los dos últimos días aún no los publica)</span></div></section>`;
   h += `<div class="kpis">
-    ${kpi('Alcance Instagram', num(it.alcance), 'cuentas alcanzadas, suma diaria', '', true)}
-    ${kpi('Vistas Instagram', num(it.vistas), `${num(it.vistas_promedio_dia)} por día`)}
-    ${kpi('Seguidores', num(ig.seguidores), `+${num(it.seguidores_nuevos)} en 30 días`)}
+    ${kpi('Reservas por la web', num(w.reservas_motor_web), `${copM(w.valor_motor_web)} sin comisión`, delta(w.reservas_motor_web,w.reservas_motor_web_anterior)+' vs 30 días anteriores', true)}
     ${kpi('Impresiones en Google', num(gt.impresiones), `${pct(gt.maps/gt.impresiones*100,0)} en Maps`)}
     ${kpi('Reseñas Google', g.resenas.promedio_total.toLocaleString('es-CO')+' ★', `${num(g.resenas.total)} reseñas · ${g.resenas.periodo} nuevas`)}
-    ${kpi('Reservas motor web', num(w.reservas_motor_web), `${copM(w.valor_motor_web)} · antes ${w.reservas_motor_web_anterior}`)}
+    ${kpi('Seguidores Instagram', num(ig.seguidores), `+${num(it.seguidores_nuevos)} en 30 días`)}
+    ${kpi('Vistas Instagram', num(it.vistas), `${num(it.vistas_promedio_dia)} por día`)}
+    ${kpi('Alcance Instagram', num(it.alcance), 'suma de las cuentas alcanzadas cada día (una persona puede contar varias veces)')}
   </div>`;
 
-  h += `<nav class="rtabs">${TABS.map(([k,n])=>`<a class="${k===tab?'on':''}" href="#marketing${k==='resumen'?'':'--'+k}">${n}</a>`).join('')}</nav>`;
+  h += `<nav class="rtabs" aria-label="Secciones de marketing">${TABS.map(([k,n])=>`<a class="${k===tab?'on':''}"${k===tab?' aria-current="page"':''} href="#marketing${k==='resumen'?'':'--'+k}">${n}</a>`).join('')}</nav>`;
   if(tab==='resumen'){ h += hallazgos(MK.hallazgos); return h; }
   if(tab==='google'){
   h += `<div class="grid">`;
@@ -6961,7 +7591,7 @@ function vMkt(tab){
   h += card('w6','Cómo llega la gente a la web','Clics hacia la web desde las dos redes.',
     hbars([['Desde Google',w.clics_web_google,C.ink],['Enlaces del perfil de Instagram',w.toques_enlaces_ig,C.orange]],{fmt:v=>num(v)+' clics',L:220,rh:44}),
     esc(w.nota));
-  h += card('w12','Reservas directas frente a OTAs','Reservas creadas en los últimos 30 días: directas (recepción, Santiago y web) frente al total.',
+  h += card('w12','Reservas directas frente a OTAs','Reservas creadas en los últimos 30 días: directas (recepción, equipo de reservas y web) frente al total.',
     hbars([['Directas',w.valor_directas,C.orange,num(w.reservas_directas)+' reservas'],['Todas',w.valor_total,C.ink,num(w.reservas_total)+' reservas']],{W:1150,fmt:copM,L:120,R:220,rh:44}),
     `Las directas son el ${pct(w.valor_directas/w.valor_total*100,0)} del valor reservado y no pagan comisión.`);
   h += `</div>`; }
@@ -6979,32 +7609,43 @@ function hashParts(){
   if(h==='marketing'||h.startsWith('marketing--')) return ['m', h.split('--')[1]];
   if(h==='reportes') return ['rep'];
   if(h==='anio') return ['anio'];
+  if(h==='glosario') return ['glos'];
   if(h.startsWith('p-')) return ['p',h.slice(2)];
+  if(h && h!=='inicio') return ['404',h];
   return [''];
 }
 function render(){
   const parts=hashParts();
   const app=document.getElementById('app');
-  if(parts[0]==='r') app.innerHTML = vReporte(parts[1], parts[2]);
+  if(parts[0]==='r') app.innerHTML = vReporte(parts[1], parts[2] && !TABS.some(t=>t[0]===parts[2]) ? '__x' : parts[2]);
   else if(parts[0]==='p') app.innerHTML = vProy(parts[1]);
   else if(parts[0]==='m') app.innerHTML = vMkt(parts[1]);
   else if(parts[0]==='rep') app.innerHTML = vReportes();
   else if(parts[0]==='anio') app.innerHTML = vAnio();
+  else if(parts[0]==='glos') app.innerHTML = vGlosario();
+  else if(parts[0]==='404') app.innerHTML = vNoEncontrado(parts[1]);
   else app.innerHTML = vInicio();
-  const on={'':'home',rep:'rep',r:'rep',anio:'home',p:'proy',m:'mkt'}[parts[0]]||'home';
-  for(const c of ['home','rep','proy','mkt']) document.querySelector('.tab.'+c).classList.toggle('on', c===on);
+  const on={'':'home',rep:'rep',r:'rep',anio:'rep',p:'proy',m:'mkt',glos:'',['404']:''}[parts[0]];
+  for(const c of ['home','rep','proy','mkt']){ const t=document.querySelector('.tab.'+c); t.classList.toggle('on', c===on); if(c===on) t.setAttribute('aria-current','page'); else t.removeAttribute('aria-current'); }
+  /* título de la pestaña del navegador */
+  const r=parts[0]==='r'?byId(parts[1]):null, pm=parts[0]==='p'?(PR.meses.find(x=>x.id===parts[1])||PR.meses.find(x=>x.id.length===7)):null;
+  document.title = (r?`${r.tipo==='mes'?'Mes':'Semana'} ${r.nombre}`: pm?`Proyección ${pm.nombre}`: {rep:'Reportes',anio:'Cómo va el año',m:'Marketing',glos:'Glosario','404':'No encontrado'}[parts[0]]||'Inicio') + ' · Casa Kiwi';
+  /* filas que se deslizan: la opción elegida a la vista y una flecha si hay más */
+  document.querySelectorAll('.mpick').forEach(el=>{ const on=el.querySelector('.on'); if(on) el.scrollLeft=on.offsetLeft-el.clientWidth/2+on.clientWidth/2; marcaMas(el); });
 }
+function marcaMas(el){ const w=el.parentElement; if(w&&w.classList.contains('sw')) w.classList.toggle('more', el.scrollWidth-el.clientWidth-el.scrollLeft>8); }
+document.addEventListener('scroll', e=>{ if(e.target.classList&&e.target.classList.contains('mpick')) marcaMas(e.target); }, true);
 let lastKey='';
 function route(){ const hp=hashParts(); const k=hp[0]+'|'+(hp[1]||''); render(); if(k!==lastKey){ window.scrollTo({top:0}); } else { const t=document.querySelector('.rtabs'); if(t) window.scrollTo({top:t.getBoundingClientRect().top+window.scrollY-70}); } lastKey=k; }
 document.addEventListener('click', e=>{
   const go=e.target.closest('[data-go]'); if(go){ location.hash=go.dataset.go; return; }
-  const mc=e.target.closest('[data-mes]'); if(mc){ mesSel=mc.dataset.mes; document.getElementById('rgrid').innerHTML=pickerGrid(); return; }
+  const mc=e.target.closest('[data-mes]'); if(mc){ const sl=mc.parentElement.scrollLeft; mesSel=mc.dataset.mes; document.getElementById('rgrid').innerHTML=pickerGrid(); const mp=document.querySelector('#rgrid .mpick'); if(mp){ mp.scrollLeft=sl; marcaMas(mp); } return; }
   const f=e.target.closest('[data-filtro]'); if(f){ filtro=f.dataset.filtro; document.getElementById('rgrid').innerHTML=pickerGrid(); document.querySelectorAll('[data-filtro]').forEach(b=>b.classList.toggle('on',b.dataset.filtro===filtro)); }
 });
 document.addEventListener('change', e=>{ if(e.target.id==='rsel'){ const tab=hashParts()[2]||''; location.hash='#r-'+e.target.value+(tab?'--'+tab:''); } });
 window.addEventListener('hashchange', route);
 let lastW=window.innerWidth, rzT; window.addEventListener('resize', ()=>{ clearTimeout(rzT); rzT=setTimeout(()=>{ if(Math.abs(window.innerWidth-lastW)>40){ lastW=window.innerWidth; const y=window.scrollY; render(); window.scrollTo({top:y}); } },200); });
-document.getElementById('foot').innerHTML = `Casa Kiwi Hostal · Medellín · Reportes construidos con datos de Lobby PMS · Uso interno · Datos actualizados al ${esc(D.actualizado)}`;
+document.getElementById('foot').innerHTML = `Casa Kiwi Hostal · Medellín · Reportes construidos con datos de Lobby PMS · Cifras en pesos colombianos (COP) · <a href="#glosario">Qué significa cada término</a> · Uso interno · Datos actualizados al ${esc(D.actualizado)}`;
 route();
 
 /* =====================================================================
