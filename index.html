@@ -436,6 +436,15 @@ h2.sec{display:flex;align-items:center;gap:10px}h2.sec::before{content:'';width:
 @keyframes sube{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
 @media (prefers-reduced-motion:reduce){ #app>*{animation:none} .kpi,.card{transition:none} }
 .excal button{transition:transform .12s}.excal button:hover{transform:scale(1.06);z-index:1}
+
+.vregla{font-size:12.5px;color:var(--muted);margin:0 0 10px;line-height:1.45}
+.pc-l{grid-column:2/-1;font-size:12px;color:var(--muted);margin-top:-6px}
+.avs .av.si::before,.avs .av.no::before{position:absolute;right:-3px;bottom:-4px;font-size:9px;font-weight:900;color:#fff;z-index:1;width:11px;text-align:center;line-height:11px}
+.avs .av.si::before{content:'✓'}.avs .av.no::before{content:'✗'}
+.av{text-shadow:0 1px 2px rgba(0,0,0,.55)}
+.excal i{font-size:10.5px}
+@media (max-width:700px){ .welcome::after{display:none} .excal i{font-size:9.5px} }
+.verdict .delta,.verdict *{white-space:normal}
 </style>
 </head>
 <body>
@@ -10644,7 +10653,7 @@ function mesMas(mes,n){ const [y,m]=mes.split('-').map(Number); const x=new Date
 function exBars(o){
   const all=o.series.flatMap(s=>s.data).filter(isNum); if(!all.length) return `<div class="empty">Sin datos para mostrar.</div>`;
   const W=cw(o.W||1150), H=MOB()?Math.min(o.h||250,220):(o.h||250), L=o.L||60, R=10, T=20, B=o.rot?58:34;
-  const mx=Math.max(0,...all), mn=Math.min(0,...all), top=mx>0?niceMax(mx*1.08):0, bot=mn<0?-niceMax(-mn*1.08):0, span=(top-bot)||1;
+  const mx=Math.max(0,...all), mn=Math.min(0,...all), top=o.top&&mx<=o.top?o.top:mx>0?niceMax(mx*1.08):0, bot=mn<0?-niceMax(-mn*1.08):0, span=(top-bot)||1;
   const n=o.labels.length, pw=W-L-R, ph=H-T-B, band=pw/n, gw=band*(o.series.length>1?0.8:0.7), y=v=>T+(top-v)/span*ph;
   const ax=o.ax||o.short||o.fmt; let g='';
   for(let k=0;k<=4;k++){ const v=bot+span*k/4; g+=`<line x1="${L}" x2="${W-R}" y1="${y(v)}" y2="${y(v)}" stroke="#EEE9E2"/><text x="${L-6}" y="${y(v)+4}" text-anchor="end">${esc(ax(v))}</text>`; }
@@ -10658,7 +10667,7 @@ function exBars(o){
     const w=gw/o.series.length;
     o.series.forEach((s,j)=>{ const v=s.data[i]; if(!isNum(v)) return;
       const x=cx-gw/2+w*j, y1=y(Math.max(v,0)), y0=y(Math.min(v,0)), col=typeof s.color==='function'?s.color(v,i,sel):s.color;
-      const act=o.go&&o.keys?` data-${o.obj||'ex'}="${o.go(o.keys[i])}" style="cursor:pointer"`:'';
+      const kk=s.keys?s.keys[i]:o.keys?.[i], act=o.go&&kk?` data-${o.obj||'ex'}="${o.go(kk)}" style="cursor:pointer"`:'';
       g+=`<rect class="hit"${act} x="${x+1}" y="${y1}" width="${Math.max(1,w-2)}" height="${Math.max(1.5,y0-y1)}" rx="3" fill="${col}"><title>${esc(o.tips?o.tips[i]:lb)} · ${esc(s.name)}: ${esc(o.fmt(v))}${act?' (toca para abrir)':''}</title></rect>`;
       if(o.values!==false&&w>=26&&!MOB()||o.values!==false&&w>=34) g+=`<text class="val" x="${x+w/2}" y="${v>=0?y1-5:y0+13}" text-anchor="middle">${esc((o.short||o.fmt)(v))}</text>`;
     });
@@ -10700,12 +10709,13 @@ function diasData(){
   for(const w of D.semanas){ const dd=w.diario; if(!dd||!dd.vendidas) continue; const u=w.unidades||(w.disponibles?w.disponibles/7:null);
     for(let i=0;i<7;i++){ const v=dd.vendidas[i]; if(!isNum(v)) continue; const f=addD(w.inicio,i), a=dd.adr?.[i];
       o[f]={f,sem:w.id,u,vendidas:v,ocupacion:u?v/u*100:null,adr:isNum(a)&&a>0?a:null,aloj:isNum(a)?v*a:null,checkins:dd.checkins?.[i]??null,checkouts:dd.checkouts?.[i]??null,bar:dd.bar?.[i]??null,tarifas:0}; } }
+  const desde=D.revenueDiario?.desde||'9999'; for(const f in o) if(f<desde) o[f].tarifas=null;
   for(const c of (D.revenueDiario?.cambios||[])){ if(!o[c.dia]) o[c.dia]={f:c.dia,tarifas:0}; o[c.dia].tarifas++; }
   return _DD=o;
 }
 let EX={vista:'dia',met:'ocupacion',dia:null,mes:null,a:null,b:null,mets:['ocupacion','adr','aloj','bar'],sa:null,sb:null,rango:'30',tipo:'barras'};
 function exDelta(m,v,p){ if(!isNum(v)||!isNum(p)) return ''; const d=v-p; if(Math.abs(d)<1e-9) return `<span class="delta" style="color:${C.muted}">= igual</span>`;
-  const t=EXM[m].d==='pp'?(d>0?'+':'−')+pct(Math.abs(d),1).replace(' %',' pp'):p? (d>0?'+':'−')+pct(Math.abs(d/p*100),0):(d>0?'+':'−')+EXM[m].s(Math.abs(d));
+  const t=EXM[m].d==='pp'?(d>0?'+':'−')+pct(Math.abs(d),1).replace(' %',' pts'):p? (d>0?'+':'−')+pct(Math.abs(d/p*100),0):(d>0?'+':'−')+EXM[m].s(Math.abs(d));
   return `<span class="delta" style="color:${d>0?C.green:C.red}">${d>0?'▲':'▼'} ${t}</span>`; }
 function vExplorar(){
   const DD=diasData(), fechas=Object.keys(DD).filter(f=>isNum(DD[f].vendidas)).sort(), ult=fechas[fechas.length-1], pri=fechas[0];
@@ -10724,13 +10734,14 @@ function vExplorar(){
     const d=DD[EX.dia]||{}, prev=DD[addD(EX.dia,-7)]||{};
     h+=pasoT(2,'Elige el día','Toca un día del calendario, usa las flechas o escribe la fecha.');
     h+=`<div class="exbar"><button type="button" class="exnav" data-exd="-1" aria-label="Día anterior">◀</button>${inDia('dia',EX.dia)}<button type="button" class="exnav" data-exd="1" aria-label="Día siguiente">▶</button><b class="exsel">${esc(fL(EX.dia))}</b></div>`;
+    if(EX.aviso) h+=`<div class="note" role="status">${esc(EX.aviso)}</div>`;
     h+=pasoT(3,'¿Qué dato pinta el calendario?')+chipsMet(false);
-    h+=`<div class="grid"><section class="card w5"><div class="exmes"><button type="button" class="exnav" data-ex="mes=${mesMas(EX.mes,-1)}" aria-label="Mes anterior">◀</button><b>${mesNom(EX.mes)}</b><button type="button" class="exnav" data-ex="mes=${mesMas(EX.mes,1)}" aria-label="Mes siguiente">▶</button></div>${exCal(EX.mes,EX.met,EX.dia)}<p class="foot">Más oscuro = ${esc(M.n.toLowerCase())} más alto en el mes. Los días sin datos salen en gris.</p></section>`;
+    h+=`<div class="grid"><section class="card w5"><div class="exmes"><button type="button" class="exnav" data-ex="mes=${mesMas(EX.mes,-1)}" aria-label="Mes anterior">◀</button><b>${mesNom(EX.mes)}</b><button type="button" class="exnav" data-ex="mes=${mesMas(EX.mes,1)}" aria-label="Mes siguiente">▶</button></div>${exCal(EX.mes,EX.met,EX.dia)}<p class="foot">Más oscuro = valor más alto de ${esc(M.n.toLowerCase())} en el mes. Los días sin datos salen en gris.</p></section>`;
     const sem=d.sem?D.semanas.find(w=>w.id===d.sem):null;
     if(sem){ const ks=[0,1,2,3,4,5,6].map(i=>addD(sem.inicio,i));
       h+=card('w7',`${M.n} en la semana ${rango(sem.inicio,sem.fin)}`,'Naranja: esta semana · gris: la semana anterior. Toca una barra para ver ese día.',
         exBars({labels:ks.map(k=>dS(k)+' '+fC(k).split(' ')[0]),keys:ks,sel:EX.dia,go:k=>`dia=${k}`,fmt:M.f,short:M.s,h:260,W:700,
-          series:[{name:'Semana anterior',color:'#D8D1C7',data:ks.map(k=>DD[addD(k,-7)]?.[EX.met]??null)},{name:'Esta semana',color:(v,i,s)=>s?C.ink:C.orange,data:ks.map(k=>DD[k]?.[EX.met]??null)}]})+exLeg([['Esta semana',C.orange],['Día elegido',C.ink],['Semana anterior','#D8D1C7']]));
+          series:[{name:'Semana anterior',color:'#D8D1C7',keys:ks.map(k=>addD(k,-7)),data:ks.map(k=>DD[addD(k,-7)]?.[EX.met]??null)},{name:'Esta semana',color:(v,i,s)=>s?C.ink:C.orange,data:ks.map(k=>DD[k]?.[EX.met]??null)}]})+exLeg([['Esta semana',C.orange],['Día elegido',C.ink],['Semana anterior','#D8D1C7']]));
     } else h+=card('w7','Sin datos de ese día','',`<div class="empty">Ese día aún no está en los reportes (la última semana cargada termina el ${esc(fC(ult))}).</div>`);
     h+=`</div>`;
     h+=`<h2 class="sec">${esc(fL(EX.dia))}</h2><p class="basis">Debajo de cada cifra: el cambio frente al mismo día de la semana anterior (${esc(fL(addD(EX.dia,-7)))}). Toca una tarjeta para pintar ese dato en el calendario y la gráfica.</p>`;
@@ -10765,7 +10776,7 @@ function vExplorar(){
     const tA=agg(kA,vA), tB=agg(kB,vB);
     h+=`<div class="kpis">${kpi(`Semana A · ${rango(wA.inicio,wA.fin)}`,M.f(tA),EX.met==='ocupacion'||EX.met==='adr'?'promedio de la semana':'total de la semana')}${kpi(`Semana B · ${rango(wB.inicio,wB.fin)}`,M.f(tB),EX.met==='ocupacion'||EX.met==='adr'?'promedio de la semana':'total de la semana','',true)}${kpi('B frente a A',exDelta(EX.met,tB,tA)||'—','')}</div>`;
     h+=`<div class="grid">`+card('w12',`${M.n} día por día`,'Negro: semana A · naranja: semana B. Toca una barra para abrir ese día.',
-      exBars({labels:DIAS,keys:kB,go:k=>`vista=dia;dia=${k}`,tips:DIAS.map((d,i)=>`${d} · A ${fC(kA[i])} / B ${fC(kB[i])}`),fmt:M.f,short:M.s,h:270,series:[{name:'Semana A',color:C.ink,data:vA},{name:'Semana B',color:C.orange,data:vB}]})+exLeg([['Semana A',C.ink],['Semana B',C.orange]]))
+      exBars({labels:DIAS,keys:kB,go:k=>`vista=dia;dia=${k}`,tips:DIAS.map((d,i)=>`${d} · A ${fC(kA[i])} / B ${fC(kB[i])}`),fmt:M.f,short:M.s,h:270,series:[{name:'Semana A',color:C.ink,keys:kA,data:vA},{name:'Semana B',color:C.orange,data:vB}]})+exLeg([['Semana A',C.ink],['Semana B',C.orange]]))
       +card('w12','Cambio día por día (B frente a A)','Verde: B fue más alto · rojo: B fue más bajo.',
       exDiv(DIAS.map((d,i)=>[d, isNum(vA[i])&&isNum(vB[i])&&vA[i]? (vB[i]-vA[i])/Math.abs(vA[i])*100 : null])))+`</div>`;
   }
@@ -10773,15 +10784,15 @@ function vExplorar(){
   if(EX.vista==='tend'){
     h+=pasoT(2,'¿Qué dato?')+chipsMet(false);
     h+=pasoT(3,'¿Cuántos días y cómo lo ves?')+`<div class="exbar">${segBtns('ex','rango',[['7','7 días'],['30','30 días'],['90','90 días'],['365','Un año']],EX.rango)}${segBtns('ex','tipo',[['barras','Barras'],['dos','Con la semana anterior'],['cambio','Cambio vs semana anterior']],EX.tipo)}</div>`;
-    const ks=fechas.filter(f=>EX.met==='tarifas'||isNum(DD[f][EX.met])).slice(-Number(EX.rango));
-    if(EX.met==='tarifas'){ const td=Object.keys(DD).filter(f=>DD[f].tarifas).sort(); ks.splice(0,ks.length,...[...new Set([...ks,...td])].sort().slice(-Number(EX.rango))); }
-    const vals=ks.map(k=>DD[k][EX.met]??null), prevV=ks.map(k=>DD[addD(k,-7)]?.[EX.met]??null);
+    const ks=fechas.filter(f=>isNum(DD[f][EX.met])).slice(-Number(EX.rango));
+    if(EX.met==='tarifas'){ const td=Object.keys(DD).filter(f=>isNum(DD[f].tarifas)).sort(), t0=td[0], t1=td[td.length-1]; const all=[]; for(let d=t0;d&&d<=t1;d=addD(d,1)) all.push(d); ks.splice(0,ks.length,...all.slice(-Number(EX.rango))); }
+    const vals=ks.map(k=>DD[k]?.[EX.met]??null), prevV=ks.map(k=>DD[addD(k,-7)]?.[EX.met]??null);
     const lbl=ks.map(k=>ks.length>40?fC(k):dS(k).slice(0,2)+' '+fC(k));
     const nums=vals.filter(isNum), prom=nums.length?sum(nums)/nums.length:null, mxI=vals.indexOf(Math.max(...nums)), mnI=vals.indexOf(Math.min(...nums));
-    h+=`<div class="kpis">${kpi('Promedio del periodo',prom==null?'—':M.f(prom),`${num(ks.length)} días · ${ks.length?fC(ks[0])+' – '+fC(ks[ks.length-1]):''}`,'',true)}${mxI>=0?kpi('Día más alto',M.f(vals[mxI]),fL(ks[mxI])):''}${mnI>=0?kpi('Día más bajo',M.f(vals[mnI]),fL(ks[mnI])):''}</div>`;
+    h+=`<div class="kpis">${kpi('Promedio del periodo',prom==null?'—':(M.f===num?pct(prom,1).replace(' %',''):M.f(prom)),`${num(ks.length)} días · ${ks.length?fC(ks[0])+' – '+fC(ks[ks.length-1]):''}`,'',true)}${mxI>=0?kpi('Día más alto',M.f(vals[mxI]),fL(ks[mxI])):''}${mnI>=0?kpi('Día más bajo',M.f(vals[mnI]),fL(ks[mnI])):''}</div>`;
     let body;
     if(EX.tipo==='cambio') body=exBars({labels:lbl,keys:ks,go:k=>`vista=dia;dia=${k}`,tips:ks.map(fL),fmt:v=>(v>0?'+':'')+pct(v,1),short:v=>(v>0?'+':'')+pct(v,0),values:ks.length<=14,h:280,series:[{name:'Cambio vs mismo día semana anterior',color:v=>v>=0?C.green:C.red,data:vals.map((v,i)=>isNum(v)&&isNum(prevV[i])&&prevV[i]?(v-prevV[i])/Math.abs(prevV[i])*100:null)}]});
-    else body=exBars({labels:lbl,keys:ks,go:k=>`vista=dia;dia=${k}`,tips:ks.map(fL),fmt:M.f,short:M.s,values:ks.length<=14,h:280,series:EX.tipo==='dos'?[{name:'Semana anterior',color:'#D8D1C7',data:prevV},{name:M.n,color:C.orange,data:vals}]:[{name:M.n,color:(v,i)=>{ const w=dS(ks[i]); return w==='Vie'||w==='Sáb'?C.orange:'#F0A27E'; },data:vals}]});
+    else body=exBars({labels:lbl,keys:ks,go:k=>`vista=dia;dia=${k}`,tips:ks.map(fL),fmt:M.f,short:M.s,top:EX.met==='ocupacion'?100:null,values:ks.length<=14,h:280,series:EX.tipo==='dos'?[{name:'Semana anterior',color:'#D8D1C7',data:prevV},{name:M.n,color:C.orange,data:vals}]:[{name:M.n,color:(v,i)=>{ const w=dS(ks[i]); return w==='Vie'||w==='Sáb'?C.orange:'#F0A27E'; },data:vals}]});
     h+=`<div class="grid">`+card('w12',`${M.n} · últimos ${ks.length} días`,(EX.tipo==='barras'?'Naranja fuerte: viernes y sábado. ':EX.tipo==='dos'?'Gris: el mismo día de la semana anterior. ':'Verde: subió frente al mismo día de la semana anterior · rojo: bajó. ')+'Toca una barra para abrir ese día.',
       body+(EX.tipo==='barras'?exLeg([['Viernes y sábado',C.orange],['Otros días','#F0A27E']]):EX.tipo==='dos'?exLeg([[M.n,C.orange],['Semana anterior','#D8D1C7']]):''))+`</div>`;
   }
@@ -10830,7 +10841,7 @@ function vRevenue(){
     const X=T.filter(c=>c.dia===RV.dia), r=rvResumen(X);
     h+=pasoT(2,'Elige el día del cambio')+diaChips('dia',RV.dia);
     h+=`<h2 class="sec">${esc(fL(RV.dia))}</h2>${R.dias?.[RV.dia]?`<p class="basis">${esc(R.dias[RV.dia])}</p>`:''}`;
-    h+=`<div class="kpis">${kpi('Noches cambiadas',num(r.n),'en '+num(new Set(X.map(c=>c.categoria)).size)+' habitaciones','',true)}${kpi('Subidas',num(r.s),'precio más alto')}${kpi('Bajadas',num(r.b),'precio más bajo')}${kpi('Cambio promedio',(r.p>0?'+':'')+pct(r.p,1),'por noche')}</div>`;
+    h+=`<div class="kpis">${kpi('Noches cambiadas',num(r.n),'en '+num(new Set(X.map(c=>c.categoria)).size)+' tipos de habitación · Dorms 6 cuenta 1 vez (en Lobby son 3)','',true)}${kpi('Subidas',num(r.s),'precio más alto')}${kpi('Bajadas',num(r.b),'precio más bajo')}${kpi('Cambio promedio',(r.p>0?'+':'')+pct(r.p,1),'por noche')}</div>`;
     h+=pasoT(3,'Elige la gráfica')+segBtns('rv','g',[['pct','Cuánto cambió cada habitación'],['cnt','Subidas y bajadas por habitación'],['noche','Por noche afectada']],RV.g||'pct');
     const g=RV.g||'pct', P=porCat(X);
     if(g==='pct') h+=`<div class="grid">`+card('w12','Cambio promedio por habitación','Verde: subió · rojo: bajó. Promedio de las noches cambiadas ese día.',exDiv(P.map(([k,Y])=>[corto(k),sum(Y.map(c=>(c.despues-c.antes)/c.antes*100))/Y.length,`${Y.length} noches`])))+`</div>`;
@@ -10860,7 +10871,8 @@ function vRevenue(){
   if(RV.vista==='hab'){
     h+=pasoT(2,'Elige la habitación')+`<div class="exchips">${cats.map(k=>`<button type="button" class="exchip${k===RV.cat?' on':''}" data-rv="cat=${k}" aria-pressed="${k===RV.cat}">${esc(corto(k))} <small>${num(T.filter(c=>c.categoria===k).length)}</small></button>`).join('')}</div>`;
     const X=T.filter(c=>c.categoria===RV.cat), ns=[...new Set(X.map(c=>c.noche))].sort();
-    const ini=n=>X.filter(c=>c.noche===n).sort((a,b)=>a.dia.localeCompare(b.dia))[0].antes, fin=n=>X.filter(c=>c.noche===n).sort((a,b)=>b.dia.localeCompare(a.dia))[0].despues;
+    const cad=n=>{ const Y=X.filter(c=>c.noche===n); return Y.slice().sort((a,b)=>a.dia.localeCompare(b.dia)||(Y.some(z=>z!==a&&z.dia===a.dia&&z.despues===a.antes)?1:0)-(Y.some(z=>z!==b&&z.dia===b.dia&&z.despues===b.antes)?1:0)); };
+    const ini=n=>cad(n)[0].antes, fin=n=>{ const c=cad(n); return c[c.length-1].despues; };
     const r=rvResumen(X);
     h+=`<div class="kpis">${kpi('Cambios',num(r.n),`${num(ns.length)} noches distintas`,'',true)}${kpi('Subidas',num(r.s),'')}${kpi('Bajadas',num(r.b),'')}${kpi('Cambio promedio',(r.p>0?'+':'')+pct(r.p,1),'por cambio')}</div>`;
     h+=pasoT(3,'Elige la gráfica')+segBtns('rv','gh',[['precio','Precio antes y ahora'],['pct','Cambio por noche']],RV.gh||'precio');
@@ -10896,7 +10908,7 @@ function avatar(a,cls='',tip=''){ return `<span class="av ${cls}" style="--ac:${
 function opsDe(p,s){ const A=D.revenueDiario.agentes, dir=p.accion==='subir'?1:-1;
   return p.ops.map(([v,t],i)=>({a:A[i],v,t:s.textos[t],st:v===0?'abst':v===dir?'si':'no'})); }
 function opinion(o){ return `<div class="op">${avatar(o.a,'sm')}<div><b>${esc(o.a.nombre)}</b> <small>${esc(o.a.rol)}</small><p>${esc(o.t)}</p></div></div>`; }
-function vbar(p){ return `<div class="vbar" role="img" aria-label="${p.favor} a favor, ${p.contra} en contra, ${p.abst} se abstienen">${p.favor?`<span class="si" style="flex:${p.favor}">${p.favor}</span>`:''}${p.contra?`<span class="no" style="flex:${p.contra}">${p.contra}</span>`:''}${p.abst?`<span class="ab" style="flex:${p.abst}">${p.abst}</span>`:''}</div>`; }
+function vbar(p){ return `<div class="vbar" role="img" aria-label="${p.favor} a favor, ${p.contra} en contra, ${p.abst} se abstienen">${p.favor?`<span class="si" style="flex:${p.favor}">✓${p.favor}</span>`:''}${p.contra?`<span class="no" style="flex:${p.contra}">✗${p.contra}</span>`:''}${p.abst?`<span class="ab" style="flex:${p.abst}">${p.abst}</span>`:''}</div>`; }
 function vbadge(p){ const [n,c]=VER[p.veredicto]||[p.veredicto,C.grey]; return `<span class="vbadge" style="--vc:${c}">${n}</span>`; }
 function votoPanel(id){
   const x=rvProp(id); if(!x) return `<div class="empty">La votación detallada de este cambio no quedó guardada. Se guarda desde el 24 nov 2026.</div>`;
@@ -10904,6 +10916,7 @@ function votoPanel(id){
   const si=O.filter(o=>o.st==='si').sort((a,b)=>peso(b)-peso(a)), no=O.filter(o=>o.st==='no').sort((a,b)=>peso(b)-peso(a)), ab=O.filter(o=>o.st==='abst');
   let h=`<div class="vp"><div class="vp-h">${vbadge(p)}<b>Propuesta: ${esc(p.accion)} ${esc(p.corto)} · ${esc(fC(p.desde))}${p.hasta!==p.desde?' – '+esc(fC(p.hasta)):''}</b></div>`;
   h+=vbar(p)+`<div class="vleg"><span class="si">A favor</span><span class="no">En contra</span><span class="ab">Se abstienen</span></div>`;
+  h+=`<p class="vregla">Puntaje ponderado <b>${String(p.puntaje).replace('.',',')}</b> · cada voto pesa según el rol del agente y se descuentan las abstenciones. Regla: aprobada desde 0,25, a medias desde 0,08, rechazada por debajo; un freno por lo aprendido la veta aunque tenga mayoría.</p>`;
   if(p.veto) h+=`<p class="vveto"><b>Freno:</b> ${esc(p.veto.replace(/^Veto:\s*/,''))}</p>`;
   h+=`<div class="avs" aria-label="Voto de cada agente">${O.map(o=>avatar(o.a,o.st,o.st==='si'?'a favor':o.st==='no'?'en contra':'se abstiene')).join('')}</div>`;
   h+=`<div class="vcols"><div><h5 class="si">A favor · ${si.length}</h5>${si.map(opinion).join('')||'<p class="hint">Nadie.</p>'}</div><div><h5 class="no">En contra · ${no.length}</h5>${no.map(opinion).join('')||'<p class="hint">Nadie.</p>'}</div></div>`;
@@ -10913,7 +10926,7 @@ function votoPanel(id){
 /* tarjeta corta de una propuesta, que se abre al tocarla */
 function propCard(p,abierta){
   return `<div class="pc${abierta?' open':''}"><button type="button" class="pc-h" data-rv="op=${abierta?'':p.id}" aria-expanded="${abierta}">
-    ${vbadge(p)}<span class="pc-t"><b>${esc(p.accion==='subir'?'Subir':'Bajar')} ${esc(p.corto)}</b><small>${esc(fC(p.desde))}${p.hasta!==p.desde?' – '+esc(fC(p.hasta)):''}</small></span>${vbar(p)}<span class="pc-g">${abierta?'Cerrar ▴':'Ver votos ▾'}</span></button>
+    ${vbadge(p)}<span class="pc-t"><b>${esc(p.accion==='subir'?'Subir':'Bajar')} ${esc(p.corto)}</b><small>${esc(fC(p.desde))}${p.hasta!==p.desde?' – '+esc(fC(p.hasta)):''}</small></span>${vbar(p)}<span class="pc-g">${abierta?'Cerrar ▴':'Ver votos ▾'}</span><span class="pc-l">✓ ${p.favor} a favor · ✗ ${p.contra} en contra · ${p.abst} se abstienen · puntaje ${String(p.puntaje).replace('.',',')}</span></button>
     ${abierta?votoPanel(p.id):''}</div>`;
 }
 /* cómo votó cada agente en una sesión */
@@ -10962,7 +10975,7 @@ document.addEventListener('click', e=>{
 
 /* ---------- toques y cambios de Explorar y Revenue ---------- */
 function exSet(obj,s){ for(const p of s.split(';')){ const i=p.indexOf('='); obj[p.slice(0,i)]=p.slice(i+1); } }
-function exRe(){ const y=window.scrollY; render(); window.scrollTo({top:y}); }
+function exRe(){ const y=window.scrollY, a=document.activeElement, k=a&&['data-ex','data-rv','data-extg','data-exd','data-exin','data-rvin','data-exswap','data-rvswap'].find(x=>a.hasAttribute&&a.hasAttribute(x)), v=k&&a.getAttribute(k); render(); window.scrollTo({top:y}); if(k){ const el=document.querySelector(`[${k}="${CSS.escape(v)}"]`); if(el&&el.focus) el.focus({preventScroll:true}); } }
 document.addEventListener('click', e=>{
   let t=e.target.closest('[data-ex]'); if(t){ exSet(EX,t.dataset.ex); if(/(^|;)dia=/.test(t.dataset.ex)) EX.mes=EX.dia.slice(0,7); if(location.hash!=='#explorar'){ location.hash='#explorar'; } else exRe(); return; }
   t=e.target.closest('[data-rv]'); if(t){ exSet(RV,t.dataset.rv); if(location.hash!=='#revenue') location.hash='#revenue'; else exRe(); return; }
@@ -10973,7 +10986,7 @@ document.addEventListener('click', e=>{
 });
 document.addEventListener('change', e=>{
   const k=e.target.dataset&&e.target.dataset.exin, r=e.target.dataset&&e.target.dataset.rvin;
-  if(k){ if(!e.target.value) return; EX[k]=e.target.value; if(k==='dia') EX.mes=EX.dia.slice(0,7); exRe(); }
+  if(k){ let v=e.target.value; if(!v) return; EX.aviso=''; if(k!=='sa'&&k!=='sb'){ const mn=e.target.min, mx=e.target.max; if(mx&&v>mx){ EX.aviso=`Hay datos de cada día hasta el ${fL(mx)}. Te muestro ese día.`; v=mx; } else if(mn&&v<mn){ EX.aviso=`Los datos de cada día empiezan el ${fL(mn)}. Te muestro ese día.`; v=mn; } } EX[k]=v; if(k==='dia') EX.mes=EX.dia.slice(0,7); exRe(); }
   if(r){ RV[r]=e.target.value; exRe(); }
 });
 
@@ -11029,7 +11042,7 @@ document.addEventListener('click', e=>{
 document.addEventListener('change', e=>{ if(e.target.id==='rsel'){ const tab=hashParts()[2]||''; location.hash='#r-'+e.target.value+(tab?'--'+tab:''); } });
 window.addEventListener('hashchange', route);
 let lastW=window.innerWidth, rzT; window.addEventListener('resize', ()=>{ clearTimeout(rzT); rzT=setTimeout(()=>{ if(Math.abs(window.innerWidth-lastW)>40){ lastW=window.innerWidth; const y=window.scrollY; render(); window.scrollTo({top:y}); } },200); });
-document.getElementById('foot').innerHTML = `Casa Kiwi Hostal · Medellín · Reportes construidos con datos de Lobby PMS · Cifras en pesos colombianos (COP) · <a href="#glosario">Qué significa cada término</a> · Uso interno · Datos actualizados al ${esc(D.actualizado)}`;
+document.getElementById('foot').innerHTML = `Casa Kiwi Hostal · Medellín · Reportes construidos con datos de Lobby PMS · Cifras en pesos colombianos (COP) · <a href="#glosario">Qué significa cada término</a> · Uso interno · Datos actualizados al ${esc(D.actualizado)}${D.revenueDiario?` · cambios de tarifa al ${esc([...new Set(D.revenueDiario.cambios.map(c=>c.dia))].sort().pop())}`:''}`;
 route();
 
 /* =====================================================================
