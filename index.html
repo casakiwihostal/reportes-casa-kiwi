@@ -374,6 +374,68 @@ tr.on td{background:#FDEBDF}
   .verdict .vd{font-size:19px}
   .shortcuts{margin-top:-4px}
 }
+
+/* ---------- votación del consejo ---------- */
+.vbadge{display:inline-block;font-size:11.5px;font-weight:800;letter-spacing:.02em;text-transform:uppercase;padding:3px 9px;border-radius:999px;background:color-mix(in srgb,var(--vc) 14%,#fff);color:var(--vc);border:1px solid color-mix(in srgb,var(--vc) 40%,#fff);white-space:nowrap}
+.vbar{display:flex;height:22px;border-radius:999px;overflow:hidden;min-width:120px;font-size:11px;font-weight:800;font-family:var(--mono)}
+.vbar span{display:flex;align-items:center;justify-content:center;color:#fff;min-width:18px}
+.vbar .si{background:var(--green)}.vbar .no{background:var(--red)}.vbar .ab{background:#DDD6CC;color:var(--muted)}
+.vleg{display:flex;gap:14px;font-size:12px;color:var(--muted);margin:6px 0 10px}.vleg span::before{content:'';display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:5px;vertical-align:-1px}
+.vleg .si::before{background:var(--green)}.vleg .no::before{background:var(--red)}.vleg .ab::before{background:#DDD6CC}
+.vp{padding:6px 2px 4px;white-space:normal;font-family:var(--body);text-align:left}
+.vp-h{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:0 0 10px}.vp-h b{font-family:var(--display);font-size:15px}
+.vveto{background:#FFF1EC;border-left:4px solid var(--orange);padding:8px 12px;border-radius:8px;font-size:13.5px;margin:0 0 10px}
+.av{--ac:#999;width:30px;height:30px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;color:#fff;background:var(--ac);flex:0 0 auto;box-shadow:inset 0 0 0 2px rgba(255,255,255,.35);font-family:var(--body)}
+.av.sm{width:26px;height:26px;font-size:10px}.av.lg{width:56px;height:56px;font-size:19px}
+.avs{display:flex;flex-wrap:wrap;gap:5px;margin:4px 0 14px}
+.avs .av{position:relative}
+.avs .av::after{content:'';position:absolute;right:-2px;bottom:-2px;width:11px;height:11px;border-radius:50%;border:2px solid #fff}
+.avs .av.si::after{background:var(--green)}.avs .av.no::after{background:var(--red)}.avs .av.abst{opacity:.35}.avs .av.abst::after{display:none}
+.vcols{display:grid;grid-template-columns:1fr 1fr;gap:14px}.vcols.one{grid-template-columns:1fr 1fr;margin-top:10px}
+.vcols h5{margin:0 0 8px;font-family:var(--display);font-size:14px;padding-bottom:5px;border-bottom:3px solid}
+.vcols h5.si{border-color:var(--green);color:var(--green)}.vcols h5.no{border-color:var(--red);color:var(--red)}
+.op{display:flex;gap:10px;align-items:flex-start;padding:8px 0;border-bottom:1px dashed var(--line)}
+.op b{font-size:13.5px}.op small{color:var(--muted);font-size:12px}.op p{margin:2px 0 0;font-size:13.5px;line-height:1.4}
+.op.wide{background:#fff;border:1px solid var(--line);border-radius:12px;padding:10px 14px;margin-bottom:8px}
+.vote{font-size:11px;font-weight:800;text-transform:uppercase;padding:4px 8px;border-radius:6px;color:#fff;white-space:nowrap}.vote.si{background:var(--green)}.vote.no{background:var(--red)}
+.vab{margin-top:10px}.vab>summary{cursor:pointer;font-weight:700;font-size:13px;color:var(--muted)}
+.pcs{display:flex;flex-direction:column;gap:8px;margin:0 0 14px}
+.pc{border:1px solid var(--line);border-radius:14px;background:#fff;overflow:hidden;transition:box-shadow .2s,border-color .2s}
+.pc:hover{border-color:var(--ink)}.pc.open{box-shadow:0 10px 30px rgba(20,18,16,.08);border-color:var(--ink)}
+.pc-h{display:grid;grid-template-columns:auto 1fr minmax(120px,240px) auto;gap:12px;align-items:center;width:100%;border:0;background:none;padding:12px 16px;font:inherit;text-align:left;cursor:pointer;color:var(--ink)}
+.pc-t b{display:block;font-family:var(--display);font-size:15px}.pc-t small{color:var(--muted);font-size:12.5px}
+.pc-g{font-size:12.5px;font-weight:700;color:var(--orange);white-space:nowrap}
+.pc .vp{padding:4px 16px 14px;border-top:1px solid var(--line)}.pc .vp-h{display:none}.pc .vp{padding-top:12px}
+.vbtn{border:1px solid var(--ink);background:#fff;color:var(--ink);border-radius:999px;padding:4px 10px;font:inherit;font-size:12px;font-weight:700;cursor:pointer;margin-left:6px}.vbtn:hover{background:var(--ink);color:#fff}
+.rvt td.cv{font-family:var(--body);text-align:left;white-space:nowrap}
+.rvt tr.vrow td{background:#FBF9F6;white-space:normal;text-align:left;padding:12px 14px}
+.agcard{display:flex;gap:14px;align-items:center;border-radius:16px;padding:16px 18px;margin:16px 0 12px;background:linear-gradient(90deg,color-mix(in srgb,var(--ac) 18%,#fff),#fff);border:1px solid color-mix(in srgb,var(--ac) 40%,#fff)}
+.agcard h3{margin:0;font-family:var(--display);font-size:20px}.agcard p{margin:2px 0 0;color:var(--muted);font-size:13.5px}
+.oplist{display:flex;flex-direction:column}
+@media (max-width:700px){ .vcols,.vcols.one{grid-template-columns:1fr} .pc-h{grid-template-columns:auto 1fr;grid-template-areas:none} .pc-h .vbar{grid-column:1/-1} .pc-g{grid-column:1/-1} }
+
+/* ---------- más estilo: portada de cada sección, tarjetas y movimiento ---------- */
+.welcome{position:relative;overflow:hidden;background:var(--ink);color:#fff;border-radius:22px;padding:34px 34px 30px;margin:22px 0 8px;isolation:isolate}
+.welcome::before{content:'';position:absolute;right:-60px;top:-80px;width:300px;height:300px;border-radius:50%;background:radial-gradient(circle,var(--orange) 0,rgba(236,90,28,0) 70%);opacity:.75;z-index:-1}
+.welcome::after{content:'';position:absolute;right:34px;bottom:-26px;width:92px;height:92px;background:var(--yellow);transform:rotate(45deg);border-radius:12px;opacity:.95;z-index:-1;box-shadow:0 0 0 6px var(--ink),0 0 0 9px var(--yellow)}
+.welcome h1{color:#fff}.welcome h1::after{content:'';display:block;width:64px;height:5px;border-radius:3px;background:var(--orange);margin-top:10px}
+.welcome p{color:#D9D3CA;max-width:720px}
+@media (max-width:700px){ .welcome{padding:24px 20px 22px;border-radius:18px;margin-top:14px} .welcome::after{width:60px;height:60px;right:18px;bottom:-20px} }
+.kpi{transition:transform .15s,box-shadow .15s,border-color .15s}
+.kpi:hover{transform:translateY(-2px);box-shadow:0 8px 22px rgba(20,18,16,.07)}
+.kpi.hl{background:#FFF6EF;border-color:#F6C3A8;box-shadow:inset 4px 0 0 var(--orange)}
+.card{box-shadow:0 1px 0 rgba(20,18,16,.03);transition:box-shadow .2s}
+.card:hover{box-shadow:0 10px 28px rgba(20,18,16,.07)}
+.card h3{display:flex;align-items:center;gap:8px}.card h3::before{content:'';width:8px;height:8px;border-radius:2px;background:var(--orange);transform:rotate(45deg);flex:0 0 auto}
+.seg button.on,.exchip.on{box-shadow:0 4px 12px rgba(20,18,16,.18)}
+.exchip.on{background:linear-gradient(135deg,var(--ink),#2C2723)}
+.paso>span{box-shadow:0 0 0 4px #FDE3D6}
+h2.sec{display:flex;align-items:center;gap:10px}h2.sec::before{content:'';width:12px;height:12px;background:var(--yellow);transform:rotate(45deg);border-radius:2px;box-shadow:0 0 0 2px var(--ink)}
+#app>*{animation:sube .35s ease both}
+#app>*:nth-child(2){animation-delay:.03s}#app>*:nth-child(3){animation-delay:.06s}#app>*:nth-child(4){animation-delay:.09s}#app>*:nth-child(n+5){animation-delay:.12s}
+@keyframes sube{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){ #app>*{animation:none} .kpi,.card{transition:none} }
+.excal button{transition:transform .12s}.excal button:hover{transform:scale(1.06);z-index:1}
 </style>
 </head>
 <body>
@@ -7062,7 +7124,8 @@ window.CASA_KIWI = {
         antes: 177000,
         despues: 161000,
         origen: "consejo",
-        motivo: "Consejo: bajar, 14 a favor y 2 en contra (aprobada)"
+        motivo: "Consejo: bajar, 14 a favor y 2 en contra (aprobada)",
+        propuesta: "dblShared_2026-11-24_2026-11-24_bajar"
       },
       {
         dia: "2026-11-24",
@@ -7072,7 +7135,8 @@ window.CASA_KIWI = {
         antes: 58000,
         despues: 65000,
         origen: "tarea diaria",
-        motivo: "Tarea diaria (consejo de las 9:38): voto del consejo"
+        motivo: "Tarea diaria (consejo de las 9:38): voto del consejo",
+        propuesta: "dorm8_2026-11-24_2026-11-24_subir"
       },
       {
         dia: "2026-11-24",
@@ -7082,7 +7146,8 @@ window.CASA_KIWI = {
         antes: 82000,
         despues: 86000,
         origen: "tarea diaria",
-        motivo: "Tarea diaria (consejo de las 9:38): voto del consejo"
+        motivo: "Tarea diaria (consejo de las 9:38): voto del consejo",
+        propuesta: "iris_2026-11-24_2026-11-24_subir"
       },
       {
         dia: "2026-11-24",
@@ -7092,7 +7157,8 @@ window.CASA_KIWI = {
         antes: 240000,
         despues: 222000,
         origen: "consejo",
-        motivo: "Consejo: bajar, 11 a favor y 6 en contra (aprobada a medias)"
+        motivo: "Consejo: bajar, 11 a favor y 6 en contra (aprobada a medias)",
+        propuesta: "twinPriv_2026-11-25_2026-11-25_bajar"
       },
       {
         dia: "2026-11-24",
@@ -7102,7 +7168,8 @@ window.CASA_KIWI = {
         antes: 226000,
         despues: 217000,
         origen: "tarea diaria",
-        motivo: "Tarea diaria (consejo de las 9:38): voto del consejo. Ojo: el chat la había frenado por Comic Con"
+        motivo: "Tarea diaria (consejo de las 9:38): voto del consejo. Ojo: el chat la había frenado por Comic Con",
+        propuesta: "dblShared_2026-11-28_2026-12-03_bajar"
       },
       {
         dia: "2026-11-24",
@@ -7112,7 +7179,8 @@ window.CASA_KIWI = {
         antes: 92664,
         despues: 96000,
         origen: "consejo",
-        motivo: "Orden entre habitaciones (jerarquía)"
+        motivo: "Orden entre habitaciones (jerarquía)",
+        propuesta: null
       },
       {
         dia: "2026-11-24",
@@ -7122,7 +7190,8 @@ window.CASA_KIWI = {
         antes: 89000,
         despues: 93000,
         origen: "consejo",
-        motivo: "Consejo: subir, 13 a favor y 4 en contra (aprobada a medias)"
+        motivo: "Consejo: subir, 13 a favor y 4 en contra (aprobada a medias)",
+        propuesta: "dorm6_2026-11-28_2026-11-28_subir"
       },
       {
         dia: "2026-11-24",
@@ -7132,7 +7201,8 @@ window.CASA_KIWI = {
         antes: 199000,
         despues: 185000,
         origen: "consejo",
-        motivo: "Consejo: bajar, 13 a favor y 4 en contra (aprobada a medias)"
+        motivo: "Consejo: bajar, 13 a favor y 4 en contra (aprobada a medias)",
+        propuesta: "dblShared_2026-11-28_2026-12-03_bajar"
       },
       {
         dia: "2026-11-24",
@@ -7142,7 +7212,8 @@ window.CASA_KIWI = {
         antes: 98000,
         despues: 96000,
         origen: "consejo",
-        motivo: "Consejo: bajar, 12 a favor y 5 en contra (aprobada a medias)"
+        motivo: "Consejo: bajar, 12 a favor y 5 en contra (aprobada a medias)",
+        propuesta: "iris_2026-11-29_2026-11-29_bajar"
       },
       {
         dia: "2026-11-24",
@@ -7152,7 +7223,8 @@ window.CASA_KIWI = {
         antes: 95000,
         despues: 92000,
         origen: "consejo",
-        motivo: "Consejo: bajar, 13 a favor y 5 en contra (aprobada a medias)"
+        motivo: "Consejo: bajar, 13 a favor y 5 en contra (aprobada a medias)",
+        propuesta: "dorm6_2026-11-29_2026-11-29_bajar"
       },
       {
         dia: "2026-11-24",
@@ -7162,7 +7234,8 @@ window.CASA_KIWI = {
         antes: 250636,
         despues: 232000,
         origen: "consejo",
-        motivo: "Consejo: bajar, 10 a favor y 9 en contra (aprobada a medias)"
+        motivo: "Consejo: bajar, 10 a favor y 9 en contra (aprobada a medias)",
+        propuesta: "twinPriv_2026-11-29_2026-11-29_bajar"
       },
       {
         dia: "2026-11-24",
@@ -7172,7 +7245,8 @@ window.CASA_KIWI = {
         antes: 180000,
         despues: 172000,
         origen: "consejo",
-        motivo: "Consejo: bajar, 13 a favor y 4 en contra (aprobada a medias)"
+        motivo: "Consejo: bajar, 13 a favor y 4 en contra (aprobada a medias)",
+        propuesta: "dblShared_2026-11-28_2026-12-03_bajar"
       },
       {
         dia: "2026-11-24",
@@ -7182,7 +7256,8 @@ window.CASA_KIWI = {
         antes: 181000,
         despues: 175000,
         origen: "consejo",
-        motivo: "Consejo: bajar, 13 a favor y 4 en contra (aprobada a medias)"
+        motivo: "Consejo: bajar, 13 a favor y 4 en contra (aprobada a medias)",
+        propuesta: "dblShared_2026-11-28_2026-12-03_bajar"
       },
       {
         dia: "2026-11-24",
@@ -7192,7 +7267,8 @@ window.CASA_KIWI = {
         antes: 181000,
         despues: 175000,
         origen: "consejo",
-        motivo: "Consejo: bajar, 13 a favor y 4 en contra (aprobada a medias)"
+        motivo: "Consejo: bajar, 13 a favor y 4 en contra (aprobada a medias)",
+        propuesta: "dblShared_2026-11-28_2026-12-03_bajar"
       },
       {
         dia: "2026-11-24",
@@ -7202,7 +7278,8 @@ window.CASA_KIWI = {
         antes: 194000,
         despues: 184000,
         origen: "consejo",
-        motivo: "Consejo: bajar, 13 a favor y 4 en contra (aprobada a medias)"
+        motivo: "Consejo: bajar, 13 a favor y 4 en contra (aprobada a medias)",
+        propuesta: "dblShared_2026-11-28_2026-12-03_bajar"
       },
       {
         dia: "2026-11-24",
@@ -7212,7 +7289,8 @@ window.CASA_KIWI = {
         antes: 92000,
         despues: 96000,
         origen: "tarea diaria",
-        motivo: "Tarea diaria (consejo de las 9:38): voto del consejo"
+        motivo: "Tarea diaria (consejo de las 9:38): voto del consejo",
+        propuesta: "dorm6_2026-12-07_2026-12-07_subir"
       },
       {
         dia: "2026-11-24",
@@ -7222,7 +7300,8 @@ window.CASA_KIWI = {
         antes: 73000,
         despues: 79000,
         origen: "tarea diaria",
-        motivo: "Tarea diaria (consejo de las 9:38): voto del consejo"
+        motivo: "Tarea diaria (consejo de las 9:38): voto del consejo",
+        propuesta: "dorm8_2026-12-11_2026-12-12_subir"
       },
       {
         dia: "2026-11-24",
@@ -7232,7 +7311,8 @@ window.CASA_KIWI = {
         antes: 85000,
         despues: 89000,
         origen: "tarea diaria",
-        motivo: "Tarea diaria (consejo de las 9:38): orden entre habitaciones (jerarquía)"
+        motivo: "Tarea diaria (consejo de las 9:38): orden entre habitaciones (jerarquía)",
+        propuesta: null
       },
       {
         dia: "2026-11-24",
@@ -7242,7 +7322,8 @@ window.CASA_KIWI = {
         antes: 148700,
         despues: 157000,
         origen: "consejo",
-        motivo: "Consejo: subir, 15 a favor y 1 en contra (aprobada). Conciertos de Soda Stereo y Sirius"
+        motivo: "Consejo: subir, 15 a favor y 1 en contra (aprobada). Conciertos de Soda Stereo y Sirius",
+        propuesta: "dbl13_2026-12-12_2026-12-12_subir"
       },
       {
         dia: "2026-11-24",
@@ -7252,7 +7333,8 @@ window.CASA_KIWI = {
         antes: 77000,
         despues: 83000,
         origen: "consejo",
-        motivo: "Consejo: subir, 16 a favor y 1 en contra (aprobada). Conciertos de Soda Stereo y Sirius"
+        motivo: "Consejo: subir, 16 a favor y 1 en contra (aprobada). Conciertos de Soda Stereo y Sirius",
+        propuesta: "dorm8_2026-12-11_2026-12-12_subir"
       },
       {
         dia: "2026-11-24",
@@ -7262,7 +7344,8 @@ window.CASA_KIWI = {
         antes: 333309,
         despues: 357000,
         origen: "consejo",
-        motivo: "Consejo: subir, 18 a favor y 0 en contra (aprobada). Conciertos de Soda Stereo y Sirius"
+        motivo: "Consejo: subir, 18 a favor y 0 en contra (aprobada). Conciertos de Soda Stereo y Sirius",
+        propuesta: "famPriv_2026-12-12_2026-12-13_subir"
       },
       {
         dia: "2026-11-24",
@@ -7272,7 +7355,8 @@ window.CASA_KIWI = {
         antes: 205328,
         despues: 214000,
         origen: "consejo",
-        motivo: "Consejo: subir, 14 a favor y 3 en contra (aprobada a medias). Conciertos de Soda Stereo y Sirius"
+        motivo: "Consejo: subir, 14 a favor y 3 en contra (aprobada a medias). Conciertos de Soda Stereo y Sirius",
+        propuesta: "twinNoView_2026-12-12_2026-12-14_subir"
       },
       {
         dia: "2026-11-24",
@@ -7282,7 +7366,8 @@ window.CASA_KIWI = {
         antes: 333309,
         despues: 350000,
         origen: "consejo",
-        motivo: "Consejo: subir, 18 a favor y 0 en contra (aprobada)"
+        motivo: "Consejo: subir, 18 a favor y 0 en contra (aprobada)",
+        propuesta: "famPriv_2026-12-12_2026-12-13_subir"
       },
       {
         dia: "2026-11-24",
@@ -7292,7 +7377,8 @@ window.CASA_KIWI = {
         antes: 205328,
         despues: 214000,
         origen: "consejo",
-        motivo: "Consejo: subir, 14 a favor y 3 en contra (aprobada a medias)"
+        motivo: "Consejo: subir, 14 a favor y 3 en contra (aprobada a medias)",
+        propuesta: "twinNoView_2026-12-12_2026-12-14_subir"
       },
       {
         dia: "2026-11-24",
@@ -7302,7 +7388,8 @@ window.CASA_KIWI = {
         antes: 89000,
         despues: 92000,
         origen: "tarea diaria",
-        motivo: "Tarea diaria (consejo de las 9:38): voto del consejo"
+        motivo: "Tarea diaria (consejo de las 9:38): voto del consejo",
+        propuesta: "dorm6_2026-12-14_2026-12-15_subir"
       },
       {
         dia: "2026-11-24",
@@ -7312,7 +7399,8 @@ window.CASA_KIWI = {
         antes: 185328,
         despues: 193000,
         origen: "consejo",
-        motivo: "Consejo: subir, 14 a favor y 3 en contra (aprobada a medias)"
+        motivo: "Consejo: subir, 14 a favor y 3 en contra (aprobada a medias)",
+        propuesta: "twinNoView_2026-12-12_2026-12-14_subir"
       },
       {
         dia: "2026-11-24",
@@ -7322,7 +7410,8 @@ window.CASA_KIWI = {
         antes: 80000,
         despues: 83000,
         origen: "tarea diaria",
-        motivo: "Tarea diaria (consejo de las 9:38): voto del consejo"
+        motivo: "Tarea diaria (consejo de las 9:38): voto del consejo",
+        propuesta: "dorm6_2026-12-14_2026-12-15_subir"
       },
       {
         dia: "2026-11-24",
@@ -7332,7 +7421,8 @@ window.CASA_KIWI = {
         antes: 69000,
         despues: 73000,
         origen: "tarea diaria",
-        motivo: "Tarea diaria (consejo de las 9:38): voto del consejo"
+        motivo: "Tarea diaria (consejo de las 9:38): voto del consejo",
+        propuesta: "dorm8_2026-12-17_2026-12-25_subir"
       },
       {
         dia: "2026-11-24",
@@ -7342,7 +7432,8 @@ window.CASA_KIWI = {
         antes: 85000,
         despues: 88000,
         origen: "tarea diaria",
-        motivo: "Tarea diaria (consejo de las 9:38): voto del consejo"
+        motivo: "Tarea diaria (consejo de las 9:38): voto del consejo",
+        propuesta: "dorm6_2026-12-17_2026-12-17_subir"
       },
       {
         dia: "2026-11-22",
@@ -8664,7 +8755,934 @@ window.CASA_KIWI = {
         origen: "consejo",
         motivo: "Sesión del consejo aprobada por Santiago en el chat"
       }
-    ]
+    ],
+    agentes: [
+      {
+        id: "jefe",
+        nombre: "Valeria",
+        rol: "Revenue manager jefe",
+        area: "Revenue y precios",
+        peso: 2,
+        color: "#ff7a1a"
+      },
+      {
+        id: "demanda",
+        nombre: "Tomás",
+        rol: "Analista de demanda y ritmo",
+        area: "Revenue y precios",
+        peso: 2,
+        color: "#ff9a3d"
+      },
+      {
+        id: "dorms",
+        nombre: "Lina",
+        rol: "Experta en precios de dormitorios",
+        area: "Revenue y precios",
+        peso: 1.5,
+        color: "#ffb35c"
+      },
+      {
+        id: "privadas",
+        nombre: "Andrés",
+        rol: "Experto en precios de privadas",
+        area: "Revenue y precios",
+        peso: 1.5,
+        color: "#e8620a"
+      },
+      {
+        id: "competencia",
+        nombre: "Camila",
+        rol: "Analista de competencia",
+        area: "Revenue y precios",
+        peso: 2,
+        color: "#ffc531"
+      },
+      {
+        id: "datos",
+        nombre: "Iván",
+        rol: "Científico de datos",
+        area: "Revenue y precios",
+        peso: 1,
+        color: "#d9a400"
+      },
+      {
+        id: "booking",
+        nombre: "Sofía",
+        rol: "Experta en Booking",
+        area: "Canales",
+        peso: 1,
+        color: "#3d96ce"
+      },
+      {
+        id: "hostelworld",
+        nombre: "Mateo",
+        rol: "Experto en Hostelworld",
+        area: "Canales",
+        peso: 1.5,
+        color: "#ff6b3d"
+      },
+      {
+        id: "airbnb",
+        nombre: "Daniela",
+        rol: "Experta en Airbnb",
+        area: "Canales",
+        peso: 1,
+        color: "#ff5a6e"
+      },
+      {
+        id: "expedia",
+        nombre: "Julián",
+        rol: "Experto en Expedia",
+        area: "Canales",
+        peso: 0.7,
+        color: "#f2c94c"
+      },
+      {
+        id: "directa",
+        nombre: "Paula",
+        rol: "Experta en venta directa y web",
+        area: "Canales",
+        peso: 1,
+        color: "#4cc38a"
+      },
+      {
+        id: "paridad",
+        nombre: "Esteban",
+        rol: "Experto en paridad y distribución",
+        area: "Canales",
+        peso: 1,
+        color: "#7aa6c2"
+      },
+      {
+        id: "europa",
+        nombre: "Ingrid",
+        rol: "Turismo europeo",
+        area: "Mercados de origen",
+        peso: 0.8,
+        color: "#5b7cfa"
+      },
+      {
+        id: "norteamerica",
+        nombre: "Mike",
+        rol: "Turismo norteamericano",
+        area: "Mercados de origen",
+        peso: 0.8,
+        color: "#c75a90"
+      },
+      {
+        id: "latam",
+        nombre: "Lucía",
+        rol: "Turismo latinoamericano",
+        area: "Mercados de origen",
+        peso: 0.8,
+        color: "#e86f4c"
+      },
+      {
+        id: "nacional",
+        nombre: "Juan Pablo",
+        rol: "Turismo nacional",
+        area: "Mercados de origen",
+        peso: 1,
+        color: "#f5d142"
+      },
+      {
+        id: "asia",
+        nombre: "Mei",
+        rol: "Turismo de Asia y Oceanía",
+        area: "Mercados de origen",
+        peso: 0.5,
+        color: "#9b6dd6"
+      },
+      {
+        id: "mochilero",
+        nombre: "Nico",
+        rol: "La voz del mochilero",
+        area: "Perfiles de huésped",
+        peso: 1,
+        color: "#7bc96f"
+      },
+      {
+        id: "nomadas",
+        nombre: "Sara",
+        rol: "Nómadas digitales y estadías largas",
+        area: "Perfiles de huésped",
+        peso: 0.8,
+        color: "#4ec9c9"
+      },
+      {
+        id: "grupos",
+        nombre: "Felipe",
+        rol: "Grupos y viajes de amigos",
+        area: "Perfiles de huésped",
+        peso: 0.8,
+        color: "#d98b4a"
+      },
+      {
+        id: "viajeras",
+        nombre: "Ana",
+        rol: "Viajeras mujeres",
+        area: "Perfiles de huésped",
+        peso: 0.8,
+        color: "#e98ac4"
+      },
+      {
+        id: "eventos",
+        nombre: "Carlos",
+        rol: "Eventos de Medellín",
+        area: "Contexto de la ciudad",
+        peso: 1.5,
+        color: "#ff4d6d"
+      },
+      {
+        id: "temporadas",
+        nombre: "Gloria",
+        rol: "Turismo y temporadas",
+        area: "Contexto de la ciudad",
+        peso: 1,
+        color: "#b5e48c"
+      },
+      {
+        id: "vuelos",
+        nombre: "Ricardo",
+        rol: "Vuelos y conectividad aérea",
+        area: "Contexto de la ciudad",
+        peso: 0.6,
+        color: "#90caf9"
+      },
+      {
+        id: "cambio",
+        nombre: "Elena",
+        rol: "Economista de tasas de cambio",
+        area: "Contexto de la ciudad",
+        peso: 0.5,
+        color: "#a5d6a7"
+      },
+      {
+        id: "financiero",
+        nombre: "Roberto",
+        rol: "Analista financiero",
+        area: "Negocio",
+        peso: 1.5,
+        color: "#66bb6a"
+      },
+      {
+        id: "contador",
+        nombre: "Marta",
+        rol: "Contadora de impuestos y comisiones",
+        area: "Negocio",
+        peso: 0.7,
+        color: "#8d9e6b"
+      },
+      {
+        id: "riesgos",
+        nombre: "Hernán",
+        rol: "Experto en riesgos",
+        area: "Negocio",
+        peso: 1.5,
+        color: "#ef5350"
+      },
+      {
+        id: "abogado",
+        nombre: "Beatriz",
+        rol: "Abogada de turismo",
+        area: "Negocio",
+        peso: 0.5,
+        color: "#8e7cc3"
+      },
+      {
+        id: "operaciones",
+        nombre: "Diego",
+        rol: "Jefe de operaciones",
+        area: "Negocio",
+        peso: 1,
+        color: "#a1887f"
+      },
+      {
+        id: "reputacion",
+        nombre: "Valentina",
+        rol: "Reputación y reseñas",
+        area: "Negocio",
+        peso: 1,
+        color: "#ffd54f"
+      },
+      {
+        id: "marketing",
+        nombre: "Sebastián",
+        rol: "Marketing digital",
+        area: "Negocio",
+        peso: 0.8,
+        color: "#ba68c8"
+      },
+      {
+        id: "psicologo",
+        nombre: "Laura",
+        rol: "Psicóloga del consumidor",
+        area: "Negocio",
+        peso: 0.7,
+        color: "#f48fb1"
+      },
+      {
+        id: "sostenibilidad",
+        nombre: "Pablo",
+        rol: "Experto en sostenibilidad",
+        area: "Negocio",
+        peso: 0.5,
+        color: "#81c784"
+      }
+    ],
+    consejo: {
+      "2026-11-24": {
+        titulo: "Sesión del consejo del 24 nov 2026 (34 agentes, horizonte 35 noches)",
+        textos: ["El modelo propone bajar 14%: mercado, demanda y eventos juntos.","Demanda normal (43%); no veo urgencia.","No es dormitorio; me abstengo.","Bien posicionada (90% de la mediana).","La competencia bajó 6% frente a su normal.","Los datos son consistentes; la propuesta se sostiene.","Con cupo a pocos días, Booking premia el precio competitivo.","En Hostelworld mostramos 90% de la mediana del listado.","Airbnb responde poco a cambios entre semana.","Expedia sigue al mercado; acompaño la propuesta.","Para la web prefiero cuidar el precio, no bajarlo.","Un salto de 14% se nota entre canales; mejor por pasos.","Temporada baja para europeos.","Acción de Gracias: llegan muchos estadounidenses ese fin de semana.","Sin vacaciones latinoamericanas fuertes.","Puente festivo: el viajero colombiano llega a Medellín.","Poco movimiento de Asia y Oceanía.","Las privadas no son mi segmento.","No cambia mucho para estadías largas.","No es habitación de grupo.","No es el dormitorio femenino.","En la ciudad: Alumbrados navideños EPM, Comic Con Colombia · Medellín, Concierto Beéle (Borondo Tour), Festival de Navidad Medellín Te Quiere, Medellín Marcha Musical (bandas), Concierto Martin Garrix, White Festival, Concierto Soda Stereo, Sirius (festival).","Temporada baja en Medellín.","Sin datos de vuelos en vivo; por el año pasado (26%) la llegada a Medellín es normal.","Sin la tasa del día no opino; con el dólar alto Colombia sigue siendo barata para extranjeros.","Con esta demanda, el cambio resta ingreso (~-6%).","Recuerden la comisión de OTA (15–18%) y el IVA: cualquier precio debe dejar margen.","Riesgo controlado: dentro del tope y del piso.","Las reservas ya hechas conservan su tarifa; el cambio aplica solo a ventas nuevas.","Sin presión operativa.","Sin riesgo para las reseñas.","Sin campaña especial.","El cambio no se siente brusco para el huésped.","Neutral.","El modelo propone bajar 9%: mercado, demanda y eventos juntos.","Demanda prevista 47%: hay espacio para cobrar más.","La privada está al 120% de la mediana: cara para lo que ofrece.","La competencia bajó 3% frente a su normal.","En Hostelworld mostramos 120% de la mediana del listado.","El cambio es razonable para todos los canales.","Sin puente ni vacaciones nacionales.","En la ciudad: Alumbrados navideños EPM, Comic Con Colombia · Medellín, Concierto Beéle (Borondo Tour), Festival de Navidad Medellín Te Quiere, Medellín Marcha Musical (bandas).","Sin datos de vuelos en vivo; por el año pasado (38%) la llegada a Medellín es normal.","Con esta demanda, el cambio resta ingreso (~-4%).","El modelo propone subir 13%: mercado, demanda y eventos juntos.","Demanda normal (39%); no veo urgencia.","La privada está al 128% de la mediana: cara para lo que ofrece.","La competencia está en su precio habitual.","Solo 3 hostales comparables: la señal de mercado es débil.","Booking aguanta la subida si la reseña se mantiene.","En Hostelworld mostramos 128% de la mediana del listado.","Cada subida mejora el margen de la venta directa (sin comisión).","Un salto de 13% se nota entre canales; mejor por pasos.","Temporada fuerte de europeos (invierno o verano europeo).","Sin vacaciones norteamericanas esas fechas.","Las habitaciones grandes dependen de grupos.","En la ciudad: Alumbrados navideños EPM, Festival de Navidad Medellín Te Quiere, Concierto Martin Garrix, White Festival.","Temporada alta en Medellín.","El ingreso esperado mejora ~2%.","Veto: Twin baño priv. pierde reservas cada vez que sube.","El modelo propone bajar 15%: mercado, demanda y eventos juntos.","Demanda prevista 67%: hay espacio para cobrar más.","Bien posicionada (91% de la mediana).","La competencia bajó 18% frente a su normal.","En Hostelworld mostramos 91% de la mediana del listado.","Un salto de 15% se nota entre canales; mejor por pasos.","No hay eventos registrados esas noches.","Sin datos de vuelos en vivo; por el año pasado (18%) la llegada a Medellín es floja.","Con esta demanda, el cambio resta ingreso (~-10%).","El precio de plataforma baja de una barrera psicológica ($130.200).","El modelo propone subir 9%: mercado, demanda y eventos juntos.","Estamos en la mediana (100%).","No es privada; me abstengo.","La competencia bajó 11% frente a su normal.","En Hostelworld mostramos 100% de la mediana del listado.","Airbnb vende sobre todo privadas; me abstengo.","El mochilero ordena por precio: si pasamos la mediana, nos salta.","El ingreso esperado mejora ~1%.","Subir a última hora con cupo libre arriesga noches vacías.","El precio de plataforma cruza una barrera psicológica ($51.800).","Demanda normal (38%); no veo urgencia.","Bien posicionada (101% de la mediana).","La competencia bajó 5% frente a su normal.","En Hostelworld mostramos 101% de la mediana del listado.","En la ciudad: Alumbrados navideños EPM, Festival de Navidad Medellín Te Quiere, White Festival.","Sin datos de vuelos en vivo; por el año pasado (17%) la llegada a Medellín es floja.","Con esta demanda, el cambio resta ingreso (~-5%).","El modelo propone subir 12%: mercado, demanda y eventos juntos.","Demanda normal (35%); no veo urgencia.","En Hostelworld estamos al 70% de la mediana de dorms: hay margen.","La competencia está 6% más cara que de costumbre.","Faltan más de 30 días: el ritmo todavía puede cambiar, prefiero un paso más corto.","En Hostelworld mostramos 70% de la mediana del listado.","Un salto de 12% se nota entre canales; mejor por pasos.","Vacaciones escolares en Latinoamérica.","Verano austral: más australianos y neozelandeses.","Aún estamos por debajo del mercado; aguanta la subida.","En la ciudad: Alumbrados navideños EPM, Blackdance, Inicio de vacaciones de fin de año, Navidad y Año Nuevo.","Sin datos de vuelos en vivo; por el año pasado (16%) la llegada a Medellín es floja.","Con esta demanda, el cambio resta ingreso (~-2%).","El precio de plataforma cruza una barrera psicológica ($51.100).","Demanda normal (37%); no veo urgencia.","La privada está al 84% de la mediana del mercado.","En Hostelworld mostramos 84% de la mediana del listado.","En la ciudad: Alumbrados navideños EPM, Concierto Soda Stereo, Festival de Navidad Medellín Te Quiere, Sirius (festival).","Sin datos de vuelos en vivo; por el año pasado (20%) la llegada a Medellín es floja.","El modelo propone bajar 12%: mercado, demanda y eventos juntos.","Demanda prevista 53%: hay espacio para cobrar más.","La privada está al 139% de la mediana: cara para lo que ofrece.","La competencia bajó 17% frente a su normal.","En Hostelworld mostramos 139% de la mediana del listado.","Veto: bajar Twin sin vista a última hora no trae reservas.","El modelo propone subir 11%: mercado, demanda y eventos juntos.","La privada está al 219% de la mediana: cara para lo que ofrece.","En Hostelworld mostramos 219% de la mediana del listado.","El ingreso esperado mejora ~4%.","El precio de plataforma cruza una barrera psicológica ($216.300).","El modelo propone bajar 7%: mercado, demanda y eventos juntos.","Bien posicionada (98% de la mediana).","35% de la competencia ya no tiene cupo: subir.","En Hostelworld mostramos 98% de la mediana del listado.","El huésped de Airbnb reserva fines de semana con anticipación.","Sin datos de vuelos en vivo; por el año pasado (25%) la llegada a Medellín es normal.","Demanda prevista 50%: hay espacio para cobrar más.","Estamos en la mediana (91%).","La competencia bajó 16% frente a su normal.","Bajar la cama nos sube en el listado por precio.","En la ciudad: Alumbrados navideños EPM, Comic Con Colombia · Medellín, Festival de Navidad Medellín Te Quiere, Medellín Marcha Musical (bandas).","Sin datos de vuelos en vivo; por el año pasado (44%) la llegada a Medellín es normal.","El precio de plataforma baja de una barrera psicológica ($45.500).","El modelo propone subir 7%: mercado, demanda y eventos juntos.","La privada está al 63% de la mediana del mercado.","En Hostelworld mostramos 63% de la mediana del listado.","En la ciudad: Alumbrados navideños EPM, Festival de Navidad Medellín Te Quiere.","Sin datos de vuelos en vivo; por el año pasado (24%) la llegada a Medellín es normal.","Veto: 2 dobles baño comp. pierde reservas cada vez que sube.","La privada está al 86% de la mediana del mercado.","La competencia bajó 19% frente a su normal.","En Hostelworld mostramos 86% de la mediana del listado.","Sin datos de vuelos en vivo; por el año pasado (14%) la llegada a Medellín es floja.","Con esta demanda, el cambio resta ingreso (~-7%).","La privada está al 121% de la mediana: cara para lo que ofrece.","36% de la competencia ya no tiene cupo: subir.","En Hostelworld mostramos 121% de la mediana del listado.","En la ciudad: Alumbrados navideños EPM, Concierto Martin Garrix, Festival de Navidad Medellín Te Quiere, White Festival.","Demanda prevista 55%: hay espacio para cobrar más.","La privada está al 156% de la mediana: cara para lo que ofrece.","En Hostelworld mostramos 156% de la mediana del listado.","Sin datos de vuelos en vivo; por el año pasado (22%) la llegada a Medellín es normal.","Con esta demanda, el cambio resta ingreso (~-8%).","El precio de plataforma baja de una barrera psicológica ($142.800).","En Hostelworld estamos al 72% de la mediana de dorms: hay margen.","La competencia bajó 13% frente a su normal.","En Hostelworld mostramos 72% de la mediana del listado.","La privada está al 169% de la mediana: cara para lo que ofrece.","50% de la competencia ya no tiene cupo: subir.","Solo 2 hostales comparables: la señal de mercado es débil.","En Hostelworld mostramos 169% de la mediana del listado.","El modelo propone subir 15%: mercado, demanda y eventos juntos.","La privada está al 114% de la mediana: cara para lo que ofrece.","En Hostelworld mostramos 114% de la mediana del listado.","El modelo propone subir 10%: mercado, demanda y eventos juntos.","Estamos en la mediana (94%).","La competencia bajó 8% frente a su normal.","En Hostelworld mostramos 94% de la mediana del listado.","Iris no responde al precio: el problema es la ficha y las fotos, no la tarifa.","Esta categoría tiene quejas de ficha o fotos: subir puede castigar las reseñas.","La privada está al 123% de la mediana: cara para lo que ofrece.","La competencia bajó 7% frente a su normal.","En Hostelworld mostramos 123% de la mediana del listado.","La competencia bajó 21% frente a su normal.","Sin datos de vuelos en vivo; por el año pasado (58%) la llegada a Medellín es fuerte.","El precio de plataforma baja de una barrera psicológica ($133.700).","La privada está al 146% de la mediana: cara para lo que ofrece.","En Hostelworld mostramos 146% de la mediana del listado.","Los grupos de amigos buscan habitaciones grandes los fines de semana.","El precio de plataforma baja de una barrera psicológica ($149.800).","Demanda normal (30%); no veo urgencia.","Temporada de vacaciones en Colombia.","En la ciudad: Alumbrados navideños EPM.","Sin datos de vuelos en vivo; por el año pasado (19%) la llegada a Medellín es floja.","La privada está al 67% de la mediana del mercado.","En Hostelworld mostramos 67% de la mediana del listado.","Sin datos de vuelos en vivo; por el año pasado (20%) la llegada a Medellín es normal.","La privada está al 59% de la mediana del mercado.","En Hostelworld mostramos 59% de la mediana del listado.","El modelo propone subir 8%: mercado, demanda y eventos juntos.","La privada está al 136% de la mediana: cara para lo que ofrece.","En Hostelworld mostramos 136% de la mediana del listado.","Sin datos de vuelos en vivo; por el año pasado (21%) la llegada a Medellín es normal.","El modelo propone bajar 10%: mercado, demanda y eventos juntos.","La privada está al 79% de la mediana del mercado.","En Hostelworld mostramos 79% de la mediana del listado.","El precio de plataforma baja de una barrera psicológica ($228.900).","Demanda prevista 70%: hay espacio para cobrar más.","Estamos en la mediana (110%).","En Hostelworld mostramos 110% de la mediana del listado.","Sin datos de vuelos en vivo; por el año pasado (74%) la llegada a Medellín es fuerte.","En Hostelworld estamos al 75% de la mediana de dorms: hay margen.","La competencia está 12% más cara que de costumbre.","En Hostelworld mostramos 75% de la mediana del listado.","En la ciudad: Alumbrados navideños EPM, Festival de Navidad Medellín Te Quiere, Concierto Soda Stereo, Sirius (festival).","Sin datos de vuelos en vivo; por el año pasado (23%) la llegada a Medellín es normal.","Con esta demanda, el cambio resta ingreso (~-1%).","Estamos al 116% de la mediana: el mochilero compara y se va.","La competencia bajó 10% frente a su normal.","En Hostelworld mostramos 116% de la mediana del listado.","El modelo propone subir 14%: mercado, demanda y eventos juntos.","Bien posicionada (103% de la mediana).","En Hostelworld mostramos 103% de la mediana del listado.","Sin datos de vuelos en vivo; por el año pasado (10%) la llegada a Medellín es floja.","Sin datos de vuelos en vivo; por el año pasado (30%) la llegada a Medellín es normal.","El precio de plataforma baja de una barrera psicológica ($96.600).","Demanda prevista 45%: hay espacio para cobrar más.","La privada está al 141% de la mediana: cara para lo que ofrece.","En Hostelworld mostramos 141% de la mediana del listado.","Sin datos de vuelos en vivo; por el año pasado (8%) la llegada a Medellín es floja.","El ingreso esperado mejora ~3%.","El precio de plataforma cruza una barrera psicológica ($156.100).","El modelo propone subir 6%: mercado, demanda y eventos juntos.","La privada está al 68% de la mediana del mercado.","En Hostelworld mostramos 68% de la mediana del listado.","Demanda prevista 19%, el año pasado 19%: hay que mover cupo.","Estamos en la mediana (102%).","En Hostelworld mostramos 102% de la mediana del listado.","Entre semana con poca demanda: un mejor precio atrae estadías largas.","El modelo propone bajar 5%: mercado, demanda y eventos juntos.","Estamos en la mediana (105%).","En Hostelworld mostramos 105% de la mediana del listado.","Demanda normal (23%); no veo urgencia.","Estamos al 118% de la mediana: el mochilero compara y se va.","La competencia bajó 4% frente a su normal.","En Hostelworld mostramos 118% de la mediana del listado.","Demanda normal (20%); no veo urgencia.","Con esta demanda, el cambio resta ingreso (~-3%).","El modelo propone bajar 6%: mercado, demanda y eventos juntos.","Demanda normal (40%); no veo urgencia.","La privada está al 74% de la mediana del mercado.","En Hostelworld mostramos 74% de la mediana del listado.","El precio de plataforma baja de una barrera psicológica ($235.900).","Demanda normal (22%); no veo urgencia.","La competencia está 3% más cara que de costumbre.","Bien posicionada (104% de la mediana).","En Hostelworld mostramos 104% de la mediana del listado.","Estamos en la mediana (104%)."],
+        propuestas: [
+          {
+            id: "dblPriv_2026-11-28_2026-12-17_bajar",
+            grupo: "dblPriv",
+            corto: "Doble baño priv.",
+            accion: "bajar",
+            desde: "2026-11-28",
+            hasta: "2026-12-17",
+            veredicto: "rechazada",
+            veto: null,
+            favor: 10,
+            contra: 6,
+            abst: 18,
+            puntaje: 0.01,
+            ops: [[-1,0],[0,1],[0,2],[0,3],[-1,4],[-1,5],[-1,6],[1,7],[-1,8],[-1,9],[0,10],[1,11],[-1,12],[1,13],[0,14],[1,15],[0,16],[0,17],[0,18],[0,19],[0,20],[1,21],[-1,22],[0,23],[0,24],[1,25],[0,26],[-1,27],[0,28],[0,29],[0,30],[0,31],[-1,32],[0,33]]
+          },
+          {
+            id: "dblShared_2026-11-28_2026-12-03_bajar",
+            grupo: "dblShared",
+            corto: "Doble baño comp.",
+            accion: "bajar",
+            desde: "2026-11-28",
+            hasta: "2026-12-03",
+            veredicto: "parcial",
+            veto: null,
+            favor: 13,
+            contra: 4,
+            abst: 17,
+            puntaje: 0.15,
+            ops: [[-1,34],[1,35],[0,2],[-1,36],[-1,37],[-1,5],[-1,6],[-1,38],[-1,8],[-1,9],[0,10],[-1,39],[-1,12],[1,13],[0,14],[0,40],[0,16],[0,17],[0,18],[0,19],[0,20],[1,41],[-1,22],[0,42],[0,24],[1,43],[0,26],[-1,27],[0,28],[0,29],[0,30],[0,31],[-1,32],[0,33]]
+          },
+          {
+            id: "twinPriv_2026-12-01_2026-12-05_subir",
+            grupo: "twinPriv",
+            corto: "Twin baño priv.",
+            accion: "subir",
+            desde: "2026-12-01",
+            hasta: "2026-12-05",
+            veredicto: "vetada",
+            veto: "Veto: Twin baño priv. pierde reservas cada vez que sube.",
+            favor: 11,
+            contra: 5,
+            abst: 18,
+            puntaje: 0.01,
+            ops: [[1,44],[0,45],[0,2],[-1,46],[0,47],[-1,48],[1,49],[-1,50],[1,8],[1,9],[1,51],[-1,52],[1,53],[0,54],[0,14],[0,40],[0,16],[0,17],[0,18],[1,55],[0,20],[1,56],[1,57],[0,23],[0,24],[1,58],[0,26],[-1,59],[0,28],[0,29],[0,30],[0,31],[1,32],[0,33]]
+          },
+          {
+            id: "dblPriv_2026-11-24_2026-11-25_bajar",
+            grupo: "dblPriv",
+            corto: "Doble baño priv.",
+            accion: "bajar",
+            desde: "2026-11-24",
+            hasta: "2026-11-25",
+            veredicto: "rechazada",
+            veto: null,
+            favor: 10,
+            contra: 6,
+            abst: 18,
+            puntaje: 0.04,
+            ops: [[-1,60],[1,61],[0,2],[0,62],[-1,63],[-1,5],[-1,6],[1,64],[-1,8],[-1,9],[0,10],[1,65],[-1,12],[1,13],[0,14],[0,40],[0,16],[0,17],[0,18],[0,19],[0,20],[0,66],[-1,22],[-1,67],[0,24],[1,68],[0,26],[-1,27],[0,28],[0,29],[0,30],[0,31],[1,69],[0,33]]
+          },
+          {
+            id: "dorm6_2026-11-24_2026-11-26_subir",
+            grupo: "dorm6",
+            corto: "Dorms 6",
+            accion: "subir",
+            desde: "2026-11-24",
+            hasta: "2026-11-26",
+            veredicto: "rechazada",
+            veto: null,
+            favor: 9,
+            contra: 7,
+            abst: 18,
+            puntaje: 0.03,
+            ops: [[1,70],[1,35],[0,71],[0,72],[-1,73],[1,5],[1,49],[-1,74],[0,75],[1,9],[1,51],[1,39],[0,12],[1,13],[0,14],[0,40],[0,16],[-1,76],[0,18],[0,19],[0,20],[0,66],[-1,22],[-1,67],[0,24],[1,77],[0,26],[-1,78],[0,28],[0,29],[0,30],[0,31],[-1,79],[0,33]]
+          },
+          {
+            id: "dblNoBalc_2026-12-06_2026-12-10_bajar",
+            grupo: "dblNoBalc",
+            corto: "Doble sin balcón",
+            accion: "bajar",
+            desde: "2026-12-06",
+            hasta: "2026-12-10",
+            veredicto: "rechazada",
+            veto: null,
+            favor: 9,
+            contra: 7,
+            abst: 18,
+            puntaje: 0.02,
+            ops: [[-1,60],[0,80],[0,2],[0,81],[-1,82],[-1,5],[-1,6],[-1,83],[-1,8],[-1,9],[0,10],[1,65],[1,53],[0,54],[0,14],[1,15],[0,16],[0,17],[0,18],[0,19],[0,20],[1,84],[1,57],[-1,85],[0,24],[1,86],[0,26],[-1,27],[0,28],[0,29],[0,30],[0,31],[1,69],[0,33]]
+          },
+          {
+            id: "dorm8_2026-12-17_2026-12-25_subir",
+            grupo: "dorm8",
+            corto: "Dorm 11",
+            accion: "subir",
+            desde: "2026-12-17",
+            hasta: "2026-12-25",
+            veredicto: "aprobada",
+            veto: null,
+            favor: 15,
+            contra: 5,
+            abst: 14,
+            puntaje: 0.41,
+            ops: [[1,87],[0,88],[1,89],[0,72],[1,90],[-1,91],[1,49],[1,92],[0,75],[1,9],[1,51],[-1,93],[1,53],[0,54],[1,94],[1,15],[1,95],[1,96],[0,18],[0,19],[0,20],[1,97],[1,57],[-1,98],[0,24],[-1,99],[0,26],[1,27],[0,28],[0,29],[0,30],[0,31],[-1,100],[0,33]]
+          },
+          {
+            id: "dblNoBalc_2026-12-12_2026-12-17_bajar",
+            grupo: "dblNoBalc",
+            corto: "Doble sin balcón",
+            accion: "bajar",
+            desde: "2026-12-12",
+            hasta: "2026-12-17",
+            veredicto: "rechazada",
+            veto: null,
+            favor: 9,
+            contra: 8,
+            abst: 17,
+            puntaje: -0.04,
+            ops: [[-1,60],[0,101],[0,2],[1,102],[-1,4],[-1,5],[-1,6],[1,103],[-1,8],[-1,9],[0,10],[1,65],[1,53],[0,54],[0,14],[0,40],[1,95],[0,17],[0,18],[0,19],[0,20],[1,104],[1,57],[-1,105],[0,24],[1,86],[0,26],[-1,27],[0,28],[0,29],[0,30],[0,31],[-1,32],[0,33]]
+          },
+          {
+            id: "twinNoView_2026-11-24_2026-11-25_bajar",
+            grupo: "twinNoView",
+            corto: "Twin sin vista",
+            accion: "bajar",
+            desde: "2026-11-24",
+            hasta: "2026-11-25",
+            veredicto: "vetada",
+            veto: "Veto: bajar Twin sin vista a última hora no trae reservas.",
+            favor: 13,
+            contra: 4,
+            abst: 17,
+            puntaje: 0.2,
+            ops: [[-1,106],[1,107],[0,2],[-1,108],[-1,109],[-1,5],[-1,6],[-1,110],[-1,8],[-1,9],[0,10],[-1,39],[-1,12],[1,13],[0,14],[0,40],[0,16],[0,17],[0,18],[0,19],[0,20],[0,66],[-1,22],[-1,67],[0,24],[1,25],[0,26],[1,111],[0,28],[0,29],[0,30],[0,31],[-1,32],[0,33]]
+          },
+          {
+            id: "tripleShared_2026-11-24_2026-11-25_subir",
+            grupo: "tripleShared",
+            corto: "Triple baño comp.",
+            accion: "subir",
+            desde: "2026-11-24",
+            hasta: "2026-11-25",
+            veredicto: "parcial",
+            veto: null,
+            favor: 11,
+            contra: 6,
+            abst: 17,
+            puntaje: 0.1,
+            ops: [[1,112],[1,107],[0,2],[-1,113],[0,47],[-1,48],[1,49],[-1,114],[1,8],[1,9],[1,51],[1,39],[0,12],[1,13],[0,14],[0,40],[0,16],[0,17],[0,18],[1,55],[0,20],[0,66],[-1,22],[-1,67],[0,24],[1,115],[0,26],[1,27],[0,28],[0,29],[0,30],[0,31],[-1,116],[0,33]]
+          },
+          {
+            id: "dbl13_2026-12-03_2026-12-08_bajar",
+            grupo: "dbl13",
+            corto: "Doble 13",
+            accion: "bajar",
+            desde: "2026-12-03",
+            hasta: "2026-12-08",
+            veredicto: "rechazada",
+            veto: null,
+            favor: 8,
+            contra: 7,
+            abst: 19,
+            puntaje: -0.09,
+            ops: [[-1,117],[0,45],[0,2],[0,118],[1,119],[-1,5],[-1,6],[1,120],[-1,121],[-1,9],[0,10],[-1,39],[1,53],[0,54],[0,14],[1,15],[0,16],[0,17],[0,18],[0,19],[0,20],[1,56],[1,57],[0,122],[0,24],[1,99],[0,26],[-1,27],[0,28],[0,29],[0,30],[0,31],[-1,32],[0,33]]
+          },
+          {
+            id: "dorm8_2026-11-29_2026-11-30_bajar",
+            grupo: "dorm8",
+            corto: "Dorm 11",
+            accion: "bajar",
+            desde: "2026-11-29",
+            hasta: "2026-11-30",
+            veredicto: "rechazada",
+            veto: null,
+            favor: 9,
+            contra: 7,
+            abst: 18,
+            puntaje: 0.06,
+            ops: [[-1,0],[1,123],[0,124],[0,72],[-1,125],[-1,5],[-1,6],[1,64],[0,75],[-1,9],[0,10],[1,11],[-1,12],[1,13],[0,14],[0,40],[0,16],[-1,126],[0,18],[0,19],[0,20],[1,127],[-1,22],[0,128],[0,24],[1,43],[0,26],[-1,27],[0,28],[0,29],[0,30],[0,31],[1,129],[0,33]]
+          },
+          {
+            id: "famShared_2026-11-30_2026-12-03_subir",
+            grupo: "famShared",
+            corto: "2 dobles baño comp.",
+            accion: "subir",
+            desde: "2026-11-30",
+            hasta: "2026-12-03",
+            veredicto: "vetada",
+            veto: "Veto: 2 dobles baño comp. pierde reservas cada vez que sube.",
+            favor: 13,
+            contra: 2,
+            abst: 19,
+            puntaje: 0.29,
+            ops: [[1,130],[0,88],[0,2],[1,131],[0,47],[1,5],[1,49],[1,132],[1,8],[1,9],[1,51],[1,39],[0,12],[0,54],[0,14],[0,40],[0,16],[0,17],[0,18],[1,55],[0,20],[1,133],[-1,22],[0,134],[0,24],[1,77],[0,26],[-1,135],[0,28],[0,29],[0,30],[0,31],[1,32],[0,33]]
+          },
+          {
+            id: "dblNoBalc_2026-11-24_2026-11-24_bajar",
+            grupo: "dblNoBalc",
+            corto: "Doble sin balcón",
+            accion: "bajar",
+            desde: "2026-11-24",
+            hasta: "2026-11-24",
+            veredicto: "rechazada",
+            veto: null,
+            favor: 11,
+            contra: 5,
+            abst: 18,
+            puntaje: 0.07,
+            ops: [[-1,60],[1,123],[0,2],[1,136],[-1,137],[-1,5],[-1,6],[1,138],[-1,8],[-1,9],[0,10],[1,65],[-1,12],[0,54],[0,14],[0,40],[0,16],[0,17],[0,18],[0,19],[0,20],[0,66],[-1,22],[-1,139],[0,24],[1,140],[0,26],[-1,27],[0,28],[0,29],[0,30],[0,31],[-1,32],[0,33]]
+          },
+          {
+            id: "dblShared_2026-12-05_2026-12-08_bajar",
+            grupo: "dblShared",
+            corto: "Doble baño comp.",
+            accion: "bajar",
+            desde: "2026-12-05",
+            hasta: "2026-12-08",
+            veredicto: "rechazada",
+            veto: null,
+            favor: 10,
+            contra: 7,
+            abst: 17,
+            puntaje: 0,
+            ops: [[-1,34],[1,123],[0,2],[-1,141],[1,142],[-1,5],[-1,6],[-1,143],[-1,121],[-1,9],[0,10],[-1,39],[1,53],[0,54],[0,14],[1,15],[0,16],[0,17],[0,18],[0,19],[0,20],[1,144],[1,57],[0,134],[0,24],[1,43],[0,26],[-1,27],[0,28],[0,29],[0,30],[0,31],[-1,32],[0,33]]
+          },
+          {
+            id: "twinPriv_2026-11-25_2026-11-25_bajar",
+            grupo: "twinPriv",
+            corto: "Twin baño priv.",
+            accion: "bajar",
+            desde: "2026-11-25",
+            hasta: "2026-11-25",
+            veredicto: "parcial",
+            veto: null,
+            favor: 11,
+            contra: 6,
+            abst: 17,
+            puntaje: 0.21,
+            ops: [[-1,60],[1,145],[0,2],[-1,146],[-1,63],[1,48],[-1,6],[-1,147],[-1,8],[-1,9],[0,10],[1,65],[-1,12],[1,13],[0,14],[0,40],[0,16],[0,17],[0,18],[-1,55],[0,20],[0,66],[-1,22],[0,148],[0,24],[1,149],[0,26],[-1,27],[0,28],[0,29],[0,30],[0,31],[1,150],[0,33]]
+          },
+          {
+            id: "dorm8_2026-11-24_2026-11-24_subir",
+            grupo: "dorm8",
+            corto: "Dorm 11",
+            accion: "subir",
+            desde: "2026-11-24",
+            hasta: "2026-11-24",
+            veredicto: "aprobada",
+            veto: null,
+            favor: 12,
+            contra: 4,
+            abst: 18,
+            puntaje: 0.27,
+            ops: [[1,87],[1,123],[1,151],[0,72],[-1,152],[1,5],[1,49],[1,153],[0,75],[1,9],[1,51],[-1,93],[0,12],[0,54],[0,14],[0,40],[0,16],[1,96],[0,18],[0,19],[0,20],[0,66],[-1,22],[-1,139],[0,24],[1,77],[0,26],[1,27],[0,28],[0,29],[0,30],[0,31],[1,32],[0,33]]
+          },
+          {
+            id: "twinPriv_2026-11-24_2026-11-24_subir",
+            grupo: "twinPriv",
+            corto: "Twin baño priv.",
+            accion: "subir",
+            desde: "2026-11-24",
+            hasta: "2026-11-24",
+            veredicto: "vetada",
+            veto: "Veto: Twin baño priv. pierde reservas cada vez que sube.",
+            favor: 11,
+            contra: 6,
+            abst: 17,
+            puntaje: 0.07,
+            ops: [[1,112],[1,123],[0,2],[-1,154],[1,155],[-1,156],[1,49],[-1,157],[1,8],[1,9],[1,51],[1,39],[0,12],[0,54],[0,14],[0,40],[0,16],[0,17],[0,18],[1,55],[0,20],[0,66],[-1,22],[-1,139],[0,24],[1,115],[0,26],[-1,59],[0,28],[0,29],[0,30],[0,31],[1,32],[0,33]]
+          },
+          {
+            id: "twinPriv_2026-12-07_2026-12-08_subir",
+            grupo: "twinPriv",
+            corto: "Twin baño priv.",
+            accion: "subir",
+            desde: "2026-12-07",
+            hasta: "2026-12-08",
+            veredicto: "vetada",
+            veto: "Veto: Twin baño priv. pierde reservas cada vez que sube.",
+            favor: 13,
+            contra: 5,
+            abst: 16,
+            puntaje: 0.13,
+            ops: [[1,158],[0,80],[0,2],[-1,159],[0,47],[1,5],[1,49],[-1,160],[1,8],[1,9],[1,51],[-1,65],[1,53],[0,54],[0,14],[1,15],[0,16],[0,17],[0,18],[1,55],[0,20],[1,133],[1,57],[-1,98],[0,24],[1,58],[0,26],[-1,59],[0,28],[0,29],[0,30],[0,31],[1,32],[0,33]]
+          },
+          {
+            id: "iris_2026-11-24_2026-11-24_subir",
+            grupo: "iris",
+            corto: "Dorm Iris",
+            accion: "subir",
+            desde: "2026-11-24",
+            hasta: "2026-11-24",
+            veredicto: "parcial",
+            veto: null,
+            favor: 12,
+            contra: 5,
+            abst: 17,
+            puntaje: 0.15,
+            ops: [[1,161],[1,123],[0,162],[0,72],[-1,163],[1,5],[1,49],[1,164],[0,75],[1,9],[1,51],[1,39],[0,12],[0,54],[0,14],[0,40],[0,16],[1,96],[0,18],[0,19],[-1,165],[0,66],[-1,22],[-1,139],[0,24],[1,77],[0,26],[1,27],[0,28],[0,29],[-1,166],[0,31],[1,32],[0,33]]
+          },
+          {
+            id: "dblShared_2026-11-24_2026-11-24_bajar",
+            grupo: "dblShared",
+            corto: "Doble baño comp.",
+            accion: "bajar",
+            desde: "2026-11-24",
+            hasta: "2026-11-24",
+            veredicto: "aprobada",
+            veto: null,
+            favor: 14,
+            contra: 2,
+            abst: 18,
+            puntaje: 0.26,
+            ops: [[-1,34],[1,123],[0,2],[-1,167],[-1,168],[-1,5],[-1,6],[-1,169],[-1,8],[-1,9],[0,10],[-1,39],[-1,12],[0,54],[0,14],[0,40],[0,16],[0,17],[0,18],[0,19],[0,20],[0,66],[-1,22],[-1,139],[0,24],[1,43],[0,26],[-1,27],[0,28],[0,29],[0,30],[0,31],[-1,32],[0,33]]
+          },
+          {
+            id: "dblNoBalc_2026-11-29_2026-11-29_bajar",
+            grupo: "dblNoBalc",
+            corto: "Doble sin balcón",
+            accion: "bajar",
+            desde: "2026-11-29",
+            hasta: "2026-11-29",
+            veredicto: "rechazada",
+            veto: null,
+            favor: 9,
+            contra: 8,
+            abst: 17,
+            puntaje: 0.03,
+            ops: [[-1,60],[1,123],[0,2],[0,62],[-1,170],[-1,5],[-1,6],[1,64],[-1,121],[-1,9],[0,10],[1,65],[-1,12],[1,13],[0,14],[0,40],[0,16],[0,17],[0,18],[0,19],[0,20],[1,127],[-1,22],[1,171],[0,24],[1,140],[0,26],[-1,27],[0,28],[0,29],[0,30],[0,31],[1,172],[0,33]]
+          },
+          {
+            id: "twinPriv_2026-11-29_2026-11-29_bajar",
+            grupo: "twinPriv",
+            corto: "Twin baño priv.",
+            accion: "bajar",
+            desde: "2026-11-29",
+            hasta: "2026-11-29",
+            veredicto: "parcial",
+            veto: null,
+            favor: 10,
+            contra: 9,
+            abst: 15,
+            puntaje: 0.14,
+            ops: [[-1,60],[1,123],[0,2],[-1,173],[-1,63],[1,48],[-1,6],[-1,174],[-1,121],[-1,9],[0,10],[1,65],[-1,12],[1,13],[0,14],[0,40],[0,16],[0,17],[0,18],[1,175],[0,20],[1,127],[-1,22],[1,171],[0,24],[1,140],[0,26],[-1,27],[0,28],[0,29],[0,30],[0,31],[1,176],[0,33]]
+          },
+          {
+            id: "twinPriv_2026-12-15_2026-12-17_subir",
+            grupo: "twinPriv",
+            corto: "Twin baño priv.",
+            accion: "subir",
+            desde: "2026-12-15",
+            hasta: "2026-12-17",
+            veredicto: "vetada",
+            veto: "Veto: Twin baño priv. pierde reservas cada vez que sube.",
+            favor: 16,
+            contra: 4,
+            abst: 14,
+            puntaje: 0.14,
+            ops: [[1,112],[0,177],[0,2],[-1,159],[0,47],[1,5],[1,49],[-1,160],[1,8],[1,9],[1,51],[1,39],[1,53],[0,54],[1,94],[1,178],[1,95],[0,17],[0,18],[1,55],[0,20],[1,179],[1,57],[-1,180],[0,24],[1,77],[0,26],[-1,59],[0,28],[0,29],[0,30],[0,31],[1,32],[0,33]]
+          },
+          {
+            id: "dblNoBalc_2026-12-01_2026-12-01_bajar",
+            grupo: "dblNoBalc",
+            corto: "Doble sin balcón",
+            accion: "bajar",
+            desde: "2026-12-01",
+            hasta: "2026-12-01",
+            veredicto: "rechazada",
+            veto: null,
+            favor: 8,
+            contra: 7,
+            abst: 19,
+            puntaje: -0.08,
+            ops: [[-1,60],[0,177],[0,2],[1,181],[-1,82],[-1,5],[-1,6],[1,182],[-1,8],[-1,9],[0,10],[1,65],[1,53],[0,54],[0,14],[0,40],[0,16],[0,17],[0,18],[0,19],[0,20],[1,133],[1,57],[0,183],[0,24],[1,43],[0,26],[-1,27],[0,28],[0,29],[0,30],[0,31],[-1,32],[0,33]]
+          },
+          {
+            id: "famShared_2026-11-25_2026-11-25_subir",
+            grupo: "famShared",
+            corto: "2 dobles baño comp.",
+            accion: "subir",
+            desde: "2026-11-25",
+            hasta: "2026-11-25",
+            veredicto: "vetada",
+            veto: "Veto: 2 dobles baño comp. pierde reservas cada vez que sube.",
+            favor: 14,
+            contra: 3,
+            abst: 17,
+            puntaje: 0.29,
+            ops: [[1,70],[1,145],[0,2],[1,184],[-1,168],[1,5],[1,49],[1,185],[1,8],[1,9],[1,51],[1,39],[0,12],[1,13],[0,14],[0,40],[0,16],[0,17],[0,18],[1,55],[0,20],[0,66],[-1,22],[0,148],[0,24],[1,115],[0,26],[-1,135],[0,28],[0,29],[0,30],[0,31],[1,32],[0,33]]
+          },
+          {
+            id: "twinNoView_2026-12-12_2026-12-14_subir",
+            grupo: "twinNoView",
+            corto: "Twin sin vista",
+            accion: "subir",
+            desde: "2026-12-12",
+            hasta: "2026-12-14",
+            veredicto: "parcial",
+            veto: null,
+            favor: 14,
+            contra: 3,
+            abst: 17,
+            puntaje: 0.11,
+            ops: [[1,186],[0,1],[0,2],[-1,187],[0,47],[1,5],[1,49],[-1,188],[1,121],[1,9],[1,51],[1,39],[1,53],[0,54],[0,14],[0,40],[1,95],[0,17],[0,18],[0,19],[0,20],[1,104],[1,57],[0,189],[0,24],[1,58],[0,26],[1,27],[0,28],[0,29],[-1,166],[0,31],[1,32],[0,33]]
+          },
+          {
+            id: "famPriv_2026-11-29_2026-11-29_bajar",
+            grupo: "famPriv",
+            corto: "Familiar baño priv.",
+            accion: "bajar",
+            desde: "2026-11-29",
+            hasta: "2026-11-29",
+            veredicto: "rechazada",
+            veto: null,
+            favor: 10,
+            contra: 9,
+            abst: 15,
+            puntaje: -0.11,
+            ops: [[-1,190],[1,123],[0,2],[1,191],[-1,4],[-1,5],[-1,6],[1,192],[-1,121],[-1,9],[0,10],[-1,39],[-1,12],[1,13],[0,14],[0,40],[0,16],[0,17],[0,18],[1,175],[0,20],[1,127],[-1,22],[1,171],[0,24],[1,43],[0,26],[-1,27],[0,28],[0,29],[0,30],[0,31],[1,193],[0,33]]
+          },
+          {
+            id: "dorm6_2026-11-28_2026-11-28_subir",
+            grupo: "dorm6",
+            corto: "Dorms 6",
+            accion: "subir",
+            desde: "2026-11-28",
+            hasta: "2026-11-28",
+            veredicto: "parcial",
+            veto: null,
+            favor: 13,
+            contra: 4,
+            abst: 17,
+            puntaje: 0.24,
+            ops: [[1,186],[1,194],[0,195],[0,72],[-1,168],[1,5],[1,49],[-1,196],[0,75],[1,9],[1,51],[1,39],[0,12],[1,13],[0,14],[0,40],[0,16],[-1,76],[0,18],[0,19],[0,20],[1,41],[-1,22],[1,197],[0,24],[1,115],[0,26],[1,27],[0,28],[0,29],[0,30],[0,31],[1,32],[0,33]]
+          },
+          {
+            id: "dorm8_2026-12-11_2026-12-12_subir",
+            grupo: "dorm8",
+            corto: "Dorm 11",
+            accion: "subir",
+            desde: "2026-12-11",
+            hasta: "2026-12-12",
+            veredicto: "aprobada",
+            veto: null,
+            favor: 16,
+            contra: 1,
+            abst: 17,
+            puntaje: 0.47,
+            ops: [[1,186],[0,80],[1,198],[0,72],[1,199],[1,5],[1,49],[1,200],[0,75],[1,9],[1,51],[1,39],[1,53],[0,54],[0,14],[0,40],[1,95],[1,96],[0,18],[0,19],[0,20],[1,201],[1,57],[0,202],[0,24],[-1,203],[0,26],[1,27],[0,28],[0,29],[0,30],[0,31],[1,32],[0,33]]
+          },
+          {
+            id: "dorm6_2026-11-29_2026-11-29_bajar",
+            grupo: "dorm6",
+            corto: "Dorms 6",
+            accion: "bajar",
+            desde: "2026-11-29",
+            hasta: "2026-11-29",
+            veredicto: "parcial",
+            veto: null,
+            favor: 13,
+            contra: 5,
+            abst: 16,
+            puntaje: 0.17,
+            ops: [[-1,117],[1,123],[-1,204],[0,72],[-1,205],[-1,5],[-1,6],[-1,206],[0,75],[-1,9],[0,10],[-1,39],[-1,12],[1,13],[0,14],[0,40],[0,16],[-1,126],[0,18],[0,19],[0,20],[1,127],[-1,22],[1,171],[0,24],[1,99],[0,26],[-1,27],[0,28],[0,29],[0,30],[0,31],[-1,32],[0,33]]
+          },
+          {
+            id: "twinPriv_2026-12-10_2026-12-10_subir",
+            grupo: "twinPriv",
+            corto: "Twin baño priv.",
+            accion: "subir",
+            desde: "2026-12-10",
+            hasta: "2026-12-10",
+            veredicto: "vetada",
+            veto: "Veto: Twin baño priv. pierde reservas cada vez que sube.",
+            favor: 12,
+            contra: 5,
+            abst: 17,
+            puntaje: 0.15,
+            ops: [[1,207],[0,88],[0,2],[0,208],[0,47],[-1,48],[1,49],[-1,209],[1,8],[1,9],[1,51],[-1,11],[1,53],[0,54],[0,14],[0,40],[1,95],[0,17],[0,18],[1,55],[0,20],[1,133],[1,57],[-1,210],[0,24],[1,58],[0,26],[-1,59],[0,28],[0,29],[0,30],[0,31],[1,32],[0,33]]
+          },
+          {
+            id: "dbl13_2026-11-30_2026-11-30_bajar",
+            grupo: "dbl13",
+            corto: "Doble 13",
+            accion: "bajar",
+            desde: "2026-11-30",
+            hasta: "2026-11-30",
+            veredicto: "rechazada",
+            veto: null,
+            favor: 9,
+            contra: 4,
+            abst: 21,
+            puntaje: 0.08,
+            ops: [[-1,117],[0,177],[0,2],[0,62],[0,47],[-1,5],[-1,6],[1,64],[-1,8],[-1,9],[0,10],[-1,39],[-1,12],[0,54],[0,14],[0,40],[0,16],[0,17],[0,18],[0,19],[0,20],[1,133],[-1,22],[0,211],[0,24],[1,203],[0,26],[-1,27],[0,28],[0,29],[0,30],[0,31],[1,212],[0,33]]
+          },
+          {
+            id: "twinNoView_2026-12-09_2026-12-09_subir",
+            grupo: "twinNoView",
+            corto: "Twin sin vista",
+            accion: "subir",
+            desde: "2026-12-09",
+            hasta: "2026-12-09",
+            veredicto: "parcial",
+            veto: null,
+            favor: 13,
+            contra: 5,
+            abst: 16,
+            puntaje: 0.12,
+            ops: [[1,112],[1,213],[0,2],[-1,214],[0,47],[1,5],[1,49],[-1,215],[1,8],[1,9],[1,51],[1,39],[1,53],[0,54],[0,14],[0,40],[0,16],[0,17],[0,18],[0,19],[0,20],[1,133],[1,57],[-1,216],[0,24],[1,217],[0,26],[1,27],[0,28],[0,29],[-1,166],[0,31],[-1,218],[0,33]]
+          },
+          {
+            id: "famPriv_2026-12-12_2026-12-13_subir",
+            grupo: "famPriv",
+            corto: "Familiar baño priv.",
+            accion: "subir",
+            desde: "2026-12-12",
+            hasta: "2026-12-13",
+            veredicto: "aprobada",
+            veto: null,
+            favor: 18,
+            contra: 0,
+            abst: 16,
+            puntaje: 0.44,
+            ops: [[1,219],[1,213],[0,2],[1,220],[0,47],[1,5],[1,49],[1,221],[1,121],[1,9],[1,51],[1,39],[1,53],[0,54],[0,14],[0,40],[1,95],[0,17],[0,18],[1,175],[0,20],[1,104],[1,57],[0,189],[0,24],[1,58],[0,26],[1,27],[0,28],[0,29],[0,30],[0,31],[1,32],[0,33]]
+          },
+          {
+            id: "dorm6_2026-12-14_2026-12-15_subir",
+            grupo: "dorm6",
+            corto: "Dorms 6",
+            accion: "subir",
+            desde: "2026-12-14",
+            hasta: "2026-12-15",
+            veredicto: "parcial",
+            veto: null,
+            favor: 12,
+            contra: 6,
+            abst: 16,
+            puntaje: 0.11,
+            ops: [[1,219],[-1,222],[0,223],[0,72],[0,47],[1,5],[1,49],[-1,224],[0,75],[1,9],[1,51],[1,39],[1,53],[0,54],[0,14],[0,40],[1,95],[-1,76],[-1,225],[0,19],[0,20],[1,179],[1,57],[-1,180],[0,24],[-1,99],[0,26],[1,27],[0,28],[0,29],[0,30],[0,31],[1,32],[0,33]]
+          },
+          {
+            id: "iris_2026-11-29_2026-11-29_bajar",
+            grupo: "iris",
+            corto: "Dorm Iris",
+            accion: "bajar",
+            desde: "2026-11-29",
+            hasta: "2026-11-29",
+            veredicto: "parcial",
+            veto: null,
+            favor: 12,
+            contra: 5,
+            abst: 17,
+            puntaje: 0.09,
+            ops: [[-1,226],[1,123],[0,227],[0,72],[-1,73],[-1,5],[-1,6],[-1,228],[0,75],[-1,9],[0,10],[-1,39],[-1,12],[1,13],[0,14],[0,40],[0,16],[-1,126],[0,18],[0,19],[0,165],[1,127],[-1,22],[1,171],[0,24],[1,203],[0,26],[-1,27],[0,28],[0,29],[0,30],[0,31],[-1,32],[0,33]]
+          },
+          {
+            id: "dorm6_2026-12-01_2026-12-01_subir",
+            grupo: "dorm6",
+            corto: "Dorms 6",
+            accion: "subir",
+            desde: "2026-12-01",
+            hasta: "2026-12-01",
+            veredicto: "rechazada",
+            veto: null,
+            favor: 11,
+            contra: 6,
+            abst: 17,
+            puntaje: 0.01,
+            ops: [[1,219],[0,229],[-1,230],[0,72],[-1,231],[1,5],[1,49],[-1,232],[0,75],[1,9],[1,51],[1,39],[1,53],[0,54],[0,14],[0,40],[0,16],[-1,76],[-1,225],[0,19],[0,20],[1,133],[1,57],[0,183],[0,24],[-1,99],[0,26],[1,27],[0,28],[0,29],[0,30],[0,31],[1,32],[0,33]]
+          },
+          {
+            id: "dorm6_2026-12-07_2026-12-07_subir",
+            grupo: "dorm6",
+            corto: "Dorms 6",
+            accion: "subir",
+            desde: "2026-12-07",
+            hasta: "2026-12-07",
+            veredicto: "parcial",
+            veto: null,
+            favor: 12,
+            contra: 4,
+            abst: 18,
+            puntaje: 0.21,
+            ops: [[1,186],[0,233],[0,223],[0,72],[0,47],[1,5],[1,49],[-1,224],[0,75],[1,9],[1,51],[1,39],[1,53],[0,54],[0,14],[1,15],[0,16],[-1,76],[-1,225],[0,19],[0,20],[1,133],[1,57],[0,183],[0,24],[-1,234],[0,26],[1,27],[0,28],[0,29],[0,30],[0,31],[1,32],[0,33]]
+          },
+          {
+            id: "famPriv_2026-12-05_2026-12-05_bajar",
+            grupo: "famPriv",
+            corto: "Familiar baño priv.",
+            accion: "bajar",
+            desde: "2026-12-05",
+            hasta: "2026-12-05",
+            veredicto: "rechazada",
+            veto: null,
+            favor: 7,
+            contra: 8,
+            abst: 19,
+            puntaje: -0.16,
+            ops: [[-1,235],[0,236],[0,2],[1,237],[0,47],[-1,5],[-1,6],[1,238],[-1,121],[-1,9],[0,10],[-1,39],[1,53],[0,54],[0,14],[0,40],[0,16],[0,17],[0,18],[1,175],[0,20],[1,144],[1,57],[0,211],[0,24],[1,99],[0,26],[-1,27],[0,28],[0,29],[0,30],[0,31],[1,239],[0,33]]
+          },
+          {
+            id: "dorm6_2026-12-11_2026-12-11_subir",
+            grupo: "dorm6",
+            corto: "Dorms 6",
+            accion: "subir",
+            desde: "2026-12-11",
+            hasta: "2026-12-11",
+            veredicto: "aprobada",
+            veto: null,
+            favor: 15,
+            contra: 1,
+            abst: 18,
+            puntaje: 0.28,
+            ops: [[1,219],[0,240],[0,162],[0,72],[1,241],[1,5],[1,49],[1,164],[0,75],[1,9],[1,51],[1,39],[1,53],[0,54],[0,14],[0,40],[1,95],[1,96],[0,18],[0,19],[0,20],[1,133],[1,57],[0,148],[0,24],[-1,99],[0,26],[1,27],[0,28],[0,29],[0,30],[0,31],[1,32],[0,33]]
+          },
+          {
+            id: "dbl13_2026-12-12_2026-12-12_subir",
+            grupo: "dbl13",
+            corto: "Doble 13",
+            accion: "subir",
+            desde: "2026-12-12",
+            hasta: "2026-12-12",
+            veredicto: "aprobada",
+            veto: null,
+            favor: 15,
+            contra: 1,
+            abst: 18,
+            puntaje: 0.29,
+            ops: [[1,219],[1,213],[0,2],[0,242],[0,47],[1,5],[1,49],[-1,243],[1,121],[1,9],[1,51],[1,39],[1,53],[0,54],[0,14],[0,40],[1,95],[0,17],[0,18],[0,19],[0,20],[1,104],[1,57],[0,134],[0,24],[1,58],[0,26],[1,27],[0,28],[0,29],[0,30],[0,31],[1,32],[0,33]]
+          },
+          {
+            id: "dorm6_2026-12-17_2026-12-17_subir",
+            grupo: "dorm6",
+            corto: "Dorms 6",
+            accion: "subir",
+            desde: "2026-12-17",
+            hasta: "2026-12-17",
+            veredicto: "parcial",
+            veto: null,
+            favor: 14,
+            contra: 4,
+            abst: 16,
+            puntaje: 0.2,
+            ops: [[1,219],[0,240],[0,244],[0,72],[0,47],[1,5],[1,49],[-1,243],[0,75],[1,9],[1,51],[1,39],[1,53],[0,54],[1,94],[1,178],[1,95],[-1,76],[-1,225],[0,19],[0,20],[1,179],[1,57],[0,148],[0,24],[-1,99],[0,26],[1,27],[0,28],[0,29],[0,30],[0,31],[1,32],[0,33]]
+          }
+        ]
+      }
+    }
   }
 };
 </script>
@@ -9790,8 +10808,8 @@ const platP=v=>Math.round(v*RVF_());
 function rvPrecio(v){ return `${cop(platP(v))} <span class="lb">Lobby ${cop(v)}</span>`; }
 function rvTabla(X){
   X=X.slice().sort((a,b)=>a.noche.localeCompare(b.noche)||a.categoria.localeCompare(b.categoria));
-  return `<div class="tw"><table class="tbl rvt"><thead><tr><th>Noche</th><th style="text-align:left">Habitación</th><th>Antes</th><th>Después</th><th>Cambio</th><th style="text-align:left">Por qué</th></tr></thead><tbody>${X.map(c=>{ const v=(c.despues-c.antes)/c.antes*100;
-    return `<tr><td>${esc(dS(c.noche)+' '+fC(c.noche))}</td><td class="c">${esc(c.categoria)}</td><td>${rvPrecio(c.antes)}</td><td>${rvPrecio(c.despues)}</td><td class="${v>0?'up':'dn'}">${v>0?'▲ +':'▼ '}${pct(v,1)}</td><td class="m">${esc(c.motivo)}${c.origen==='tarea diaria'?' · tarea diaria':''}</td></tr>`; }).join('')}</tbody></table></div>`;
+  return `<div class="tw"><table class="tbl rvt"><thead><tr><th>Noche</th><th style="text-align:left">Habitación</th><th>Antes</th><th>Después</th><th>Cambio</th><th style="text-align:left">Por qué</th><th style="text-align:left">Consejo</th></tr></thead><tbody>${X.map(c=>{ const v=(c.despues-c.antes)/c.antes*100;
+    return `<tr><td>${esc(dS(c.noche)+' '+fC(c.noche))}</td><td class="c">${esc(c.categoria)}</td><td>${rvPrecio(c.antes)}</td><td>${rvPrecio(c.despues)}</td><td class="${v>0?'up':'dn'}">${v>0?'▲ +':'▼ '}${pct(v,1)}</td><td class="m">${esc(c.motivo)}${c.origen==='tarea diaria'?' · tarea diaria':''}</td><td class="cv">${c.propuesta&&rvProp(c.propuesta)?`${vbadge(rvProp(c.propuesta).p)}<button type="button" class="vbtn" data-vprop="${esc(c.propuesta)}" aria-expanded="false">Ver votación</button>`:/jerarqu/i.test(c.motivo)?'<span class="hint">Ajuste por jerarquía, sin votación</span>':'<span class="hint">Sin detalle guardado</span>'}</td></tr>`; }).join('')}</tbody></table></div>`;
 }
 const corto=c=>c.replace(' (Verde, Azalea, Amapola)','');
 function rvResumen(X){ const s=X.filter(c=>c.despues>c.antes).length, p=X.length?sum(X.map(c=>(c.despues-c.antes)/c.antes*100))/X.length:null; return {n:X.length,s,b:X.length-s,p}; }
@@ -9802,7 +10820,8 @@ function vRevenue(){
   const T=R.cambios, dias=[...new Set(T.map(c=>c.dia))].sort().reverse(), cats=[...new Set(T.map(c=>c.categoria))].sort();
   if(!RV.dia||!dias.includes(RV.dia)) RV.dia=dias[0]; if(!RV.b||!dias.includes(RV.b)) RV.b=dias[0]; if(!RV.a||!dias.includes(RV.a)) RV.a=dias[1]||dias[0];
   if(!RV.cat||!cats.includes(RV.cat)) RV.cat=[...cats].sort((x,y)=>T.filter(c=>c.categoria===y).length-T.filter(c=>c.categoria===x).length)[0];
-  h+=pasoT(1,'¿Qué quieres ver?')+segBtns('rv','vista',[['dia','Un día'],['comp','Comparar dos días'],['hab','Una habitación'],['todo','Todos los cambios']],RV.vista);
+  h+=pasoT(1,'¿Qué quieres ver?')+segBtns('rv','vista',[['dia','Un día'],['consejo','El consejo'],['comp','Comparar dos días'],['hab','Una habitación'],['todo','Todos los cambios']],RV.vista);
+  if(RV.vista==='consejo') return h+vConsejo(R)+`<p class="basis" style="margin-top:18px">El consejo: 34 agentes de IA con roles distintos (revenue, canales, mercados de origen, perfiles de huésped, ciudad y negocio). Cada uno vota subir, bajar o abstenerse; su voto pesa según su rol. Los frenos vienen de lo que el proyecto aprendió de cambios anteriores.</p>`;
   h+=`<p class="basis">Precios: primero el de Booking y Hostelworld (Lobby × ${String(RVF_()).replace('.',',')}), debajo el de Lobby. En Dorms 6 el mismo precio va para Verde, Azalea y Amapola.</p>`;
   const diaChips=(key,cur)=>`<div class="exchips">${dias.map(d=>{ const n=T.filter(c=>c.dia===d).length; return `<button type="button" class="exchip dchip${d===cur?' on':''}" data-rv="${key}=${d}" aria-pressed="${d===cur}"><b>${esc(dS(d)+' '+fC(d))}</b><small>${num(n)} cambios</small></button>`; }).join('')}</div>`;
   const porCat=X=>cats.filter(k=>X.some(c=>c.categoria===k)).map(k=>{ const Y=X.filter(c=>c.categoria===k); return [k,Y]; });
@@ -9818,6 +10837,9 @@ function vRevenue(){
     if(g==='cnt') h+=`<div class="grid">`+card('w12','Noches subidas y bajadas por habitación','Toca una barra para ver esa habitación.',exBars({labels:P.map(([k])=>corto(k)),keys:P.map(([k])=>k),obj:'rv',go:k=>`vista=hab;cat=${k}`,rot:true,fmt:num,h:300,series:[{name:'Subidas',color:C.green,data:P.map(([,Y])=>Y.filter(c=>c.despues>c.antes).length)},{name:'Bajadas',color:C.red,data:P.map(([,Y])=>Y.filter(c=>c.despues<c.antes).length)}]})+exLeg([['Subidas',C.green],['Bajadas',C.red]]))+`</div>`;
     if(g==='noche'){ const ns=[...new Set(X.map(c=>c.noche))].sort();
       h+=`<div class="grid">`+card('w12','Noches afectadas','Cuántas habitaciones cambiaron de precio para cada noche (fecha de estadía).',exBars({labels:ns.map(n=>dS(n).slice(0,2)+' '+fC(n)),fmt:num,h:260,rot:ns.length>12,series:[{name:'Subidas',color:C.green,data:ns.map(n=>X.filter(c=>c.noche===n&&c.despues>c.antes).length)},{name:'Bajadas',color:C.red,data:ns.map(n=>X.filter(c=>c.noche===n&&c.despues<c.antes).length)}]})+exLeg([['Subidas',C.green],['Bajadas',C.red]]))+`</div>`; }
+    const pids=[...new Set(X.map(c=>c.propuesta).filter(Boolean))].map(rvProp).filter(Boolean).map(x=>x.p);
+    h+=pasoT(4,'¿Qué votó el consejo?',pids.length?'Las propuestas que llevaron a estos cambios. Toca una para ver el voto y la opinión de cada agente.':'');
+    h+=pids.length?`<div class="pcs">${pids.map(p=>propCard(p,RV.op===p.id)).join('')}</div>`:`<div class="empty">La votación detallada de este día no quedó guardada; se guarda desde el 24 nov 2026. El resumen está en "Por qué".</div>`;
     h+=`<details class="exmore"><summary>Ver las ${num(X.length)} noches cambiadas el ${esc(fC(RV.dia))}</summary>${rvTabla(X)}</details>`;
   }
 
@@ -9862,6 +10884,81 @@ function vRevenue(){
   h+=`<p class="basis" style="margin-top:18px">Fuente: ${esc(R.fuente)} ${esc(R.nota)}</p>`;
   return h;
 }
+
+
+/* =====================================================================
+   Votación del consejo (34 agentes): quién votó qué y por qué
+   ===================================================================== */
+const VER={aprobada:['Aprobada',C.green],parcial:['Aprobada a medias','#C99A00'],rechazada:['Rechazada',C.red],vetada:['Vetada',C.ink]};
+function rvProp(id){ const S=D.revenueDiario?.consejo||{}; for(const d of Object.keys(S)){ const p=S[d].propuestas.find(x=>x.id===id); if(p) return {p,s:S[d],d}; } return null; }
+const inic=n=>n.split(' ').map(w=>w[0]).join('').slice(0,2).toUpperCase();
+function avatar(a,cls='',tip=''){ return `<span class="av ${cls}" style="--ac:${a.color}" title="${esc(a.nombre+' · '+a.rol+(tip?' · '+tip:''))}">${esc(inic(a.nombre))}</span>`; }
+function opsDe(p,s){ const A=D.revenueDiario.agentes, dir=p.accion==='subir'?1:-1;
+  return p.ops.map(([v,t],i)=>({a:A[i],v,t:s.textos[t],st:v===0?'abst':v===dir?'si':'no'})); }
+function opinion(o){ return `<div class="op">${avatar(o.a,'sm')}<div><b>${esc(o.a.nombre)}</b> <small>${esc(o.a.rol)}</small><p>${esc(o.t)}</p></div></div>`; }
+function vbar(p){ return `<div class="vbar" role="img" aria-label="${p.favor} a favor, ${p.contra} en contra, ${p.abst} se abstienen">${p.favor?`<span class="si" style="flex:${p.favor}">${p.favor}</span>`:''}${p.contra?`<span class="no" style="flex:${p.contra}">${p.contra}</span>`:''}${p.abst?`<span class="ab" style="flex:${p.abst}">${p.abst}</span>`:''}</div>`; }
+function vbadge(p){ const [n,c]=VER[p.veredicto]||[p.veredicto,C.grey]; return `<span class="vbadge" style="--vc:${c}">${n}</span>`; }
+function votoPanel(id){
+  const x=rvProp(id); if(!x) return `<div class="empty">La votación detallada de este cambio no quedó guardada. Se guarda desde el 24 nov 2026.</div>`;
+  const {p,s}=x, O=opsDe(p,s), peso=o=>o.a.peso;
+  const si=O.filter(o=>o.st==='si').sort((a,b)=>peso(b)-peso(a)), no=O.filter(o=>o.st==='no').sort((a,b)=>peso(b)-peso(a)), ab=O.filter(o=>o.st==='abst');
+  let h=`<div class="vp"><div class="vp-h">${vbadge(p)}<b>Propuesta: ${esc(p.accion)} ${esc(p.corto)} · ${esc(fC(p.desde))}${p.hasta!==p.desde?' – '+esc(fC(p.hasta)):''}</b></div>`;
+  h+=vbar(p)+`<div class="vleg"><span class="si">A favor</span><span class="no">En contra</span><span class="ab">Se abstienen</span></div>`;
+  if(p.veto) h+=`<p class="vveto"><b>Freno:</b> ${esc(p.veto.replace(/^Veto:\s*/,''))}</p>`;
+  h+=`<div class="avs" aria-label="Voto de cada agente">${O.map(o=>avatar(o.a,o.st,o.st==='si'?'a favor':o.st==='no'?'en contra':'se abstiene')).join('')}</div>`;
+  h+=`<div class="vcols"><div><h5 class="si">A favor · ${si.length}</h5>${si.map(opinion).join('')||'<p class="hint">Nadie.</p>'}</div><div><h5 class="no">En contra · ${no.length}</h5>${no.map(opinion).join('')||'<p class="hint">Nadie.</p>'}</div></div>`;
+  if(ab.length) h+=`<details class="vab"><summary>Ver a los ${ab.length} que se abstuvieron y por qué</summary><div class="vcols one">${ab.map(opinion).join('')}</div></details>`;
+  return h+`</div>`;
+}
+/* tarjeta corta de una propuesta, que se abre al tocarla */
+function propCard(p,abierta){
+  return `<div class="pc${abierta?' open':''}"><button type="button" class="pc-h" data-rv="op=${abierta?'':p.id}" aria-expanded="${abierta}">
+    ${vbadge(p)}<span class="pc-t"><b>${esc(p.accion==='subir'?'Subir':'Bajar')} ${esc(p.corto)}</b><small>${esc(fC(p.desde))}${p.hasta!==p.desde?' – '+esc(fC(p.hasta)):''}</small></span>${vbar(p)}<span class="pc-g">${abierta?'Cerrar ▴':'Ver votos ▾'}</span></button>
+    ${abierta?votoPanel(p.id):''}</div>`;
+}
+/* cómo votó cada agente en una sesión */
+function agStack(s,sel){
+  const A=D.revenueDiario.agentes, W=cw(1150), rh=24, L=MOB()?112:190, R=56, H=A.length*rh+6, n=s.propuestas.length;
+  let g='';
+  A.forEach((a,i)=>{ let up=0,dn=0,ab=0; for(const p of s.propuestas){ const v=p.ops[i][0]; if(v>0) up++; else if(v<0) dn++; else ab++; }
+    const yy=i*rh+3, w=W-L-R, x0=L, wu=up/n*w, wd=dn/n*w, wa=ab/n*w, on=sel===a.id;
+    g+=`<g data-rv="ag=${on?'':a.id}" style="cursor:pointer"><rect x="0" y="${yy}" width="${W}" height="${rh}" fill="${on?C.yellow:'transparent'}" opacity=".25"/>`;
+    g+=`<circle cx="${L-12}" cy="${yy+rh/2}" r="5" fill="${a.color}"/><text x="${L-22}" y="${yy+rh/2+4}" text-anchor="end" style="fill:${C.ink};font-weight:${on?800:600}">${esc(clip(a.nombre+(MOB()?'':' · '+a.rol),Math.floor((L-26)/6.3)))}<title>${esc(a.nombre+' · '+a.rol)}</title></text>`;
+    g+=`<rect x="${x0}" y="${yy+4}" width="${wu}" height="${rh-8}" fill="${C.green}"><title>${esc(a.nombre)}: subir en ${up} propuestas</title></rect><rect x="${x0+wu}" y="${yy+4}" width="${wd}" height="${rh-8}" fill="${C.orange}"><title>${esc(a.nombre)}: bajar en ${dn}</title></rect><rect x="${x0+wu+wd}" y="${yy+4}" width="${wa}" height="${rh-8}" fill="#E7E1D8"><title>${esc(a.nombre)}: se abstuvo en ${ab}</title></rect>`;
+    g+=`<text class="val" x="${W-R+6}" y="${yy+rh/2+4}">${up}↑ ${dn}↓</text></g>`; });
+  return `<svg viewBox="0 0 ${W} ${H}" role="img">${g}</svg>`;
+}
+function vConsejo(R){
+  const S=R.consejo||{}, ses=Object.keys(S).sort().reverse();
+  let h='';
+  if(!ses.length) return h+`<div class="empty">Todavía no hay votaciones guardadas.</div>`;
+  if(!RV.ses||!S[RV.ses]) RV.ses=ses[0];
+  const s=S[RV.ses], P=s.propuestas, A=R.agentes;
+  h+=pasoT(2,'Elige la sesión','La votación detallada se guarda desde el 24 nov 2026. Las sesiones del 18 y 22 nov solo tienen el resumen.')+`<div class="exchips">${ses.map(d=>`<button type="button" class="exchip dchip${d===RV.ses?' on':''}" data-rv="ses=${d}"><b>${esc(fL(d))}</b><small>${num(S[d].propuestas.length)} propuestas</small></button>`).join('')}</div>`;
+  const cnt=k=>P.filter(p=>p.veredicto===k).length;
+  h+=`<div class="kpis">${kpi('Propuestas votadas',num(P.length),esc(s.titulo),'',true)}${kpi('Aprobadas',num(cnt('aprobada')),'se aplican completas')}${kpi('A medias',num(cnt('parcial')),'se aplica la mitad del cambio')}${kpi('Rechazadas',num(cnt('rechazada')),'no se aplican')}${kpi('Vetadas',num(cnt('vetada')),'frenadas por lo aprendido')}</div>`;
+  h+=pasoT(3,'Elige qué mirar')+segBtns('rv','cv',[['props','Las propuestas'],['agentes','Cómo votó cada agente']],RV.cv||'props');
+  if((RV.cv||'props')==='agentes'){
+    h+=`<div class="grid">`+card('w12','Votos de cada agente en la sesión','Verde: quiso subir · naranja: quiso bajar · gris: se abstuvo. Toca un agente para leer todas sus opiniones.',agStack(s,RV.ag)+exLeg([['Subir',C.green],['Bajar',C.orange],['Se abstiene','#E7E1D8']]))+`</div>`;
+    const ai=A.findIndex(a=>a.id===RV.ag);
+    if(ai>=0){ const a=A[ai];
+      h+=`<section class="agcard" style="--ac:${a.color}">${avatar(a,'lg')}<div><h3>${esc(a.nombre)}</h3><p>${esc(a.rol)} · ${esc(a.area)} · peso de su voto ${String(a.peso).replace('.',',')}</p></div></section>`;
+      h+=`<div class="oplist">${P.filter(p=>p.ops[ai][0]!==0).map(p=>{ const v=p.ops[ai][0], dir=p.accion==='subir'?1:-1;
+        return `<div class="op wide"><span class="vote ${v===dir?'si':'no'}">${v===dir?'A favor':'En contra'}</span><div><b>${esc(p.accion==='subir'?'Subir':'Bajar')} ${esc(p.corto)} · ${esc(fC(p.desde))}${p.hasta!==p.desde?' – '+esc(fC(p.hasta)):''}</b> ${vbadge(p)}<p>${esc(s.textos[p.ops[ai][1]])}</p></div></div>`; }).join('')||'<div class="empty">Se abstuvo en todas las propuestas de esta sesión.</div>'}</div>`;
+    }
+  } else {
+    h+=`<div class="exchips">${[['','Todas'],['aprobada','Aprobadas'],['parcial','A medias'],['rechazada','Rechazadas'],['vetada','Vetadas']].map(([k,n])=>`<button type="button" class="exchip${(RV.fv||'')===k?' on':''}" data-rv="fv=${k}">${n} <small>${num(k?cnt(k):P.length)}</small></button>`).join('')}</div>`;
+    const L=P.filter(p=>!RV.fv||p.veredicto===RV.fv).sort((a,b)=>a.desde.localeCompare(b.desde)||a.corto.localeCompare(b.corto));
+    h+=`<p class="basis">Toca una propuesta para ver cómo votó cada uno de los 34 agentes y qué dijo.</p><div class="pcs">${L.map(p=>propCard(p,RV.op===p.id)).join('')}</div>`;
+  }
+  return h;
+}
+document.addEventListener('click', e=>{
+  const b=e.target.closest('[data-vprop]'); if(!b) return;
+  const tr=b.closest('tr'), nx=tr.nextElementSibling;
+  if(nx&&nx.classList.contains('vrow')){ nx.remove(); b.textContent='Ver votación'; b.setAttribute('aria-expanded','false'); return; }
+  const r=document.createElement('tr'); r.className='vrow'; r.innerHTML=`<td colspan="7">${votoPanel(b.dataset.vprop)}</td>`; tr.after(r); b.textContent='Cerrar'; b.setAttribute('aria-expanded','true');
+});
 
 /* ---------- toques y cambios de Explorar y Revenue ---------- */
 function exSet(obj,s){ for(const p of s.split(';')){ const i=p.indexOf('='); obj[p.slice(0,i)]=p.slice(i+1); } }
