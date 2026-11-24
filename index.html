@@ -228,7 +228,7 @@ html,body{overflow-x:hidden}
   .card{overflow-x:visible}
   .top-in{height:auto;flex-wrap:wrap;gap:0;padding:8px 12px 0}
   .brand{padding:2px 0 6px}
-  nav.tabs{margin-left:0;width:100%;display:grid;grid-template-columns:repeat(3,1fr);gap:4px;padding-bottom:8px}
+  nav.tabs{margin-left:0;width:100%;display:grid;grid-template-columns:repeat(5,1fr);gap:4px;padding-bottom:8px}
   nav.tabs .tab{text-align:center;padding:8px 4px;font-size:13px;white-space:nowrap}
   .rtabs{top:94px}
   .hero h1{font-size:24px;line-height:1.15}
@@ -258,7 +258,21 @@ html,body{overflow-x:hidden}
 .phead p{color:var(--muted);margin:0}
 @media (max-width:900px){ .choices{grid-template-columns:1fr 1fr} }
 @media (max-width:700px){ .choice.main{grid-column:auto} .choices{grid-template-columns:1fr;gap:12px} .choice{min-height:0;padding:18px} .welcome{padding:22px 0 8px} }
-@media (max-width:560px){ nav.tabs{grid-template-columns:repeat(4,1fr)} }
+@media (max-width:560px){ nav.tabs{grid-template-columns:repeat(5,1fr)} }
+/* ---------- Revenue: cambios de tarifa día a día ---------- */
+.rvf{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;margin:4px 0 16px}
+.rvf label{font-size:13px;color:var(--muted);font-weight:600}
+.rvf select{font:inherit;font-size:14px;border:1px solid var(--line);border-radius:10px;padding:7px 10px;background:#fff;color:var(--ink)}
+.rvday{border:1px solid var(--line);border-radius:14px;margin:0 0 16px;overflow:hidden}
+.rvday>header{background:var(--ink);color:#fff;padding:12px 16px;display:flex;flex-wrap:wrap;gap:4px 14px;align-items:baseline}
+.rvday>header b{font-family:var(--display);font-size:18px}
+.rvday>header span{color:var(--yellow);font-size:13px;font-weight:600}
+.rvday>header p{flex-basis:100%;margin:2px 0 0;color:#CFC9C1;font-size:13px}
+.rvday .tw{overflow-x:auto}
+.rvday .tbl td.m{font-family:var(--body);text-align:left;white-space:normal;min-width:220px;color:var(--muted)}
+.rvday .tbl td.c{font-family:var(--body);font-weight:600;text-align:left}
+.rvday .tbl .lb{display:block;color:var(--muted);font-size:11px}
+.up{color:var(--green);font-weight:700} .dn{color:var(--orange);font-weight:700}
 .rvhead h3{font-family:var(--display);font-weight:800;font-size:22px;margin:0 0 4px}.rvhead p{color:var(--muted);margin:0 0 18px}
 .rtabs .cnt{display:inline-block;min-width:18px;padding:1px 6px;border-radius:9px;background:var(--orange);color:#fff;font-size:11px;font-family:var(--mono);margin-left:4px}
 .tl{list-style:none;margin:0;padding:0;border-left:2px solid var(--line);margin-left:8px}
@@ -322,7 +336,7 @@ tr.on td{background:#FDEBDF}
   .rtabs{position:static;flex-wrap:wrap;overflow:visible;gap:6px;border-bottom:0;padding-top:0}
   .rtabs a{border:1px solid var(--line);border-radius:999px;padding:8px 13px;margin:0;font-size:14px}
   .rtabs a.on{background:var(--ink);color:#fff;border-color:var(--ink)}
-  nav.tabs .tab{font-size:12px;padding:8px 2px}
+  nav.tabs .tab{font-size:11px;padding:8px 1px}
   .verdict .vd{font-size:19px}
   .shortcuts{margin-top:-4px}
 }
@@ -331,7 +345,7 @@ tr.on td{background:#FDEBDF}
 <body>
 <header class="top"><div class="top-in">
   <a class="brand" href="#inicio" aria-label="Casa Kiwi Hostal · inicio"><svg class="kiwi" viewBox="0 0 64 44" aria-hidden="true"><path d="M8 25c0-9 9-16 20-16 9 0 15 4 18 9l15 9c1 .6.8 1.6-.2 1.6L46 27c-2 7-9 12-18 12C17 39 8 33 8 25z" fill="#8B5E34"/><path d="M14 22c3-6 9-9 15-9" stroke="#B07A48" stroke-width="2" fill="none" stroke-linecap="round"/><circle cx="41" cy="20" r="2" fill="#141210"/><path d="M21 38l-2 5M19 43h-4M19 43h3M32 38l1 5M33 43h-3M33 43h4" stroke="#F6BE1F" stroke-width="2.2" stroke-linecap="round"/></svg><span><b>CASA</b> <i>KIWI</i> <em>HOSTAL</em></span><small>Reportes financieros</small></a>
-  <nav class="tabs"><a class="tab home" href="#inicio">Inicio</a><a class="tab rep" href="#reportes">Reportes</a><a class="tab proy" href="#proyecciones">Proyecciones</a><a class="tab mkt" href="#marketing">Marketing</a></nav>
+  <nav class="tabs"><a class="tab home" href="#inicio">Inicio</a><a class="tab rep" href="#reportes">Reportes</a><a class="tab proy" href="#proyecciones">Proyecciones</a><a class="tab mkt" href="#marketing">Marketing</a><a class="tab rvd" href="#revenue">Revenue</a></nav>
 </div></header>
 
 <main id="app"></main>
@@ -6994,6 +7008,1629 @@ window.CASA_KIWI = {
       MLT: [513.3,132.1],
       LUX: [493.2,92.8]
     }
+  },
+  revenueDiario: {
+    fuente: "Cambios de tarifa aplicados y verificados en Lobby PMS por el proyecto de revenue de Casa Kiwi.",
+    nota: "Precios por noche. El precio de plataforma (Booking, Hostelworld) es el de Lobby × 0,7. En Dorms 6 el mismo precio se aplica a los tres dormitorios.",
+    factorPlataforma: 0.7,
+    desde: "2026-11-18",
+    dias: {
+      "2026-11-18": "Sesión del consejo aprobada por Santiago: 97 noches aplicadas y verificadas.",
+      "2026-11-22": "Sesión del consejo en el chat (69 noches) y tarea diaria (38 cambios, 4 detallados).",
+      "2026-11-24": "Consejo en el chat: 23 cambios aplicados y verificados noche por noche, sin colaterales. Después, la tarea diaria de las 9:38 aplicó 20 cambios más (43 en total, 0 errores)."
+    },
+    cambios: [
+      {
+        dia: "2026-11-24",
+        noche: "2026-11-24",
+        grupo: "dblShared",
+        categoria: "Doble baño comp.",
+        antes: 177000,
+        despues: 161000,
+        origen: "consejo",
+        motivo: "Consejo: bajar, 14 a favor y 2 en contra (aprobada)"
+      },
+      {
+        dia: "2026-11-24",
+        noche: "2026-11-24",
+        grupo: "dorm8",
+        categoria: "Dorm 11",
+        antes: 58000,
+        despues: 65000,
+        origen: "tarea diaria",
+        motivo: "Tarea diaria (consejo de las 9:38): voto del consejo"
+      },
+      {
+        dia: "2026-11-24",
+        noche: "2026-11-24",
+        grupo: "iris",
+        categoria: "Dorm Iris",
+        antes: 82000,
+        despues: 86000,
+        origen: "tarea diaria",
+        motivo: "Tarea diaria (consejo de las 9:38): voto del consejo"
+      },
+      {
+        dia: "2026-11-24",
+        noche: "2026-11-25",
+        grupo: "twinPriv",
+        categoria: "Twin baño priv.",
+        antes: 240000,
+        despues: 222000,
+        origen: "consejo",
+        motivo: "Consejo: bajar, 11 a favor y 6 en contra (aprobada a medias)"
+      },
+      {
+        dia: "2026-11-24",
+        noche: "2026-11-28",
+        grupo: "dblShared",
+        categoria: "Doble baño comp.",
+        antes: 226000,
+        despues: 217000,
+        origen: "tarea diaria",
+        motivo: "Tarea diaria (consejo de las 9:38): voto del consejo. Ojo: el chat la había frenado por Comic Con"
+      },
+      {
+        dia: "2026-11-24",
+        noche: "2026-11-28",
+        grupo: "iris",
+        categoria: "Dorm Iris",
+        antes: 92664,
+        despues: 96000,
+        origen: "consejo",
+        motivo: "Orden entre habitaciones (jerarquía)"
+      },
+      {
+        dia: "2026-11-24",
+        noche: "2026-11-28",
+        grupo: "dorm6",
+        categoria: "Dorms 6 (Verde, Azalea, Amapola)",
+        antes: 89000,
+        despues: 93000,
+        origen: "consejo",
+        motivo: "Consejo: subir, 13 a favor y 4 en contra (aprobada a medias)"
+      },
+      {
+        dia: "2026-11-24",
+        noche: "2026-11-29",
+        grupo: "dblShared",
+        categoria: "Doble baño comp.",
+        antes: 199000,
+        despues: 185000,
+        origen: "consejo",
+        motivo: "Consejo: bajar, 13 a favor y 4 en contra (aprobada a medias)"
+      },
+      {
+        dia: "2026-11-24",
+        noche: "2026-11-29",
+        grupo: "iris",
+        categoria: "Dorm Iris",
+        antes: 98000,
+        despues: 96000,
+        origen: "consejo",
+        motivo: "Consejo: bajar, 12 a favor y 5 en contra (aprobada a medias)"
+      },
+      {
+        dia: "2026-11-24",
+        noche: "2026-11-29",
+        grupo: "dorm6",
+        categoria: "Dorms 6 (Verde, Azalea, Amapola)",
+        antes: 95000,
+        despues: 92000,
+        origen: "consejo",
+        motivo: "Consejo: bajar, 13 a favor y 5 en contra (aprobada a medias)"
+      },
+      {
+        dia: "2026-11-24",
+        noche: "2026-11-29",
+        grupo: "twinPriv",
+        categoria: "Twin baño priv.",
+        antes: 250636,
+        despues: 232000,
+        origen: "consejo",
+        motivo: "Consejo: bajar, 10 a favor y 9 en contra (aprobada a medias)"
+      },
+      {
+        dia: "2026-11-24",
+        noche: "2026-11-30",
+        grupo: "dblShared",
+        categoria: "Doble baño comp.",
+        antes: 180000,
+        despues: 172000,
+        origen: "consejo",
+        motivo: "Consejo: bajar, 13 a favor y 4 en contra (aprobada a medias)"
+      },
+      {
+        dia: "2026-11-24",
+        noche: "2026-12-01",
+        grupo: "dblShared",
+        categoria: "Doble baño comp.",
+        antes: 181000,
+        despues: 175000,
+        origen: "consejo",
+        motivo: "Consejo: bajar, 13 a favor y 4 en contra (aprobada a medias)"
+      },
+      {
+        dia: "2026-11-24",
+        noche: "2026-12-02",
+        grupo: "dblShared",
+        categoria: "Doble baño comp.",
+        antes: 181000,
+        despues: 175000,
+        origen: "consejo",
+        motivo: "Consejo: bajar, 13 a favor y 4 en contra (aprobada a medias)"
+      },
+      {
+        dia: "2026-11-24",
+        noche: "2026-12-03",
+        grupo: "dblShared",
+        categoria: "Doble baño comp.",
+        antes: 194000,
+        despues: 184000,
+        origen: "consejo",
+        motivo: "Consejo: bajar, 13 a favor y 4 en contra (aprobada a medias)"
+      },
+      {
+        dia: "2026-11-24",
+        noche: "2026-12-07",
+        grupo: "dorm6",
+        categoria: "Dorms 6 (Verde, Azalea, Amapola)",
+        antes: 92000,
+        despues: 96000,
+        origen: "tarea diaria",
+        motivo: "Tarea diaria (consejo de las 9:38): voto del consejo"
+      },
+      {
+        dia: "2026-11-24",
+        noche: "2026-12-11",
+        grupo: "dorm8",
+        categoria: "Dorm 11",
+        antes: 73000,
+        despues: 79000,
+        origen: "tarea diaria",
+        motivo: "Tarea diaria (consejo de las 9:38): voto del consejo"
+      },
+      {
+        dia: "2026-11-24",
+        noche: "2026-12-11",
+        grupo: "dorm6",
+        categoria: "Dorms 6 (Verde, Azalea, Amapola)",
+        antes: 85000,
+        despues: 89000,
+        origen: "tarea diaria",
+        motivo: "Tarea diaria (consejo de las 9:38): orden entre habitaciones (jerarquía)"
+      },
+      {
+        dia: "2026-11-24",
+        noche: "2026-12-12",
+        grupo: "dbl13",
+        categoria: "Doble 13",
+        antes: 148700,
+        despues: 157000,
+        origen: "consejo",
+        motivo: "Consejo: subir, 15 a favor y 1 en contra (aprobada). Conciertos de Soda Stereo y Sirius"
+      },
+      {
+        dia: "2026-11-24",
+        noche: "2026-12-12",
+        grupo: "dorm8",
+        categoria: "Dorm 11",
+        antes: 77000,
+        despues: 83000,
+        origen: "consejo",
+        motivo: "Consejo: subir, 16 a favor y 1 en contra (aprobada). Conciertos de Soda Stereo y Sirius"
+      },
+      {
+        dia: "2026-11-24",
+        noche: "2026-12-12",
+        grupo: "famPriv",
+        categoria: "Familiar baño priv.",
+        antes: 333309,
+        despues: 357000,
+        origen: "consejo",
+        motivo: "Consejo: subir, 18 a favor y 0 en contra (aprobada). Conciertos de Soda Stereo y Sirius"
+      },
+      {
+        dia: "2026-11-24",
+        noche: "2026-12-12",
+        grupo: "twinNoView",
+        categoria: "Twin sin vista",
+        antes: 205328,
+        despues: 214000,
+        origen: "consejo",
+        motivo: "Consejo: subir, 14 a favor y 3 en contra (aprobada a medias). Conciertos de Soda Stereo y Sirius"
+      },
+      {
+        dia: "2026-11-24",
+        noche: "2026-12-13",
+        grupo: "famPriv",
+        categoria: "Familiar baño priv.",
+        antes: 333309,
+        despues: 350000,
+        origen: "consejo",
+        motivo: "Consejo: subir, 18 a favor y 0 en contra (aprobada)"
+      },
+      {
+        dia: "2026-11-24",
+        noche: "2026-12-13",
+        grupo: "twinNoView",
+        categoria: "Twin sin vista",
+        antes: 205328,
+        despues: 214000,
+        origen: "consejo",
+        motivo: "Consejo: subir, 14 a favor y 3 en contra (aprobada a medias)"
+      },
+      {
+        dia: "2026-11-24",
+        noche: "2026-12-14",
+        grupo: "dorm6",
+        categoria: "Dorms 6 (Verde, Azalea, Amapola)",
+        antes: 89000,
+        despues: 92000,
+        origen: "tarea diaria",
+        motivo: "Tarea diaria (consejo de las 9:38): voto del consejo"
+      },
+      {
+        dia: "2026-11-24",
+        noche: "2026-12-14",
+        grupo: "twinNoView",
+        categoria: "Twin sin vista",
+        antes: 185328,
+        despues: 193000,
+        origen: "consejo",
+        motivo: "Consejo: subir, 14 a favor y 3 en contra (aprobada a medias)"
+      },
+      {
+        dia: "2026-11-24",
+        noche: "2026-12-15",
+        grupo: "dorm6",
+        categoria: "Dorms 6 (Verde, Azalea, Amapola)",
+        antes: 80000,
+        despues: 83000,
+        origen: "tarea diaria",
+        motivo: "Tarea diaria (consejo de las 9:38): voto del consejo"
+      },
+      {
+        dia: "2026-11-24",
+        noche: "2026-12-17",
+        grupo: "dorm8",
+        categoria: "Dorm 11",
+        antes: 69000,
+        despues: 73000,
+        origen: "tarea diaria",
+        motivo: "Tarea diaria (consejo de las 9:38): voto del consejo"
+      },
+      {
+        dia: "2026-11-24",
+        noche: "2026-12-17",
+        grupo: "dorm6",
+        categoria: "Dorms 6 (Verde, Azalea, Amapola)",
+        antes: 85000,
+        despues: 88000,
+        origen: "tarea diaria",
+        motivo: "Tarea diaria (consejo de las 9:38): voto del consejo"
+      },
+      {
+        dia: "2026-11-22",
+        noche: "2026-11-22",
+        grupo: "dorm8",
+        categoria: "Dorm 11",
+        antes: 62000,
+        despues: 71000,
+        origen: "consejo",
+        motivo: "Sesión del consejo en el chat (34 agentes)"
+      },
+      {
+        dia: "2026-11-22",
+        noche: "2026-11-22",
+        grupo: "dorm6",
+        categoria: "Dorms 6 (Verde, Azalea, Amapola)",
+        antes: 70000,
+        despues: 74000,
+        origen: "consejo",
+        motivo: "Orden entre habitaciones (jerarquía)"
+      },
+      {
+        dia: "2026-11-22",
+        noche: "2026-11-22",
+        grupo: "tripleShared",
+        categoria: "Triple baño comp.",
+        antes: 330000,
+        despues: 346000,
+        origen: "consejo",
+        motivo: "Sesión del consejo en el chat (34 agentes)"
+      },
+      {
+        dia: "2026-11-22",
+        noche: "2026-11-23",
+        grupo: "dorm8",
+        categoria: "Dorm 11",
+        antes: 60000,
+        despues: 64000,
+        origen: "consejo",
+        motivo: "Sesión del consejo en el chat (34 agentes)"
+      },
+      {
+        dia: "2026-11-22",
+        noche: "2026-11-24",
+        grupo: "dbl13",
+        categoria: "Doble 13",
+        antes: 138000,
+        despues: 142000,
+        origen: "consejo",
+        motivo: "Sesión del consejo en el chat (34 agentes)"
+      },
+      {
+        dia: "2026-11-22",
+        noche: "2026-11-24",
+        grupo: "dblShared",
+        categoria: "Doble baño comp.",
+        antes: 172000,
+        despues: 177000,
+        origen: "consejo",
+        motivo: "Sesión del consejo en el chat (34 agentes)"
+      },
+      {
+        dia: "2026-11-22",
+        noche: "2026-11-24",
+        grupo: "dorm8",
+        categoria: "Dorm 11",
+        antes: 61000,
+        despues: 58000,
+        origen: "consejo",
+        motivo: "Sesión del consejo en el chat (34 agentes)"
+      },
+      {
+        dia: "2026-11-22",
+        noche: "2026-11-25",
+        grupo: "dorm8",
+        categoria: "Dorm 11",
+        antes: 65000,
+        despues: 61000,
+        origen: "consejo",
+        motivo: "Sesión del consejo en el chat (34 agentes)"
+      },
+      {
+        dia: "2026-11-22",
+        noche: "2026-11-25",
+        grupo: "dorm8",
+        categoria: "Dorm 11",
+        antes: 61000,
+        despues: 59000,
+        origen: "tarea diaria",
+        motivo: "Tarea diaria de revenue (de 38 cambios, solo estos quedaron detallados en la bitácora)"
+      },
+      {
+        dia: "2026-11-22",
+        noche: "2026-11-25",
+        grupo: "iris",
+        categoria: "Dorm Iris",
+        antes: 83000,
+        despues: 79000,
+        origen: "consejo",
+        motivo: "Sesión del consejo en el chat (34 agentes)"
+      },
+      {
+        dia: "2026-11-22",
+        noche: "2026-11-26",
+        grupo: "dblShared",
+        categoria: "Doble baño comp.",
+        antes: 201000,
+        despues: 192000,
+        origen: "consejo",
+        motivo: "Sesión del consejo en el chat (34 agentes)"
+      },
+      {
+        dia: "2026-11-22",
+        noche: "2026-11-26",
+        grupo: "dblShared",
+        categoria: "Doble baño comp.",
+        antes: 192000,
+        despues: 187000,
+        origen: "tarea diaria",
+        motivo: "Tarea diaria de revenue (de 38 cambios, solo estos quedaron detallados en la bitácora)"
+      },
+      {
+        dia: "2026-11-22",
+        noche: "2026-11-26",
+        grupo: "dorm6",
+        categoria: "Dorms 6 (Verde, Azalea, Amapola)",
+        antes: 82000,
+        despues: 79000,
+        origen: "consejo",
+        motivo: "Sesión del consejo en el chat (34 agentes)"
+      },
+      {
+        dia: "2026-11-22",
+        noche: "2026-11-29",
+        grupo: "dblShared",
+        categoria: "Doble baño comp.",
+        antes: 205000,
+        despues: 199000,
+        origen: "consejo",
+        motivo: "Sesión del consejo en el chat (34 agentes)"
+      },
+      {
+        dia: "2026-11-22",
+        noche: "2026-11-29",
+        grupo: "iris",
+        categoria: "Dorm Iris",
+        antes: 95000,
+        despues: 98000,
+        origen: "consejo",
+        motivo: "Orden entre habitaciones (jerarquía)"
+      },
+      {
+        dia: "2026-11-22",
+        noche: "2026-11-29",
+        grupo: "dorm6",
+        categoria: "Dorms 6 (Verde, Azalea, Amapola)",
+        antes: 92000,
+        despues: 95000,
+        origen: "consejo",
+        motivo: "Sesión del consejo en el chat (34 agentes)"
+      },
+      {
+        dia: "2026-11-22",
+        noche: "2026-11-30",
+        grupo: "dbl13",
+        categoria: "Doble 13",
+        antes: 140000,
+        despues: 148000,
+        origen: "consejo",
+        motivo: "Sesión del consejo en el chat (34 agentes)"
+      },
+      {
+        dia: "2026-11-22",
+        noche: "2026-11-30",
+        grupo: "iris",
+        categoria: "Dorm Iris",
+        antes: 83000,
+        despues: 86000,
+        origen: "consejo",
+        motivo: "Orden entre habitaciones (jerarquía)"
+      },
+      {
+        dia: "2026-11-22",
+        noche: "2026-11-30",
+        grupo: "dorm6",
+        categoria: "Dorms 6 (Verde, Azalea, Amapola)",
+        antes: 78000,
+        despues: 82000,
+        origen: "consejo",
+        motivo: "Sesión del consejo en el chat (34 agentes)"
+      },
+      {
+        dia: "2026-11-22",
+        noche: "2026-11-30",
+        grupo: "tripleShared",
+        categoria: "Triple baño comp.",
+        antes: 289000,
+        despues: 303000,
+        origen: "consejo",
+        motivo: "Sesión del consejo en el chat (34 agentes)"
+      },
+      {
+        dia: "2026-11-22",
+        noche: "2026-12-01",
+        grupo: "dblShared",
+        categoria: "Doble baño comp.",
+        antes: 186000,
+        despues: 181000,
+        origen: "consejo",
+        motivo: "Sesión del consejo en el chat (34 agentes)"
+      },
+      {
+        dia: "2026-11-22",
+        noche: "2026-12-01",
+        grupo: "tripleShared",
+        categoria: "Triple baño comp.",
+        antes: 322000,
+        despues: 331000,
+        origen: "consejo",
+        motivo: "Sesión del consejo en el chat (34 agentes)"
+      },
+      {
+        dia: "2026-11-22",
+        noche: "2026-12-02",
+        grupo: "dblShared",
+        categoria: "Doble baño comp.",
+        antes: 186000,
+        despues: 181000,
+        origen: "consejo",
+        motivo: "Sesión del consejo en el chat (34 agentes)"
+      },
+      {
+        dia: "2026-11-22",
+        noche: "2026-12-02",
+        grupo: "iris",
+        categoria: "Dorm Iris",
+        antes: 100000,
+        despues: 98000,
+        origen: "consejo",
+        motivo: "Sesión del consejo en el chat (34 agentes)"
+      },
+      {
+        dia: "2026-11-22",
+        noche: "2026-12-02",
+        grupo: "tripleShared",
+        categoria: "Triple baño comp.",
+        antes: 322000,
+        despues: 331000,
+        origen: "consejo",
+        motivo: "Sesión del consejo en el chat (34 agentes)"
+      },
+      {
+        dia: "2026-11-22",
+        noche: "2026-12-03",
+        grupo: "dorm6",
+        categoria: "Dorms 6 (Verde, Azalea, Amapola)",
+        antes: 85000,
+        despues: 90000,
+        origen: "consejo",
+        motivo: "Sesión del consejo en el chat (34 agentes)"
+      },
+      {
+        dia: "2026-11-22",
+        noche: "2026-12-04",
+        grupo: "dbl13",
+        categoria: "Doble 13",
+        antes: 160000,
+        despues: 176000,
+        origen: "consejo",
+        motivo: "Sesión del consejo en el chat (34 agentes)"
+      },
+      {
+        dia: "2026-11-22",
+        noche: "2026-12-04",
+        grupo: "dorm6",
+        categoria: "Dorms 6 (Verde, Azalea, Amapola)",
+        antes: 85000,
+        despues: 91000,
+        origen: "consejo",
+        motivo: "Sesión del consejo en el chat (34 agentes)"
+      },
+      {
+        dia: "2026-11-22",
+        noche: "2026-12-04",
+        grupo: "tripleShared",
+        categoria: "Triple baño comp.",
+        antes: 327000,
+        despues: 352000,
+        origen: "consejo",
+        motivo: "Sesión del consejo en el chat (34 agentes)"
+      },
+      {
+        dia: "2026-11-22",
+        noche: "2026-12-04",
+        grupo: "tripleShared",
+        categoria: "Triple baño comp.",
+        antes: 352000,
+        despues: 367000,
+        origen: "tarea diaria",
+        motivo: "Tarea diaria de revenue (de 38 cambios, solo estos quedaron detallados en la bitácora)"
+      },
+      {
+        dia: "2026-11-22",
+        noche: "2026-12-05",
+        grupo: "dorm6",
+        categoria: "Dorms 6 (Verde, Azalea, Amapola)",
+        antes: 85000,
+        despues: 90000,
+        origen: "consejo",
+        motivo: "Sesión del consejo en el chat (34 agentes)"
+      },
+      {
+        dia: "2026-11-22",
+        noche: "2026-12-06",
+        grupo: "dorm6",
+        categoria: "Dorms 6 (Verde, Azalea, Amapola)",
+        antes: 85000,
+        despues: 92000,
+        origen: "tarea diaria",
+        motivo: "Tarea diaria de revenue (de 38 cambios, solo estos quedaron detallados en la bitácora)"
+      },
+      {
+        dia: "2026-11-22",
+        noche: "2026-12-07",
+        grupo: "dorm6",
+        categoria: "Dorms 6 (Verde, Azalea, Amapola)",
+        antes: 89000,
+        despues: 92000,
+        origen: "consejo",
+        motivo: "Sesión del consejo en el chat (34 agentes)"
+      },
+      {
+        dia: "2026-11-22",
+        noche: "2026-12-07",
+        grupo: "tripleShared",
+        categoria: "Triple baño comp.",
+        antes: 357000,
+        despues: 367000,
+        origen: "consejo",
+        motivo: "Sesión del consejo en el chat (34 agentes)"
+      },
+      {
+        dia: "2026-11-22",
+        noche: "2026-12-08",
+        grupo: "dbl13",
+        categoria: "Doble 13",
+        antes: 148000,
+        despues: 160000,
+        origen: "consejo",
+        motivo: "Sesión del consejo en el chat (34 agentes)"
+      },
+      {
+        dia: "2026-11-22",
+        noche: "2026-12-08",
+        grupo: "dblShared",
+        categoria: "Doble baño comp.",
+        antes: 219000,
+        despues: 210000,
+        origen: "consejo",
+        motivo: "Sesión del consejo en el chat (34 agentes)"
+      },
+      {
+        dia: "2026-11-22",
+        noche: "2026-12-08",
+        grupo: "twinNoView",
+        categoria: "Twin sin vista",
+        antes: 198000,
+        despues: 201000,
+        origen: "consejo",
+        motivo: "Orden entre habitaciones (jerarquía)"
+      },
+      {
+        dia: "2026-11-22",
+        noche: "2026-12-09",
+        grupo: "dblShared",
+        categoria: "Doble baño comp.",
+        antes: 201000,
+        despues: 192000,
+        origen: "consejo",
+        motivo: "Sesión del consejo en el chat (34 agentes)"
+      },
+      {
+        dia: "2026-11-22",
+        noche: "2026-12-10",
+        grupo: "dblShared",
+        categoria: "Doble baño comp.",
+        antes: 191000,
+        despues: 184000,
+        origen: "consejo",
+        motivo: "Sesión del consejo en el chat (34 agentes)"
+      },
+      {
+        dia: "2026-11-22",
+        noche: "2026-12-11",
+        grupo: "dblShared",
+        categoria: "Doble baño comp.",
+        antes: 183000,
+        despues: 176000,
+        origen: "consejo",
+        motivo: "Sesión del consejo en el chat (34 agentes)"
+      },
+      {
+        dia: "2026-11-22",
+        noche: "2026-12-12",
+        grupo: "dblShared",
+        categoria: "Doble baño comp.",
+        antes: 191000,
+        despues: 184000,
+        origen: "consejo",
+        motivo: "Sesión del consejo en el chat (34 agentes)"
+      },
+      {
+        dia: "2026-11-22",
+        noche: "2026-12-12",
+        grupo: "dorm6",
+        categoria: "Dorms 6 (Verde, Azalea, Amapola)",
+        antes: 85000,
+        despues: 90000,
+        origen: "consejo",
+        motivo: "Sesión del consejo en el chat (34 agentes)"
+      },
+      {
+        dia: "2026-11-22",
+        noche: "2026-12-13",
+        grupo: "dblShared",
+        categoria: "Doble baño comp.",
+        antes: 190000,
+        despues: 183000,
+        origen: "consejo",
+        motivo: "Sesión del consejo en el chat (34 agentes)"
+      },
+      {
+        dia: "2026-11-22",
+        noche: "2026-12-14",
+        grupo: "dorm8",
+        categoria: "Dorm 11",
+        antes: 71000,
+        despues: 76000,
+        origen: "consejo",
+        motivo: "Sesión del consejo en el chat (34 agentes)"
+      },
+      {
+        dia: "2026-11-22",
+        noche: "2026-12-14",
+        grupo: "dorm6",
+        categoria: "Dorms 6 (Verde, Azalea, Amapola)",
+        antes: 81000,
+        despues: 85000,
+        origen: "consejo",
+        motivo: "Sesión del consejo en el chat (34 agentes)"
+      },
+      {
+        dia: "2026-11-22",
+        noche: "2026-12-15",
+        grupo: "dblShared",
+        categoria: "Doble baño comp.",
+        antes: 175000,
+        despues: 168000,
+        origen: "consejo",
+        motivo: "Sesión del consejo en el chat (34 agentes)"
+      },
+      {
+        dia: "2026-11-22",
+        noche: "2026-12-16",
+        grupo: "dorm8",
+        categoria: "Dorm 11",
+        antes: 68000,
+        despues: 72000,
+        origen: "consejo",
+        motivo: "Sesión del consejo en el chat (34 agentes)"
+      },
+      {
+        dia: "2026-11-22",
+        noche: "2026-12-16",
+        grupo: "iris",
+        categoria: "Dorm Iris",
+        antes: 92664,
+        despues: 100000,
+        origen: "consejo",
+        motivo: "Sesión del consejo en el chat (34 agentes)"
+      },
+      {
+        dia: "2026-11-22",
+        noche: "2026-12-16",
+        grupo: "dorm6",
+        categoria: "Dorms 6 (Verde, Azalea, Amapola)",
+        antes: 77220,
+        despues: 82000,
+        origen: "consejo",
+        motivo: "Sesión del consejo en el chat (34 agentes)"
+      },
+      {
+        dia: "2026-11-22",
+        noche: "2026-12-16",
+        grupo: "tripleShared",
+        categoria: "Triple baño comp.",
+        antes: 289000,
+        despues: 302000,
+        origen: "consejo",
+        motivo: "Sesión del consejo en el chat (34 agentes)"
+      },
+      {
+        dia: "2026-11-22",
+        noche: "2026-12-17",
+        grupo: "dblShared",
+        categoria: "Doble baño comp.",
+        antes: 173000,
+        despues: 166000,
+        origen: "consejo",
+        motivo: "Sesión del consejo en el chat (34 agentes)"
+      },
+      {
+        dia: "2026-11-18",
+        noche: "2026-11-18",
+        grupo: "dblShared",
+        categoria: "Doble baño comp.",
+        antes: 213000,
+        despues: 221000,
+        origen: "consejo",
+        motivo: "Sesión del consejo aprobada por Santiago en el chat"
+      },
+      {
+        dia: "2026-11-18",
+        noche: "2026-11-18",
+        grupo: "dblPriv",
+        categoria: "Doble baño priv.",
+        antes: 220000,
+        despues: 228000,
+        origen: "consejo",
+        motivo: "Sesión del consejo aprobada por Santiago en el chat"
+      },
+      {
+        dia: "2026-11-18",
+        noche: "2026-11-18",
+        grupo: "dblNoBalc",
+        categoria: "Doble sin balcón",
+        antes: 220000,
+        despues: 228000,
+        origen: "consejo",
+        motivo: "Sesión del consejo aprobada por Santiago en el chat"
+      },
+      {
+        dia: "2026-11-18",
+        noche: "2026-11-18",
+        grupo: "tripleShared",
+        categoria: "Triple baño comp.",
+        antes: 299000,
+        despues: 316000,
+        origen: "consejo",
+        motivo: "Sesión del consejo aprobada por Santiago en el chat"
+      },
+      {
+        dia: "2026-11-18",
+        noche: "2026-11-19",
+        grupo: "dblShared",
+        categoria: "Doble baño comp.",
+        antes: 213000,
+        despues: 224000,
+        origen: "consejo",
+        motivo: "Sesión del consejo aprobada por Santiago en el chat"
+      },
+      {
+        dia: "2026-11-18",
+        noche: "2026-11-19",
+        grupo: "dblPriv",
+        categoria: "Doble baño priv.",
+        antes: 220000,
+        despues: 231000,
+        origen: "consejo",
+        motivo: "Sesión del consejo aprobada por Santiago en el chat"
+      },
+      {
+        dia: "2026-11-18",
+        noche: "2026-11-19",
+        grupo: "dblNoBalc",
+        categoria: "Doble sin balcón",
+        antes: 220000,
+        despues: 231000,
+        origen: "consejo",
+        motivo: "Sesión del consejo aprobada por Santiago en el chat"
+      },
+      {
+        dia: "2026-11-18",
+        noche: "2026-11-19",
+        grupo: "iris",
+        categoria: "Dorm Iris",
+        antes: 86000,
+        despues: 89000,
+        origen: "consejo",
+        motivo: "Sesión del consejo aprobada por Santiago en el chat"
+      },
+      {
+        dia: "2026-11-18",
+        noche: "2026-11-19",
+        grupo: "dorm6",
+        categoria: "Dorms 6 (Verde, Azalea, Amapola)",
+        antes: 74000,
+        despues: 73000,
+        origen: "consejo",
+        motivo: "Sesión del consejo aprobada por Santiago en el chat"
+      },
+      {
+        dia: "2026-11-18",
+        noche: "2026-11-19",
+        grupo: "tripleShared",
+        categoria: "Triple baño comp.",
+        antes: 314000,
+        despues: 323000,
+        origen: "consejo",
+        motivo: "Sesión del consejo aprobada por Santiago en el chat"
+      },
+      {
+        dia: "2026-11-18",
+        noche: "2026-11-20",
+        grupo: "dblShared",
+        categoria: "Doble baño comp.",
+        antes: 223000,
+        despues: 229000,
+        origen: "consejo",
+        motivo: "Sesión del consejo aprobada por Santiago en el chat"
+      },
+      {
+        dia: "2026-11-18",
+        noche: "2026-11-20",
+        grupo: "dblPriv",
+        categoria: "Doble baño priv.",
+        antes: 230000,
+        despues: 253000,
+        origen: "consejo",
+        motivo: "Sesión del consejo aprobada por Santiago en el chat"
+      },
+      {
+        dia: "2026-11-18",
+        noche: "2026-11-20",
+        grupo: "dblNoBalc",
+        categoria: "Doble sin balcón",
+        antes: 230000,
+        despues: 236000,
+        origen: "consejo",
+        motivo: "Sesión del consejo aprobada por Santiago en el chat"
+      },
+      {
+        dia: "2026-11-18",
+        noche: "2026-11-20",
+        grupo: "tripleShared",
+        categoria: "Triple baño comp.",
+        antes: 334000,
+        despues: 357000,
+        origen: "consejo",
+        motivo: "Sesión del consejo aprobada por Santiago en el chat"
+      },
+      {
+        dia: "2026-11-18",
+        noche: "2026-11-21",
+        grupo: "dblShared",
+        categoria: "Doble baño comp.",
+        antes: 201000,
+        despues: 216000,
+        origen: "consejo",
+        motivo: "Sesión del consejo aprobada por Santiago en el chat"
+      },
+      {
+        dia: "2026-11-18",
+        noche: "2026-11-21",
+        grupo: "dblNoBalc",
+        categoria: "Doble sin balcón",
+        antes: 208000,
+        despues: 223000,
+        origen: "consejo",
+        motivo: "Sesión del consejo aprobada por Santiago en el chat"
+      },
+      {
+        dia: "2026-11-18",
+        noche: "2026-11-21",
+        grupo: "dorm6",
+        categoria: "Dorms 6 (Verde, Azalea, Amapola)",
+        antes: 80000,
+        despues: 79000,
+        origen: "consejo",
+        motivo: "Sesión del consejo aprobada por Santiago en el chat"
+      },
+      {
+        dia: "2026-11-18",
+        noche: "2026-11-22",
+        grupo: "dblShared",
+        categoria: "Doble baño comp.",
+        antes: 196000,
+        despues: 205000,
+        origen: "consejo",
+        motivo: "Sesión del consejo aprobada por Santiago en el chat"
+      },
+      {
+        dia: "2026-11-18",
+        noche: "2026-11-22",
+        grupo: "dorm8",
+        categoria: "Dorm 11",
+        antes: 69350,
+        despues: 67000,
+        origen: "consejo",
+        motivo: "Sesión del consejo aprobada por Santiago en el chat"
+      },
+      {
+        dia: "2026-11-18",
+        noche: "2026-11-22",
+        grupo: "dorm6",
+        categoria: "Dorms 6 (Verde, Azalea, Amapola)",
+        antes: 74000,
+        despues: 70000,
+        origen: "consejo",
+        motivo: "Sesión del consejo aprobada por Santiago en el chat"
+      },
+      {
+        dia: "2026-11-18",
+        noche: "2026-11-22",
+        grupo: "twinPriv",
+        categoria: "Twin baño priv.",
+        antes: 266000,
+        despues: 258000,
+        origen: "consejo",
+        motivo: "Sesión del consejo aprobada por Santiago en el chat"
+      },
+      {
+        dia: "2026-11-18",
+        noche: "2026-11-23",
+        grupo: "dblShared",
+        categoria: "Doble baño comp.",
+        antes: 177000,
+        despues: 191000,
+        origen: "consejo",
+        motivo: "Sesión del consejo aprobada por Santiago en el chat"
+      },
+      {
+        dia: "2026-11-18",
+        noche: "2026-11-23",
+        grupo: "dblPriv",
+        categoria: "Doble baño priv.",
+        antes: 202000,
+        despues: 214000,
+        origen: "consejo",
+        motivo: "Sesión del consejo aprobada por Santiago en el chat"
+      },
+      {
+        dia: "2026-11-18",
+        noche: "2026-11-23",
+        grupo: "dorm6",
+        categoria: "Dorms 6 (Verde, Azalea, Amapola)",
+        antes: 76000,
+        despues: 69000,
+        origen: "consejo",
+        motivo: "Sesión del consejo aprobada por Santiago en el chat"
+      },
+      {
+        dia: "2026-11-18",
+        noche: "2026-11-23",
+        grupo: "twinPriv",
+        categoria: "Twin baño priv.",
+        antes: 254000,
+        despues: 246000,
+        origen: "consejo",
+        motivo: "Sesión del consejo aprobada por Santiago en el chat"
+      },
+      {
+        dia: "2026-11-18",
+        noche: "2026-11-24",
+        grupo: "dblShared",
+        categoria: "Doble baño comp.",
+        antes: 175000,
+        despues: 186000,
+        origen: "consejo",
+        motivo: "Sesión del consejo aprobada por Santiago en el chat"
+      },
+      {
+        dia: "2026-11-18",
+        noche: "2026-11-24",
+        grupo: "twinPriv",
+        categoria: "Twin baño priv.",
+        antes: 252000,
+        despues: 239000,
+        origen: "consejo",
+        motivo: "Sesión del consejo aprobada por Santiago en el chat"
+      },
+      {
+        dia: "2026-11-18",
+        noche: "2026-11-25",
+        grupo: "dblShared",
+        categoria: "Doble baño comp.",
+        antes: 166000,
+        despues: 179000,
+        origen: "consejo",
+        motivo: "Sesión del consejo aprobada por Santiago en el chat"
+      },
+      {
+        dia: "2026-11-18",
+        noche: "2026-11-25",
+        grupo: "dorm8",
+        categoria: "Dorm 11",
+        antes: 71000,
+        despues: 69000,
+        origen: "consejo",
+        motivo: "Sesión del consejo aprobada por Santiago en el chat"
+      },
+      {
+        dia: "2026-11-18",
+        noche: "2026-11-25",
+        grupo: "dorm6",
+        categoria: "Dorms 6 (Verde, Azalea, Amapola)",
+        antes: 77220,
+        despues: 72000,
+        origen: "consejo",
+        motivo: "Sesión del consejo aprobada por Santiago en el chat"
+      },
+      {
+        dia: "2026-11-18",
+        noche: "2026-11-26",
+        grupo: "dblShared",
+        categoria: "Doble baño comp.",
+        antes: 203000,
+        despues: 217000,
+        origen: "consejo",
+        motivo: "Sesión del consejo aprobada por Santiago en el chat"
+      },
+      {
+        dia: "2026-11-18",
+        noche: "2026-11-27",
+        grupo: "dblShared",
+        categoria: "Doble baño comp.",
+        antes: 200000,
+        despues: 215000,
+        origen: "consejo",
+        motivo: "Sesión del consejo aprobada por Santiago en el chat"
+      },
+      {
+        dia: "2026-11-18",
+        noche: "2026-11-27",
+        grupo: "dblPriv",
+        categoria: "Doble baño priv.",
+        antes: 215000,
+        despues: 247000,
+        origen: "consejo",
+        motivo: "Sesión del consejo aprobada por Santiago en el chat"
+      },
+      {
+        dia: "2026-11-18",
+        noche: "2026-11-27",
+        grupo: "dblNoBalc",
+        categoria: "Doble sin balcón",
+        antes: 206000,
+        despues: 222000,
+        origen: "consejo",
+        motivo: "Sesión del consejo aprobada por Santiago en el chat"
+      },
+      {
+        dia: "2026-11-18",
+        noche: "2026-11-28",
+        grupo: "dblShared",
+        categoria: "Doble baño comp.",
+        antes: 216000,
+        despues: 226000,
+        origen: "consejo",
+        motivo: "Sesión del consejo aprobada por Santiago en el chat"
+      },
+      {
+        dia: "2026-11-18",
+        noche: "2026-11-28",
+        grupo: "dblPriv",
+        categoria: "Doble baño priv.",
+        antes: 234000,
+        despues: 261000,
+        origen: "consejo",
+        motivo: "Sesión del consejo aprobada por Santiago en el chat"
+      },
+      {
+        dia: "2026-11-18",
+        noche: "2026-11-28",
+        grupo: "dblNoBalc",
+        categoria: "Doble sin balcón",
+        antes: 223000,
+        despues: 233000,
+        origen: "consejo",
+        motivo: "Sesión del consejo aprobada por Santiago en el chat"
+      },
+      {
+        dia: "2026-11-18",
+        noche: "2026-11-29",
+        grupo: "dblShared",
+        categoria: "Doble baño comp.",
+        antes: 204000,
+        despues: 218000,
+        origen: "consejo",
+        motivo: "Sesión del consejo aprobada por Santiago en el chat"
+      },
+      {
+        dia: "2026-11-18",
+        noche: "2026-11-29",
+        grupo: "dblPriv",
+        categoria: "Doble baño priv.",
+        antes: 245000,
+        despues: 233000,
+        origen: "consejo",
+        motivo: "Sesión del consejo aprobada por Santiago en el chat"
+      },
+      {
+        dia: "2026-11-18",
+        noche: "2026-11-29",
+        grupo: "dblNoBalc",
+        categoria: "Doble sin balcón",
+        antes: 223000,
+        despues: 225000,
+        origen: "consejo",
+        motivo: "Sesión del consejo aprobada por Santiago en el chat"
+      },
+      {
+        dia: "2026-11-18",
+        noche: "2026-11-30",
+        grupo: "dblShared",
+        categoria: "Doble baño comp.",
+        antes: 179000,
+        despues: 191000,
+        origen: "consejo",
+        motivo: "Sesión del consejo aprobada por Santiago en el chat"
+      },
+      {
+        dia: "2026-11-18",
+        noche: "2026-12-01",
+        grupo: "dbl13",
+        categoria: "Doble 13",
+        antes: 139000,
+        despues: 149000,
+        origen: "consejo",
+        motivo: "Sesión del consejo aprobada por Santiago en el chat"
+      },
+      {
+        dia: "2026-11-18",
+        noche: "2026-12-01",
+        grupo: "dblShared",
+        categoria: "Doble baño comp.",
+        antes: 182000,
+        despues: 196000,
+        origen: "consejo",
+        motivo: "Sesión del consejo aprobada por Santiago en el chat"
+      },
+      {
+        dia: "2026-11-18",
+        noche: "2026-12-01",
+        grupo: "tripleShared",
+        categoria: "Triple baño comp.",
+        antes: 296000,
+        despues: 305000,
+        origen: "consejo",
+        motivo: "Sesión del consejo aprobada por Santiago en el chat"
+      },
+      {
+        dia: "2026-11-18",
+        noche: "2026-12-02",
+        grupo: "dblShared",
+        categoria: "Doble baño comp.",
+        antes: 185000,
+        despues: 199000,
+        origen: "consejo",
+        motivo: "Sesión del consejo aprobada por Santiago en el chat"
+      },
+      {
+        dia: "2026-11-18",
+        noche: "2026-12-02",
+        grupo: "tripleShared",
+        categoria: "Triple baño comp.",
+        antes: 295000,
+        despues: 305000,
+        origen: "consejo",
+        motivo: "Sesión del consejo aprobada por Santiago en el chat"
+      },
+      {
+        dia: "2026-11-18",
+        noche: "2026-12-03",
+        grupo: "dbl13",
+        categoria: "Doble 13",
+        antes: 147000,
+        despues: 157000,
+        origen: "consejo",
+        motivo: "Sesión del consejo aprobada por Santiago en el chat"
+      },
+      {
+        dia: "2026-11-18",
+        noche: "2026-12-03",
+        grupo: "dblShared",
+        categoria: "Doble baño comp.",
+        antes: 194000,
+        despues: 209000,
+        origen: "consejo",
+        motivo: "Sesión del consejo aprobada por Santiago en el chat"
+      },
+      {
+        dia: "2026-11-18",
+        noche: "2026-12-03",
+        grupo: "dblNoBalc",
+        categoria: "Doble sin balcón",
+        antes: 213000,
+        despues: 216000,
+        origen: "consejo",
+        motivo: "Sesión del consejo aprobada por Santiago en el chat"
+      },
+      {
+        dia: "2026-11-18",
+        noche: "2026-12-03",
+        grupo: "tripleShared",
+        categoria: "Triple baño comp.",
+        antes: 317000,
+        despues: 327000,
+        origen: "consejo",
+        motivo: "Sesión del consejo aprobada por Santiago en el chat"
+      },
+      {
+        dia: "2026-11-18",
+        noche: "2026-12-04",
+        grupo: "dblShared",
+        categoria: "Doble baño comp.",
+        antes: 205000,
+        despues: 216000,
+        origen: "consejo",
+        motivo: "Sesión del consejo aprobada por Santiago en el chat"
+      },
+      {
+        dia: "2026-11-18",
+        noche: "2026-12-04",
+        grupo: "twinNoView",
+        categoria: "Twin sin vista",
+        antes: 213000,
+        despues: 221000,
+        origen: "consejo",
+        motivo: "Sesión del consejo aprobada por Santiago en el chat"
+      },
+      {
+        dia: "2026-11-18",
+        noche: "2026-12-05",
+        grupo: "dblShared",
+        categoria: "Doble baño comp.",
+        antes: 211000,
+        despues: 223000,
+        origen: "consejo",
+        motivo: "Sesión del consejo aprobada por Santiago en el chat"
+      },
+      {
+        dia: "2026-11-18",
+        noche: "2026-12-05",
+        grupo: "dblNoBalc",
+        categoria: "Doble sin balcón",
+        antes: 229000,
+        despues: 230000,
+        origen: "consejo",
+        motivo: "Sesión del consejo aprobada por Santiago en el chat"
+      },
+      {
+        dia: "2026-11-18",
+        noche: "2026-12-06",
+        grupo: "dblShared",
+        categoria: "Doble baño comp.",
+        antes: 208000,
+        despues: 222000,
+        origen: "consejo",
+        motivo: "Sesión del consejo aprobada por Santiago en el chat"
+      },
+      {
+        dia: "2026-11-18",
+        noche: "2026-12-06",
+        grupo: "dblNoBalc",
+        categoria: "Doble sin balcón",
+        antes: 215000,
+        despues: 229000,
+        origen: "consejo",
+        motivo: "Sesión del consejo aprobada por Santiago en el chat"
+      },
+      {
+        dia: "2026-11-18",
+        noche: "2026-12-08",
+        grupo: "dblShared",
+        categoria: "Doble baño comp.",
+        antes: 213000,
+        despues: 235000,
+        origen: "consejo",
+        motivo: "Sesión del consejo aprobada por Santiago en el chat"
+      },
+      {
+        dia: "2026-11-18",
+        noche: "2026-12-08",
+        grupo: "dblPriv",
+        categoria: "Doble baño priv.",
+        antes: 233000,
+        despues: 243000,
+        origen: "consejo",
+        motivo: "Sesión del consejo aprobada por Santiago en el chat"
+      },
+      {
+        dia: "2026-11-18",
+        noche: "2026-12-08",
+        grupo: "dblNoBalc",
+        categoria: "Doble sin balcón",
+        antes: 229000,
+        despues: 243000,
+        origen: "consejo",
+        motivo: "Sesión del consejo aprobada por Santiago en el chat"
+      },
+      {
+        dia: "2026-11-18",
+        noche: "2026-12-08",
+        grupo: "dorm6",
+        categoria: "Dorms 6 (Verde, Azalea, Amapola)",
+        antes: 77220,
+        despues: 80000,
+        origen: "consejo",
+        motivo: "Sesión del consejo aprobada por Santiago en el chat"
+      },
+      {
+        dia: "2026-11-18",
+        noche: "2026-12-09",
+        grupo: "dblShared",
+        categoria: "Doble baño comp.",
+        antes: 198000,
+        despues: 223000,
+        origen: "consejo",
+        motivo: "Sesión del consejo aprobada por Santiago en el chat"
+      },
+      {
+        dia: "2026-11-18",
+        noche: "2026-12-09",
+        grupo: "dblNoBalc",
+        categoria: "Doble sin balcón",
+        antes: 219000,
+        despues: 230000,
+        origen: "consejo",
+        motivo: "Sesión del consejo aprobada por Santiago en el chat"
+      },
+      {
+        dia: "2026-11-18",
+        noche: "2026-12-09",
+        grupo: "dorm6",
+        categoria: "Dorms 6 (Verde, Azalea, Amapola)",
+        antes: 77220,
+        despues: 80000,
+        origen: "consejo",
+        motivo: "Sesión del consejo aprobada por Santiago en el chat"
+      },
+      {
+        dia: "2026-11-18",
+        noche: "2026-12-10",
+        grupo: "dblShared",
+        categoria: "Doble baño comp.",
+        antes: 186000,
+        despues: 212000,
+        origen: "consejo",
+        motivo: "Sesión del consejo aprobada por Santiago en el chat"
+      },
+      {
+        dia: "2026-11-18",
+        noche: "2026-12-10",
+        grupo: "dblNoBalc",
+        categoria: "Doble sin balcón",
+        antes: 208000,
+        despues: 219000,
+        origen: "consejo",
+        motivo: "Sesión del consejo aprobada por Santiago en el chat"
+      },
+      {
+        dia: "2026-11-18",
+        noche: "2026-12-10",
+        grupo: "dorm6",
+        categoria: "Dorms 6 (Verde, Azalea, Amapola)",
+        antes: 77220,
+        despues: 80000,
+        origen: "consejo",
+        motivo: "Sesión del consejo aprobada por Santiago en el chat"
+      },
+      {
+        dia: "2026-11-18",
+        noche: "2026-12-11",
+        grupo: "dblShared",
+        categoria: "Doble baño comp.",
+        antes: 182000,
+        despues: 197000,
+        origen: "consejo",
+        motivo: "Sesión del consejo aprobada por Santiago en el chat"
+      },
+      {
+        dia: "2026-11-18",
+        noche: "2026-12-12",
+        grupo: "dblShared",
+        categoria: "Doble baño comp.",
+        antes: 189000,
+        despues: 212000,
+        origen: "consejo",
+        motivo: "Sesión del consejo aprobada por Santiago en el chat"
+      },
+      {
+        dia: "2026-11-18",
+        noche: "2026-12-12",
+        grupo: "dblNoBalc",
+        categoria: "Doble sin balcón",
+        antes: 209000,
+        despues: 219000,
+        origen: "consejo",
+        motivo: "Sesión del consejo aprobada por Santiago en el chat"
+      },
+      {
+        dia: "2026-11-18",
+        noche: "2026-12-13",
+        grupo: "dblShared",
+        categoria: "Doble baño comp.",
+        antes: 184000,
+        despues: 211000,
+        origen: "consejo",
+        motivo: "Sesión del consejo aprobada por Santiago en el chat"
+      },
+      {
+        dia: "2026-11-18",
+        noche: "2026-12-13",
+        grupo: "dblNoBalc",
+        categoria: "Doble sin balcón",
+        antes: 204000,
+        despues: 218000,
+        origen: "consejo",
+        motivo: "Sesión del consejo aprobada por Santiago en el chat"
+      },
+      {
+        dia: "2026-11-18",
+        noche: "2026-12-14",
+        grupo: "dblShared",
+        categoria: "Doble baño comp.",
+        antes: 172000,
+        despues: 197000,
+        origen: "consejo",
+        motivo: "Sesión del consejo aprobada por Santiago en el chat"
+      },
+      {
+        dia: "2026-11-18",
+        noche: "2026-12-14",
+        grupo: "dblNoBalc",
+        categoria: "Doble sin balcón",
+        antes: 191000,
+        despues: 205000,
+        origen: "consejo",
+        motivo: "Sesión del consejo aprobada por Santiago en el chat"
+      },
+      {
+        dia: "2026-11-18",
+        noche: "2026-12-15",
+        grupo: "dblShared",
+        categoria: "Doble baño comp.",
+        antes: 164000,
+        despues: 188000,
+        origen: "consejo",
+        motivo: "Sesión del consejo aprobada por Santiago en el chat"
+      },
+      {
+        dia: "2026-11-18",
+        noche: "2026-12-15",
+        grupo: "dblPriv",
+        categoria: "Doble baño priv.",
+        antes: 198000,
+        despues: 211000,
+        origen: "consejo",
+        motivo: "Sesión del consejo aprobada por Santiago en el chat"
+      },
+      {
+        dia: "2026-11-18",
+        noche: "2026-12-15",
+        grupo: "dblNoBalc",
+        categoria: "Doble sin balcón",
+        antes: 180000,
+        despues: 204000,
+        origen: "consejo",
+        motivo: "Sesión del consejo aprobada por Santiago en el chat"
+      },
+      {
+        dia: "2026-11-18",
+        noche: "2026-12-16",
+        grupo: "dblShared",
+        categoria: "Doble baño comp.",
+        antes: 164000,
+        despues: 188000,
+        origen: "consejo",
+        motivo: "Sesión del consejo aprobada por Santiago en el chat"
+      },
+      {
+        dia: "2026-11-18",
+        noche: "2026-12-16",
+        grupo: "dblPriv",
+        categoria: "Doble baño priv.",
+        antes: 198000,
+        despues: 211000,
+        origen: "consejo",
+        motivo: "Sesión del consejo aprobada por Santiago en el chat"
+      },
+      {
+        dia: "2026-11-18",
+        noche: "2026-12-16",
+        grupo: "dblNoBalc",
+        categoria: "Doble sin balcón",
+        antes: 180000,
+        despues: 204000,
+        origen: "consejo",
+        motivo: "Sesión del consejo aprobada por Santiago en el chat"
+      },
+      {
+        dia: "2026-11-18",
+        noche: "2026-12-17",
+        grupo: "dblShared",
+        categoria: "Doble baño comp.",
+        antes: 166000,
+        despues: 190000,
+        origen: "consejo",
+        motivo: "Sesión del consejo aprobada por Santiago en el chat"
+      },
+      {
+        dia: "2026-11-18",
+        noche: "2026-12-17",
+        grupo: "dblNoBalc",
+        categoria: "Doble sin balcón",
+        antes: 192000,
+        despues: 208000,
+        origen: "consejo",
+        motivo: "Sesión del consejo aprobada por Santiago en el chat"
+      }
+    ]
   }
 };
 </script>
@@ -7669,6 +9306,8 @@ function vInicio(){
     `${copM(split(cierre).T)} de ingresos · ADR ${cop(cierre.adr)}.`, [pc?`${delta(cierre.ocupacion,pc.ocupacion,'pp')} vs ${esc(pc.nombre.split(' ')[0].toLowerCase())}`:'', cierre.ly?`${delta(cierre.ocupacion,cierre.ly.ocupacion,'pp')} vs 2025`:''].filter(Boolean).join(' · '));
   h+=card('#anio','','Año '+AN+' hasta hoy', pct(ocA,1)+' <small>ocupación</small>','Cómo va el año','Totales del año, mes a mes y semana a semana.', D.lyAnio?`${delta(ocA,D.lyAnio.ocupacion,'pp')} vs 2025 · alojamiento ${dv(D.lyAnio.alojamiento_var)}`:'');
   h+=card('#proyecciones','','Lo que viene', pct(prox.ocupacion,0)+' <small>'+esc(prox.nombre.split(' ')[0].toLowerCase())+' vendido</small>','Proyecciones','Cuánto está vendido hoy para los próximos meses.', prox.ly?.otb_ocup!=null?`${delta(prox.ocupacion,prox.ly.otb_ocup,'pp')} vs lo vendido a esta fecha en 2025`:'');
+  if(D.revenueDiario&&D.revenueDiario.cambios.length){ const RD=D.revenueDiario, ud=[...new Set(RD.cambios.map(c=>c.dia))].sort().pop(), nU=RD.cambios.filter(c=>c.dia===ud).length;
+    h+=card('#revenue','','Último cambio de tarifas · '+esc(ud.split('-').reverse().slice(0,2).join('/')), num(nU)+' <small>noches cambiadas</small>','Revenue',`Cada cambio de tarifa, día a día. ${num(RD.cambios.length)} cambios registrados desde el ${esc(RD.desde.split('-').reverse().slice(0,2).join('/'))}.`); }
   if(MK) h+=card('#marketing','','Últimos 30 días', num(MK.web.reservas_motor_web)+' <small>reservas web</small>','Marketing',`Google, Instagram y la página web. ${num(MK.web.reservas_motor_web_anterior)} reservas web en los 30 días anteriores.`);
   h+=`</div>`;
   const sc=[['alojamiento','Alojamiento'],['bar','Bar'],['lavanderia','Lavandería'],['upsale','Upsale'],['revenue','Tarifas']];
@@ -7940,6 +9579,48 @@ document.addEventListener('click', e=>{
 });
 
 /* =====================================================================
+   Vista: Revenue (cada cambio de tarifa, día a día)
+   ===================================================================== */
+let RVF={cat:'',acc:'',dia:''};
+function vRevenue(){
+  const R=D.revenueDiario;
+  let h=`<div class="welcome"><h1>Revenue · cambios de tarifa</h1><p>Cada precio que se cambió en Lobby, agrupado por el día en que se hizo. Lo más reciente va primero.</p></div>`;
+  if(!R||!R.cambios.length) return h+`<div class="empty">Todavía no hay cambios de tarifa registrados.</div>`;
+  const F=R.factorPlataforma||0.7, plat=v=>Math.round(v*F);
+  const fch=f=>{ const [y,m,d]=f.split('-').map(Number); return d+' '+MES[m-1]; };
+  const dsem=f=>{ const [y,m,d]=f.split('-').map(Number); return DIAS[(new Date(y,m-1,d).getDay()+6)%7]; };
+  const precio=v=>`${cop(plat(v))} <span class="lb">Lobby ${cop(v)}</span>`;
+  const todos=R.cambios, cats=[...new Set(todos.map(c=>c.categoria))].sort(), dias=[...new Set(todos.map(c=>c.dia))].sort().reverse();
+  const L=todos.filter(c=>(!RVF.cat||c.categoria===RVF.cat)&&(!RVF.acc||(RVF.acc==='subir'?c.despues>c.antes:c.despues<c.antes))&&(!RVF.dia||c.dia===RVF.dia));
+  const sub=L.filter(c=>c.despues>c.antes).length, baj=L.length-sub;
+  const varM=L.length?sum(L.map(c=>(c.despues-c.antes)/c.antes*100))/L.length:null;
+  h+=`<div class="kpis">${kpi('Cambios registrados',num(L.length),`en ${num(new Set(L.map(c=>c.dia)).size)} días con cambios`,'',true)}${kpi('Subidas',num(sub),'noches con precio más alto')}${kpi('Bajadas',num(baj),'noches con precio más bajo')}${kpi('Cambio promedio',varM==null?'—':(varM>0?'+':'')+pct(varM,1),'por noche cambiada')}</div>`;
+  h+=`<p class="basis">Precio principal = precio en Booking y Hostelworld (Lobby × ${String(F).replace('.',',')}); debajo, el precio en Lobby. En Dorms 6 el mismo precio va para Verde, Azalea y Amapola.</p>`;
+  /* gráfica: cambios por día */
+  const dd=[...new Set(L.map(c=>c.dia))].sort();
+  if(dd.length) h+=`<div class="grid">`+card('w12','Cambios por día','Cuántas noches se subieron (verde) y se bajaron (naranja) cada día de trabajo.',
+    barChart({labels:dd.map(fch),stacked:true,totals:true,stackVals:true,h:220,W:1150,series:[{name:'Subidas',color:C.green,data:dd.map(d=>L.filter(c=>c.dia===d&&c.despues>c.antes).length)},{name:'Bajadas',color:C.orange,data:dd.map(d=>L.filter(c=>c.dia===d&&c.despues<c.antes).length)}]})+legend([{n:'Subidas',c:C.green},{n:'Bajadas',c:C.orange}]))+`</div>`;
+  h+=`<h2 class="sec">Día a día</h2><div class="rvf">
+    <label>Día <select data-rvf="dia"><option value="">Todos</option>${dias.map(d=>`<option value="${d}" ${RVF.dia===d?'selected':''}>${dsem(d)} ${fch(d)} ${d.slice(0,4)}</option>`).join('')}</select></label>
+    <label>Habitación <select data-rvf="cat"><option value="">Todas</option>${cats.map(c=>`<option ${RVF.cat===c?'selected':''}>${esc(c)}</option>`).join('')}</select></label>
+    <label>Cambio <select data-rvf="acc"><option value="">Subidas y bajadas</option><option value="subir" ${RVF.acc==='subir'?'selected':''}>Solo subidas</option><option value="bajar" ${RVF.acc==='bajar'?'selected':''}>Solo bajadas</option></select></label></div>`;
+  if(!L.length) h+=`<div class="empty">No hay cambios con esos filtros.</div>`;
+  for(const d of [...new Set(L.map(c=>c.dia))].sort().reverse()){
+    const X=L.filter(c=>c.dia===d).sort((a,b)=>a.noche.localeCompare(b.noche)||a.categoria.localeCompare(b.categoria));
+    const s=X.filter(c=>c.despues>c.antes).length;
+    h+=`<section class="rvday"><header><b>${dsem(d)} ${fch(d)} ${d.slice(0,4)}</b><span>${num(X.length)} cambios · ${num(s)} subidas · ${num(X.length-s)} bajadas</span>${R.dias&&R.dias[d]?`<p>${esc(R.dias[d])}</p>`:''}</header>
+      <div class="tw"><table class="tbl"><thead><tr><th>Noche</th><th style="text-align:left">Habitación</th><th>Antes</th><th>Después</th><th>Cambio</th><th style="text-align:left">Por qué</th></tr></thead><tbody>${X.map(c=>{ const v=(c.despues-c.antes)/c.antes*100;
+        return `<tr><td>${dsem(c.noche)} ${fch(c.noche)}</td><td class="c">${esc(c.categoria)}</td><td>${precio(c.antes)}</td><td>${precio(c.despues)}</td><td class="${v>0?'up':'dn'}">${v>0?'▲ +':'▼ '}${pct(v,1)}</td><td class="m">${esc(c.motivo)}${c.origen==='tarea diaria'?' · tarea diaria':''}</td></tr>`; }).join('')}</tbody></table></div></section>`;
+  }
+  /* antes del registro diario: lo que hay por semana */
+  const RS=reportes.filter(r=>r.tipo!=='mes'&&r.revenue&&r.inicio<R.desde);
+  if(RS.length) h+=`<h2 class="sec">Antes del ${fch(R.desde)}</h2><p class="basis">El registro noche por noche empezó el ${fch(R.desde)} ${R.desde.slice(0,4)}. Antes, los cambios quedaron resumidos por semana:</p><div class="shortcuts" style="margin-top:0">${RS.slice().reverse().map(r=>`<a href="#r-${r.id}--revenue">Semana ${esc(rango(r.inicio,r.fin))}</a>`).join('')}</div>`;
+  h+=`<p class="basis" style="margin-top:16px">Fuente: ${esc(R.fuente)} ${esc(R.nota)}</p>`;
+  return h;
+}
+document.addEventListener('change', e=>{ const k=e.target.dataset&&e.target.dataset.rvf; if(!k) return; RVF[k]=e.target.value; const y=window.scrollY; render(); window.scrollTo({top:y}); });
+
+/* =====================================================================
    Navegación
    ===================================================================== */
 function hashParts(){
@@ -7951,6 +9632,7 @@ function hashParts(){
   if(h==='reportes') return ['rep'];
   if(h==='anio') return ['anio'];
   if(h==='glosario') return ['glos'];
+  if(h==='revenue') return ['rv'];
   if(h.startsWith('p-')) return ['p',h.slice(2)];
   if(h && h!=='inicio') return ['404',h];
   return [''];
@@ -7964,13 +9646,14 @@ function render(){
   else if(parts[0]==='rep') app.innerHTML = vReportes();
   else if(parts[0]==='anio') app.innerHTML = vAnio();
   else if(parts[0]==='glos') app.innerHTML = vGlosario();
+  else if(parts[0]==='rv') app.innerHTML = vRevenue();
   else if(parts[0]==='404') app.innerHTML = vNoEncontrado(parts[1]);
   else app.innerHTML = vInicio();
-  const on={'':'home',rep:'rep',r:'rep',anio:'rep',p:'proy',m:'mkt',glos:'',['404']:''}[parts[0]];
-  for(const c of ['home','rep','proy','mkt']){ const t=document.querySelector('.tab.'+c); t.classList.toggle('on', c===on); if(c===on) t.setAttribute('aria-current','page'); else t.removeAttribute('aria-current'); }
+  const on={'':'home',rep:'rep',r:'rep',anio:'rep',p:'proy',m:'mkt',rv:'rvd',glos:'',['404']:''}[parts[0]];
+  for(const c of ['home','rep','proy','mkt','rvd']){ const t=document.querySelector('.tab.'+c); t.classList.toggle('on', c===on); if(c===on) t.setAttribute('aria-current','page'); else t.removeAttribute('aria-current'); }
   /* título de la pestaña del navegador */
   const r=parts[0]==='r'?byId(parts[1]):null, pm=parts[0]==='p'?(PR.meses.find(x=>x.id===parts[1])||PR.meses.find(x=>x.id.length===7)):null;
-  document.title = (r?`${r.tipo==='mes'?'Mes':'Semana'} ${r.nombre}`: pm?`Proyección ${pm.nombre}`: {rep:'Reportes',anio:'Cómo va el año',m:'Marketing',glos:'Glosario','404':'No encontrado'}[parts[0]]||'Inicio') + ' · Casa Kiwi';
+  document.title = (r?`${r.tipo==='mes'?'Mes':'Semana'} ${r.nombre}`: pm?`Proyección ${pm.nombre}`: {rep:'Reportes',anio:'Cómo va el año',m:'Marketing',rv:'Revenue',glos:'Glosario','404':'No encontrado'}[parts[0]]||'Inicio') + ' · Casa Kiwi';
   /* filas que se deslizan: la opción elegida a la vista y una flecha si hay más */
   document.querySelectorAll('.mpick').forEach(el=>{ const on=el.querySelector('.on'); if(on) el.scrollLeft=on.offsetLeft-el.clientWidth/2+on.clientWidth/2; marcaMas(el); });
 }
